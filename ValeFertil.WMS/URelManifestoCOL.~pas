@@ -1,0 +1,311 @@
+unit URelManifestoCOL;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Qrctrls, QuickRpt, ExtCtrls, Db, Wwdatsrc, DBTables, Wwquery;
+
+type
+  TFRelManifestoCOL = class(TForm)
+    Q_MANIF: TwwQuery;
+    Q_MANIFMANI_ID: TAutoIncField;
+    Q_MANIFMANI_TIPOCARGA: TStringField;
+    Q_MANIFMANI_PESO: TFloatField;
+    Q_MANIFMANI_QTDEPALLET: TIntegerField;
+    Q_MANIFMANI_VOLUME: TFloatField;
+    Q_MANIFTRANS_ID: TIntegerField;
+    Q_MANIFMOT_ID: TIntegerField;
+    Q_MANIFVEIC_ID: TIntegerField;
+    Q_MANIFMANI_DATA: TDateTimeField;
+    Q_MANIFMANI_CENDERECO: TStringField;
+    Q_MANIFMANI_CENDERECOCOMPL: TStringField;
+    Q_MANIFMANI_CENDERECOBAIRRO: TStringField;
+    Q_MANIFMANI_CMUNICIPIO: TStringField;
+    Q_MANIFMANI_CUF_SIGLA: TStringField;
+    Q_MANIFMANI_CCEP: TStringField;
+    Q_MANIFMANI_CTEL1: TStringField;
+    Q_MANIFMANI_CTEL2: TStringField;
+    Q_MANIFMANI_CFAX: TStringField;
+    Q_MANIFMANI_CEMAIL: TStringField;
+    Q_MANIFMANI_CCONTATO: TStringField;
+    Q_MANIFMANI_EENDERECO: TStringField;
+    Q_MANIFMANI_EENDERECOCOMPL: TStringField;
+    Q_MANIFMANI_EENDERECOBAIRRO: TStringField;
+    Q_MANIFMANI_EMUNICIPIO: TStringField;
+    Q_MANIFMANI_EUF_SIGLA: TStringField;
+    Q_MANIFMANI_ECEP: TStringField;
+    Q_MANIFMANI_ETEL1: TStringField;
+    Q_MANIFMANI_ETEL2: TStringField;
+    Q_MANIFMANI_EFAX: TStringField;
+    Q_MANIFMANI_EEMAIL: TStringField;
+    Q_MANIFMANI_ECONTATO: TStringField;
+    Q_MANIFPAR_ID: TIntegerField;
+    Q_TRANS: TwwQuery;
+    Q_TRANSTRANS_ID: TAutoIncField;
+    Q_TRANSTRANS_RAZA: TStringField;
+    DS_MANIF: TwwDataSource;
+    Q_TRMOT: TwwQuery;
+    Q_TRMOTMOT_NOME: TStringField;
+    Q_TRMOTMOT_ID: TAutoIncField;
+    Q_TRMOTTRANS_ID: TIntegerField;
+    Q_VEIC: TwwQuery;
+    Q_VEICVEIC_ID: TAutoIncField;
+    Q_VEICVEIC_NOME: TStringField;
+    Q_TRMOTMOT_VEIC_PLACa: TStringField;
+    Q_PAR: TwwQuery;
+    Q_PARPAR_ID: TAutoIncField;
+    Q_PARPAR_NOME: TStringField;
+    Q_RMP: TwwQuery;
+    Q_RMPPRO_COD: TStringField;
+    Q_RMPPRO_DESC: TStringField;
+    Q_RMPMRP_PESO: TFloatField;
+    Q_RMPMRP_VOLUME: TFloatField;
+    Q_RMPMRP_QTDEPALLET: TIntegerField;
+    Q_RMPMRP_ID: TAutoIncField;
+    Q_RMPMANI_ID: TIntegerField;
+    Q_RMPPRO_ID: TIntegerField;
+    Q_NF: TwwQuery;
+    Q_NFMANI_ORDEM: TIntegerField;
+    Q_NFNFI_DTENTREGA: TDateTimeField;
+    Q_NFNFI_DEST_RAZA: TStringField;
+    Q_NFNFI_EMIT_CLI: TIntegerField;
+    Q_PROD: TwwQuery;
+    Q_PRODPRO_ID: TAutoIncField;
+    Q_PRODUVEN_ID_EXP: TIntegerField;
+    Q_PRODPRO_QTDE_PALLET: TIntegerField;
+    Q_PRODPRO_COD: TStringField;
+    DS_RMP: TwwDataSource;
+    Q_AUX: TwwQuery;
+    Q_TRMOTMOT_CPF: TStringField;
+    Q_MANIFMANI_QTDEUV: TFloatField;
+    Q_PRODPRO_QTDE_PALLETUV: TFloatField;
+    Q_PRODQTDE_UVUE: TFloatField;
+    Q_RMPMRP_QTDE: TFloatField;
+    DS_NF: TwwDataSource;
+    Q_MUNI: TwwQuery;
+    Q_MUNIMUN_ID: TAutoIncField;
+    Q_MUNIMUN_NOME: TStringField;
+    Q_CLIF: TwwQuery;
+    Q_NFNFI_DEST_CLI: TIntegerField;
+    Q_CLIFCLIf_RAZA: TStringField;
+    Q_CLIFCLIf_ENDERECO: TStringField;
+    Q_CLIFCLIf_ENDERECO_COMPL: TStringField;
+    Q_CLIFCLIf_ENDERECO_BAIRRO: TStringField;
+    Q_CLIFCLIf_CEP: TStringField;
+    Q_CLIFMUN_ID: TIntegerField;
+    Q_CLIFCLIF_ID: TAutoIncField;
+    Q_CLIFMUN_NOME: TStringField;
+    Q_CLIFUF_SIGLA: TStringField;
+    Q_NFNFI_NUMERO: TStringField;
+    Q_NFNFI_DEST_ENDERECO: TStringField;
+    Q_NFNFI_DEST_CEP: TStringField;
+    Q_NFNFI_DEST_COMPL: TStringField;
+    Q_NFNFI_DEST_BAIRRO: TStringField;
+    Q_NFNFI_DEST_UF_SIGLA: TStringField;
+    Q_NFMUN_NOME: TStringField;
+    Q_MANIFMANI_MUN_IDC: TIntegerField;
+    Q_MANIFMuniCOLETA: TStringField;
+    Q_MANIFMANI_DTAGENDA: TDateTimeField;
+    Q_MANIFMANI_HORAGENDA: TStringField;
+    Q_MANIFMANI_SOLICITANTE: TStringField;
+    Q_MANIFMANI_AJUDANTE: TStringField;
+    Q_MANIFVLR_TOTAL: TFloatField;
+    QP: TQuickRep;
+    QRBand1: TQRBand;
+    QRImage1: TQRImage;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRSysData3: TQRSysData;
+    QRSysData2: TQRSysData;
+    QRSysData1: TQRSysData;
+    QRLabel37: TQRLabel;
+    clin_id: TQRDBText;
+    QRLabel6: TQRLabel;
+    QRShape1: TQRShape;
+    QRDBText1: TQRDBText;
+    QRLabel8: TQRLabel;
+    QRDBText2: TQRDBText;
+    QRLabel9: TQRLabel;
+    QRDBText3: TQRDBText;
+    QRLabel10: TQRLabel;
+    QRDBText4: TQRDBText;
+    QRShape2: TQRShape;
+    QRDBText12: TQRDBText;
+    QRLabel1: TQRLabel;
+    QRDBText13: TQRDBText;
+    QRLabel30: TQRLabel;
+    QRDBText15: TQRDBText;
+    QRLabel31: TQRLabel;
+    QRLabel32: TQRLabel;
+    QRLabel33: TQRLabel;
+    QRLabel34: TQRLabel;
+    QRLabel36: TQRLabel;
+    QRLabel35: TQRLabel;
+    QRShape3: TQRShape;
+    QRLabel11: TQRLabel;
+    QRDBText16: TQRDBText;
+    QRDBText17: TQRDBText;
+    QRDBText18: TQRDBText;
+    QRDBText20: TQRDBText;
+    QRDBText21: TQRDBText;
+    QRDBText19: TQRDBText;
+    QRLabel12: TQRLabel;
+    QRShape7: TQRShape;
+    QRLabel13: TQRLabel;
+    QRDBText5: TQRDBText;
+    QRLabel14: TQRLabel;
+    QRLabel15: TQRLabel;
+    QRLabel16: TQRLabel;
+    QRDBText6: TQRDBText;
+    QRDBText9: TQRDBText;
+    QRDBText10: TQRDBText;
+    QRLabel17: TQRLabel;
+    QRLabel20: TQRLabel;
+    QRLabel21: TQRLabel;
+    QRLabel22: TQRLabel;
+    QRLabel23: TQRLabel;
+    QRLabel24: TQRLabel;
+    QRShape4: TQRShape;
+    QRShape5: TQRShape;
+    QRShape9: TQRShape;
+    QRShape10: TQRShape;
+    QRGroup1: TQRGroup;
+    QRBand2: TQRBand;
+    Q_MANIFCNF_ID: TAutoIncField;
+    Q_MANIFCNF_NF: TStringField;
+    Q_MANIFCNF_QTDENF: TIntegerField;
+    Q_MANIFCNF_UV: TFloatField;
+    Q_MANIFCNF_PESO: TFloatField;
+    Q_MANIFCNF_PALLETS: TIntegerField;
+    Q_MANIFCNF_VALOR: TFloatField;
+    Q_MANIFCLIF_ID: TIntegerField;
+    Q_MANIFMANI_ID_1: TAutoIncField;
+    Q_MANIFCONFIRMA: TStringField;
+    Q_MANIFNFI_TRANS: TStringField;
+    Q_MANIFVEIC_ID_FRETE: TIntegerField;
+    Q_MANIFREG_ID: TIntegerField;
+    Q_MANIFMANI_ENT_COL: TStringField;
+    Q_MANIFMANI_VFRETEPAG: TFloatField;
+    Q_MANIFCONFIRMA_MANI: TStringField;
+    Q_MANIFCLIN_ID: TIntegerField;
+    Q_MANIFCTT_ID: TIntegerField;
+    Q_MANIFVEIC_ID_COBRA: TIntegerField;
+    Q_MANIFREG_ID_COBRA: TIntegerField;
+    Q_MANIFFRETE_NEGOCIA: TStringField;
+    Q_MANIFVLR_NEGOCIA: TFloatField;
+    Q_MANIFMANI_OBS: TStringField;
+    Q_MANIFCLIF_ID_1: TIntegerField;
+    Q_MANIFMANI_NF: TStringField;
+    Q_MANIFMANI_DT_TRANSP: TDateTimeField;
+    Q_MANIFFLAG: TStringField;
+    QRLabel25: TQRLabel;
+    QRDBText8: TQRDBText;
+    QRLabel7: TQRLabel;
+    QRDBText11: TQRDBText;
+    QRLabel18: TQRLabel;
+    QRDBText14: TQRDBText;
+    QRLabel19: TQRLabel;
+    QRDBText7: TQRDBText;
+    QRBand3: TQRBand;
+    QRShape11: TQRShape;
+    QRDBText22: TQRDBText;
+    QRShape12: TQRShape;
+    QRDBText23: TQRDBText;
+    QRShape13: TQRShape;
+    QRDBText24: TQRDBText;
+    QRShape14: TQRShape;
+    QRDBText25: TQRDBText;
+    QRDBText26: TQRDBText;
+    QRShape15: TQRShape;
+    qrClif: TwwQuery;
+    Q_MANIFCliente: TStringField;
+    QRMemo2: TQRMemo;
+    QRMemo1: TQRMemo;
+    QRShape6: TQRShape;
+    QRShape8: TQRShape;
+    QRShape16: TQRShape;
+    QRShape17: TQRShape;
+    QRShape18: TQRShape;
+    QRShape19: TQRShape;
+    QRShape20: TQRShape;
+    QRShape21: TQRShape;
+    QRShape22: TQRShape;
+    QRShape23: TQRShape;
+    QRShape24: TQRShape;
+    QRShape25: TQRShape;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure QRBand1AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelManifestoCOL: TFRelManifestoCOL;
+  IMPR_CLI : string ;
+  CONTA_UE : real ;
+  CONTA_PALLET :real ;
+  SALDO : real ;
+  SALDO_UV : real ;
+  TOTALIZADOR_PALLET : real ; 
+implementation
+uses UFRelManifesto ,UManifesto, UMENU, UManifestoCOL ;
+{$R *.DFM}
+
+procedure TFRelManifestoCOL.FormCreate(Sender: TObject);
+begin
+
+ { Q_MANIF.close ;
+  Q_MANIF.SQL.clear ;
+  Q_MANIF.SQL.ADD('Select * from manifesto');
+  Q_MANIF.SQL.ADD('where MANI_ID = '  + FManifestoCOL.Q_MANIfMANI_ID.asstring) ;
+  Q_MANIF.Open ;    }
+
+   Q_MANIF.close ;
+   Q_MANIF.Params[0].AsInteger := FManifestoCOL.Q_MANIfMANI_ID.AsInteger;
+   Q_MANIF.Open;
+
+
+
+  Q_TRANS.open ;
+  Q_TRMOT.open ;
+  Q_VEIC.open ;
+  Q_PAR.open ;
+  Q_RMP.open ;
+  Q_NF.open ;
+  Q_MUNI.open ;
+  Q_PROD.open ;
+  Q_CLIF.open ;
+  qrClif.Open;
+end;
+
+procedure TFRelManifestoCOL.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Q_MANIF.close ;
+  Q_TRANS.close ;
+  Q_TRMOT.close ;
+  Q_VEIC.close ;
+  Q_PAR.close ;
+  Q_RMP.close ;
+  Q_NF.close ;
+  Q_PROD.close ;
+  Q_MUNI.close ;
+  MANIFESTO := '' ;
+  Q_CLIF.close ;
+  action := cafree ;
+end;
+
+procedure TFRelManifestoCOL.QRBand1AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+ // Qrlabel29.caption := Q_TRMOTMOT_NOME.asstring ;
+end;
+
+end.

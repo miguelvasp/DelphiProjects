@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StorageCuraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Datas">
+          <Key>
+            <PropertyRef Name="IdDatas" />
+          </Key>
+          <Property Name="IdDatas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KardexTemp">
+          <Key>
+            <PropertyRef Name="KAR_ID" />
+          </Key>
+          <Property Name="KAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAT_ID" Type="int" />
+          <Property Name="MARCA_ID" Type="int" />
+          <Property Name="LOCAL_ID" Type="int" />
+          <Property Name="N_LOTE" Type="varchar" MaxLength="20" />
+          <Property Name="VALID" Type="smalldatetime" />
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="TIPO" Type="varchar" MaxLength="1" />
+          <Property Name="QTDE" Type="float" />
+          <Property Name="SALDO" Type="float" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="20" />
+          <Property Name="USUARIOATIVO" Type="varchar" MaxLength="20" />
+          <Property Name="TD_ID" Type="int" />
+          <Property Name="DOCTO" Type="varchar" MaxLength="20" />
+          <Property Name="UNI_ID" Type="int" />
+          <Property Name="FOR_CODI" Type="char" MaxLength="15" />
+          <Property Name="almox_id" Type="int" />
+        </EntityType>
+        <EntityType Name="stoHistoricoEstoque">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataReferencia" Type="datetime" />
+          <Property Name="QTDE" Type="float" />
+          <Property Name="MAT_ID" Type="int" Nullable="false" />
+          <Property Name="GRU_ID" Type="int" Nullable="false" />
+          <Property Name="UNI_ID" Type="int" />
+          <Property Name="LOCAL_ID" Type="int" Nullable="false" />
+          <Property Name="MARCA_ID" Type="int" Nullable="false" />
+          <Property Name="REPOSICAO" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AUTOMATICO" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StorageCura.dbo.vwKardex' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwKardex">
+          <Key>
+            <PropertyRef Name="KAR_ID" />
+          </Key>
+          <Property Name="KAR_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_ID" Type="int" />
+          <Property Name="MARCA_ID" Type="int" />
+          <Property Name="LOCAL_ID" Type="int" />
+          <Property Name="N_LOTE" Type="varchar" MaxLength="20" />
+          <Property Name="VALID" Type="smalldatetime" />
+          <Property Name="DATA" Type="datetime" />
+          <Property Name="TIPO" Type="varchar" MaxLength="1" />
+          <Property Name="QTDE" Type="float" />
+          <Property Name="SALDO" Type="float" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="20" />
+          <Property Name="USUARIOATIVO" Type="varchar" MaxLength="20" />
+          <Property Name="TD_ID" Type="int" />
+          <Property Name="DOCTO" Type="varchar" MaxLength="20" />
+          <Property Name="UNI_ID" Type="int" />
+          <Property Name="FOR_CODI" Type="char" MaxLength="15" />
+          <Property Name="almox_id" Type="int" />
+          <Property Name="Reposicao" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GRU_ID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="StorageCuraModelStoreContainer">
+          <EntitySet Name="Datas" EntityType="Self.Datas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KardexTemp" EntityType="Self.KardexTemp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stoHistoricoEstoque" EntityType="Self.stoHistoricoEstoque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwKardex" EntityType="Self.vwKardex" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwKardex].[KAR_ID] AS [KAR_ID], 
+    [vwKardex].[MAT_ID] AS [MAT_ID], 
+    [vwKardex].[MARCA_ID] AS [MARCA_ID], 
+    [vwKardex].[LOCAL_ID] AS [LOCAL_ID], 
+    [vwKardex].[N_LOTE] AS [N_LOTE], 
+    [vwKardex].[VALID] AS [VALID], 
+    [vwKardex].[DATA] AS [DATA], 
+    [vwKardex].[TIPO] AS [TIPO], 
+    [vwKardex].[QTDE] AS [QTDE], 
+    [vwKardex].[SALDO] AS [SALDO], 
+    [vwKardex].[USUARIO] AS [USUARIO], 
+    [vwKardex].[USUARIOATIVO] AS [USUARIOATIVO], 
+    [vwKardex].[TD_ID] AS [TD_ID], 
+    [vwKardex].[DOCTO] AS [DOCTO], 
+    [vwKardex].[UNI_ID] AS [UNI_ID], 
+    [vwKardex].[FOR_CODI] AS [FOR_CODI], 
+    [vwKardex].[almox_id] AS [almox_id], 
+    [vwKardex].[Reposicao] AS [Reposicao], 
+    [vwKardex].[GRU_ID] AS [GRU_ID]
+    FROM [dbo].[vwKardex] AS [vwKardex]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StorageCuraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Datas">
+          <Key>
+            <PropertyRef Name="IdDatas" />
+          </Key>
+          <Property Name="IdDatas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="KardexTemp">
+          <Key>
+            <PropertyRef Name="KAR_ID" />
+          </Key>
+          <Property Name="KAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_ID" Type="Int32" />
+          <Property Name="MARCA_ID" Type="Int32" />
+          <Property Name="LOCAL_ID" Type="Int32" />
+          <Property Name="N_LOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VALID" Type="DateTime" Precision="0" />
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="QTDE" Type="Double" />
+          <Property Name="SALDO" Type="Double" />
+          <Property Name="USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIOATIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TD_ID" Type="Int32" />
+          <Property Name="DOCTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UNI_ID" Type="Int32" />
+          <Property Name="FOR_CODI" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="almox_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="stoHistoricoEstoque">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataReferencia" Type="DateTime" Precision="3" />
+          <Property Name="QTDE" Type="Double" />
+          <Property Name="MAT_ID" Type="Int32" Nullable="false" />
+          <Property Name="GRU_ID" Type="Int32" Nullable="false" />
+          <Property Name="UNI_ID" Type="Int32" />
+          <Property Name="LOCAL_ID" Type="Int32" Nullable="false" />
+          <Property Name="MARCA_ID" Type="Int32" Nullable="false" />
+          <Property Name="REPOSICAO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AUTOMATICO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="StorageCuraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Datas" EntityType="Self.Datas" />
+          <EntitySet Name="KardexTemp" EntityType="Self.KardexTemp" />
+          <EntitySet Name="stoHistoricoEstoque" EntityType="Self.stoHistoricoEstoque" />
+          <EntitySet Name="vwKardex" EntityType="StorageCuraModel.vwKardex" />
+        </EntityContainer>
+        <EntityType Name="vwKardex">
+          <Key>
+            <PropertyRef Name="KAR_ID" />
+          </Key>
+          <Property Name="KAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_ID" Type="Int32" />
+          <Property Name="MARCA_ID" Type="Int32" />
+          <Property Name="LOCAL_ID" Type="Int32" />
+          <Property Name="N_LOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VALID" Type="DateTime" Precision="0" />
+          <Property Name="DATA" Type="DateTime" Precision="3" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="QTDE" Type="Double" />
+          <Property Name="SALDO" Type="Double" />
+          <Property Name="USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIOATIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TD_ID" Type="Int32" />
+          <Property Name="DOCTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UNI_ID" Type="Int32" />
+          <Property Name="FOR_CODI" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="almox_id" Type="Int32" />
+          <Property Name="Reposicao" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GRU_ID" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StorageCuraModelStoreContainer" CdmEntityContainer="StorageCuraEntities">
+          <EntitySetMapping Name="Datas">
+            <EntityTypeMapping TypeName="StorageCuraModel.Datas">
+              <MappingFragment StoreEntitySet="Datas">
+                <ScalarProperty Name="IdDatas" ColumnName="IdDatas" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KardexTemp">
+            <EntityTypeMapping TypeName="StorageCuraModel.KardexTemp">
+              <MappingFragment StoreEntitySet="KardexTemp">
+                <ScalarProperty Name="KAR_ID" ColumnName="KAR_ID" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+                <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+                <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+                <ScalarProperty Name="N_LOTE" ColumnName="N_LOTE" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="USUARIOATIVO" ColumnName="USUARIOATIVO" />
+                <ScalarProperty Name="TD_ID" ColumnName="TD_ID" />
+                <ScalarProperty Name="DOCTO" ColumnName="DOCTO" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="FOR_CODI" ColumnName="FOR_CODI" />
+                <ScalarProperty Name="almox_id" ColumnName="almox_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stoHistoricoEstoque">
+            <EntityTypeMapping TypeName="StorageCuraModel.stoHistoricoEstoque">
+              <MappingFragment StoreEntitySet="stoHistoricoEstoque">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataReferencia" ColumnName="DataReferencia" />
+                <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+                <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+                <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+                <ScalarProperty Name="REPOSICAO" ColumnName="REPOSICAO" />
+                <ScalarProperty Name="AUTOMATICO" ColumnName="AUTOMATICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwKardex">
+            <EntityTypeMapping TypeName="StorageCuraModel.vwKardex">
+              <MappingFragment StoreEntitySet="vwKardex">
+                <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+                <ScalarProperty Name="Reposicao" ColumnName="Reposicao" />
+                <ScalarProperty Name="almox_id" ColumnName="almox_id" />
+                <ScalarProperty Name="FOR_CODI" ColumnName="FOR_CODI" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="DOCTO" ColumnName="DOCTO" />
+                <ScalarProperty Name="TD_ID" ColumnName="TD_ID" />
+                <ScalarProperty Name="USUARIOATIVO" ColumnName="USUARIOATIVO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="N_LOTE" ColumnName="N_LOTE" />
+                <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+                <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+                <ScalarProperty Name="KAR_ID" ColumnName="KAR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

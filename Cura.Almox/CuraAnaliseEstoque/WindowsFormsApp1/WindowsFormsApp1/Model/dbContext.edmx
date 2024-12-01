@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinanceiroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GRUPO_MATERIAL">
+          <Key>
+            <PropertyRef Name="GRU_ID" />
+          </Key>
+          <Property Name="GRU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GRU_DESC" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Local_ID" />
+          </Key>
+          <Property Name="Local_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" />
+          <Property Name="DisponivelSN" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CONSUMO" Type="char" MaxLength="1" />
+          <Property Name="CONTROLA_ESTOQUE" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MATERIAIS">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Name="MAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAT_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="GRU_ID" Type="int" />
+          <Property Name="UNI_ID" Type="int" />
+          <Property Name="MAT_IPI" Type="float" />
+          <Property Name="MAT_CONTROLA" Type="char" MaxLength="1" />
+          <Property Name="MAT_ESTMIN" Type="float" />
+          <Property Name="MAT_LOTEPED" Type="float" />
+          <Property Name="MAT_LOCACAO" Type="varchar" MaxLength="10" />
+          <Property Name="Custo_Medio" Type="float" />
+          <Property Name="GENERICO" Type="char" MaxLength="1" />
+          <Property Name="MAT_ATIVO" Type="char" MaxLength="1" />
+          <Property Name="MAT_ESTMAX" Type="float" />
+          <Property Name="CONTROLA_GRUPO" Type="varchar" MaxLength="1" />
+          <Property Name="COD_BIONEXO" Type="varchar" MaxLength="255" />
+          <Property Name="RelConsumo" Type="varchar" MaxLength="1" />
+          <Property Name="Critico" Type="varchar" MaxLength="1" />
+          <Property Name="MatLaboratorio" Type="varchar" MaxLength="2" />
+          <Property Name="EAN" Type="varchar" MaxLength="50" />
+          <Property Name="LocalArmazem" Type="varchar" MaxLength="255" />
+          <Property Name="ValorContrato" Type="float" />
+          <Property Name="CodigoFornecedor" Type="varchar" MaxLength="255" />
+          <Property Name="EntregaEmPacote" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="MateriaisSimone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="500" />
+          <Property Name="MAT_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_MATERIAIS_GRUPO_MATERIAL">
+          <End Role="GRUPO_MATERIAL" Type="Self.GRUPO_MATERIAL" Multiplicity="0..1" />
+          <End Role="MATERIAIS" Type="Self.MATERIAIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO_MATERIAL">
+              <PropertyRef Name="GRU_ID" />
+            </Principal>
+            <Dependent Role="MATERIAIS">
+              <PropertyRef Name="GRU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinanceiroModelStoreContainer">
+          <EntitySet Name="GRUPO_MATERIAL" EntityType="Self.GRUPO_MATERIAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MATERIAIS" EntityType="Self.MATERIAIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MateriaisSimone" EntityType="Self.MateriaisSimone" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MATERIAIS_GRUPO_MATERIAL" Association="Self.FK_MATERIAIS_GRUPO_MATERIAL">
+            <End Role="GRUPO_MATERIAL" EntitySet="GRUPO_MATERIAL" />
+            <End Role="MATERIAIS" EntitySet="MATERIAIS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinanceiroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MateriaisSimone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MAT_ID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="dbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MateriaisSimone" EntityType="Self.MateriaisSimone" />
+          <EntitySet Name="Local" EntityType="FinanceiroModel.Local" />
+          <EntitySet Name="GRUPO_MATERIAL" EntityType="FinanceiroModel.GRUPO_MATERIAL" />
+          <EntitySet Name="MATERIAIS" EntityType="FinanceiroModel.MATERIAIS" />
+          <AssociationSet Name="FK_MATERIAIS_GRUPO_MATERIAL" Association="FinanceiroModel.FK_MATERIAIS_GRUPO_MATERIAL">
+            <End Role="GRUPO_MATERIAL" EntitySet="GRUPO_MATERIAL" />
+            <End Role="MATERIAIS" EntitySet="MATERIAIS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Local_ID" />
+          </Key>
+          <Property Name="Local_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisponivelSN" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CONSUMO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CONTROLA_ESTOQUE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GRUPO_MATERIAL">
+          <Key>
+            <PropertyRef Name="GRU_ID" />
+          </Key>
+          <Property Name="GRU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GRU_DESC" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MATERIAIS" Relationship="FinanceiroModel.FK_MATERIAIS_GRUPO_MATERIAL" FromRole="GRUPO_MATERIAL" ToRole="MATERIAIS" />
+        </EntityType>
+        <EntityType Name="MATERIAIS">
+          <Key>
+            <PropertyRef Name="MAT_ID" />
+          </Key>
+          <Property Name="MAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAT_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GRU_ID" Type="Int32" />
+          <Property Name="UNI_ID" Type="Int32" />
+          <Property Name="MAT_IPI" Type="Double" />
+          <Property Name="MAT_CONTROLA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MAT_ESTMIN" Type="Double" />
+          <Property Name="MAT_LOTEPED" Type="Double" />
+          <Property Name="MAT_LOCACAO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Custo_Medio" Type="Double" />
+          <Property Name="GENERICO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MAT_ATIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MAT_ESTMAX" Type="Double" />
+          <Property Name="CONTROLA_GRUPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="COD_BIONEXO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RelConsumo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Critico" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MatLaboratorio" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="EAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocalArmazem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValorContrato" Type="Double" />
+          <Property Name="CodigoFornecedor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EntregaEmPacote" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GRUPO_MATERIAL" Relationship="FinanceiroModel.FK_MATERIAIS_GRUPO_MATERIAL" FromRole="MATERIAIS" ToRole="GRUPO_MATERIAL" />
+        </EntityType>
+        <Association Name="FK_MATERIAIS_GRUPO_MATERIAL">
+          <End Type="FinanceiroModel.GRUPO_MATERIAL" Role="GRUPO_MATERIAL" Multiplicity="0..1" />
+          <End Type="FinanceiroModel.MATERIAIS" Role="MATERIAIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRUPO_MATERIAL">
+              <PropertyRef Name="GRU_ID" />
+            </Principal>
+            <Dependent Role="MATERIAIS">
+              <PropertyRef Name="GRU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinanceiroModelStoreContainer" CdmEntityContainer="dbContext">
+          <EntitySetMapping Name="MateriaisSimone">
+            <EntityTypeMapping TypeName="FinanceiroModel.MateriaisSimone">
+              <MappingFragment StoreEntitySet="MateriaisSimone">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Local">
+            <EntityTypeMapping TypeName="FinanceiroModel.Local">
+              <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="CONTROLA_ESTOQUE" ColumnName="CONTROLA_ESTOQUE" />
+                <ScalarProperty Name="CONSUMO" ColumnName="CONSUMO" />
+                <ScalarProperty Name="DisponivelSN" ColumnName="DisponivelSN" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Local_ID" ColumnName="Local_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRUPO_MATERIAL">
+            <EntityTypeMapping TypeName="FinanceiroModel.GRUPO_MATERIAL">
+              <MappingFragment StoreEntitySet="GRUPO_MATERIAL">
+                <ScalarProperty Name="GRU_DESC" ColumnName="GRU_DESC" />
+                <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MATERIAIS">
+            <EntityTypeMapping TypeName="FinanceiroModel.MATERIAIS">
+              <MappingFragment StoreEntitySet="MATERIAIS">
+                <ScalarProperty Name="EntregaEmPacote" ColumnName="EntregaEmPacote" />
+                <ScalarProperty Name="CodigoFornecedor" ColumnName="CodigoFornecedor" />
+                <ScalarProperty Name="ValorContrato" ColumnName="ValorContrato" />
+                <ScalarProperty Name="LocalArmazem" ColumnName="LocalArmazem" />
+                <ScalarProperty Name="EAN" ColumnName="EAN" />
+                <ScalarProperty Name="MatLaboratorio" ColumnName="MatLaboratorio" />
+                <ScalarProperty Name="Critico" ColumnName="Critico" />
+                <ScalarProperty Name="RelConsumo" ColumnName="RelConsumo" />
+                <ScalarProperty Name="COD_BIONEXO" ColumnName="COD_BIONEXO" />
+                <ScalarProperty Name="CONTROLA_GRUPO" ColumnName="CONTROLA_GRUPO" />
+                <ScalarProperty Name="MAT_ESTMAX" ColumnName="MAT_ESTMAX" />
+                <ScalarProperty Name="MAT_ATIVO" ColumnName="MAT_ATIVO" />
+                <ScalarProperty Name="GENERICO" ColumnName="GENERICO" />
+                <ScalarProperty Name="Custo_Medio" ColumnName="Custo_Medio" />
+                <ScalarProperty Name="MAT_LOCACAO" ColumnName="MAT_LOCACAO" />
+                <ScalarProperty Name="MAT_LOTEPED" ColumnName="MAT_LOTEPED" />
+                <ScalarProperty Name="MAT_ESTMIN" ColumnName="MAT_ESTMIN" />
+                <ScalarProperty Name="MAT_CONTROLA" ColumnName="MAT_CONTROLA" />
+                <ScalarProperty Name="MAT_IPI" ColumnName="MAT_IPI" />
+                <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+                <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+                <ScalarProperty Name="MAT_DESC" ColumnName="MAT_DESC" />
+                <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StorageCuraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Datas">
+    <Key>
+      <PropertyRef Name="IdDatas" />
+    </Key>
+    <Property Name="IdDatas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Data" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KardexTemp">
+    <Key>
+      <PropertyRef Name="KAR_ID" />
+    </Key>
+    <Property Name="KAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAT_ID" Type="int" />
+    <Property Name="MARCA_ID" Type="int" />
+    <Property Name="LOCAL_ID" Type="int" />
+    <Property Name="N_LOTE" Type="varchar" MaxLength="20" />
+    <Property Name="VALID" Type="smalldatetime" />
+    <Property Name="DATA" Type="datetime" />
+    <Property Name="TIPO" Type="varchar" MaxLength="1" />
+    <Property Name="QTDE" Type="float" />
+    <Property Name="SALDO" Type="float" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOATIVO" Type="varchar" MaxLength="20" />
+    <Property Name="TD_ID" Type="int" />
+    <Property Name="DOCTO" Type="varchar" MaxLength="20" />
+    <Property Name="UNI_ID" Type="int" />
+    <Property Name="FOR_CODI" Type="char" MaxLength="15" />
+    <Property Name="almox_id" Type="int" />
+  </EntityType>
+  <EntityType Name="stoHistoricoEstoque">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataReferencia" Type="datetime" />
+    <Property Name="QTDE" Type="float" />
+    <Property Name="MAT_ID" Type="int" Nullable="false" />
+    <Property Name="GRU_ID" Type="int" Nullable="false" />
+    <Property Name="UNI_ID" Type="int" />
+    <Property Name="LOCAL_ID" Type="int" Nullable="false" />
+    <Property Name="MARCA_ID" Type="int" Nullable="false" />
+    <Property Name="REPOSICAO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AUTOMATICO" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'StorageCura.dbo.vwKardex' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwKardex">
+    <Key>
+      <PropertyRef Name="KAR_ID" />
+    </Key>
+    <Property Name="KAR_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MAT_ID" Type="int" />
+    <Property Name="MARCA_ID" Type="int" />
+    <Property Name="LOCAL_ID" Type="int" />
+    <Property Name="N_LOTE" Type="varchar" MaxLength="20" />
+    <Property Name="VALID" Type="smalldatetime" />
+    <Property Name="DATA" Type="datetime" />
+    <Property Name="TIPO" Type="varchar" MaxLength="1" />
+    <Property Name="QTDE" Type="float" />
+    <Property Name="SALDO" Type="float" />
+    <Property Name="USUARIO" Type="varchar" MaxLength="20" />
+    <Property Name="USUARIOATIVO" Type="varchar" MaxLength="20" />
+    <Property Name="TD_ID" Type="int" />
+    <Property Name="DOCTO" Type="varchar" MaxLength="20" />
+    <Property Name="UNI_ID" Type="int" />
+    <Property Name="FOR_CODI" Type="char" MaxLength="15" />
+    <Property Name="almox_id" Type="int" />
+    <Property Name="Reposicao" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="GRU_ID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="StorageCuraModelStoreContainer">
+    <EntitySet Name="Datas" EntityType="Self.Datas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KardexTemp" EntityType="Self.KardexTemp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stoHistoricoEstoque" EntityType="Self.stoHistoricoEstoque" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwKardex" EntityType="Self.vwKardex" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwKardex].[KAR_ID] AS [KAR_ID], 
+    [vwKardex].[MAT_ID] AS [MAT_ID], 
+    [vwKardex].[MARCA_ID] AS [MARCA_ID], 
+    [vwKardex].[LOCAL_ID] AS [LOCAL_ID], 
+    [vwKardex].[N_LOTE] AS [N_LOTE], 
+    [vwKardex].[VALID] AS [VALID], 
+    [vwKardex].[DATA] AS [DATA], 
+    [vwKardex].[TIPO] AS [TIPO], 
+    [vwKardex].[QTDE] AS [QTDE], 
+    [vwKardex].[SALDO] AS [SALDO], 
+    [vwKardex].[USUARIO] AS [USUARIO], 
+    [vwKardex].[USUARIOATIVO] AS [USUARIOATIVO], 
+    [vwKardex].[TD_ID] AS [TD_ID], 
+    [vwKardex].[DOCTO] AS [DOCTO], 
+    [vwKardex].[UNI_ID] AS [UNI_ID], 
+    [vwKardex].[FOR_CODI] AS [FOR_CODI], 
+    [vwKardex].[almox_id] AS [almox_id], 
+    [vwKardex].[Reposicao] AS [Reposicao], 
+    [vwKardex].[GRU_ID] AS [GRU_ID]
+    FROM [dbo].[vwKardex] AS [vwKardex]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

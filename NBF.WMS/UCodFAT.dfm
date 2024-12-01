@@ -1,0 +1,1390 @@
+object FCodFAT: TFCodFAT
+  Left = 311
+  Top = 49
+  Width = 649
+  Height = 653
+  BorderIcons = []
+  Color = clBtnShadow
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnPaint = FormPaint
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 6
+    Top = 7
+    Width = 623
+    Height = 45
+    BevelInner = bvLowered
+    TabOrder = 0
+    object SpeedButton1: TSpeedButton
+      Left = 564
+      Top = 9
+      Width = 25
+      Height = 25
+      Hint = 'Visualizar Relatório'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+        0003377777777777777308888888888888807F33333333333337088888888888
+        88807FFFFFFFFFFFFFF7000000000000000077777777777777770F8F8F8F8F8F
+        8F807F333333333333F708F8F8F8F8F8F9F07F333333333337370F8F8F8F8F8F
+        8F807FFFFFFFFFFFFFF7000000000000000077777777777777773330FFFFFFFF
+        03333337F3FFFF3F7F333330F0000F0F03333337F77773737F333330FFFFFFFF
+        03333337F3FF3FFF7F333330F00F000003333337F773777773333330FFFF0FF0
+        33333337F3F37F3733333330F08F0F0333333337F7337F7333333330FFFF0033
+        33333337FFFF7733333333300000033333333337777773333333}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton1Click
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 590
+      Top = 9
+      Width = 25
+      Height = 25
+      Hint = 'Sair'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00330000000000
+        03333377777777777F333301111111110333337F333333337F33330111111111
+        0333337F333333337F333301111111110333337F333333337F33330111111111
+        0333337F333333337F333301111111110333337F333333337F33330111111111
+        0333337F3333333F7F333301111111B10333337F333333737F33330111111111
+        0333337F333333337F333301111111110333337F33FFFFF37F3333011EEEEE11
+        0333337F377777F37F3333011EEEEE110333337F37FFF7F37F3333011EEEEE11
+        0333337F377777337F333301111111110333337F333333337F33330111111111
+        0333337FFFFFFFFF7F3333000000000003333377777777777333}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton3Click
+    end
+    object Label4: TLabel
+      Left = 16
+      Top = 5
+      Width = 307
+      Height = 29
+      Caption = 'Códigos de Faturamento'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -24
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold, fsItalic]
+      ParentFont = False
+    end
+    object SpeedButton4: TSpeedButton
+      Left = 540
+      Top = 9
+      Width = 25
+      Height = 25
+      Hint = 'Pesquisar Códigos de Faturamento'
+      Glyph.Data = {
+        EE000000424DEE000000000000007600000028000000100000000F0000000100
+        0400000000007800000000000000000000001000000010000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        888800000888880000080F000888880F00080F000888880F0008000000080000
+        000800F000000F00000800F000800F00000800F000800F000008800000000000
+        0088880F00080F000888880000080000088888800088800088888880F08880F0
+        888888800088800088888888888888888888}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton4Click
+    end
+    object DBNavigator1: TDBNavigator
+      Left = 348
+      Top = 9
+      Width = 192
+      Height = 25
+      DataSource = DS_FAT
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbPost, nbCancel]
+      Hints.Strings = (
+        'Posiciona no primeiro registro | Posiciona no primeiro registro'
+        'Retorna ao registro anterior | Retorna ao registro anterior '
+        'Avança para o próximo registro | Avança para o próximo registro '
+        'Posiciona no último registro | Posiciona no último registro '
+        'Incluir  '
+        'Excluir'
+        ''
+        'Confirmar'
+        'Cancelar')
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+  end
+  object Panel1: TPanel
+    Left = 6
+    Top = 58
+    Width = 624
+    Height = 551
+    BevelInner = bvLowered
+    TabOrder = 1
+    object Label2: TLabel
+      Left = 131
+      Top = 12
+      Width = 23
+      Height = 15
+      Caption = 'CFO'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 45
+      Top = 83
+      Width = 109
+      Height = 15
+      Caption = 'Tipo de Documento'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 96
+      Top = 35
+      Width = 58
+      Height = 15
+      Caption = 'Descrição'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 9
+      Top = 59
+      Width = 145
+      Height = 15
+      Caption = 'Descrição Complementar'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 78
+      Top = 107
+      Width = 75
+      Height = 15
+      Caption = 'Texto Padrão'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = [fsBold, fsUnderline]
+      ParentFont = False
+    end
+    object wwDBEdit3: TwwDBEdit
+      Left = 158
+      Top = 8
+      Width = 41
+      Height = 21
+      BorderStyle = bsNone
+      DataField = 'CFA_CODI'
+      DataSource = DS_FAT
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      UnboundDataType = wwDefault
+      WantReturns = False
+      WordWrap = False
+      OnEnter = wwDBEdit3Enter
+      OnExit = wwDBEdit3Exit
+    end
+    object DBG_RAAT: TwwDBGrid
+      Left = 129
+      Top = 431
+      Width = 411
+      Height = 101
+      Hint = 'Visualização dos Registros'
+      Selected.Strings = (
+        'CFA_CODI'#9'6'#9'CFO'
+        'CFA_DCFO'#9'55'#9'Descrição'
+        'CST_PIS'#9'3'#9'CST_PIS'
+        'CST_COFINS'#9'3'#9'CST_COFINS'
+        'ALQ_PIS'#9'10'#9'ALQ_PIS'
+        'ALQ_COFINS'#9'10'#9'ALQ_COFINS')
+      IniAttributes.Delimiter = ';;'
+      TitleColor = clBtnFace
+      FixedCols = 0
+      ShowHorzScrollBar = True
+      DataSource = DS_FAT
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      KeyOptions = []
+      Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgWordWrap]
+      ParentFont = False
+      ParentShowHint = False
+      ReadOnly = True
+      ShowHint = True
+      TabOrder = 11
+      TitleAlignment = taCenter
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clNavy
+      TitleFont.Height = -11
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = [fsBold]
+      TitleLines = 1
+      TitleButtons = False
+      object DBG_RAATIButton: TwwIButton
+        Left = 0
+        Top = 0
+        Width = 13
+        Height = 22
+        AllowAllUp = True
+      end
+    end
+    object wwDBEdit1: TwwDBEdit
+      Left = 158
+      Top = 33
+      Width = 349
+      Height = 21
+      BorderStyle = bsNone
+      DataField = 'CFA_DCFO'
+      DataSource = DS_FAT
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      UnboundDataType = wwDefault
+      WantReturns = False
+      WordWrap = False
+      OnEnter = wwDBEdit1Enter
+      OnExit = wwDBEdit1Exit
+    end
+    object wwDBEdit2: TwwDBEdit
+      Left = 158
+      Top = 58
+      Width = 245
+      Height = 21
+      BorderStyle = bsNone
+      DataField = 'CFA_DCCF'
+      DataSource = DS_FAT
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      UnboundDataType = wwDefault
+      WantReturns = False
+      WordWrap = False
+      OnEnter = wwDBEdit2Enter
+      OnExit = wwDBEdit2Exit
+    end
+    object wwDBLookupCombo7: TwwDBLookupCombo
+      Left = 158
+      Top = 108
+      Width = 46
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      BorderStyle = bsNone
+      DropDownAlignment = taLeftJustify
+      Selected.Strings = (
+        'CodTexto'#9'2'#9'CodTexto'#9'F'
+        'Linha1'#9'70'#9'Linha1'#9'F'
+        'Linha2'#9'70'#9'Linha2'#9'F'
+        'Linha3'#9'70'#9'Linha3'#9'F')
+      DataField = 'CFA_TPA1'
+      DataSource = DS_FAT
+      LookupTable = Q_TEX
+      LookupField = 'CodTexto'
+      DropDownCount = 18
+      ParentFont = False
+      TabOrder = 4
+      AutoDropDown = True
+      ShowButton = True
+      SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+      PreciseEditRegion = False
+      AllowClearKey = False
+      OnEnter = wwDBLookupCombo7Enter
+      OnExit = wwDBLookupCombo7Exit
+    end
+    object wwDBLookupCombo1: TwwDBLookupCombo
+      Left = 493
+      Top = 108
+      Width = 46
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      BorderStyle = bsNone
+      DropDownAlignment = taLeftJustify
+      Selected.Strings = (
+        'CodTexto'#9'2'#9'CodTexto'#9'F'
+        'Linha1'#9'70'#9'Linha1'#9'F'
+        'Linha2'#9'70'#9'Linha2'#9'F'
+        'Linha3'#9'70'#9'Linha3'#9'F')
+      DataField = 'CFA_TPA2'
+      DataSource = DS_FAT
+      LookupTable = Q_TEX2
+      LookupField = 'CodTexto'
+      DropDownCount = 18
+      ParentFont = False
+      TabOrder = 5
+      Visible = False
+      AutoDropDown = True
+      ShowButton = True
+      SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+      PreciseEditRegion = False
+      AllowClearKey = False
+      OnEnter = wwDBLookupCombo1Enter
+      OnExit = wwDBLookupCombo1Exit
+    end
+    object wwDBLookupCombo2: TwwDBLookupCombo
+      Left = 549
+      Top = 108
+      Width = 46
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      BorderStyle = bsNone
+      DropDownAlignment = taLeftJustify
+      Selected.Strings = (
+        'CodTexto'#9'2'#9'CodTexto'#9'F'
+        'Linha1'#9'70'#9'Linha1'#9'F'
+        'Linha2'#9'70'#9'Linha2'#9'F'
+        'Linha3'#9'70'#9'Linha3'#9'F')
+      DataField = 'CFA_TPA3'
+      DataSource = DS_FAT
+      LookupTable = Q_TEX3
+      LookupField = 'CodTexto'
+      DropDownCount = 18
+      ParentFont = False
+      TabOrder = 6
+      Visible = False
+      AutoDropDown = True
+      ShowButton = True
+      SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+      PreciseEditRegion = False
+      AllowClearKey = False
+      OnEnter = wwDBLookupCombo2Enter
+      OnExit = wwDBLookupCombo2Exit
+    end
+    object GRB_ICMS: TGroupBox
+      Left = 16
+      Top = 129
+      Width = 406
+      Height = 144
+      Caption = ' ICMS '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 7
+      object Label1: TLabel
+        Left = 44
+        Top = 15
+        Width = 60
+        Height = 15
+        Caption = 'Tributação'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 43
+        Top = 37
+        Width = 62
+        Height = 15
+        Caption = 'Redução %'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 7
+        Top = 59
+        Width = 98
+        Height = 15
+        Caption = 'Forma de Cálculo'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object Label18: TLabel
+        Left = 8
+        Top = 93
+        Width = 95
+        Height = 15
+        Caption = 'Código Beneficio'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object DBCB_CFA_TICM: TwwDBComboBox
+        Left = 109
+        Top = 11
+        Width = 289
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_TICM'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Tributado Integralmente'#9'00'
+          'Tributado e ICMS por Substituição Tributária'#9'10'
+          'Com Redução de Base de Cálculo'#9'20'
+          'Isento ou Não Tributado e ICMS por Substituição Tributária'#9'30'
+          'Isento'#9'40'
+          'Não Tributada'#9'41'
+          'Suspensão'#9'50'
+          'Diferimento'#9'51'
+          'ICMS cobrado anteriormente por substituição tributária'#9'60'
+          
+            'Com redução de base de cálculo e cobrança do ICMS por substituiç' +
+            'ão tributária'#9'70'
+          'Outras'#9'90')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        OnEnter = DBCB_CFA_TICMEnter
+        OnExit = DBCB_CFA_TICMExit
+      end
+      object DBE_CFA_RICM: TwwDBEdit
+        Left = 109
+        Top = 35
+        Width = 58
+        Height = 21
+        BorderStyle = bsNone
+        DataField = 'CFA_RICM'
+        DataSource = DS_FAT
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+        OnEnter = DBE_CFA_RICMEnter
+        OnExit = DBE_CFA_RICMExit
+      end
+      object DBCB_CFA_FICM: TwwDBComboBox
+        Left = 109
+        Top = 59
+        Width = 157
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_FICM'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Mercadoria'#9'M'
+          'Total da Nota Fiscal'#9'T')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 2
+        UnboundDataType = wwDefault
+        OnEnter = DBCB_CFA_FICMEnter
+        OnExit = DBCB_CFA_FICMExit
+      end
+      object wwDBEdit4: TwwDBEdit
+        Left = 109
+        Top = 91
+        Width = 284
+        Height = 21
+        BorderStyle = bsNone
+        DataField = 'CodigoBeneficioFiscal'
+        DataSource = DS_FAT
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+        OnEnter = DBE_CFA_RICMEnter
+        OnExit = DBE_CFA_RICMExit
+      end
+    end
+    object GRB_IPI: TGroupBox
+      Left = 432
+      Top = 129
+      Width = 185
+      Height = 85
+      Caption = ' IPI '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 8
+      object Label10: TLabel
+        Left = 42
+        Top = 25
+        Width = 34
+        Height = 15
+        Caption = 'Incide'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 15
+        Top = 47
+        Width = 60
+        Height = 15
+        Caption = 'Tributação'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object DBE_CFA_IIPI: TwwDBComboBox
+        Left = 80
+        Top = 21
+        Width = 49
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_IIPI'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Sim'#9'S'
+          'Não'#9'N')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        OnEnter = DBE_CFA_IIPIEnter
+        OnExit = DBE_CFA_IIPIExit
+      end
+      object DBCB_CFA_TIPI: TwwDBComboBox
+        Left = 80
+        Top = 45
+        Width = 91
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_TIPI'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Isentas'#9'I'
+          'Outras'#9'O')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 1
+        UnboundDataType = wwDefault
+        OnEnter = DBCB_CFA_TIPIEnter
+        OnExit = DBCB_CFA_TIPIExit
+      end
+    end
+    object GRB_ISS: TGroupBox
+      Left = 16
+      Top = 276
+      Width = 146
+      Height = 68
+      Caption = ' ISS '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 9
+      object Label13: TLabel
+        Left = 43
+        Top = 15
+        Width = 34
+        Height = 15
+        Caption = 'Incide'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object Label14: TLabel
+        Left = 17
+        Top = 38
+        Width = 58
+        Height = 15
+        Caption = 'Alíquota %'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object DBCB_CFA_FISS: TwwDBComboBox
+        Left = 81
+        Top = 12
+        Width = 49
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_FISS'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Sim'#9'S'
+          'Não'#9'N')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        OnEnter = DBCB_CFA_FISSEnter
+        OnExit = DBCB_CFA_FISSExit
+      end
+      object DBE_CFA_AISS: TwwDBEdit
+        Left = 81
+        Top = 37
+        Width = 49
+        Height = 21
+        BorderStyle = bsNone
+        DataField = 'CFA_AISS'
+        DataSource = DS_FAT
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        UnboundDataType = wwDefault
+        WantReturns = False
+        WordWrap = False
+        OnEnter = DBE_CFA_AISSEnter
+        OnExit = DBE_CFA_AISSExit
+      end
+    end
+    object GRB_OUTRAS: TGroupBox
+      Left = 166
+      Top = 277
+      Width = 451
+      Height = 67
+      Caption = ' Outras Informações '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 10
+      object Label16: TLabel
+        Left = 28
+        Top = 29
+        Width = 131
+        Height = 15
+        Caption = 'Gerar Contar a receber'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object DBCB_CFA_GDUP: TwwDBComboBox
+        Left = 163
+        Top = 25
+        Width = 55
+        Height = 21
+        ShowButton = True
+        Style = csDropDown
+        MapList = True
+        AllowClearKey = False
+        BorderStyle = bsNone
+        ButtonStyle = cbsEllipsis
+        DataField = 'CFA_GDUP'
+        DataSource = DS_FAT
+        DropDownCount = 8
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = []
+        ItemHeight = 0
+        Items.Strings = (
+          'Sim'#9'S'
+          'Não'#9'N')
+        ParentFont = False
+        Sorted = False
+        TabOrder = 0
+        UnboundDataType = wwDefault
+        OnEnter = DBCB_CFA_GDUPEnter
+        OnExit = DBCB_CFA_GDUPExit
+      end
+    end
+    object wwDBLookupCombo5: TwwDBLookupCombo
+      Left = 158
+      Top = 83
+      Width = 258
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      BorderStyle = bsNone
+      DropDownAlignment = taLeftJustify
+      Selected.Strings = (
+        'TDOC_NOME'#9'40'#9'TDOC_NOME'#9'F')
+      DataField = 'TDOC_ID'
+      DataSource = DS_FAT
+      LookupTable = Q_TDOC
+      LookupField = 'TDOC_ID'
+      AutoSelect = False
+      DropDownCount = 18
+      ParentFont = False
+      TabOrder = 3
+      AutoDropDown = True
+      ShowButton = True
+      SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+      PreciseEditRegion = False
+      AllowClearKey = False
+      OnEnter = wwDBLookupCombo5Enter
+      OnExit = wwDBLookupCombo5Exit
+    end
+    object GroupBox1: TGroupBox
+      Left = 16
+      Top = 349
+      Width = 297
+      Height = 67
+      Caption = 'PIS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 12
+      object Label3: TLabel
+        Left = 24
+        Top = 35
+        Width = 24
+        Height = 14
+        Caption = 'CST:'
+        FocusControl = DBEdit1
+      end
+      object Label12: TLabel
+        Left = 142
+        Top = 36
+        Width = 58
+        Height = 14
+        Caption = 'ALÍQUOTA:'
+        FocusControl = DBEdit2
+      end
+      object DBEdit1: TDBEdit
+        Left = 56
+        Top = 32
+        Width = 65
+        Height = 22
+        DataField = 'CST_PIS'
+        DataSource = DS_FAT
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 206
+        Top = 32
+        Width = 64
+        Height = 22
+        DataField = 'ALQ_PIS'
+        DataSource = DS_FAT
+        TabOrder = 1
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 320
+      Top = 349
+      Width = 296
+      Height = 67
+      Caption = 'COFINS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 13
+      object Label15: TLabel
+        Left = 24
+        Top = 35
+        Width = 24
+        Height = 14
+        Caption = 'CST:'
+        FocusControl = DBEdit3
+      end
+      object Label17: TLabel
+        Left = 142
+        Top = 36
+        Width = 58
+        Height = 14
+        Caption = 'ALÍQUOTA:'
+        FocusControl = DBEdit4
+      end
+      object DBEdit3: TDBEdit
+        Left = 56
+        Top = 32
+        Width = 65
+        Height = 22
+        DataField = 'CST_COFINS'
+        DataSource = DS_FAT
+        TabOrder = 0
+      end
+      object DBEdit4: TDBEdit
+        Left = 206
+        Top = 32
+        Width = 64
+        Height = 22
+        DataField = 'ALQ_COFINS'
+        DataSource = DS_FAT
+        TabOrder = 1
+      end
+    end
+  end
+  object Q_FAT: TwwQuery
+    AutoCalcFields = False
+    CachedUpdates = True
+    AfterPost = Q_FATAfterPost
+    AfterDelete = Q_FATAfterDelete
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    RequestLive = True
+    SQL.Strings = (
+      'select * from FATURAMENTO order by CFA_COdi')
+    UpdateObject = UPD_FAT
+    ValidateWithMask = True
+    Left = 551
+    Top = 464
+    object Q_FATCFA_CODI: TStringField
+      DisplayLabel = 'CFO'
+      DisplayWidth = 6
+      FieldName = 'CFA_CODI'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_CODI'
+      EditMask = '9.999;0;_'
+      FixedChar = True
+      Size = 4
+    end
+    object Q_FATCFA_DCFO: TStringField
+      DisplayLabel = 'Descrição'
+      DisplayWidth = 55
+      FieldName = 'CFA_DCFO'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_DCFO'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_FATCST_PIS: TStringField
+      DisplayWidth = 3
+      FieldName = 'CST_PIS'
+      Origin = 'NBFDADOS.FATURAMENTO.CST_PIS'
+      FixedChar = True
+      Size = 3
+    end
+    object Q_FATCST_COFINS: TStringField
+      DisplayWidth = 3
+      FieldName = 'CST_COFINS'
+      Origin = 'NBFDADOS.FATURAMENTO.CST_COFINS'
+      FixedChar = True
+      Size = 3
+    end
+    object Q_FATALQ_PIS: TFloatField
+      DisplayWidth = 10
+      FieldName = 'ALQ_PIS'
+      Origin = 'NBFDADOS.FATURAMENTO.ALQ_PIS'
+      DisplayFormat = '##0.00'
+    end
+    object Q_FATALQ_COFINS: TFloatField
+      DisplayWidth = 10
+      FieldName = 'ALQ_COFINS'
+      Origin = 'NBFDADOS.FATURAMENTO.ALQ_COFINS'
+      DisplayFormat = '##0.00'
+    end
+    object Q_FATCFA_DCCF: TStringField
+      DisplayLabel = 'Descrição Complementar'
+      DisplayWidth = 40
+      FieldName = 'CFA_DCCF'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_DCCF'
+      Visible = False
+      FixedChar = True
+      Size = 30
+    end
+    object Q_FATTDOC_ID: TIntegerField
+      FieldName = 'TDOC_ID'
+      Origin = 'NBFDADOS.FATURAMENTO.TDOC_ID'
+      Visible = False
+    end
+    object Q_FATCFA_TPA1: TStringField
+      FieldName = 'CFA_TPA1'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_TPA1'
+      Visible = False
+      FixedChar = True
+      Size = 2
+    end
+    object Q_FATCFA_TPA2: TStringField
+      FieldName = 'CFA_TPA2'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_TPA2'
+      Visible = False
+      FixedChar = True
+      Size = 2
+    end
+    object Q_FATCFA_TPA3: TStringField
+      FieldName = 'CFA_TPA3'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_TPA3'
+      Visible = False
+      FixedChar = True
+      Size = 2
+    end
+    object Q_FATCFA_TICM: TStringField
+      DisplayWidth = 2
+      FieldName = 'CFA_TICM'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_TICM'
+      Visible = False
+      FixedChar = True
+      Size = 2
+    end
+    object Q_FATCFA_RICM: TFloatField
+      FieldName = 'CFA_RICM'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_RICM'
+      Visible = False
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+    object Q_FATCFA_FICM: TStringField
+      FieldName = 'CFA_FICM'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_FICM'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_FATCFA_IIPI: TStringField
+      FieldName = 'CFA_IIPI'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_IIPI'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_FATCFA_TIPI: TStringField
+      FieldName = 'CFA_TIPI'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_TIPI'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_FATCFA_FISS: TStringField
+      FieldName = 'CFA_FISS'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_FISS'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_FATCFA_AISS: TFloatField
+      FieldName = 'CFA_AISS'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_AISS'
+      Visible = False
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+    object Q_FATCFA_GDUP: TStringField
+      FieldName = 'CFA_GDUP'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_GDUP'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_FATCFA_ID: TAutoIncField
+      FieldName = 'CFA_ID'
+      Origin = 'NBFDADOS.FATURAMENTO.CFA_ID'
+      Visible = False
+    end
+    object Q_FATCodigoBeneficioFiscal: TStringField
+      FieldName = 'CodigoBeneficioFiscal'
+      FixedChar = True
+      Size = 50
+    end
+  end
+  object DS_FAT: TwwDataSource
+    DataSet = Q_FAT
+    Left = 359
+    Top = 432
+  end
+  object Q_TDOC: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select  *  from TPDOC order by TDOC_NOME')
+    ValidateWithMask = True
+    Left = 236
+    Top = 440
+    object Q_TDOCTDOC_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'TDOC_NOME'
+      Origin = 'NBFDADOS.TPDOC.TDOC_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_TDOCTDOC_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'TDOC_ID'
+      Origin = 'NBFDADOS.TPDOC.TDOC_ID'
+      Visible = False
+    end
+    object Q_TDOCTDOC_CONCEITO: TMemoField
+      DisplayWidth = 10
+      FieldName = 'TDOC_CONCEITO'
+      Origin = 'NBFDADOS.TPDOC.TDOC_CONCEITO'
+      Visible = False
+      BlobType = ftMemo
+    end
+    object Q_TDOCTDOC_APELIDO: TStringField
+      DisplayWidth = 10
+      FieldName = 'TDOC_APELIDO'
+      Origin = 'NBFDADOS.TPDOC.TDOC_APELIDO'
+      Visible = False
+      FixedChar = True
+      Size = 10
+    end
+    object Q_TDOCTDOC_CATEGORIA: TStringField
+      DisplayWidth = 1
+      FieldName = 'TDOC_CATEGORIA'
+      Origin = 'NBFDADOS.TPDOC.TDOC_CATEGORIA'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_TDOCTDOC_EMIT: TStringField
+      DisplayWidth = 1
+      FieldName = 'TDOC_EMIT'
+      Origin = 'NBFDADOS.TPDOC.TDOC_EMIT'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_TDOCTDOC_DEST: TStringField
+      DisplayWidth = 1
+      FieldName = 'TDOC_DEST'
+      Origin = 'NBFDADOS.TPDOC.TDOC_DEST'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DS_TDOC: TwwDataSource
+    DataSet = Q_TDOC
+    Left = 485
+    Top = 421
+  end
+  object Q_TEX: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select  *  from TEXPADRAO order by CodTexto')
+    ValidateWithMask = True
+    Left = 108
+    Top = 480
+    object Q_TEXCodTexto: TStringField
+      DisplayWidth = 2
+      FieldName = 'CodTexto'
+      Origin = 'NBFDADOS.TEXPADRAO.CodTexto'
+      FixedChar = True
+      Size = 2
+    end
+    object Q_TEXLinha1: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha1'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha1'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEXLinha2: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha2'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha2'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEXLinha3: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha3'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha3'
+      FixedChar = True
+      Size = 70
+    end
+  end
+  object DS_TEX: TwwDataSource
+    DataSet = Q_TEX
+    Left = 341
+    Top = 493
+  end
+  object wwDataSource2: TwwDataSource
+    DataSet = Q_TDOC
+    Left = 413
+    Top = 485
+  end
+  object Q_TEX2: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select  *  from TEXPADRAO order by CodTexto')
+    ValidateWithMask = True
+    Left = 180
+    Top = 480
+    object Q_TEX2CodTexto: TStringField
+      DisplayWidth = 2
+      FieldName = 'CodTexto'
+      Origin = 'NBFDADOS.TEXPADRAO.CodTexto'
+      FixedChar = True
+      Size = 2
+    end
+    object Q_TEX2Linha1: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha1'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha1'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEX2Linha2: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha2'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha2'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEX2Linha3: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha3'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha3'
+      FixedChar = True
+      Size = 70
+    end
+  end
+  object DS_TEX2: TwwDataSource
+    DataSet = Q_TEX2
+    Left = 269
+    Top = 493
+  end
+  object Q_TEX3: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select  *  from TEXPADRAO order by CodTexto')
+    ValidateWithMask = True
+    Left = 76
+    Top = 424
+    object Q_TEX3CodTexto: TStringField
+      DisplayWidth = 2
+      FieldName = 'CodTexto'
+      Origin = 'NBFDADOS.TEXPADRAO.CodTexto'
+      FixedChar = True
+      Size = 2
+    end
+    object Q_TEX3Linha1: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha1'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha1'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEX3Linha2: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha2'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha2'
+      FixedChar = True
+      Size = 70
+    end
+    object Q_TEX3Linha3: TStringField
+      DisplayWidth = 70
+      FieldName = 'Linha3'
+      Origin = 'NBFDADOS.TEXPADRAO.Linha3'
+      FixedChar = True
+      Size = 70
+    end
+  end
+  object DS_TEX3: TwwDataSource
+    DataSet = Q_TEX3
+    Left = 37
+    Top = 477
+  end
+  object UPD_FAT: TUpdateSQL
+    ModifySQL.Strings = (
+      'update FATURAMENTO'
+      'set'
+      '  CFA_CODI = :CFA_CODI,'
+      '  CFA_DCFO = :CFA_DCFO,'
+      '  CFA_DCCF = :CFA_DCCF,'
+      '  TDOC_ID = :TDOC_ID,'
+      '  CFA_TPA1 = :CFA_TPA1,'
+      '  CFA_TPA2 = :CFA_TPA2,'
+      '  CFA_TPA3 = :CFA_TPA3,'
+      '  CFA_TICM = :CFA_TICM,'
+      '  CFA_RICM = :CFA_RICM,'
+      '  CFA_FICM = :CFA_FICM,'
+      '  CFA_IIPI = :CFA_IIPI,'
+      '  CFA_TIPI = :CFA_TIPI,'
+      '  CFA_FISS = :CFA_FISS,'
+      '  CFA_AISS = :CFA_AISS,'
+      '  CFA_GDUP = :CFA_GDUP,'
+      '  CST_PIS = :CST_PIS,'
+      'CST_COFINS = :CST_COFINS,'
+      'ALQ_PIS = :ALQ_PIS,'
+      'ALQ_COFINS = :ALQ_COFINS,'
+      'CodigoBeneficioFiscal = :CodigoBeneficioFiscal'
+      'where'
+      '  CFA_ID = :OLD_CFA_ID')
+    InsertSQL.Strings = (
+      'insert into FATURAMENTO'
+      '  (CFA_CODI, CFA_DCFO, CFA_DCCF, TDOC_ID, CFA_TPA1, CFA_TPA2, '
+      'CFA_TPA3, '
+      '   CFA_TICM, CFA_RICM, CFA_FICM, CFA_IIPI, CFA_TIPI, CFA_FISS, '
+      '   CFA_AISS, CFA_GDUP, CST_PIS, CST_COFINS, ALQ_PIS, ALQ_COFINS)'
+      'values'
+      
+        '  (:CFA_CODI, :CFA_DCFO, :CFA_DCCF, :TDOC_ID, :CFA_TPA1, :CFA_TP' +
+        'A2, '
+      
+        '   :CFA_TPA3, :CFA_TICM, :CFA_RICM, :CFA_FICM, :CFA_IIPI, :CFA_T' +
+        'IPI, '
+      
+        '   :CFA_FISS, :CFA_AISS, :CFA_GDUP, :CST_PIS, :CST_COFINS, :ALQ_' +
+        'PIS, '
+      ':ALQ_COFINS)')
+    DeleteSQL.Strings = (
+      'delete from FATURAMENTO'
+      'where'
+      '  CFA_ID = :OLD_CFA_ID')
+    Left = 14
+    Top = 418
+  end
+  object wwSearchDialog1: TwwSearchDialog
+    Selected.Strings = (
+      'CFA_CODI'#9'6'#9'CFO'#9'F'
+      'CFA_DCFO'#9'55'#9'Descrição'#9'F')
+    GridTitleAlignment = taCenter
+    GridColor = clAqua
+    GridOptions = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgPerfectRowFit]
+    SearchTable = Q_FAT
+    Caption = 'Pesquisar Códigos de Faturamento'
+    MaxWidth = 800
+    MaxHeight = 350
+    CharCase = ecUpperCase
+    Left = 488
+    Top = 482
+  end
+end

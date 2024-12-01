@@ -1,0 +1,34 @@
+unit UfrmEstoqueAnalitico;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Grids, Wwdbigrd, Wwdbgrid, ExtCtrls, StdCtrls;
+
+type
+  TfrmEstoqueAnalitico = class(TForm)
+    Panel1: TPanel;
+    wwDBGrid1: TwwDBGrid;
+    lbMaterial: TLabel;
+    lbMarca: TLabel;
+    lbLocal: TLabel;
+    lbQtde: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmEstoqueAnalitico: TfrmEstoqueAnalitico;
+
+implementation
+
+{$R *.DFM}
+
+end.

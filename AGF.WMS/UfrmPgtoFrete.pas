@@ -1,0 +1,628 @@
+unit UfrmPgtoFrete;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Menus, RzButton, StdCtrls, Mask, wwdbedit, Wwdotdot, Wwdbcomb, ExtCtrls,
+  RzPanel, Grids, Wwdbigrd, Wwdbgrid, Provider, DBClient, Db, ADODB,
+  RzPrgres, RzStatus, RzTabs, wwdblook, RzRadGrp, ComObj;
+
+type
+  TfrmPgtoFrete = class(TForm)
+    PopupMenu1: TPopupMenu;
+    ConsultarManifestosemAberto1: TMenuItem;
+    ConsultarInformaesGeradas1: TMenuItem;
+    ConsultarTodasasInformaes1: TMenuItem;
+    Panel1: TPanel;
+    qrGera: TADOQuery;
+    cdsGera: TClientDataSet;
+    dspGera: TDataSetProvider;
+    qrGeraID: TAutoIncField;
+    qrGeraMANI_ID: TIntegerField;
+    qrGeraLANC_MANUAL: TIntegerField;
+    qrGeraTRANS_ID: TIntegerField;
+    qrGeraDATA: TDateTimeField;
+    qrGeraREG_ID: TIntegerField;
+    qrGeraVLR_FRETE: TFloatField;
+    qrGeraSTATUS: TStringField;
+    qrGeraOBS: TStringField;
+    cdsGeraID: TAutoIncField;
+    cdsGeraMANI_ID: TIntegerField;
+    cdsGeraLANC_MANUAL: TIntegerField;
+    cdsGeraTRANS_ID: TIntegerField;
+    cdsGeraDATA: TDateTimeField;
+    cdsGeraREG_ID: TIntegerField;
+    cdsGeraVLR_FRETE: TFloatField;
+    cdsGeraSTATUS: TStringField;
+    cdsGeraOBS: TStringField;
+    dsGera: TDataSource;
+    qrGeraTRANS_FANTASIA: TStringField;
+    qrGeraREG_NOME: TStringField;
+    cdsGeraTRANS_FANTASIA: TStringField;
+    cdsGeraREG_NOME: TStringField;
+    qrManifesto: TADOQuery;
+    RzStatusBar1: TRzStatusBar;
+    RzProgressBar1: TRzProgressBar;
+    qrManifestoMANI_ID: TAutoIncField;
+    qrManifestoMANI_DATA: TDateTimeField;
+    qrManifestoTRANS_ID: TIntegerField;
+    qrManifestoREG_ID: TIntegerField;
+    qrManifestoMANI_VFRETEPAG: TFloatField;
+    RzStatusPane1: TRzStatusPane;
+    dspManifesto: TDataSetProvider;
+    cdsManifesto: TClientDataSet;
+    cdsManifestoMANI_ID: TAutoIncField;
+    cdsManifestoMANI_DATA: TDateTimeField;
+    cdsManifestoTRANS_ID: TIntegerField;
+    cdsManifestoREG_ID: TIntegerField;
+    cdsManifestoMANI_VFRETEPAG: TFloatField;
+    RzBitBtn3: TRzBitBtn;
+    RzPageControl1: TRzPageControl;
+    TabSheet1: TRzTabSheet;
+    TabSheet2: TRzTabSheet;
+    wwDBGrid1: TwwDBGrid;
+    Panel2: TPanel;
+    RzBitBtn1: TRzBitBtn;
+    qrManifestoTRANS_FANTASIA: TStringField;
+    qrManifestoREG_NOME: TStringField;
+    cdsManifestoTRANS_FANTASIA: TStringField;
+    cdsManifestoREG_NOME: TStringField;
+    qrManifestoSEL: TStringField;
+    cdsManifestoSEL: TStringField;
+    wwDBGrid2: TwwDBGrid;
+    Panel3: TPanel;
+    RzBitBtn5: TRzBitBtn;
+    dsManifesto: TDataSource;
+    MaskEdit1: TMaskEdit;
+    MaskEdit2: TMaskEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    qrAux: TADOQuery;
+    RzBitBtn2: TRzBitBtn;
+    RzBitBtn4: TRzBitBtn;
+    qrTrans: TADOQuery;
+    qrTransTRANS_ID: TAutoIncField;
+    qrTransTRANS_FANTASIA: TStringField;
+    dspTrans: TDataSetProvider;
+    cdsTrans: TClientDataSet;
+    cdsTransTRANS_ID: TAutoIncField;
+    cdsTransTRANS_FANTASIA: TStringField;
+    Label3: TLabel;
+    cboTrans: TwwDBLookupCombo;
+    RzBitBtn6: TRzBitBtn;
+    qrManifestoVEIC_ID: TIntegerField;
+    qrManifestoQTD_ENTREGAS: TIntegerField;
+    qrManifestoREENTREGA_DEVOLUCAO: TIntegerField;
+    cdsManifestoQTD_ENTREGAS: TIntegerField;
+    cdsManifestoREENTREGA_DEVOLUCAO: TIntegerField;
+    cdsManifestoVEIC_ID: TIntegerField;
+    qrManifestoMANI_ENT_COL: TStringField;
+    cdsManifestoMANI_ENT_COL: TStringField;
+    cdsManifestoTIPO: TStringField;
+    Label4: TLabel;
+    edtMani: TEdit;
+    rgOrdenacao: TRzRadioGroup;
+    RzBitBtn7: TRzBitBtn;
+    RzBitBtn8: TRzBitBtn;
+    qrAux2: TADOQuery;
+    cboQuinzena: TComboBox;
+    Label5: TLabel;
+    cboMes: TComboBox;
+    Label6: TLabel;
+    cboAno: TComboBox;
+    Label7: TLabel;
+    qrParametro: TADOQuery;
+    qrParametroDATA_FRETE_FECHAMENTO: TDateTimeField;
+    qrAux3: TADOQuery;
+    qrGeraDATA_FECHAMENTO: TDateTimeField;
+    cdsGeraDATA_FECHAMENTO: TDateTimeField;
+    qrGeraFECHAMENTO: TStringField;
+    cdsGeraFECHAMENTO: TStringField;
+    qrGeraRECIBO: TStringField;
+    cdsGeraRECIBO: TStringField;
+    procedure GeraData;
+    procedure BuscaPgtos;
+    procedure BuscaManifesto;
+    procedure RzBitBtn3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure RzBitBtn5Click(Sender: TObject);
+    procedure cdsGeraAfterPost(DataSet: TDataSet);
+    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
+      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+      ABrush: TBrush);
+    procedure FormShow(Sender: TObject);
+    procedure wwDBGrid2CalcCellColors(Sender: TObject; Field: TField;
+      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+      ABrush: TBrush);
+    procedure RzBitBtn1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure wwDBGrid1DblClick(Sender: TObject);
+    procedure RzBitBtn2Click(Sender: TObject);
+    procedure RzBitBtn4Click(Sender: TObject);
+    procedure RzBitBtn6Click(Sender: TObject);
+    procedure cdsManifestoCalcFields(DataSet: TDataSet);
+    procedure RzBitBtn7Click(Sender: TObject);
+    procedure RzBitBtn8Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPgtoFrete: TfrmPgtoFrete;
+  DataI, DataF : TDateTime;
+implementation
+
+uses UMenu, UAddPgtoFrete, UfrmRelPagamentoFrete;
+
+{$R *.DFM}
+
+{ TfrmPgtoFrete }
+
+procedure TfrmPgtoFrete.BuscaManifesto;
+begin
+    cdsManifesto.Close;
+    qrManifesto.SQL.Clear;
+    qrManifesto.SQL.Add
+    (
+        'SELECT distinct '+
+        '        A.MANI_ID, '+
+        '        A.MANI_DATA, '+
+        '        A.TRANS_ID, '+
+        '        A.REG_ID, '+
+        '        A.MANI_VFRETEPAG, '+
+        '        B.TRANS_FANTASIA, '+
+        '        C.REG_NOME, A.VEIC_ID, '+
+        '        A.SEL, A.MANI_ENT_COL, '+
+        '        (   '+
+        '                SELECT COUNT(DISTINCT NFI_DEST_CGC) FROM NF  '+
+        '                WHERE MANI_ID = A.MANI_ID '+
+        '        ) AS QTD_ENTREGAS, '+
+        '        (  '+
+        '                SELECT COUNT(NFI_ENTREGA) FROM NF WHERE MANI_ID = A.MANI_ID  '+
+        '                AND NFI_ENTREGA IN (''R'', ''D'')  '+
+        '        ) AS REENTREGA_DEVOLUCAO  '+
+        'FROM MANIFESTO A LEFT OUTER JOIN  '+
+        'TRANSPORTADORA B ON A.TRANS_ID = B.TRANS_ID  '+
+        'LEFT OUTER JOIN REGIAO C ON A.REG_ID = C.REG_ID LEFT OUTER JOIN NF NF ON A.MANI_ID = NF.MANI_ID  LEFT OUTER JOIN CLIENTENBF D ON D.CLIN_ID = NF.NFI_EMIT_CLI'
+    );
+    qrManifesto.SQL.Add('WHERE CONVERT(CHAR(10), A.MANI_DATA, 112) >= ' +QuotedStr(  FormatDateTime('YYYYMMDD', DataI)));
+    qrManifesto.SQL.Add('AND CONVERT(CHAR(10), A.MANI_DATA, 112) <= ' + QuotedStr(FormatDateTime('YYYYMMDD', DataF)));
+    qrManifesto.sql.Add('AND CONFIRMA_MANI = ''S'' AND  A.MANI_ID NOT IN (SELECT MANI_ID FROM PGTO_FRETE WHERE MANI_ID IS NOT NULL)  ');
+
+    IF cboTrans.Text <> '' then
+        qrManifesto.SQL.Add('AND A.TRANS_ID = ' + cboTrans.LookupValue);
+
+
+    if edtMani.Text <> '' then
+        qrManifesto.sql.Add('AND A.MANI_ID = ' + edtMani.Text);
+
+
+    case rgOrdenacao.ItemIndex of
+        0 :  qrManifesto.SQL.Add('ORDER BY A.MANI_ID');
+        1 :  qrManifesto.SQL.Add('ORDER BY A.MANI_DATA');
+        2 :  qrManifesto.SQL.Add('ORDER BY B.TRANS_FANTASIA');
+    end;
+    
+
+    cdsManifesto.Open;
+
+end;
+
+procedure TfrmPgtoFrete.BuscaPgtos;
+begin
+    cdsGera.Close;
+    qrGera.sql.Clear;
+    qrGera.sql.Add
+    (
+      'SELECT A.*, B.TRANS_FANTASIA, C.REG_NOME, DBO.MOSTRA_FECHAMENTO_FRETE(A.DATA_FECHAMENTO) FECHAMENTO '+
+      'FROM PGTO_FRETE A LEFT OUTER JOIN TRANSPORTADORA B ON A.TRANS_ID = B.TRANS_ID '+
+      'LEFT OUTER JOIN REGIAO C ON A.REG_ID = C.REG_ID  '
+    );
+    qrGera.SQL.Add('where convert(char(10), data, 112) >= ' + QuotedStr(FormatDateTime('yyyyMMdd', DataI)));
+    qrGera.SQL.Add('and convert(char(10), data, 112) <= ' + QuotedStr(FormatDateTime('yyyyMMdd', DataF)));
+    IF cboTrans.Text <> '' then
+        qrGera.SQL.Add(' AND A.TRANS_ID = ' + cboTrans.LookupValue);
+
+
+    if edtMani.Text <> '' then
+        qrGera.sql.Add('AND A.MANI_ID = ' + edtMani.Text);
+
+
+    case rgOrdenacao.ItemIndex of
+        0 : qrGera.SQL.Add('order by  A.MANI_ID ');
+        1 : qrGera.SQL.Add('order by a.data ');
+        2 : qrGera.SQL.Add('order by B.TRANS_FANTASIA, A.MANI_ID ');
+    end;
+
+    
+
+
+    cdsGera.Open;
+
+end;
+
+procedure TfrmPgtoFrete.GeraData;
+begin
+
+    try
+        DataI := StrToDate(MaskEdit1.Text);
+        DataF  :=  StrToDate(MaskEdit2.Text);
+    except
+        MessageBox(Self.Handle, 'Data inválida', 'Erro', MB_OK + MB_ICONERROR)  ;
+        Abort;
+    end;
+
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn3Click(Sender: TObject);
+begin
+  GeraData;
+  BuscaPgtos;
+  BuscaManifesto;
+  RzBitBtn7.Enabled := True;
+end;
+
+procedure TfrmPgtoFrete.FormCreate(Sender: TObject);
+begin
+  cdsTrans.Open;
+  RzPageControl1.ActivePageIndex := 0;
+
+  MaskEdit1.Text := DateToStr(Now);
+    MaskEdit2.Text := DateToStr(Now);
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn5Click(Sender: TObject);
+var entregas, reentregas : Integer;
+    obs : string;
+    valor : Real;
+    data : string;
+begin
+
+
+  if cboQuinzena.Text = '' then begin
+      ShowMessage('Informe a quinzena');
+      Abort;
+  end;
+
+  if cboMes.Text = '' then begin
+      ShowMessage('Informe o mês');
+      Abort;
+  end;
+
+  if cboAno.Text = '' then begin
+      ShowMessage('Informe o ano');
+      Abort;
+  end;
+
+
+  if cboQuinzena.ItemIndex = 0 then
+     data := '01/';
+
+  if cboQuinzena.ItemIndex = 1 then
+     data := '15/';
+
+  data := data + FormatFloat('00', cboMes.ItemIndex) + '/' + cboAno.Text;
+
+
+  qrParametro.Open;
+
+
+  //se a data de fechamento ja foi preenchida verifica se pode efetuar o pagamento de frete
+  if qrParametroDATA_FRETE_FECHAMENTO.AsString <> '' then begin
+       if qrParametroDATA_FRETE_FECHAMENTO.AsDateTime + 1 > StrToDate(data) then begin
+           ShowMessage('Este período de pagamento de frete já foi fechado, não é possivel alterar');
+           Abort;
+       end;
+  end;
+
+
+
+
+  if MessageBox(Self.Handle, 'Confirma geração de pagamentos?', 'Confirmação', MB_YESNO + MB_ICONQUESTION) = 7 then
+   begin
+       Abort;
+   end;
+
+   if cdsManifesto.State in [dsedit] then
+        cdsManifesto.Post;
+
+  RzStatusBar1.Visible := True;
+  RzProgressBar1.TotalParts := cdsManifesto.RecordCount;
+  cdsManifesto.First;
+  while not cdsManifesto.Eof do
+  begin
+      try
+
+
+          if cdsManifestoSEL.Value = '*' then begin
+                //adiciona pagamento
+                FMenu.ADOConnection.BeginTrans;
+                cdsGera.Append;
+                cdsGeraMANI_ID.Value := cdsManifestoMANI_ID.Value;
+                cdsGeraTRANS_ID.Value := cdsManifestoTRANS_ID.Value;
+                cdsGeraDATA.Value := cdsManifestoMANI_DATA.Value;
+                cdsGeraREG_ID.Value := cdsManifestoREG_ID.Value;
+
+                //VERIFICA SE O VEICULO É KOMBI OU VAN
+                IF ((cdsManifestoVEIC_ID.Value = 16) or (cdsManifestoVEIC_ID.Value = 18)) AND (cdsManifestoMANI_ENT_COL.Value = 'E') then begin
+                        entregas := 0; reentregas := 0;
+                        obs := '';
+                        //verifica se tem mais de uma entrega
+                        IF cdsManifestoQTD_ENTREGAS.Value - cdsManifestoREENTREGA_DEVOLUCAO.Value > 4 then
+                        begin
+                             entregas := cdsManifestoQTD_ENTREGAS.Value - 4;
+                             valor := cdsManifestoMANI_VFRETEPAG.Value;
+                             valor := valor + (entregas * 10);
+
+                             if cdsManifestoREENTREGA_DEVOLUCAO.AsString = '' then
+                                reentregas := 0
+                             else
+                                reentregas   := cdsManifestoREENTREGA_DEVOLUCAO.Value;
+
+                            // valor := valor - (reentregas * 10);
+
+
+                             obs := 'Valor normal do frete: R$ ' + FormatFloat('###,###,##0.00', cdsManifestoMANI_VFRETEPAG.Value);
+                             obs := obs + ', total de entregas acima: ' + IntToStr(entregas) ;
+                             obs := obs + ', total de reentregas/devoluções: ' + IntToStr(reentregas);
+                             obs := obs + ', valor final do frete :' + FormatFloat('###,###,##0.00', valor);
+
+                             cdsGeraOBS.Value := obs;
+
+                             cdsGeraVLR_FRETE.Value := valor;
+                        end
+                        else
+                        cdsGeraVLR_FRETE.Value := cdsManifestoMANI_VFRETEPAG.Value;
+                end else
+                        cdsGeraVLR_FRETE.Value := cdsManifestoMANI_VFRETEPAG.Value;
+
+                //ADICIONA A DATA DE FECHAMENTO A QUE PERTENCE
+
+                cdsGeraDATA_FECHAMENTO.AsDateTime := StrToDate(data);
+
+                cdsGera.Post;
+
+                //atualiza manifesto
+                qrAux.Parameters[0].Value := cdsManifestoMANI_ID.Value;
+                qrAux.ExecSQL;
+                FMenu.ADOConnection.CommitTrans;
+          end;
+
+          RzProgressBar1.PartsComplete := RzProgressBar1.PartsComplete + 1;
+          cdsManifesto.Next;
+          Application.ProcessMessages;
+          RzPageControl1.ActivePageIndex := 0;
+      except
+        on e : Exception do
+        begin
+          FMenu.ADOConnection.RollbackTrans;
+          MessageBox(Self.Handle, PChar('Aconteceu um erro ao gerar os dados' + #13 + e.Message ), 'Erro', MB_OK + MB_ICONERROR)  ;
+        end;
+      end;
+  end;
+
+  RzStatusBar1.Visible := False;
+
+
+
+  cdsManifesto.Close;
+  cdsManifesto.Open;
+  cdsGera.Close;
+  cdsGera.Open;
+end;
+
+procedure TfrmPgtoFrete.cdsGeraAfterPost(DataSet: TDataSet);
+begin
+  cdsGera.ApplyUpdates(0);
+  cdsGera.close;
+  cdsGera.Open;
+end;
+
+procedure TfrmPgtoFrete.wwDBGrid1CalcCellColors(Sender: TObject;
+  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+  ABrush: TBrush);
+begin
+   if cdsGeraLANC_MANUAL.AsString <> '' then
+   begin
+       ABrush.Color := $00C6D9FF;
+   end;
+   if Highlight then
+        AFont.Color := clBlack
+   else
+        AFont.Color := clBlack;
+end;
+
+procedure TfrmPgtoFrete.FormShow(Sender: TObject);
+begin
+  Self.Height := Screen.Height - 30;
+end;
+
+procedure TfrmPgtoFrete.wwDBGrid2CalcCellColors(Sender: TObject;
+  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+  ABrush: TBrush);
+begin
+  if cdsManifestoSEL.Value = '*' then
+        ABrush.Color :=  $00D9FFD9;
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn1Click(Sender: TObject);
+begin
+  frmAddPgtoFrete := TfrmAddPgtoFrete.Create(Self);
+  cdsGera.append;
+  frmAddPgtoFrete.ShowModal;
+end;
+
+procedure TfrmPgtoFrete.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   Action := caFree;
+   frmPgtoFrete := nil;
+end;
+
+procedure TfrmPgtoFrete.wwDBGrid1DblClick(Sender: TObject);
+begin
+  IF cdsGeraLANC_MANUAL.AsString <> '' then BEGIN
+      frmAddPgtoFrete := TfrmAddPgtoFrete.Create(Self);
+      cdsGera.Edit;
+      frmAddPgtoFrete.MaskEdit1.Text := DateToStr(cdsGeraDATA.Value);
+      frmAddPgtoFrete.ShowModal;
+  end;
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn2Click(Sender: TObject);
+begin
+  cdsManifesto.First;
+  while not cdsManifesto.Eof do begin
+    cdsManifesto.Edit;
+    cdsManifestoSEL.Value := '*';
+    cdsManifesto.Post;
+    cdsManifesto.Next;
+  end;
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn4Click(Sender: TObject);
+begin
+  cdsManifesto.First;
+  while not cdsManifesto.Eof do begin
+    cdsManifesto.Edit;
+    cdsManifestoSEL.Value := '';
+    cdsManifesto.Post;
+    cdsManifesto.Next;
+  end;
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn6Click(Sender: TObject);
+var filtros : string;
+begin
+     filtros := 'De ' + MaskEdit1.Text + ' até ' + MaskEdit2.Text;
+
+     if cboTrans.Text <> '' then
+        filtros := filtros + ' Transportador: ' + cboTrans.Text;
+
+     frmRelPagamentoFrete := TfrmRelPagamentoFrete.Create(Self);
+     frmRelPagamentoFrete.lbFiltros.Caption := filtros;
+     frmRelPagamentoFrete.QuickRep1.Preview;
+     frmRelPagamentoFrete.Close;
+end;
+
+procedure TfrmPgtoFrete.cdsManifestoCalcFields(DataSet: TDataSet);
+begin
+  IF cdsManifestoMANI_ENT_COL.Value = 'E' then
+        cdsManifestoTIPO.Value := 'Entrega'
+  else
+        cdsManifestoTIPO.Value := 'Coleta';
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn7Click(Sender: TObject);
+Const
+  // SheetType
+  XlChart = -4109;
+  XlWorksheet = -4167;
+  // WBATemplate
+  XlWBATWorksheet = -4167;
+  XlWBATChart = -4109;
+  // Page Setup
+  XlPortrait = 1;
+  XlLandscape = 2;
+  XlPaperA4 = 9;
+  // Format Cells
+  XlBottom = -4107;
+  XlLeft = -4131;
+  XlRight = -4152;
+  XlTop = -4160;
+  // Text Alignment
+  XlHAlignCenter = -4108;
+  XlVAlignCenter = -4108;
+  // Cell Borders
+  XlThick = 4;
+  XlThin = 2;
+Var
+  objExcel,Sheet: OleVariant;
+  linha : Integer;
+  total : Integer;
+  celula :string;
+  Periodos : Integer;
+begin
+    objExcel := CreateOleObject('Excel.Application');
+   // 
+    objExcel.Workbooks.Add;
+    objExcel.Workbooks[1].Sheets.Add;
+    objExcel.Workbooks[1].WorkSheets[1].Name := 'Pagamento de Frete';
+    Sheet := objExcel.Workbooks[1].WorkSheets['Pagamento de Frete'];
+
+    linha := 1;
+
+    Sheet.cells[linha,1] := 'Manifesto';
+    Sheet.cells[linha,2] := 'lanc. Manual';
+    Sheet.cells[linha,3] := 'Data';
+    Sheet.cells[linha,4] := 'Transportador';
+    Sheet.cells[linha,5] := 'Região';
+    Sheet.cells[linha,6] := 'Frete';
+    Sheet.cells[linha,7] := 'Observações';
+
+
+    Sheet.Range['A1'].ColumnWidth := 10;
+    Sheet.Range['B1'].ColumnWidth := 12;
+    Sheet.Range['C1'].ColumnWidth := 10;
+    Sheet.Range['D1'].ColumnWidth := 42;
+    Sheet.Range['E1'].ColumnWidth := 28;
+    Sheet.Range['F1'].ColumnWidth := 11;
+    Sheet.Range['G1'].ColumnWidth := 50;
+
+    cdsGera.First;
+    while not cdsGera.Eof do begin
+        inc(linha);
+
+        Sheet.cells[linha,1] := cdsGeraMANI_ID.Value;
+        Sheet.cells[linha,2] := cdsGeraLANC_MANUAL.Value;
+        Sheet.cells[linha,3] := '''' + FormatDateTime('dd/mm/yyyy', cdsGeraDATA.Value);
+        Sheet.cells[linha,4] := cdsGeraTRANS_FANTASIA.Value;
+        Sheet.cells[linha,5] := cdsGeraREG_NOME.Value;
+        Sheet.cells[linha,6] := cdsGeraVLR_FRETE.Value;
+        Sheet.cells[linha,6].Style := 'Currency';
+        Sheet.cells[linha,7] := cdsGeraOBS.Value;
+
+        cdsGera.Next;
+    end;
+
+
+    objExcel.Visible := True;
+end;
+
+procedure TfrmPgtoFrete.RzBitBtn8Click(Sender: TObject);
+VAR MANI_ID : string;
+begin
+  if MessageBox(Self.Handle, 'Confirma exclusão do pagamento?', 'Confirmação' , MB_YESNO ) = 6 then begin
+
+       MANI_ID := cdsGeraMANI_ID.AsString;
+       with qrAux2 do begin
+           close;
+           sql.Clear;
+           sql.Add('DELETE FROM PGTO_FRETE WHERE ID = ' + cdsGeraID.AsString);
+           ExecSQL;
+       end;
+
+       TRY
+      with qrAux2 do begin
+           close;
+           sql.Clear;
+           sql.Add('UPDATE MANIFESTO SET PGTO_FRETE = NULL WHERE MANI_ID = ' +MANI_ID);
+           ExecSQL;
+       end;
+          except
+
+          end;
+       cdsGera.Close;
+       cdsGera.Open;
+
+       cdsManifesto.CLOSE;
+       cdsManifesto.Open;
+
+  end;
+end;
+
+end.
+

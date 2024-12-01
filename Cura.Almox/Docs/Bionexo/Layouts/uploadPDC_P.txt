@@ -1,0 +1,75 @@
+#########################################
+#  Arquivo formato Upload Itens do PDC  #
+#########################################
+############
+# Layout P #
+############
+
+SEPARADOR ENTRE OS CAMPOS : PONTO-VIRGULA (;)
+(*) Campo não obrigatorio
+
+
+SEQ	CAMPO			TIPO/TAMANHO
+					
+1	CODIGO_DO_ITEM		VARCHAR2(20)		<!-- Codigo do item cadastro no sistema local (hospital) iqual ao cadastrado na Bionexo-->
+2	QUANTIDADE_TOTAL	NUMBER(10)		<!-- Quantidade do item a ser cotado na Bionexo -->
+3	PEDIDO_COMPRA		VARCHAR2(20)		<!-- Numero do pedido de cotação do sistema local (hospital) -->
+4	DATA_01			DATE (DD/MM/YYYY)(*)    <!-- Programação de entrega, data da 1º entrega -->
+5	QTDE_01			NUMBER(10)(*)		<!-- Programação de entrega, quantidade da 1º entrega -->
+6	DATA_02			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega, data da 2º entrega -->
+7	QTDE_02			NUMBER(10)(*)		<!-- Programação de entrega, quantidade da 2º entrega -->
+8	DATA_03			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega --> 
+9	QTDE_03			NUMBER(10)(*)		<!-- Programação de entrega -->
+10	DATA_04			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+11	QTDE_04			NUMBER(10)(*)		<!-- Programação de entrega -->
+12	DATA_05			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+13	QTDE_05			NUMBER(10)(*)		<!-- Programação de entrega -->
+14	DATA_06			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+15	QTDE_06			NUMBER(10)(*)		<!-- Programação de entrega -->
+16	DATA_07			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+17	QTDE_07			NUMBER(10)(*)		<!-- Programação de entrega -->
+18	DATA_08			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+19	QTDE_08			NUMBER(10)(*)		<!-- Programação de entrega -->
+20	DATA_09			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+21	QTDE_09			NUMBER(10)(*)		<!-- Programação de entrega -->
+22	DATA_10			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+23	QTDE_10			NUMBER(10)(*)		<!-- Programação de entrega -->
+24	DATA_11			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+25	QTDE_11			NUMBER(10)(*)		<!-- Programação de entrega -->
+26	DATA_12			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+27	QTDE_12			NUMBER(10)		<!-- Programação de entrega -->
+28	DATA_13			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+29	QTDE_13			NUMBER(10)		<!-- Programação de entrega -->
+30	DATA_14			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+31	QTDE_14			NUMBER(10)(*)		<!-- Programação de entrega -->
+32	DATA_15			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+33	QTDE_15			NUMBER(10)(*)		<!-- Programação de entrega -->
+34	DATA_16			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+35	QTDE_16			NUMBER(10)(*)		<!-- Programação de entrega -->
+36	DATA_17			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+37	QTDE_17			NUMBER(10)(*)		<!-- Programação de entrega -->
+38	DATA_18			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+39	QTDE_18			NUMBER(10)(*)		<!-- Programação de entrega -->
+40	DATA_19			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+41	QTDE_19			NUMBER(10)(*)		<!-- Programação de entrega -->
+42	DATA_20			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+43	QTDE_20			NUMBER(10)(*)		<!-- Programação de entrega -->
+44	DATA_21			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+45	QTDE_21			NUMBER(10)(*)		<!-- Programação de entrega -->
+46	DATA_22			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+47	QTDE_22			NUMBER(10)(*)		<!-- Programação de entrega -->
+48	DATA_23			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega -->
+49	QTDE_23			NUMBER(10)(*)		<!-- Programação de entrega -->
+50	DATA_24			DATE (DD/MM/YYYY)(*)	<!-- Programação de entrega, data da 24º entrega-->
+51	QTDE_24			NUMBER(10)(*)		<!-- Programação de entrega, quantidade da 24º entrega -->
+
+#################
+# End Layout P  #
+#################
+
+#####################################################
+# O "CODIGO DO ITEM" DEVE SER IDENTICO AO CODIGO DA #
+# BASE DE DADOS BIONEXO, ONDE SERAH VALIDADA AS     #
+# CONSISTENCIAS DAS INFORMACOES.                    #
+# O ARQUIVO NÃO PODE CONTER LINHAS EM BRANCO.       #
+#####################################################

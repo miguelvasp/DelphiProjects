@@ -1,0 +1,802 @@
+object FFGeraManifesto: TFFGeraManifesto
+  Left = 289
+  Top = 164
+  Width = 630
+  Height = 505
+  HorzScrollBar.Visible = False
+  VertScrollBar.Visible = False
+  AutoSize = True
+  BorderIcons = []
+  Caption = 'Filtros para Geração do Manifesto de Carga'
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Verdana'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 614
+    Height = 467
+    BevelInner = bvLowered
+    BevelOuter = bvSpace
+    TabOrder = 0
+    object wwDBLookupCombo4: TwwDBLookupCombo
+      Left = 520
+      Top = 425
+      Width = 81
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial'
+      Font.Style = []
+      BorderStyle = bsNone
+      DropDownAlignment = taLeftJustify
+      Selected.Strings = (
+        'CLIN_RAZA'#9'50'#9'CLIN_RAZA'#9'F')
+      LookupField = 'CLIN_ID'
+      DropDownCount = 15
+      ParentFont = False
+      TabOrder = 0
+      Visible = False
+      AutoDropDown = True
+      ShowButton = True
+      SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+      PreciseEditRegion = False
+      AllowClearKey = False
+      OnEnter = wwDBLookupCombo4Enter
+      OnExit = wwDBLookupCombo4Exit
+    end
+    object Panel3: TPanel
+      Left = 94
+      Top = 404
+      Width = 425
+      Height = 46
+      BevelOuter = bvNone
+      TabOrder = 1
+      object SpeedButton3: TSpeedButton
+        Left = 227
+        Top = 8
+        Width = 158
+        Height = 33
+        Hint = 'Sair'
+        Caption = 'Fechar janela'
+        Glyph.Data = {
+          F6060000424DF606000000000000360000002800000018000000180000000100
+          180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B4E1E
+          1FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B824B4B
+          8C4B4B914B4B4E1E1FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B824B4B89
+          4B4B9C4B4CB64B4CBD4B4C9F4B4C4E1E1FFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B824B
+          4B9A4D4EAF4E4FC14E4FC04D4EBF4C4DBF4C4D9F4B4C4E1E1F994B4B824B4B82
+          4B4B824B4B824B4B824B4B824B4B824B4B824B4BFF00FFFF00FFFF00FFFF00FF
+          FF00FF824B4BC55455C95455C75354C65253C55152C45051C24F50A04C4D4E1E
+          1FFE8B8CFC9293FB9A9CFAA3A4F8AAABF7B1B1F7B5B6F7B5B6824B4BFF00FFFF
+          00FFFF00FFFF00FFFF00FF824B4BCE5859CC5758CB5657CA5556C95455C75354
+          C65253A34E4F4E1E1F3F9E4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4CF7B5
+          B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BD15B5CD05A5BCF595ACE
+          5859CC5758CB5657CA5556A550504E1E1F3F9E4C1EBC4C1EBC4C1EBC4C1EBC4C
+          1EBC4C1EBC4CF7B5B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BD55E
+          5FD55E5FD45D5ED35C5DD15B5CD05A5BCF595AA651524E1E1F3F9E4C1EBC4C1E
+          BC4C1EBC4C1EBC4C1EBC4C1EBC4CF7B5B6824B4BFF00FFFF00FFFF00FFFF00FF
+          FF00FF824B4BDA6364D96263D86062D75F60D55E5FD45D5ED35C5DA953544E1E
+          1F3F9E4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4CF7B5B6824B4BFF00FFFF
+          00FFFF00FFFF00FFFF00FF824B4BDE6667DD6566DC6465DA6364D96263D86062
+          D75F60AB55554E1E1F3F9E4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4C1EBC4CF7B5
+          B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BE2696AE16869E06768DE
+          6667E06D6EE69091DC6465AC56574E1E1F58A55B1EBC4C1EBC4C1EBC4C1EBC4C
+          1EBC4C1EBC4CF7B5B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BE76D
+          6EE66C6DE56B6CE36A6BEEA6A7FFFFFFEB9C9CAF58594E1E1FEECEAFB7EBAA5E
+          D3775ED37745CA6745CA6745CA67F7B5B6824B4BFF00FFFF00FFFF00FFFF00FF
+          FF00FF824B4BEB7072EA6F70E96E6FE76D6EF2A9AAFFFFFFEB9596B15A5A4E1E
+          1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3D9F6BDD9F6BDF7B5B6824B4BFF00FFFF
+          00FFFF00FFFF00FFFF00FF824B4BEF7475EE7374ED7273EB7072EA6F70EF9091
+          E76D6EB25B5C4E1E1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5
+          B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BF37778F37778F27677F0
+          7576EF7475EE7374ED7273B55D5D4E1E1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3
+          FFFFD3FFFFD3F7B5B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BF87B
+          7DF77A7BF6797AF47879F37778F27677F07576B75F5F4E1E1FEECEAFFFFFD3FF
+          FFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5B6824B4BFF00FFFF00FFFF00FFFF00FF
+          FF00FF824B4BFC7F80FB7E7FFA7D7EF87B7DF77A7BF6797AF47879B860624E1E
+          1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5B6824B4BFF00FFFF
+          00FFFF00FFFF00FFFF00FF824B4BFF8182FF8182FE8081FC7F80FC7F80FB7E7F
+          FA7D7EBB63634E1E1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5
+          B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BFF8182FF8182FF8182FF
+          8182FF8182FE8081FE8081BD65654E1E1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3
+          FFFFD3FFFFD3F7B5B6824B4BFF00FFFF00FFFF00FFFF00FFFF00FF824B4BF77E
+          7FFF8182FF8182FF8182FF8182FF8182FF8182BF66664E1E1FEECEAFFFFFD3FF
+          FFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5B6824B4BFF00FFFF00FFFF00FFFF00FF
+          FF00FF824B4B824B4BAF5E5FD56F70FF8182FF8182FF8182FF8182BF66664E1E
+          1FEECEAFFFFFD3FFFFD3FFFFD3FFFFD3FFFFD3FFFFD3F7B5B6824B4BFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B824B4B915152B66263EE7A7B
+          FF8182BF66664E1E1F914B4B824B4B824B4B824B4B824B4B824B4B824B4B824B
+          4B824B4BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FF824B4B824B4B9855559F58584E1E1FFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF824B4B4E1E1FFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+        ParentShowHint = False
+        ShowHint = True
+        OnClick = SpeedButton3Click
+      end
+      object BitBtn1: TBitBtn
+        Left = 10
+        Top = 8
+        Width = 207
+        Height = 33
+        Hint = 'Confirmar'
+        Caption = 'Buscar Informações'
+        Default = True
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        OnClick = BitBtn1Click
+        Glyph.Data = {
+          76060000424D7606000000000000360400002800000018000000180000000100
+          08000000000040020000D30E0000D30E00000001000000010000CE392900216B
+          290021842900D64A31002973310039393900396B3900299439007B394200F794
+          420039424A00394A4A00424A4A009C4A4A004A6B4A004A734A00183952002142
+          5200525A52004A635200527B520039845200D69452005A5A5A005A6B5A005A7B
+          5A0039A55A0063316300294A6300945A63009463630008396B00314A6B003152
+          6B00EFAD6B00104273007B427300104A7300734A73004ABD7300EFBD73007B29
+          7B0029527B00295A7B0042637B004A637B006B737B007B847B00AD947B0052AD
+          7B008429840021528400426384006B738400847B840084848400848C84006BB5
+          840021528C00215A8C0042638C008C638C00426B8C004A6B8C00947B8C008C84
+          8C008C8C8C00942994002963940039639400316B94004A6B9400738494009484
+          94007B8C9400848C9400948C9400949494007B9C940073BD94006BC694009C31
+          9C0073849C00848C9C007B949C0094949C009C949C009C9C9C0073CE9C00396B
+          A500427BA500A57BA500A58CA5008494A500949CA500A59CA50084A5A5009CA5
+          A500A5A5A500AD39AD00AD42AD00AD6BAD004A84AD00949CAD00ADA5AD00ADAD
+          AD004A7BB5004A84B500528CB5006B9CB500A5ADB500B5ADB500B5B5B5004A84
+          BD00528CBD005A8CBD005A94BD00B5B5BD00BDB5BD00BDBDBD00C66BC6005A8C
+          C6005A94C600C694C60094ADC600A5B5C600ADBDC600B5BDC600C6BDC600C6C6
+          C600CE73CE00CE8CCE005A94CE006394CE006B9CCE00B5BDCE005AC6CE00CEC6
+          CE00CECECE00DECECE00639CD6006B9CD6009CB5D6009CBDD600D6CED600D6D6
+          D600CEDED600BDEFD6006BA5DE00DED6DE00DEDEDE007BADE7007BB5E7006BC6
+          E700E7DEE70073E7E700E7E7E70084BDEF008CBDEF00EFE7EF00E7EFEF00EFEF
+          EF005ADEF700F7EFF700F7FFF700FF00FF0042F7FF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00A5A5A5A5A5A5
+          A5A5A5170537A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A52E346B2B0C37A5
+          A5A5A5A5A5A5A5A5A5A5A5A5A5A5A52E3C7A8572462B0C37A5A5A5A5A5A5A5A5
+          A5A5A5A5A52E3E7A858D857246462B0C37A5A5A5A5A5A5A5A5A5A5353F79858C
+          867A8C724646462B0C37A5A5A5A5A5A5A5A5A51C85857972466C8D7246464646
+          2B0B37A5A5A5A5A5A5A5A51C853346461F5985725A864646462B0B37A5A5A5A5
+          A5A5A51C8523253B6B8C979D7C48744646462B0B37A5A5A5A5A5A51C85336B8C
+          979E8E758A367D664646462B0B37A5A5A5A5A51C858C979E8E758990914C7067
+          6C4646462B0B37A5A5A5A521979E8F7F8A969595954D76694A734646462B0B2F
+          A5A5A52C6A5E9A9C9C9AA195686F776F417E664646462B0CA5A5A5554555A4A1
+          A092694276956F764D805D6C46464611A5A5A5A56E57A49358155F9580577095
+          4D815F5373464611A5A5A5A5A514501A04188349689090766F81683787664611
+          A5A5A5A5A5060112657851408B76567695776F4D8A206611A5A5A5A5A5A54D43
+          51243028165F95896268954D90103B2CA5A5A5A5A5A5A526082209031E9B605F
+          89958062902D3F4BA5A5A5A5A5A5A5A50D001D88A6A25491804D69958937A5A5
+          A5A5A5A5A5A5A5A5A54D99A26D4E4F314C95906969A5A5A5A5A5A5A5A5A5A5A5
+          A5A548133927070F7B5C68A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A519020E5B82
+          643DA5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A54D32642949A5A5A5A5A5A5A5
+          A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5}
+      end
+    end
+    object Grid: TwwDBGrid
+      Left = 19
+      Top = 48
+      Width = 579
+      Height = 225
+      Selected.Strings = (
+        'MARCADOR'#9'6'#9'S /N'#9'F'
+        'CLIN_RAZA'#9'45'#9'Razão Social'#9'F'
+        'USUARIO'#9'15'#9'Usuario'#9'F')
+      IniAttributes.FileName = 'delphi32.ini'
+      IniAttributes.SectionName = 'FPcPGrid'
+      IniAttributes.Delimiter = ';;'
+      TitleColor = clBtnFace
+      FixedCols = 0
+      ShowHorzScrollBar = True
+      EditControlOptions = [ecoCheckboxSingleClick, ecoSearchOwnerForm]
+      Color = clWhite
+      DataSource = DS_CLINBF
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Style = []
+      KeyOptions = []
+      Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+      ParentFont = False
+      TabOrder = 2
+      TitleAlignment = taCenter
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clNavy
+      TitleFont.Height = -11
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = [fsBold]
+      TitleLines = 1
+      TitleButtons = False
+      OnCalcCellColors = GridCalcCellColors
+      FooterColor = clInactiveCaption
+      FooterCellColor = clGrayText
+    end
+    object btNem: TBitBtn
+      Left = 57
+      Top = 7
+      Width = 30
+      Height = 33
+      Hint = 'Desmarcar Todos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      OnClick = btNemClick
+      Glyph.Data = {
+        B2020000424DB202000000000000720000002800000018000000180000000100
+        08000000000040020000FE0E0000FE0E00000F0000000F00000084401600A158
+        1600AB603100D4845800E08F580023317B007B7B7B0031508400E0C0A100607B
+        B600F4E0CA0098C0E000E0E0E000FF00FF00FFFFFF000D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D000000000000000000000000000D0D0D0D
+        0D0D0D0D0D0D0D000801010101010101010A0001000D0D0D0D0D0D0D0D0D0D00
+        0802020202020202020A000101000D0D0D0D0D0D0D0D0D000802020202020202
+        020A00010101000D0D0D0D0D0D0D0D000608030303030303030A060001010105
+        0D0D0D0D0D0D0D0D000808080808080A0A0C080001010107050D0D0D0D0D0D0D
+        0D00040404040404040404040001010907050D0D0D0D0D0D0D0D000404040404
+        04040404040001090907050D0D0D0D0D0D0D0D00040404040404040404040007
+        090907050D0D0D0D0D0D0D0D00040404040404040404040507090907050D0D0D
+        0D0D0D0D0D050B0B0B0B0B0B0B0B0B0B05070909050D0D0D0D0D0D0D0D0D050B
+        0B0B0B0B0B0B0B0B0B050709050D0D0D0D0D0D0D0D0D0D050B0B0B0B0B0B0B0B
+        0B0B0507050D0D0D0D0D0D0D0D0D0D0D050B0B0B0B0B0B0B0B0B0B05050D0D0D
+        0D0D0D0D0D0D0D0D0D050B0B0B0B0B0B0B0B0B0B050D0D0D0D0D0D0D0D0D0D0D
+        0D0D070505050505050505070D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
+        0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D}
+    end
+    object BitBtn3: TBitBtn
+      Left = 19
+      Top = 7
+      Width = 30
+      Height = 33
+      Hint = 'Selecionar Todos'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+      OnClick = BitBtn3Click
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C0060000120B0000120B00000000000000000000FF00FFFF00FF
+        FF00FF92635DA46769A46769A46769A46769A46769A46769A46769A46769A467
+        69A46769A46769A46769A46769A46769A46769A46769A46769A46769FF00FFFF
+        00FFFF00FFFF00FFFF00FF93655EF2D9B0F2D7ABF0D4A9F0D1A5EFD1A1F0CF9E
+        EFCE9CEFCB98EECA95EDC992EDC78FEDC68EEDC58BEBC488EBC286EBC184EBC0
+        829F6F60FF00FFFF00FFFF00FFFF00FFFF00FF93655FF3DAB5F2D8B0F2D7ADF2
+        D5AAF0D3A5EFD1A3EFD09FEFCE9DEFCC99EFCB97EDCA93EEC991EDC68EEBC58B
+        EBC489EBC287EBC2869F6F60FF00FFFF00FFFF00FFFF00FFFF00FF93655FF4DD
+        BAF3DAB6008100008100F2D5AAF0D4A7811E00811E00811E00811E00811E0081
+        1E00811E00811E00811E00EDC58AEDC4889F6F60FF00FFFF00FFFF00FFFF00FF
+        FF00FF93655FF4E0BDF3DEBB008100008100F3D8B0F2D5ACF0D4A9F2D3A4F0D1
+        A1EFCF9FEFCE9CEECC98EECA96EEC992EDC990EDC68CEDC58B9F6F60FF00FFFF
+        00FFFF00FFFF00FFFF00FF654441A79A86A69882A6977FA5967EA5957BA59378
+        A59276A59173A59072A48F6EA48E6CA38C6AA38B68A18A66A18965A18862A188
+        606C4C41FF00FFFF00FFFF00FF004B00004B00004B00004B00004B00004B0000
+        4B00004B00004B00004B00004B00004B00004B00004B00004B00004B00004B00
+        004B00004B00004B00004B00004B00004B00FF00FF004B00FF00FF986963F7E6
+        CCF7E5C9F6E2C5F6E1C1F4DEBFF4DDBAF3DCB6F3D9B2F2D7AFF2D5ABF0D4A9F0
+        D3A4F0D0A1EFCF9EEFCE9AEFCB98EECB969F6F60FF00FF004B00FF00FF004B00
+        FF00FF9E6E64F8E9D0F7E6CE004B00004B00F6E2C2F4E0BF004B00004B00004B
+        00004B00004B00004B00004B00004B00004B00EFCE9CEECC999F6F60FF00FF00
+        4B00FF00FF004B00FF00FFA37266FAEBD7F8EAD3004B00004B00F6E3C7F6E2C4
+        F4E0C0F4DEBCF3DCB8F3DCB5F2D8B1F2D7ADF2D4AAF0D3A6F0D1A4F0D0A0EFCE
+        9D9F6F60FF00FF004B00FF00FF004B00FF00FF724F46AAA195A99F91A79E8FA9
+        9E8EA99D8BA79A89A79A86A79983A79881A6977FA6967BA59379A59377A59175
+        A59072A48F70A48F6D6C4C42FF00FF004B00FF00FF004B00004B00004A000049
+        00004800004800004900004A00004B00004B00004B00004B00004B00004B0000
+        4B00004B00004B00004B00004B00004B00004B00004B00004B00FF00FFFF00FF
+        FF00FFA77766DED7CAD4CCBFD4CABBDCD1C1EBE0CAF4E6CFF7E9CFF7E6CAF6E3
+        C7F4E2C4F4E0C0F4DEBCF4DCB8F3DCB5F3D9B1F2D7ADF0D5AAA07264FF00FFFF
+        00FFFF00FFFF00FFFF00FFA1735FBFBAB0ABA59C005800006200DDD1C1F0E3D0
+        801E00811E00811E00811E00811E00811E00811E00811E00811E00F3D9B2F3D8
+        AFA07264FF00FFFF00FFFF00FFFF00FFFF00FF004B00004B00004B00004B0000
+        5600CEC5B6E7DCCBF0E5D1F6E7D1F6E7D0F7E6CEF7E5CAF6E3C6F6E1C2F4E0BF
+        F3DEBBF4DCB6F3D9B4A07264FF00FFFF00FFFF00FFFF00FFFF00FF004B000895
+        1106900E004B0098938BB8B0A6CEC5B8DDD4C2EBE1CEF6E9D3F8EAD3F7E7CEF7
+        E6CBF6E3C6F6E1C4F6E0C0F4DEBCF3DDB8A07264FF00FFFF00FFFF00FFFF00FF
+        FF00FF004B000C9D190A9814004B008A888198938CA7A198BFB6AADDD4C4F2E6
+        D4F8EBD7F8EAD3F8E9D0F7E6CCF6E5C9F6E2C5F4E1C1F4E0BDA07264FF00FFFF
+        00FF004B00004B00004B00004B0011A6240EA11D004B00004B00004B00004B00
+        ABA59CD5CCC1F0E6D7F8EDD9FAEDD8F8EAD5F8E9D1F7E6CCF6E5CAF6E3C6F6E1
+        C1A07264FF00FFFF00FF004B0025C74720C1401CBA3818B23014AC2911A5220D
+        A01C0A9A17004B005814006E19007D1D00801E00811E00811E00811E00811E00
+        811E00F7E6CAF6E3C6A07264FF00FFFF00FF004B002CD35528CC4D23C5451FBF
+        3E1BB73517B02E13AB2710A520004B00BFBBB4DEDAD0F3EDE0FBF2E3FBF0E1FA
+        EFDDF8EDDAF8EBD7F8EAD3F7E9CFF7E6CBA07264FF00FFFF00FF004B00004B00
+        004B00004B0027CB4B22C443004B00004B00004B00004B00E0DCD7EFEAE2FAF3
+        E9FBF4E9FBF2E5FAF2E2FBEFE0FAEEDAF8EBD8F8EAD4F7E7D0A07264FF00FFFF
+        00FFFF00FFFF00FFFF00FF004B002DD45829CF52004B00AAA9A7D0CFCCEBE9E5
+        F6F2EDFAF6EFFBF6EEFCF6EDFCF4E9FBF2E6FAF0E2FAEFE0FAEEDDFAEDD8F8EA
+        D4A07264FF00FFFF00FFFF00FFFF00FFFF00FF004B0034DE6530D95E004B009D
+        6B4FB77E5CC98965CE8C67CF8E68CF8E68CF8E68CF8E68CF8E68CF8E68CF8E68
+        CF8E68CF8E68CF8E68CF8E68FF00FFFF00FFFF00FFFF00FFFF00FF004B00004B
+        00004B00004B00FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+        00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF}
+    end
+    object RzGroupBox1: TRzGroupBox
+      Left = 20
+      Top = 280
+      Width = 297
+      Height = 54
+      Caption = 'Região'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      object wwDBLookupCombo1: TwwDBLookupCombo
+        Left = 21
+        Top = 25
+        Width = 252
+        Height = 22
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        DropDownAlignment = taLeftJustify
+        Selected.Strings = (
+          'REG_NOME'#9'40'#9'REG_NOME'#9'F')
+        LookupTable = Q_REG
+        LookupField = 'REG_ID'
+        DropDownCount = 15
+        ParentFont = False
+        TabOrder = 0
+        AutoDropDown = True
+        ShowButton = True
+        SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+        PreciseEditRegion = False
+        AllowClearKey = False
+        OnEnter = wwDBLookupCombo1Enter
+        OnExit = wwDBLookupCombo1Exit
+      end
+    end
+    object RzGroupBox2: TRzGroupBox
+      Left = 328
+      Top = 280
+      Width = 265
+      Height = 54
+      Caption = 'Data de Entrega'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      object Label3: TLabel
+        Left = 126
+        Top = 26
+        Width = 18
+        Height = 15
+        Caption = 'até'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold, fsUnderline]
+        ParentFont = False
+      end
+      object MaskEdit1: TMaskEdit
+        Left = 26
+        Top = 25
+        Width = 86
+        Height = 22
+        EditMask = '!99/99/9999;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        MaxLength = 10
+        ParentFont = False
+        TabOrder = 0
+        Text = '  /  /    '
+        OnEnter = MaskEdit1Enter
+        OnExit = MaskEdit1Exit
+      end
+      object MaskEdit2: TMaskEdit
+        Left = 154
+        Top = 25
+        Width = 86
+        Height = 22
+        EditMask = '!99/99/9999;1;_'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        MaxLength = 10
+        ParentFont = False
+        TabOrder = 1
+        Text = '  /  /    '
+        OnEnter = MaskEdit2Enter
+        OnExit = MaskEdit2Exit
+      end
+    end
+    object RzGroupBox3: TRzGroupBox
+      Left = 21
+      Top = 344
+      Width = 297
+      Height = 54
+      Caption = 'Empresa'
+      TabOrder = 7
+      object wwDBLookupCombo2: TwwDBLookupCombo
+        Left = 23
+        Top = 25
+        Width = 250
+        Height = 22
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Verdana'
+        Font.Style = []
+        DropDownAlignment = taLeftJustify
+        Selected.Strings = (
+          'PAR_NOME'#9'30'#9'PAR_NOME'#9'F')
+        LookupTable = Q_PAR
+        LookupField = 'PAR_ID'
+        ParentFont = False
+        TabOrder = 0
+        AutoDropDown = True
+        ShowButton = True
+        SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+        PreciseEditRegion = False
+        AllowClearKey = False
+        OnEnter = wwDBLookupCombo2Enter
+        OnExit = wwDBLookupCombo2Exit
+      end
+    end
+    object RadioGroup1: TRzRadioGroup
+      Left = 328
+      Top = 344
+      Width = 265
+      Height = 54
+      Caption = 'Transportador NBF?'
+      Columns = 2
+      ItemIndex = 1
+      Items.Strings = (
+        'Sim'
+        'Não')
+      SpaceEvenly = True
+      TabOrder = 8
+      TextStyle = tsRecessed
+    end
+  end
+  object Q_REG: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select * from regiao order by reg_NOME')
+    ValidateWithMask = True
+    Left = 505
+    Top = 144
+    object Q_REGREG_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'REG_NOME'
+      Origin = 'NBFDADOS.regiao.REG_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_REGREG_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'REG_ID'
+      Origin = 'NBFDADOS.regiao.REG_ID'
+      Visible = False
+    end
+  end
+  object Q_PAR: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select PAR_ID,PAR_NOME,PAR_RAZA from parametro  '
+      'WHERE ATIVO = '#39'S'#39)
+    ValidateWithMask = True
+    Left = 415
+    Top = 122
+    object Q_PARPAR_NOME: TStringField
+      DisplayWidth = 30
+      FieldName = 'PAR_NOME'
+      Origin = 'NBFDADOS.parametro.PAR_NOME'
+      FixedChar = True
+      Size = 30
+    end
+    object Q_PARPAR_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'PAR_ID'
+      Origin = 'NBFDADOS.parametro.PAR_ID'
+      Visible = False
+    end
+    object Q_PARPAR_RAZA: TStringField
+      DisplayWidth = 50
+      FieldName = 'PAR_RAZA'
+      Origin = 'NBFDADOS.parametro.PAR_RAZA'
+      Visible = False
+      FixedChar = True
+      Size = 50
+    end
+  end
+  object STP_GERAMANIFESTO: TwwStoredProc
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    StoredProcName = 'dbo.STP_GERA_MANIFESTO'
+    ValidateWithMask = True
+    Left = 464
+    Top = 72
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'Result'
+        ParamType = ptResult
+      end
+      item
+        DataType = ftInteger
+        Name = '@CLINBF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = '@REG'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = '@DataI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = '@DataF'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = '@EMP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = '@TRANSP'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = '@USU'
+        ParamType = ptInput
+      end>
+  end
+  object DS_PAR: TwwDataSource
+    DataSet = Q_PAR
+    Left = 270
+    Top = 104
+  end
+  object Q_MG: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select * from manifestogera  '
+      'WHERE NFI_TRANS = '#39'S'#39)
+    ValidateWithMask = True
+    Left = 271
+    Top = 176
+    object Q_MGNFI_TRANS: TStringField
+      FieldName = 'NFI_TRANS'
+      Origin = 'NBFDADOS.manifestogera.NFI_TRANS'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Q_MG1: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select * from manifestogera  '
+      'WHERE NFI_TRANS = '#39'N'#39)
+    ValidateWithMask = True
+    Left = 209
+    Top = 120
+    object StringField1: TStringField
+      FieldName = 'NFI_TRANS'
+      Origin = 'NBFDADOS.manifestogera.NFI_TRANS'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object Q_AUX: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 117
+    Top = 154
+  end
+  object Q_CLINBF: TwwQuery
+    AutoCalcFields = False
+    CachedUpdates = True
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    RequestLive = True
+    SQL.Strings = (
+      'Select '
+      'DISTINCT CL.CLIN_ID, CL.CLIN_RAZA, G.* '
+      
+        'from NF A (NOLOCK)INNER JOIN MUNICIPIO C (NOLOCK) ON A.MUN_ID = ' +
+        'C.MUN_ID'
+      'INNER JOIN OS D (NOLOCK) ON A.OS_ID = D.OS_ID'
+      'INNER JOIN CONTRATO E  (NOLOCK) ON D.CTT_ID = E.CTT_ID  '
+      
+        'INNER JOIN CLIENTENBF CL (NOLOCK) ON A.NFI_EMIT_CLI = CL.CLIN_ID' +
+        ' '
+      
+        'LEFT OUTER JOIN GERMAN G  ON CL.CLIN_ID = G.CLIN_ID AND G.CH = :' +
+        'CH'
+      'WHERE (A.TDOC_ID = 1 or A.TDOC_ID = 3)  '
+      'and ( A.NFI_STATUS is null or A.NFI_STATUS <>  '#39'C'#39' )  '
+      'and ( A.MANI_ID is null or A.MANI_ID = '#39#39') '
+      'AND (CL.CLIN_CONTRATO <> '#39'I'#39' and CL.CLIN_CONTRATO <> '#39'R'#39')  '
+      ''
+      'order by CL.CLIN_RAZA ')
+    UpdateObject = UPD_CLINBF
+    ControlType.Strings = (
+      'MARCADOR;CheckBox;S;N')
+    ValidateWithMask = True
+    Left = 351
+    Top = 208
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CH'
+        ParamType = ptUnknown
+      end>
+    object Q_CLINBFMARCADOR: TStringField
+      DisplayLabel = 'S /N'
+      DisplayWidth = 6
+      FieldName = 'MARCADOR'
+      OnChange = Q_CLINBFMARCADORChange
+      FixedChar = True
+      Size = 1
+    end
+    object Q_CLINBFCLIN_RAZA: TStringField
+      DisplayLabel = 'Razão Social'
+      DisplayWidth = 45
+      FieldName = 'CLIN_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_CLINBFUSUARIO: TStringField
+      DisplayLabel = 'Usuario'
+      DisplayWidth = 15
+      FieldName = 'USUARIO'
+      FixedChar = True
+    end
+    object Q_CLINBFCLIN_ID: TAutoIncField
+      FieldName = 'CLIN_ID'
+      Visible = False
+    end
+    object Q_CLINBFMAN_ID: TAutoIncField
+      FieldName = 'MAN_ID'
+      Visible = False
+    end
+    object Q_CLINBFCLIN_ID_1: TIntegerField
+      FieldName = 'CLIN_ID_1'
+      Visible = False
+    end
+    object Q_CLINBFCH: TIntegerField
+      FieldName = 'CH'
+      Visible = False
+    end
+  end
+  object DS_CLINBF: TwwDataSource
+    DataSet = Q_CLINBF
+    Left = 507
+    Top = 246
+  end
+  object UPD_CLINBF: TUpdateSQL
+    ModifySQL.Strings = (
+      'update CLIENTENBF'
+      'set'
+      '  MAN_ID = :MAN_ID,'
+      '  CLIN_ID_1 = :CLIN_ID_1,'
+      '  USUARIO = :USUARIO,'
+      '  CH = :CH,'
+      '  MARCADOR = :MARCADOR'
+      'where'
+      '  CLIN_ID_1 = :OLD_CLIN_ID_1')
+    InsertSQL.Strings = (
+      'insert into CLIENTENBF'
+      '  (MAN_ID, CLIN_ID_1, USUARIO, CH, MARCADOR)'
+      'values'
+      '  (:MAN_ID, :CLIN_ID_1, :USUARIO, :CH, :MARCADOR)')
+    DeleteSQL.Strings = (
+      'delete from CLIENTENBF'
+      'where'
+      '  CLIN_ID_1 = :OLD_CLIN_ID_1')
+    Left = 435
+    Top = 200
+  end
+  object Q_CLINBF2: TwwQuery
+    AutoCalcFields = False
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'SELECT  CLIN_ID,'
+      '               CLIN_RAZA'
+      'FROM '
+      '   CLIENTENBF A '
+      'where (CLIN_CONTRATO <> '#39'I'#39' and CLIN_CONTRATO <> '#39'R'#39') '
+      'and CLIN_ID '
+      'in (Select NFI_EMIT_CLI from NF '
+      'where (TDOC_ID = 1 or TDOC_ID = 3)'
+      'and (MANI_ID is null or MANI_ID = '#39#39' ))'
+      'order by A.CLIN_RAZA ')
+    ControlType.Strings = (
+      'MARCADOR;CheckBox;S;N')
+    ValidateWithMask = True
+    Left = 191
+    Top = 202
+    object Q_CLINBF2CLIN_ID: TAutoIncField
+      FieldName = 'CLIN_ID'
+    end
+    object Q_CLINBF2CLIN_RAZA: TStringField
+      FieldName = 'CLIN_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+  end
+  object qrAux: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select USUARIO from GERMAN'
+      'WHERE CLIN_ID = :CLIN_ID')
+    ValidateWithMask = True
+    Left = 317
+    Top = 122
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'CLIN_ID'
+        ParamType = ptUnknown
+      end>
+    object qrAuxUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Origin = 'NBFDADOS.GERMAN.USUARIO'
+      FixedChar = True
+    end
+  end
+end

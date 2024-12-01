@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StorageCuraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Datas">
+    <Key>
+      <PropertyRef Name="IdDatas" />
+    </Key>
+    <Property Name="IdDatas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="KardexTemp">
+    <Key>
+      <PropertyRef Name="KAR_ID" />
+    </Key>
+    <Property Name="KAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAT_ID" Type="Int32" />
+    <Property Name="MARCA_ID" Type="Int32" />
+    <Property Name="LOCAL_ID" Type="Int32" />
+    <Property Name="N_LOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VALID" Type="DateTime" Precision="0" />
+    <Property Name="DATA" Type="DateTime" Precision="3" />
+    <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE" Type="Double" />
+    <Property Name="SALDO" Type="Double" />
+    <Property Name="USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOATIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TD_ID" Type="Int32" />
+    <Property Name="DOCTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UNI_ID" Type="Int32" />
+    <Property Name="FOR_CODI" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="almox_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="stoHistoricoEstoque">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataReferencia" Type="DateTime" Precision="3" />
+    <Property Name="QTDE" Type="Double" />
+    <Property Name="MAT_ID" Type="Int32" Nullable="false" />
+    <Property Name="GRU_ID" Type="Int32" Nullable="false" />
+    <Property Name="UNI_ID" Type="Int32" />
+    <Property Name="LOCAL_ID" Type="Int32" Nullable="false" />
+    <Property Name="MARCA_ID" Type="Int32" Nullable="false" />
+    <Property Name="REPOSICAO" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AUTOMATICO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="StorageCuraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Datas" EntityType="Self.Datas" />
+    <EntitySet Name="KardexTemp" EntityType="Self.KardexTemp" />
+    <EntitySet Name="stoHistoricoEstoque" EntityType="Self.stoHistoricoEstoque" />
+    <EntitySet Name="vwKardex" EntityType="StorageCuraModel.vwKardex" />
+  </EntityContainer>
+  <EntityType Name="vwKardex">
+    <Key>
+      <PropertyRef Name="KAR_ID" />
+    </Key>
+    <Property Name="KAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAT_ID" Type="Int32" />
+    <Property Name="MARCA_ID" Type="Int32" />
+    <Property Name="LOCAL_ID" Type="Int32" />
+    <Property Name="N_LOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VALID" Type="DateTime" Precision="0" />
+    <Property Name="DATA" Type="DateTime" Precision="3" />
+    <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="QTDE" Type="Double" />
+    <Property Name="SALDO" Type="Double" />
+    <Property Name="USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOATIVO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TD_ID" Type="Int32" />
+    <Property Name="DOCTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UNI_ID" Type="Int32" />
+    <Property Name="FOR_CODI" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="almox_id" Type="Int32" />
+    <Property Name="Reposicao" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="GRU_ID" Type="Int32" />
+  </EntityType>
+</Schema>

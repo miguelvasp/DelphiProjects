@@ -1,0 +1,468 @@
+object frmDevolucaoRequisicao: TfrmDevolucaoRequisicao
+  Left = 401
+  Top = 154
+  Width = 807
+  Height = 519
+  Caption = 'Devolução de Materiais'
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Verdana'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  WindowState = wsMaximized
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 16
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 791
+    Height = 43
+    Align = alTop
+    TabOrder = 0
+    object RzBitBtn1: TRzBitBtn
+      Left = 8
+      Top = 3
+      Width = 122
+      Height = 37
+      Caption = 'Efetuar Devolucao'
+      TabOrder = 0
+      OnClick = RzBitBtn1Click
+      Glyph.Data = {
+        76060000424D7606000000000000360400002800000018000000180000000100
+        08000000000040020000D30E0000D30E000000010000000000008C3100009431
+        00009C3100009C390000AD420000AD4A0000CE630000CE6B0000D66B0000D673
+        0000DE730000DE7B0000E77B0000E7840000EF840000EF8C0000F78C0000F794
+        0000FF940000FF9C0000522108007B310800A5390800A5420800B5520800B55A
+        0800D6730800FF9C080063311000BD5A1000D6731000FF9C1000FFA51000A54A
+        1800D66B1800CE731800D67B1800FFA5180073392100D67B2100FFA52100FFAD
+        21005A392900633929007B422900844A29008C4A29008C522900945229009C5A
+        2900D6842900FFA52900FFAD29006B423100A5633100D6843100F7A53100FFA5
+        3100FFAD3100AD633900BD6B3900D6843900DE8C3900E7943900EF9C3900FFB5
+        3900735242008C5A4200D6844200D68C4200F7A54200FFB54200B56B4A00FFBD
+        4A00A56B5200BD735200BD7B5200FFBD5200A5735A00B5735A00BD7B5A00C684
+        5A00E7A55A00FFBD5A00BD7B6300BD846300C6846300C68C6300CE8C63009C7B
+        6B00B5846B00C6846B00C68C6B00CE946B00D6946B00DE9C6B008C7B7300C68C
+        7300D69C7300DEA57300CE8C7B00C6947B00CE947B00D6A57B00DEAD7B00E7AD
+        7B00FFCE7B00AD948400BD948400C6948400CE9C84009C948C00A5948C00B594
+        8C00C69C8C00CE9C8C00D6A58C00E7B58C00FFCE8C007B8494009C949400D6A5
+        9400DEA59400D6AD9400E7B59400E7BD9400EFBD9400FFCE940021639C008494
+        9C00D6AD9C00DEAD9C00D6B59C00DEB59C00FFD69C006384A500C6ADA500DEB5
+        A500DEBDA500E7BDA500E7C6A500EFC6A500EFCEA500F7CEA500F7D6A5002973
+        AD00297BAD00638CAD007394AD00DEBDAD00E7C6AD00F7CEAD00FFD6AD007B9C
+        B500849CB500DEC6B500E7C6B500F7D6B500D6C6BD00DEC6BD00E7C6BD00E7CE
+        BD00EFCEBD00F7D6BD00FFDEBD00E7CEC600E7D6C600EFD6C600F7D6C600F7DE
+        C600FFDEC60084ADCE00D6CECE00EFD6CE00EFDECE00FFE7CE00E7D6D600EFDE
+        D600F7DED600EFDEDE00EFE7DE00F7E7DE00F7E7E700F7EFE700FFEFE700FFF7
+        E700F7EFEF00F7F7EF00FFF7EF00FFF7F700FFFFF700FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00BFBFBFBFBFBF
+        BF714F4E5970BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF6B0503020200152C
+        426071BFBFBFBFBFBFBFBFBFBFBFBF710508033BA56E4C210200152C426FBFBF
+        BFBFBFBFBFBF71180A09174BAEA6A19B89614821022671BFBFBFBFBFBF71190C
+        0B091750B1ADA5A09B8A847B6E5A4BBFBFBFBFBFBF1D0D0D0B0A1754B4B1A6A1
+        89848282746E4BBFBFBFBFBFBF060E0D0C0B1755B4B1AD73747B6E6E7B744BBF
+        BFBFBFBFBF070F0E0D0C175CB7B4B0929180876182794BBFBFBFBFBFBF07100F
+        0D0D0343BAB6B1ADA59E9A88847B4BBFBFBFBFBFBF07110F0E0D012ABBB7B4B1
+        ADA59B9589824BBFBFBFBFBFBF0811100F0E0135BABAB6B3AEA6A19B95894BBF
+        BFBFBFBFBF1A1211100F3C977D67757D8D8B959B95894BBFBFBFBFBFBF1A1B12
+        1138B8BCA9A99D8D8F51141C2B4A71BFBFBFBFBFBF1E1F131238B8C0B8A3A3A3
+        795B65573C2DBFBFBFBFBFBFBF24251B121145B7BCA7A8826E7B7B74572DBFBF
+        BFBFBFBFBF2733251B123DA78C527479828482795D2FBFBFBFBFBFBFBF273A28
+        1F133EB6B19E8177786C82825D2FBFBFBFBFBFBFBF324134251B3FB7B4ACAB99
+        949389826230BFBFBFBFBFBFBF37473A332540BAB6B4AEA6A19B95896330BFBF
+        BFBFBFBFBF3D4D473A2846BBB7B4B1ADA5A09B896831BFBFBFBFBFBFBF445349
+        413A3376768F8E8EA1969C956836BFBFBFBFBFBFBF456A8690AEB1ADA5968B85
+        685F44232255BFBFBFBFBFBFBF746E6E6E6E6D6161616561617271BFBFBFBFBF
+        BFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBFBF}
+    end
+    object RzBitBtn2: TRzBitBtn
+      Left = 144
+      Top = 3
+      Width = 122
+      Height = 37
+      Caption = 'Cancelar'
+      TabOrder = 1
+      OnClick = RzBitBtn2Click
+      Glyph.Data = {
+        F6060000424DF606000000000000360000002800000018000000180000000100
+        180000000000C0060000EB0A0000EB0A00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEFEFEFEFDFDFEFEFE
+        FEFEFEFEFEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFAE0E0D9CACABCCACABD
+        CACABDCBCBBDCACABDCACABDCACABCCECEBEE9E9E3FDFDFEFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFBD3D3CB68
+        68913F3F9B4444994545994646984646974646964646953D3D92707091E4E4DA
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFD
+        FDD4D4C96565902B2BCD2C2CE92626E92323E72525E82626E92525E92B2BEC31
+        31ED1C1CB66B6B89E6E6DBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFEFEFDD5D5CC6363912C2CD03535E92B2BE13636C14646BD3D3DC23D3D
+        C34242BF3333CA3232E83D3DF01C1CB76A6A89E7E7DDFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFDFDFAD5D5C96363932B2BD33535ED2C2CDF6060B1C2C2C1
+        D2D2D0C6C6CAC6C6CACECECCB8B8BC5050C03232EB3D3DF51B1BB96A6A87E7E7
+        DAFFFFFFFFFFFFFFFFFFFFFFFFFDFDFCD6D6CB6363952C2CD43636EC2E2EE84C
+        4CBFD9D9CDEBEBEEE0E0EAE2E2E9E2E2E9E1E1EAEEEEEBC4C4C73B3BD33939F1
+        4040F61E1EBA6A6A86E7E7DBFFFFFFFFFFFFFFFFFFE3E3DF66669B2B2BD43737
+        EB3939E72C2CE29292C1EEEEE9DBDBE9DBDBE8DCDCE8DCDCE8DBDBE8DDDDEAEC
+        ECE58282C53131EB4141ED4141F81F1FB870708FF2F2EDFFFFFFFFFFFFADADC4
+        2626C73636F03B3BE63A3AEB3535E1B2B2CEEFEFEFDEDEEBDFDFEBDFDFECDFDF
+        ECDFDFEBDEDEEBEAEAF1CBCBD44343DF3E3EF24343ED3C3CF73333C1CFCFDBFF
+        FFFFFFFFFFA7A7C92B2BD33B3BED3E3EEB3D3DF03A3AE4B4B4CFF2F2F3E2E2EF
+        E4E4F0E4E4F1E4E4F1E3E3F0E3E3EFE7E7F5EBEBE56868D63D3DF84646F14141
+        F54747E3CCCCE2FFFFFFFFFFFFA9A9CA2E2ED33E3EF24242F04343F63F3FE9B6
+        B6D1F8F8FAE9E9F6E8E8F5E9E9F5E9E9F5E9E9F5EAEAF5EBEBF2F5F5F49292D5
+        3D3DFB4B4BF64343F94747DECECEE1FFFFFFFFFFFFA9A9C93131D64242F74747
+        F44848FC4444EEBBBBD7FCFCFCEAEAF7EFEFFCF0F0FCEFEFFCF2F2FEE1E1F1A9
+        A9D2FFFFFEC6C6DA4444E64E4EFE4848FE4A4AE0CDCDE0FFFFFFFFFFFFA9A9C9
+        3434DA4848FD4D4DFB4E4EFF4949EFC5C5DFE0E0E6C9C9D8FFFFFFF7F7FFF7F7
+        FFFBFBFFE7E7F26868DCD0D0F1FFFFF28E8ECF4646FD4D4DFF4B4BE2CDCDDFFF
+        FFFFFFFFFFA9A9CB3737DE4D4DFF5252FF5454FF5050F0C9C9E1DADAE2CDCDD9
+        E5E5ECD3D3DEE9E9EFCFCFDBF7F7F46B6BEB6464F7B6B6F49595F34F4FFC5151
+        FF4C4CE3CCCCDFFFFFFFFFFFFFA9A9CA3A3AE15353FF5959FF5C5CFF5858F0CB
+        CBE3DADADDD1D1D8D5D5E0C2C2CFE0E0EABABACFFBFBF47B7BE95F5FFF5757FE
+        5A5AFF5F5FFF5656FF4F4FE2CBCBDEFFFFFFFFFFFFA6A6CC3B3BE35A5AFF5F5F
+        FF6363FF5F5FF0D2D2E2E3E3DDD1D1D6DADAE7C8C8D7E2E2EBC1C1D4FBFBF481
+        81E97070FF6E6EFF6868FF6565FF5D5DFF4F4FE2CACADEFFFFFFFFFFFFC2C2DF
+        3D3DDD5D5DFF6666FF6B6BFF6A6AF9B4B4EDC0C0E4D2D2E1DADAE6C7C7D6E2E2
+        EAC0C0D2F9F9F58787E97878FF7777FF7171FF6B6BFF5F5FFF5A5AE6DDDDEAFF
+        FFFFFFFFFFFCFCFD9F9FE04646E66E6EFF7676FF7A7AFF7E7EFE7777ECD9D9E3
+        DCDCE4C8C8D4E2E2E9C2C2D1FBFBF58F8FE78282FF7F7FFF7A7AFF6F6FFF5D5D
+        EFBDBDECFEFEFEFFFFFFFFFFFFFFFFFFFFFFFF9C9CDD4F4FE78181FF8585FF89
+        89FF8383F2DBDBE2E0E0E6CCCCDAE2E2ECC3C3D2FFFFF49797EC8A8AFF8989FF
+        8080FF6161F0BBBBE9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE9999
+        DE5959E89191FF9393FF9595FEAFAFF8ACACEDD3D3E2F2F2F3AAAAE5B6B6F99B
+        9BFE9696FF8F8FFF6868EFB8B8E8FFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFE9898DF6161E7A2A2FFAAAAFFA8A8FFA6A6FFC5C5F1D7D7
+        F5AEAEFEA5A5FFABABFFA0A0FF6C6CEEB5B5E7FFFFFEFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9898E16868E89898FC9B9BFC
+        9F9FFC9C9CFD9999FC9F9FFC9D9DFC9797FC7272EDB5B5E7FFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAF
+        AFEA8C8CEA9393EA9494EA9595EB9595EA9494EA9393EB8C8CEAC0C0ECFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFAFAFAFAFAFAFAFAFBFAFAFAFAFAFAFAFAFAF9F9FAFB
+        FBFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+    end
+    object chkVerificacao: TCheckBox
+      Left = 296
+      Top = 16
+      Width = 97
+      Height = 17
+      Caption = 'chkVerificacao'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+      Visible = False
+    end
+  end
+  object wwDBGrid1: TwwDBGrid
+    Left = 0
+    Top = 43
+    Width = 791
+    Height = 438
+    Selected.Strings = (
+      'MAT_DESC'#9'45'#9'Material'#9#9
+      'N_Lote'#9'15'#9'Lote'#9#9
+      'Valid'#9'11'#9'Validade'#9#9
+      'Qtde'#9'8'#9'Qtde'#9#9
+      'Devolucao'#9'10'#9'Devolucão'#9#9
+      'Aux'#9'10'#9'A Devolver'#9'F'#9
+      'DT_INICIO'#9'18'#9'DT_INICIO'#9'F'#9
+      'DT_FIM'#9'18'#9'DT_FIM'#9'F'#9
+      'OBS'#9'500'#9'OBS'#9'F'#9
+      'SEL'#9'1'#9'SEL'#9'F'#9
+      'DT_APROVACAO'#9'18'#9'DT_APROVACAO'#9'F'#9
+      'tipoConsumo'#9'1'#9'tipoConsumo'#9'F'#9
+      'LOCAL_DESTINO'#9'10'#9'LOCAL_DESTINO'#9'F'#9)
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 5
+    ShowHorzScrollBar = True
+    Align = alClient
+    DataSource = DataSource1
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -13
+    TitleFont.Name = 'Verdana'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+  end
+  object qrDevolucao: TADOQuery
+    Connection = FMenu.ADOConnection
+    CursorType = ctStatic
+    BeforePost = qrDevolucaoBeforePost
+    Parameters = <
+      item
+        Name = 'REQ_ID'
+        Attributes = [paSigned]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'SELECT A.*, C.MAT_ID, C.MAT_DESC, b.tipoConsumo, R.LOCAL_ID AS L' +
+        'OCAL_DESTINO'
+      'FROM REQ_LOTE A '
+      'INNER JOIN REQ_ITEM B ON A.REQ_ITEM_ID = B.REQ_ITEM_ID '
+      'INNER JOIN MATERIAIS C ON A.MAT_ID = C.MAT_ID'
+      'INNER JOIN Req_Capa R ON B.Req_ID = R.Req_ID'
+      'WHERE B.REQ_ID = :REQ_ID'
+      'AND B.STATUS = '#39'F'#39
+      
+        'and A.QTDE > case when A.DEVOLUCAO is null then 0 else A.DEVOLUC' +
+        'AO END'
+      'ORDER BY C.MAT_DESC')
+    Left = 192
+    Top = 272
+    object qrDevolucaoMAT_DESC: TStringField
+      DisplayLabel = 'Material'
+      DisplayWidth = 45
+      FieldName = 'MAT_DESC'
+      Size = 60
+    end
+    object qrDevolucaoN_Lote: TWideStringField
+      DisplayLabel = 'Lote'
+      DisplayWidth = 15
+      FieldName = 'N_Lote'
+    end
+    object qrDevolucaoValid: TDateTimeField
+      DisplayLabel = 'Validade'
+      DisplayWidth = 11
+      FieldName = 'Valid'
+    end
+    object qrDevolucaoQtde: TFloatField
+      DisplayWidth = 8
+      FieldName = 'Qtde'
+    end
+    object qrDevolucaoDevolucao: TFloatField
+      DisplayLabel = 'Devolucão'
+      DisplayWidth = 10
+      FieldName = 'Devolucao'
+    end
+    object qrDevolucaoAux: TFloatField
+      DisplayLabel = 'A Devolver'
+      DisplayWidth = 10
+      FieldName = 'Aux'
+    end
+    object qrDevolucaoDT_INICIO: TDateTimeField
+      DisplayWidth = 18
+      FieldName = 'DT_INICIO'
+    end
+    object qrDevolucaoDT_FIM: TDateTimeField
+      DisplayWidth = 18
+      FieldName = 'DT_FIM'
+    end
+    object qrDevolucaoOBS: TStringField
+      DisplayWidth = 500
+      FieldName = 'OBS'
+      Size = 500
+    end
+    object qrDevolucaoSEL: TStringField
+      DisplayWidth = 1
+      FieldName = 'SEL'
+      Size = 1
+    end
+    object qrDevolucaoDT_APROVACAO: TDateTimeField
+      DisplayWidth = 18
+      FieldName = 'DT_APROVACAO'
+    end
+    object qrDevolucaotipoConsumo: TStringField
+      DisplayWidth = 1
+      FieldName = 'tipoConsumo'
+      FixedChar = True
+      Size = 1
+    end
+    object qrDevolucaoLOCAL_DESTINO: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'LOCAL_DESTINO'
+    end
+    object qrDevolucaoRR_ID: TAutoIncField
+      FieldName = 'RR_ID'
+      ReadOnly = True
+      Visible = False
+    end
+    object qrDevolucaoReq_Item_ID: TIntegerField
+      FieldName = 'Req_Item_ID'
+      Visible = False
+    end
+    object qrDevolucaoMat_ID: TIntegerField
+      FieldName = 'Mat_ID'
+      Visible = False
+    end
+    object qrDevolucaoMarca_ID: TIntegerField
+      FieldName = 'Marca_ID'
+      Visible = False
+    end
+    object qrDevolucaoFor_Codi: TStringField
+      FieldName = 'For_Codi'
+      Visible = False
+      FixedChar = True
+      Size = 15
+    end
+    object qrDevolucaoLocal_ID: TIntegerField
+      FieldName = 'Local_ID'
+      Visible = False
+    end
+    object qrDevolucaoUsuario: TStringField
+      FieldName = 'Usuario'
+      Visible = False
+      Size = 25
+    end
+    object qrDevolucaoStatus: TStringField
+      FieldName = 'Status'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object qrDevolucaoMAT_ID_1: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'MAT_ID_1'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrDevolucao
+    OnDataChange = DataSource1DataChange
+    Left = 392
+    Top = 200
+  end
+  object qrAux: TADOQuery
+    Connection = FMenu.ADOConnection
+    Parameters = <>
+    Left = 464
+    Top = 192
+  end
+  object STP_ATUAL_ESTOQUE: TADOStoredProc
+    Connection = FMenu.ADOConnection
+    ProcedureName = 'SP_ATUAL_LOTE;1'
+    Parameters = <
+      item
+        Name = '@N_LOTE'
+        Attributes = [paNullable]
+        DataType = ftFixedChar
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = '@QTDE'
+        Attributes = [paNullable]
+        DataType = ftFloat
+        Precision = 15
+        Value = Null
+      end
+      item
+        Name = '@MAT_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@FOR_CODI'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 15
+        Value = Null
+      end
+      item
+        Name = '@MOT_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@TIPO'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 1
+        Value = Null
+      end
+      item
+        Name = '@USUARIO'
+        Attributes = [paNullable]
+        DataType = ftFixedChar
+        Size = 50
+        Value = Null
+      end
+      item
+        Name = '@MSG'
+        Attributes = [paNullable]
+        DataType = ftString
+        Direction = pdInputOutput
+        Size = 400
+        Value = Null
+      end
+      item
+        Name = '@TD_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@DOCTO'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = '@REC_ITEM_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@DATAX'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+        Value = Null
+      end
+      item
+        Name = '@MARCA_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@VALID'
+        Attributes = [paNullable]
+        DataType = ftDateTime
+        Value = Null
+      end
+      item
+        Name = '@LOCAL_ID'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end>
+    Prepared = True
+    Left = 250
+    Top = 158
+  end
+end

@@ -1,0 +1,13 @@
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\AlmoxEstoqueRetroativo.exe.config
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\AlmoxEstoqueRetroativo.exe
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\AlmoxEstoqueRetroativo.pdb
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\EntityFramework.dll
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\EntityFramework.SqlServer.dll
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\EntityFramework.xml
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\bin\Debug\EntityFramework.SqlServer.xml
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.csprojResolveAssemblyReference.cache
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.Form1.resources
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.Properties.Resources.resources
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.csproj.GenerateResource.Cache
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.exe
+D:\Google Drive\Sources\Almox\StorageMontaEstoqueRetroativo\AlmoxEstoqueRetroativo\AlmoxEstoqueRetroativo\obj\Debug\AlmoxEstoqueRetroativo.pdb

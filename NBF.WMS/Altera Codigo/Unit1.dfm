@@ -1,0 +1,412 @@
+object Form1: TForm1
+  Left = 262
+  Top = 28
+  Width = 854
+  Height = 646
+  Caption = 'Alterar codigo'
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Label1: TLabel
+    Left = 8
+    Top = 8
+    Width = 35
+    Height = 14
+    Caption = 'Server'
+  end
+  object Label2: TLabel
+    Left = 152
+    Top = 8
+    Width = 33
+    Height = 14
+    Caption = 'Banco'
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 64
+    Width = 37
+    Height = 14
+    Caption = 'Cliente'
+  end
+  object Edit1: TEdit
+    Left = 8
+    Top = 24
+    Width = 121
+    Height = 22
+    TabOrder = 0
+    Text = 'NBFSRV-01'
+  end
+  object Edit2: TEdit
+    Left = 144
+    Top = 24
+    Width = 121
+    Height = 22
+    TabOrder = 1
+    Text = 'NBF'
+  end
+  object wwDBLookupCombo1: TwwDBLookupCombo
+    Left = 8
+    Top = 80
+    Width = 401
+    Height = 22
+    DropDownAlignment = taLeftJustify
+    Selected.Strings = (
+      'CLIN_RAZA'#9'50'#9'CLIN_RAZA'#9#9)
+    LookupTable = qrClientes
+    LookupField = 'CLIN_ID'
+    TabOrder = 2
+    AutoDropDown = True
+    ShowButton = True
+    PreciseEditRegion = False
+    AllowClearKey = False
+  end
+  object wwDBGrid1: TwwDBGrid
+    Left = 8
+    Top = 112
+    Width = 673
+    Height = 153
+    DittoAttributes.ShortCutDittoField = 0
+    DittoAttributes.ShortCutDittoRecord = 0
+    DittoAttributes.Options = []
+    DisableThemesInTitle = False
+    Selected.Strings = (
+      'PRO_COD'#9'16'#9'Codigo'
+      'PRO_DESC'#9'40'#9'Produto')
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 0
+    ShowHorzScrollBar = True
+    DataSource = DataSource1
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+    ReadOnly = True
+    TabOrder = 3
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+  end
+  object Button1: TButton
+    Left = 472
+    Top = 462
+    Width = 129
+    Height = 25
+    Caption = 'Atualizar'
+    TabOrder = 4
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 416
+    Top = 80
+    Width = 137
+    Height = 25
+    Caption = 'Buscar Informa'#231'oes'
+    Enabled = False
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object wwDBGrid2: TwwDBGrid
+    Left = 8
+    Top = 280
+    Width = 793
+    Height = 169
+    DittoAttributes.ShortCutDittoField = 0
+    DittoAttributes.ShortCutDittoRecord = 0
+    DittoAttributes.Options = []
+    DisableThemesInTitle = False
+    Selected.Strings = (
+      'NFI_NUMERO'#9'10'#9'Nota'
+      'PRO_COD'#9'16'#9'Codigo'
+      'PRO_DESC'#9'60'#9'Produto'
+      'INF_QTDE'#9'10'#9'Qtde'
+      'INF_QTDERETORNADA'#9'10'#9'Qtde Retornada')
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 0
+    ShowHorzScrollBar = True
+    DataSource = DataSource2
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 6
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+  end
+  object Button3: TButton
+    Left = 688
+    Top = 240
+    Width = 129
+    Height = 25
+    Caption = 'Buscar notas'
+    Enabled = False
+    TabOrder = 7
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 280
+    Top = 24
+    Width = 113
+    Height = 25
+    Caption = 'Conectar'
+    TabOrder = 8
+    OnClick = Button4Click
+  end
+  object wwDBLookupCombo2: TwwDBLookupCombo
+    Left = 8
+    Top = 464
+    Width = 457
+    Height = 22
+    DropDownAlignment = taLeftJustify
+    Selected.Strings = (
+      'PRO_COD'#9'16'#9'Codigo'#9'F'
+      'PRO_DESC'#9'40'#9'Produto'#9'F'
+      'PRO_ID'#9'10'#9'ID'#9'F')
+    LookupTable = qrProd
+    LookupField = 'PRO_ID'
+    Options = [loColLines, loRowLines, loTitles]
+    TabOrder = 9
+    AutoDropDown = False
+    ShowButton = True
+    PreciseEditRegion = False
+    AllowClearKey = False
+  end
+  object btn1: TButton
+    Left = 568
+    Top = 80
+    Width = 153
+    Height = 25
+    Caption = 'Atualizar em Lote'
+    TabOrder = 10
+    OnClick = btn1Click
+  end
+  object qrClientes: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT CLIN_ID, CLIN_RAZA'
+      'FROM CLIENTENBF'
+      'ORDER BY CLIN_RAZA')
+    Left = 656
+    Top = 8
+    object qrClientesCLIN_RAZA: TStringField
+      DisplayWidth = 50
+      FieldName = 'CLIN_RAZA'
+      Size = 50
+    end
+    object qrClientesCLIN_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'CLIN_ID'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=45482;Persist Security Info=True;Us' +
+      'er ID=SA;Initial Catalog=NBF_ATUAL;Data Source=MIKE-PC'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    BeforeConnect = ADOConnection1BeforeConnect
+    Left = 744
+    Top = 8
+  end
+  object qrProdutos: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'CLIN_ID'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT'
+      #9'PRO_ID,'
+      #9'PRO_COD,'
+      #9'PRO_DESC'
+      'FROM PRODUTO'
+      'WHERE CLIN_ID = :CLIN_ID'
+      'order by pro_cod')
+    Left = 584
+    Top = 8
+    object qrProdutosPRO_COD: TStringField
+      DisplayLabel = 'Codigo'
+      DisplayWidth = 16
+      FieldName = 'PRO_COD'
+      Size = 16
+    end
+    object qrProdutosPRO_DESC: TStringField
+      DisplayLabel = 'Produto'
+      DisplayWidth = 40
+      FieldName = 'PRO_DESC'
+      Size = 40
+    end
+    object qrProdutosPRO_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'PRO_ID'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrProdutos
+    Left = 320
+    Top = 192
+  end
+  object qrNF: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'PRO_ID'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT '
+      '    NFI_NUMERO,'
+      #9'INF_CODI, '
+      #9'PRO_DESC, '
+      #9'PRO_COD, '
+      #9'INF_QTDE, '
+      #9'INF_QTDERETORNADA, '
+      #9'INF_QTDERETORNADASALDO, '
+      #9'PRO_ID'
+      'FROM NF_ITENS A INNER JOIN NF B'
+      'ON A.NFI_CODI = B.NFI_CODI'
+      'WHERE B.TDOC_ID = 2'
+      'AND INF_QTDE > ISNULL(INF_QTDERETORNADA, 0)'
+      'AND PRO_ID = :PRO_ID'
+      'ORDER BY NFI_NUMERO, PRO_COD, PRO_DESC')
+    Left = 376
+    Top = 328
+    object qrNFNFI_NUMERO: TStringField
+      DisplayLabel = 'Nota'
+      DisplayWidth = 10
+      FieldName = 'NFI_NUMERO'
+      Size = 10
+    end
+    object qrNFPRO_COD: TStringField
+      DisplayLabel = 'Codigo'
+      DisplayWidth = 16
+      FieldName = 'PRO_COD'
+      Size = 16
+    end
+    object qrNFPRO_DESC: TStringField
+      DisplayLabel = 'Produto'
+      DisplayWidth = 60
+      FieldName = 'PRO_DESC'
+      Size = 60
+    end
+    object qrNFINF_QTDE: TFloatField
+      DisplayLabel = 'Qtde'
+      DisplayWidth = 10
+      FieldName = 'INF_QTDE'
+    end
+    object qrNFINF_QTDERETORNADA: TFloatField
+      DisplayLabel = 'Qtde Retornada'
+      DisplayWidth = 10
+      FieldName = 'INF_QTDERETORNADA'
+    end
+    object qrNFINF_QTDERETORNADASALDO: TFloatField
+      DisplayWidth = 10
+      FieldName = 'INF_QTDERETORNADASALDO'
+      Visible = False
+    end
+    object qrNFPRO_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'PRO_ID'
+      Visible = False
+    end
+    object qrNFINF_CODI: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'INF_CODI'
+      ReadOnly = True
+      Visible = False
+    end
+  end
+  object DataSource2: TDataSource
+    DataSet = qrNF
+    Left = 464
+    Top = 408
+  end
+  object qrAux: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 600
+    Top = 392
+  end
+  object qrProd: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <
+      item
+        Name = 'CLIN_ID'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT'
+      #9'PRO_ID,'
+      #9'PRO_COD,'
+      #9'PRO_DESC'
+      'FROM PRODUTO'
+      'WHERE CLIN_ID = :CLIN_ID'
+      'order by pro_cod')
+    Left = 664
+    Top = 520
+    object qrProdPRO_COD: TStringField
+      DisplayLabel = 'Codigo'
+      DisplayWidth = 16
+      FieldName = 'PRO_COD'
+      Size = 16
+    end
+    object qrProdPRO_DESC: TStringField
+      DisplayLabel = 'Produto'
+      DisplayWidth = 40
+      FieldName = 'PRO_DESC'
+      Size = 40
+    end
+    object qrProdPRO_ID: TAutoIncField
+      DisplayLabel = 'ID'
+      DisplayWidth = 10
+      FieldName = 'PRO_ID'
+      ReadOnly = True
+    end
+  end
+  object qryAux: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <>
+    Left = 704
+    Top = 160
+  end
+end

@@ -1,0 +1,2843 @@
+object FContrato: TFContrato
+  Left = 1
+  Top = 1
+  Width = 798
+  Height = 568
+  VertScrollBar.Visible = False
+  BorderIcons = []
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
+  OnPaint = FormPaint
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 2
+    Top = 3
+    Width = 789
+    Height = 45
+    BevelInner = bvLowered
+    Color = clMenu
+    TabOrder = 0
+    object SpeedButton3: TSpeedButton
+      Left = 758
+      Top = 9
+      Width = 25
+      Height = 25
+      Hint = 'Sair'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00330000000000
+        03333377777777777F333301111111110333337F333333337F33330111111111
+        0333337F333333337F333301111111110333337F333333337F33330111111111
+        0333337F333333337F333301111111110333337F333333337F33330111111111
+        0333337F3333333F7F333301111111B10333337F333333737F33330111111111
+        0333337F333333337F333301111111110333337F33FFFFF37F3333011EEEEE11
+        0333337F377777F37F3333011EEEEE110333337F37FFF7F37F3333011EEEEE11
+        0333337F377777337F333301111111110333337F333333337F33330111111111
+        0333337FFFFFFFFF7F3333000000000003333377777777777333}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton3Click
+    end
+    object Label4: TLabel
+      Left = 16
+      Top = 5
+      Width = 125
+      Height = 29
+      Caption = 'Contratos'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -24
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold, fsItalic]
+      ParentFont = False
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 733
+      Top = 9
+      Width = 25
+      Height = 25
+      Hint = 'Pesquisar Clientes em Contratos'
+      Glyph.Data = {
+        EE000000424DEE000000000000007600000028000000100000000F0000000100
+        0400000000007800000000000000000000001000000010000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        888800000888880000080F000888880F00080F000888880F0008000000080000
+        000800F000000F00000800F000800F00000800F000800F000008800000000000
+        0088880F00080F000888880000080000088888800088800088888880F08880F0
+        888888800088800088888888888888888888}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton2Click
+    end
+    object DBNavigator1: TDBNavigator
+      Left = 540
+      Top = 9
+      Width = 192
+      Height = 25
+      DataSource = DS_CTT
+      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbPost, nbCancel]
+      Hints.Strings = (
+        'Posiciona no primeiro registro | Posiciona no primeiro registro'
+        'Retorna ao registro anterior | Retorna ao registro anterior '
+        'Avan'#231'a para o pr'#243'ximo registro | Avan'#231'a para o pr'#243'ximo registro '
+        'Posiciona no '#250'ltimo registro | Posiciona no '#250'ltimo registro '
+        'Incluir  '
+        'Excluir'
+        ''
+        'Confirmar'
+        'Cancelar')
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      OnClick = DBNavigator1Click
+    end
+  end
+  object TabbedNotebook1: TTabbedNotebook
+    Left = 2
+    Top = 53
+    Width = 789
+    Height = 491
+    PageIndex = 1
+    TabFont.Charset = ANSI_CHARSET
+    TabFont.Color = clRed
+    TabFont.Height = -11
+    TabFont.Name = 'Arial'
+    TabFont.Style = [fsBold]
+    TabOrder = 1
+    OnClick = TabbedNotebook1Click
+    OnChange = TabbedNotebook1Change
+    object TTabPage
+      Left = 4
+      Top = 24
+      Caption = '   Principal   '
+      object Panel1: TPanel
+        Left = 1
+        Top = 18
+        Width = 780
+        Height = 431
+        BevelInner = bvSpace
+        BevelOuter = bvLowered
+        BevelWidth = 3
+        Color = clSilver
+        TabOrder = 0
+        object Label2: TLabel
+          Left = 75
+          Top = 21
+          Width = 64
+          Height = 15
+          Caption = 'Cliente NBF'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 37
+          Top = 46
+          Width = 102
+          Height = 15
+          Caption = 'Nome do Contrato'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 646
+          Top = 21
+          Width = 59
+          Height = 15
+          Caption = 'Data In'#237'cio'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 629
+          Top = 44
+          Width = 76
+          Height = 15
+          Caption = 'Data T'#233'rmino'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 72
+          Top = 73
+          Width = 67
+          Height = 15
+          Caption = 'Tipo de O.S.'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label45: TLabel
+          Left = 10
+          Top = 125
+          Width = 128
+          Height = 15
+          Caption = 'Remessa de Terceiros'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object Label18: TLabel
+          Left = 88
+          Top = 99
+          Width = 51
+          Height = 15
+          Caption = 'Empresa'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object DBText2: TDBText
+          Left = 144
+          Top = 20
+          Width = 481
+          Height = 17
+          DataField = 'CLIN_RAZA'
+          DataSource = DS_CLIN
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label19: TLabel
+          Left = 210
+          Top = 128
+          Width = 84
+          Height = 15
+          Caption = 'M'#237'nimo(R$) M2'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsUnderline]
+          ParentFont = False
+        end
+        object wwDBGrid1: TwwDBGrid
+          Left = 7
+          Top = 150
+          Width = 766
+          Height = 265
+          Hint = 'Visualiza'#231#227'o dos Registros'
+          DittoAttributes.ShortCutDittoField = 0
+          DittoAttributes.ShortCutDittoRecord = 0
+          DittoAttributes.Options = []
+          DisableThemesInTitle = False
+          Selected.Strings = (
+            'CLIN_RAZA'#9'47'#9'Cliente NBF'#9'F'
+            'CTT_NOME'#9'30'#9'Nome do Contrato'
+            'TOS_NOME'#9'35'#9'Tipo de O.S.'
+            'CTT_DT_INICIO'#9'14'#9'Data In'#237'cio'
+            'CTT_DT_FINAL'#9'14'#9'Data T'#233'rmino')
+          IniAttributes.FileName = 'delphi32.ini'
+          IniAttributes.SectionName = 'FContratowwDBGrid1'
+          IniAttributes.Delimiter = ';;'
+          TitleColor = clBtnFace
+          OnRowChanged = wwDBGrid1RowChanged
+          FixedCols = 0
+          ShowHorzScrollBar = True
+          DataSource = DS_CTT3
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial Narrow'
+          Font.Style = []
+          KeyOptions = []
+          Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgWordWrap]
+          ParentFont = False
+          ParentShowHint = False
+          ReadOnly = True
+          ShowHint = True
+          TabOrder = 8
+          TitleAlignment = taCenter
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clNavy
+          TitleFont.Height = -11
+          TitleFont.Name = 'Arial'
+          TitleFont.Style = [fsBold]
+          TitleLines = 1
+          TitleButtons = False
+          object wwIButton1: TwwIButton
+            Left = 0
+            Top = 0
+            Width = 13
+            Height = 22
+            AllowAllUp = True
+          end
+        end
+        object wwDBLookupCombo1: TwwDBLookupCombo
+          Left = 143
+          Top = 19
+          Width = 410
+          Height = 21
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          BorderStyle = bsNone
+          DropDownAlignment = taLeftJustify
+          Selected.Strings = (
+            'CLIN_RAZA'#9'50'#9'CLIN_RAZA'#9'F')
+          DataField = 'CLIN_ID'
+          DataSource = DS_CTT
+          LookupTable = Q_CLIN
+          LookupField = 'CLIN_ID'
+          ParentFont = False
+          TabOrder = 0
+          Visible = False
+          AutoDropDown = True
+          ShowButton = True
+          SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+          PreciseEditRegion = False
+          AllowClearKey = False
+          OnEnter = wwDBLookupCombo1Enter
+          OnExit = wwDBLookupCombo1Exit
+        end
+        object wwDBEdit2: TwwDBEdit
+          Left = 143
+          Top = 45
+          Width = 297
+          Height = 21
+          BorderStyle = bsNone
+          DataField = 'CTT_NOME'
+          DataSource = DS_CTT
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+          OnEnter = wwDBEdit2Enter
+          OnExit = wwDBEdit2Exit
+        end
+        object wwDBEdit3: TwwDBEdit
+          Left = 708
+          Top = 19
+          Width = 64
+          Height = 21
+          BorderStyle = bsNone
+          DataField = 'CTT_DT_INICIO'
+          DataSource = DS_CTT
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 6
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+          OnEnter = wwDBEdit3Enter
+          OnExit = wwDBEdit3Exit
+        end
+        object wwDBEdit4: TwwDBEdit
+          Left = 708
+          Top = 44
+          Width = 64
+          Height = 21
+          BorderStyle = bsNone
+          DataField = 'CTT_DT_FINAL'
+          DataSource = DS_CTT
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 7
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+          OnEnter = wwDBEdit4Enter
+          OnExit = wwDBEdit4Exit
+        end
+        object wwDBLookupCombo3: TwwDBLookupCombo
+          Left = 143
+          Top = 71
+          Width = 298
+          Height = 21
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          BorderStyle = bsNone
+          DropDownAlignment = taLeftJustify
+          Selected.Strings = (
+            'TOS_NOME'#9'40'#9'TOS_NOME'#9'F')
+          DataField = 'TOS_ID'
+          DataSource = DS_CTT
+          LookupTable = Q_TOS
+          LookupField = 'TOS_ID'
+          ParentFont = False
+          TabOrder = 2
+          AutoDropDown = True
+          ShowButton = True
+          SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+          PreciseEditRegion = False
+          AllowClearKey = False
+          OnEnter = wwDBLookupCombo3Enter
+          OnExit = wwDBLookupCombo3Exit
+        end
+        object wwDBComboBox3: TwwDBComboBox
+          Left = 143
+          Top = 123
+          Width = 62
+          Height = 21
+          ShowButton = True
+          Style = csDropDown
+          MapList = True
+          AllowClearKey = False
+          AutoDropDown = True
+          BorderStyle = bsNone
+          ButtonStyle = cbsEllipsis
+          DataField = 'CTT_TERCEIRO'
+          DataSource = DS_CTT
+          DropDownCount = 8
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          ItemHeight = 0
+          Items.Strings = (
+            'Sim'#9'S'
+            'N'#227'o'#9'N')
+          ParentFont = False
+          Sorted = False
+          TabOrder = 4
+          UnboundDataType = wwDefault
+        end
+        object wwDBLookupCombo6: TwwDBLookupCombo
+          Left = 143
+          Top = 97
+          Width = 218
+          Height = 21
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          BorderStyle = bsNone
+          DropDownAlignment = taLeftJustify
+          Selected.Strings = (
+            'PAR_NOME'#9'30'#9'PAR_NOME'#9'F')
+          DataField = 'PAR_ID'
+          DataSource = DS_CTT
+          LookupTable = Q_EMP
+          LookupField = 'PAR_ID'
+          ParentFont = False
+          TabOrder = 3
+          AutoDropDown = True
+          ShowButton = True
+          SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+          PreciseEditRegion = False
+          AllowClearKey = False
+          OnEnter = wwDBLookupCombo6Enter
+          OnExit = wwDBLookupCombo6Exit
+        end
+        object wwDBEdit16: TwwDBEdit
+          Left = 298
+          Top = 123
+          Width = 96
+          Height = 21
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          DataField = 'MIN_M2'
+          DataSource = DS_CTT
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          MaxLength = 10
+          ParentFont = False
+          TabOrder = 5
+          UnboundDataType = wwDefault
+          WantReturns = False
+          WordWrap = False
+          OnEnter = wwDBEdit16Enter
+          OnExit = wwDBEdit16Exit
+        end
+      end
+    end
+    object TTabPage
+      Left = 4
+      Top = 24
+      Caption = '   Servi'#231'os x Especifica'#231#245'es  '
+      object Label15: TLabel
+        Left = 7
+        Top = 5
+        Width = 64
+        Height = 15
+        Caption = 'Cliente NBF'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object DBText3: TDBText
+        Left = 77
+        Top = 4
+        Width = 280
+        Height = 17
+        DataField = 'CLIN_NOME'
+        DataSource = DS_CTT
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 375
+        Top = 5
+        Width = 102
+        Height = 15
+        Caption = 'Nome do Contrato'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object DBText1: TDBText
+        Left = 480
+        Top = 4
+        Width = 263
+        Height = 17
+        DataField = 'CTT_NOME'
+        DataSource = DS_CTT
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object TabbedNotebook2: TTabbedNotebook
+        Left = 2
+        Top = 25
+        Width = 779
+        Height = 429
+        PageIndex = 1
+        TabFont.Charset = ANSI_CHARSET
+        TabFont.Color = clRed
+        TabFont.Height = -11
+        TabFont.Name = 'Arial'
+        TabFont.Style = [fsBold]
+        TabOrder = 0
+        OnClick = TabbedNotebook2Click
+        OnChange = TabbedNotebook2Change
+        object TTabPage
+          Left = 4
+          Top = 24
+          Caption = '   Servi'#231'os   '
+          object Panel4: TPanel
+            Left = 18
+            Top = 22
+            Width = 742
+            Height = 359
+            BevelInner = bvSpace
+            BevelOuter = bvLowered
+            BevelWidth = 3
+            Color = clSilver
+            TabOrder = 0
+            object Label6: TLabel
+              Left = 80
+              Top = 15
+              Width = 43
+              Height = 15
+              Caption = 'Servi'#231'o'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label1: TLabel
+              Left = 36
+              Top = 42
+              Width = 87
+              Height = 15
+              Caption = 'Tipo de Servi'#231'o'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label10: TLabel
+              Left = 74
+              Top = 65
+              Width = 49
+              Height = 15
+              Caption = 'Cobrar ?'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 14
+              Top = 90
+              Width = 109
+              Height = 15
+              Caption = 'Tipo de Documento'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 128
+              Top = 41
+              Width = 100
+              Height = 17
+              Caption = 'Tipo de Servi'#231'o'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clRed
+              Font.Height = -15
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+            end
+            object SpeedButton4: TSpeedButton
+              Left = 693
+              Top = 17
+              Width = 25
+              Height = 25
+              Hint = 'Pesquisar Servi'#231'os no Contrato'
+              Glyph.Data = {
+                EE000000424DEE000000000000007600000028000000100000000F0000000100
+                0400000000007800000000000000000000001000000010000000000000000000
+                8000008000000080800080000000800080008080000080808000C0C0C0000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+                888800000888880000080F000888880F00080F000888880F0008000000080000
+                000800F000000F00000800F000800F00000800F000800F000008800000000000
+                0088880F00080F000888880000080000088888800088800088888880F08880F0
+                888888800088800088888888888888888888}
+              ParentShowHint = False
+              ShowHint = True
+              OnClick = SpeedButton4Click
+            end
+            object wwDBGrid2: TwwDBGrid
+              Left = 11
+              Top = 116
+              Width = 720
+              Height = 229
+              Hint = 'Visualiza'#231#227'o dos Registros'
+              DittoAttributes.ShortCutDittoField = 0
+              DittoAttributes.ShortCutDittoRecord = 0
+              DittoAttributes.Options = []
+              DisableThemesInTitle = False
+              Selected.Strings = (
+                'SER_NOME'#9'40'#9'Servi'#231'o'#9'F'
+                'TSER_NOME'#9'40'#9'Tipo de Servi'#231'o'#9'F'
+                'CTTSERV_COBRADO'#9'13'#9'Cobrar ?'#9'F'
+                'TDOC_NOME'#9'40'#9'Tipo de Documento'#9'F')
+              IniAttributes.FileName = 'delphi32.ini'
+              IniAttributes.SectionName = 'FContratowwDBGrid2'
+              IniAttributes.Delimiter = ';;'
+              TitleColor = clBtnFace
+              FixedCols = 0
+              ShowHorzScrollBar = True
+              DataSource = DS_CTTxSERV
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Arial Narrow'
+              Font.Style = []
+              KeyOptions = []
+              Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgWordWrap]
+              ParentFont = False
+              ParentShowHint = False
+              ReadOnly = True
+              ShowHint = True
+              TabOrder = 3
+              TitleAlignment = taCenter
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clNavy
+              TitleFont.Height = -11
+              TitleFont.Name = 'Arial'
+              TitleFont.Style = [fsBold]
+              TitleLines = 1
+              TitleButtons = False
+              object wwIButton2: TwwIButton
+                Left = 0
+                Top = 0
+                Width = 13
+                Height = 22
+                AllowAllUp = True
+              end
+            end
+            object wwDBEdit1: TwwDBEdit
+              Left = 416
+              Top = 72
+              Width = 233
+              Height = 23
+              Color = clSilver
+              DataField = 'TSER_NOME'
+              DataSource = DS_CTTxSERV
+              Enabled = False
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 4
+              UnboundDataType = wwDefault
+              Visible = False
+              WantReturns = False
+              WordWrap = False
+            end
+            object wwDBLookupCombo2: TwwDBLookupCombo
+              Left = 128
+              Top = 13
+              Width = 233
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'SER_NOME'#9'40'#9'Servi'#231'o'#9'F'
+                'TSER_NOME'#9'40'#9'Tipo de Servi'#231'o'#9'F')
+              DataField = 'SER_ID'
+              DataSource = DS_CTTxSERV
+              LookupTable = Q_SERV
+              LookupField = 'SER_ID'
+              DropDownCount = 20
+              ParentFont = False
+              TabOrder = 0
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnCloseUp = wwDBLookupCombo2CloseUp
+              OnEnter = wwDBLookupCombo2Enter
+              OnExit = wwDBLookupCombo2Exit
+            end
+            object DBCB_CLI_PESS: TwwDBComboBox
+              Left = 128
+              Top = 64
+              Width = 56
+              Height = 21
+              ShowButton = True
+              Style = csDropDown
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              BorderStyle = bsNone
+              ButtonStyle = cbsEllipsis
+              DataField = 'CTTSERV_COBRADO'
+              DataSource = DS_CTTxSERV
+              DropDownCount = 8
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 0
+              Items.Strings = (
+                'Sim'#9'S'
+                'N'#227'o'#9'N')
+              ParentFont = False
+              Sorted = False
+              TabOrder = 1
+              UnboundDataType = wwDefault
+              OnEnter = DBCB_CLI_PESSEnter
+              OnExit = DBCB_CLI_PESSExit
+            end
+            object wwDBLookupCombo4: TwwDBLookupCombo
+              Left = 128
+              Top = 90
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'TDOC_NOME'#9'40'#9'Tipo de Documento'#9'F')
+              DataField = 'TDOC_ID'
+              DataSource = DS_CTTxSERV
+              LookupTable = Q_TDTO
+              LookupField = 'TDOC_ID'
+              ParentFont = False
+              TabOrder = 2
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo4Enter
+              OnExit = wwDBLookupCombo4Exit
+            end
+            object wwDBComboBox1: TwwDBComboBox
+              Left = 336
+              Top = 266
+              Width = 56
+              Height = 21
+              ShowButton = True
+              Style = csDropDown
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              BorderStyle = bsNone
+              ButtonStyle = cbsEllipsis
+              DataField = 'CTTSERV_COBRADO'
+              DataSource = DS_CTTxSERV
+              DropDownCount = 8
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 0
+              Items.Strings = (
+                'Sim'#9'S'
+                'N'#227'o'#9'N')
+              ParentFont = False
+              Sorted = False
+              TabOrder = 5
+              UnboundDataType = wwDefault
+            end
+          end
+        end
+        object TTabPage
+          Left = 4
+          Top = 24
+          Caption = '   Especifica'#231#245'es   '
+          object Label47: TLabel
+            Left = 20
+            Top = 6
+            Width = 43
+            Height = 15
+            Caption = 'Servi'#231'o'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object DBText11: TDBText
+            Left = 69
+            Top = 5
+            Width = 280
+            Height = 17
+            DataField = 'SER_NOME'
+            DataSource = DS_CTTxSERV
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label48: TLabel
+            Left = 382
+            Top = 6
+            Width = 87
+            Height = 15
+            Caption = 'Tipo de Servi'#231'o'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -12
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object DBText12: TDBText
+            Left = 472
+            Top = 5
+            Width = 280
+            Height = 17
+            DataField = 'TSER_NOME'
+            DataSource = DS_CTTxSERV
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Panel3: TPanel
+            Left = 3
+            Top = 26
+            Width = 766
+            Height = 365
+            BevelInner = bvSpace
+            BevelOuter = bvLowered
+            BevelWidth = 3
+            Color = clSilver
+            TabOrder = 0
+            object Label13: TLabel
+              Left = 532
+              Top = 12
+              Width = 121
+              Height = 15
+              Caption = 'Unidade de Cobran'#231'a'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label21: TLabel
+              Left = 149
+              Top = 12
+              Width = 29
+              Height = 15
+              Caption = 'Fator'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label22: TLabel
+              Left = 16
+              Top = 36
+              Width = 80
+              Height = 15
+              Caption = 'M'#237'nimo em R$'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label23: TLabel
+              Left = 18
+              Top = 59
+              Width = 78
+              Height = 15
+              Caption = 'Tipo de Carga'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label25: TLabel
+              Left = 28
+              Top = 84
+              Width = 68
+              Height = 15
+              Caption = 'Cliente Final'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label26: TLabel
+              Left = 57
+              Top = 108
+              Width = 39
+              Height = 15
+              Caption = 'Regi'#227'o'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label27: TLabel
+              Left = 10
+              Top = 132
+              Width = 85
+              Height = 15
+              Caption = 'Tipo de Ve'#237'culo'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label28: TLabel
+              Left = 7
+              Top = 157
+              Width = 89
+              Height = 15
+              Caption = 'Tipo de Produto'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label14: TLabel
+              Left = 57
+              Top = 12
+              Width = 39
+              Height = 15
+              Caption = 'Ordem'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label16: TLabel
+              Left = 455
+              Top = 84
+              Width = 144
+              Height = 15
+              Caption = 'Faixa de Qtde.(Pallets) de'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label17: TLabel
+              Left = 659
+              Top = 84
+              Width = 18
+              Height = 15
+              Caption = 'at'#233
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label24: TLabel
+              Left = 474
+              Top = 132
+              Width = 127
+              Height = 15
+              Caption = 'Faixa de Peso(Ton.) de'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label29: TLabel
+              Left = 659
+              Top = 132
+              Width = 18
+              Height = 15
+              Caption = 'at'#233
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label30: TLabel
+              Left = 480
+              Top = 108
+              Width = 119
+              Height = 15
+              Caption = 'Faixa de '#193'rea(M2) de'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label31: TLabel
+              Left = 659
+              Top = 108
+              Width = 18
+              Height = 15
+              Caption = 'at'#233
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label32: TLabel
+              Left = 467
+              Top = 157
+              Width = 134
+              Height = 15
+              Caption = 'Faixa de Volume(M3) de'
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object Label33: TLabel
+              Left = 659
+              Top = 157
+              Width = 18
+              Height = 15
+              Caption = 'at'#233
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = [fsBold, fsUnderline]
+              ParentFont = False
+            end
+            object wwDBGrid3: TwwDBGrid
+              Left = 10
+              Top = 184
+              Width = 747
+              Height = 171
+              Hint = 'Visualiza'#231#227'o dos Registros'
+              DittoAttributes.ShortCutDittoField = 0
+              DittoAttributes.ShortCutDittoRecord = 0
+              DittoAttributes.Options = []
+              DisableThemesInTitle = False
+              Selected.Strings = (
+                'CTTESPEC_ORDEM'#9'10'#9'Ordem'
+                'CTTESPEC_FATOR'#9'10'#9'Fator'
+                'UCOB_NOME'#9'40'#9'Unidade de Cobran'#231'a'
+                'CTTESPEC_MINIMA'#9'10'#9'M'#237'nimo'
+                'CTTESPEC_TPCARGA'#9'23'#9'Tipo de Carga'#9'F'
+                'CLIF_NOME'#9'40'#9'Cliente Final'
+                'REG_NOME'#9'40'#9'Regi'#227'o'
+                'VEIC_NOME'#9'40'#9'Tipo de Ve'#237'culo'
+                'TPRO_NOME'#9'40'#9'Tipo de Poduto'
+                'CTTESPEC_QTDEPALLET_DE'#9'10'#9'Qtde Pallet de'
+                'CTTESPEC_QTDEPALLET_ATE'#9'10'#9'Qtde Pallet at'#233
+                'CTTESPEC_PESO_DE'#9'10'#9'Qtde Peso de'
+                'CTTESPEC_PESO_ATE'#9'10'#9'Qtde Peso at'#233
+                'CTTESPEC_AREA_DE'#9'10'#9'Qtde '#193'rea de'
+                'CTTESPEC_AREA_ATE'#9'10'#9'Qtde '#193'rea at'#233
+                'CTTESPEC_VOL_DE'#9'10'#9'Qtde. Volume de'
+                'CTTESPEC_VOL_ATE'#9'10'#9'Qtde. Volume at'#233)
+              IniAttributes.FileName = 'delphi32.ini'
+              IniAttributes.SectionName = 'FContratowwDBGrid3'
+              IniAttributes.Delimiter = ';;'
+              TitleColor = clBtnFace
+              FixedCols = 0
+              ShowHorzScrollBar = True
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Arial Narrow'
+              Font.Style = []
+              KeyOptions = []
+              Options = [dgAlwaysShowEditor, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgWordWrap]
+              ParentFont = False
+              ParentShowHint = False
+              ReadOnly = True
+              ShowHint = True
+              TabOrder = 17
+              TitleAlignment = taCenter
+              TitleFont.Charset = ANSI_CHARSET
+              TitleFont.Color = clNavy
+              TitleFont.Height = -11
+              TitleFont.Name = 'Arial Narrow'
+              TitleFont.Style = [fsBold]
+              TitleLines = 1
+              TitleButtons = False
+              object wwIButton3: TwwIButton
+                Left = 0
+                Top = 0
+                Width = 13
+                Height = 22
+                AllowAllUp = True
+              end
+            end
+            object wwDBLookupCombo5: TwwDBLookupCombo
+              Left = 295
+              Top = 10
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'UCOB_NOME'#9'40'#9'UCOB_NOME'#9'F')
+              DataField = 'UCOB_ID'
+              DataSource = DS_CTTxESPEC
+              LookupTable = Q_UCOB
+              LookupField = 'UCOB_ID'
+              ParentFont = False
+              TabOrder = 2
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo5Enter
+              OnExit = wwDBLookupCombo5Exit
+            end
+            object wwDBEdit6: TwwDBEdit
+              Left = 181
+              Top = 10
+              Width = 110
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_FATOR'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 1
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit6Enter
+              OnExit = wwDBEdit6Exit
+            end
+            object wwDBEdit7: TwwDBEdit
+              Left = 99
+              Top = 35
+              Width = 64
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_MINIMA'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 3
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit7Enter
+              OnExit = wwDBEdit7Exit
+            end
+            object wwDBComboBox4: TwwDBComboBox
+              Left = 99
+              Top = 59
+              Width = 132
+              Height = 21
+              ShowButton = True
+              Style = csDropDown
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              BorderStyle = bsNone
+              ButtonStyle = cbsEllipsis
+              DataField = 'CTTESPEC_TPCARGA'
+              DataSource = DS_CTTxESPEC
+              DropDownCount = 8
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 0
+              Items.Strings = (
+                'Pallets'#9'P'
+                'Granel'#9'G'
+                'N'#227'o se Aplica'#9'N')
+              ParentFont = False
+              Sorted = False
+              TabOrder = 4
+              UnboundDataType = wwDefault
+              OnEnter = wwDBComboBox4Enter
+              OnExit = wwDBComboBox4Exit
+            end
+            object wwDBLookupCombo8: TwwDBLookupCombo
+              Left = 99
+              Top = 83
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'CLIF_RAZA'#9'50'#9'Cliente Final'#9'F')
+              DataField = 'CLIF_ID'
+              DataSource = DS_CTTxESPEC
+              LookupTable = Q_CLIF
+              LookupField = 'CLIF_ID'
+              ParentFont = False
+              TabOrder = 5
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo8Enter
+              OnExit = wwDBLookupCombo8Exit
+            end
+            object wwDBLookupCombo9: TwwDBLookupCombo
+              Left = 99
+              Top = 108
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'REG_NOME'#9'40'#9'REG_NOME'#9'F')
+              DataField = 'REG_ID'
+              DataSource = DS_CTTxESPEC
+              LookupTable = Q_REG
+              LookupField = 'REG_ID'
+              ParentFont = False
+              TabOrder = 6
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo9Enter
+              OnExit = wwDBLookupCombo9Exit
+            end
+            object wwDBLookupCombo10: TwwDBLookupCombo
+              Left = 99
+              Top = 133
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'VEIC_NOME'#9'40'#9'VEIC_NOME'#9'F')
+              DataField = 'VEIC_ID'
+              DataSource = DS_CTTxESPEC
+              LookupTable = Q_VEIC
+              LookupField = 'VEIC_ID'
+              ParentFont = False
+              TabOrder = 7
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo10Enter
+              OnExit = wwDBLookupCombo10Exit
+            end
+            object wwDBLookupCombo11: TwwDBLookupCombo
+              Left = 99
+              Top = 158
+              Width = 232
+              Height = 21
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              BorderStyle = bsNone
+              DropDownAlignment = taLeftJustify
+              Selected.Strings = (
+                'TPRO_NOME'#9'40'#9'TPRO_NOME'#9'F')
+              DataField = 'TPRO_ID'
+              DataSource = DS_CTTxESPEC
+              LookupTable = Q_TPROD
+              LookupField = 'TPRO_ID'
+              ParentFont = False
+              TabOrder = 8
+              AutoDropDown = True
+              ShowButton = True
+              SeqSearchOptions = [ssoEnabled, ssoCaseSensitive]
+              PreciseEditRegion = False
+              AllowClearKey = False
+              OnEnter = wwDBLookupCombo11Enter
+              OnExit = wwDBLookupCombo11Exit
+            end
+            object wwDBEdit5: TwwDBEdit
+              Left = 99
+              Top = 10
+              Width = 37
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_ORDEM'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 0
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit5Enter
+              OnExit = wwDBEdit5Exit
+            end
+            object wwDBEdit8: TwwDBEdit
+              Left = 605
+              Top = 83
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_QTDEPALLET_DE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 9
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit8Enter
+              OnExit = wwDBEdit8Exit
+            end
+            object wwDBEdit9: TwwDBEdit
+              Left = 685
+              Top = 83
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_QTDEPALLET_ATE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 10
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit9Enter
+              OnExit = wwDBEdit9Exit
+            end
+            object wwDBEdit10: TwwDBEdit
+              Left = 605
+              Top = 133
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_PESO_DE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 13
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit10Enter
+              OnExit = wwDBEdit10Exit
+            end
+            object wwDBEdit11: TwwDBEdit
+              Left = 685
+              Top = 133
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_PESO_ATE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 14
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit11Enter
+              OnExit = wwDBEdit11Exit
+            end
+            object wwDBEdit12: TwwDBEdit
+              Left = 605
+              Top = 108
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_AREA_DE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 11
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit12Enter
+              OnExit = wwDBEdit12Exit
+            end
+            object wwDBEdit13: TwwDBEdit
+              Left = 685
+              Top = 108
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_AREA_ATE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 12
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit13Enter
+              OnExit = wwDBEdit13Exit
+            end
+            object wwDBEdit14: TwwDBEdit
+              Left = 605
+              Top = 158
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_VOL_DE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 15
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit14Enter
+              OnExit = wwDBEdit14Exit
+            end
+            object wwDBEdit15: TwwDBEdit
+              Left = 685
+              Top = 158
+              Width = 46
+              Height = 21
+              BorderStyle = bsNone
+              DataField = 'CTTESPEC_VOL_ATE'
+              DataSource = DS_CTTxESPEC
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 16
+              UnboundDataType = wwDefault
+              WantReturns = False
+              WordWrap = False
+              OnEnter = wwDBEdit15Enter
+              OnExit = wwDBEdit15Exit
+            end
+            object wwDBComboBox2: TwwDBComboBox
+              Left = 259
+              Top = 236
+              Width = 132
+              Height = 21
+              ShowButton = True
+              Style = csDropDown
+              MapList = True
+              AllowClearKey = False
+              AutoDropDown = True
+              BorderStyle = bsNone
+              ButtonStyle = cbsEllipsis
+              DataField = 'CTTESPEC_TPCARGA'
+              DataSource = DS_CTTxESPEC
+              DropDownCount = 8
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'Arial'
+              Font.Style = []
+              ItemHeight = 0
+              Items.Strings = (
+                'Pallets'#9'P'
+                'Granel'#9'G'
+                'N'#227'o se Aplica'#9'N')
+              ParentFont = False
+              Sorted = False
+              TabOrder = 18
+              UnboundDataType = wwDefault
+              OnEnter = wwDBComboBox4Enter
+              OnExit = wwDBComboBox4Exit
+            end
+          end
+        end
+      end
+      object Panel5: TPanel
+        Left = 82
+        Top = 19
+        Width = 163
+        Height = 27
+        BevelOuter = bvNone
+        TabOrder = 1
+        Visible = False
+      end
+    end
+  end
+  object Q_CTT: TwwQuery
+    AutoCalcFields = False
+    CachedUpdates = True
+    BeforeInsert = Q_CTTBeforeInsert
+    BeforePost = Q_CTTBeforePost
+    AfterPost = Q_CTTAfterPost
+    AfterCancel = Q_CTTAfterCancel
+    BeforeDelete = Q_CTTBeforeDelete
+    AfterDelete = Q_CTTAfterDelete
+    OnNewRecord = Q_CTTNewRecord
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    RequestLive = True
+    SQL.Strings = (
+      'select A.* from CONTRATO A,CLIENTENBF B'
+      'where '
+      'A.CLIN_ID = B.CLIN_ID '
+      'order by B.CLIN_RAZA')
+    UpdateObject = UPD_CTT
+    ValidateWithMask = True
+    Left = 599
+    Top = 176
+    object Q_CTTCLIN_NOME: TStringField
+      DisplayLabel = 'Cliente NBF'
+      DisplayWidth = 35
+      FieldKind = fkLookup
+      FieldName = 'CLIN_NOME'
+      LookupDataSet = Q_CLIN
+      LookupKeyFields = 'CLIN_ID'
+      LookupResultField = 'CLIN_RAZA'
+      KeyFields = 'CLIN_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTCTT_NOME: TStringField
+      DisplayLabel = 'Nome do Contrato'
+      DisplayWidth = 35
+      FieldName = 'CTT_NOME'
+      Origin = 'NBFDADOS.CONTRATO.CTT_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_CTTTOS_NOMe: TStringField
+      DisplayLabel = 'Tipo de O.S.'
+      DisplayWidth = 35
+      FieldKind = fkLookup
+      FieldName = 'TOS_NOMe'
+      LookupDataSet = Q_TOS
+      LookupKeyFields = 'TOS_ID'
+      LookupResultField = 'TOS_NOME'
+      KeyFields = 'TOS_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTCTT_DT_INICIO: TDateTimeField
+      Alignment = taCenter
+      DisplayLabel = 'Data In'#237'cio'
+      DisplayWidth = 14
+      FieldName = 'CTT_DT_INICIO'
+      Origin = 'NBFDADOS.CONTRATO.CTT_DT_INICIO'
+      EditMask = '!99/99/9999;1;_'
+    end
+    object Q_CTTCTT_DT_FINAL: TDateTimeField
+      Alignment = taCenter
+      DisplayLabel = 'Data T'#233'rmino'
+      DisplayWidth = 14
+      FieldName = 'CTT_DT_FINAL'
+      Origin = 'NBFDADOS.CONTRATO.CTT_DT_FINAL'
+      EditMask = '!99/99/9999;1;_'
+    end
+    object Q_CTTCTT_ID: TAutoIncField
+      FieldName = 'CTT_ID'
+      Origin = 'NBFDADOS.CONTRATO.CTT_ID'
+      Visible = False
+    end
+    object Q_CTTCLIN_ID: TIntegerField
+      FieldName = 'CLIN_ID'
+      Origin = 'NBFDADOS.CONTRATO.CLIN_ID'
+      Visible = False
+    end
+    object Q_CTTEMP_ID: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'EMP_ID'
+      Origin = 'NBFDADOS.CONTRATO.EMP_ID'
+      Visible = False
+    end
+    object Q_CTTTOS_ID: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'TOS_ID'
+      Origin = 'NBFDADOS.CONTRATO.TPOS_ID'
+      Visible = False
+    end
+    object Q_CTTCTT_TERCEIRO: TStringField
+      FieldName = 'CTT_TERCEIRO'
+      Origin = 'NBFDADOS.CONTRATO.CTT_TERCEIRO'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_CTTPAR_ID: TIntegerField
+      Alignment = taLeftJustify
+      FieldName = 'PAR_ID'
+      Origin = 'NBFDADOS.CONTRATO.PAR_ID'
+    end
+    object Q_CTTMIN_M2: TFloatField
+      FieldName = 'MIN_M2'
+      Origin = 'NBFDADOS.CONTRATO.MIN_M2'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+  end
+  object DS_CTT: TwwDataSource
+    DataSet = Q_CTT
+    OnDataChange = DS_CTTDataChange
+    Left = 583
+    Top = 424
+  end
+  object Q_CLIN: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select CLIN_RAZA,CLIN_ID from CLIENTENBF where'
+      'CLIN_CONTRATO = '#39'S'#39' '
+      'order by CLIN_RAZA')
+    ValidateWithMask = True
+    Left = 543
+    Top = 297
+    object Q_CLINCLIN_RAZA: TStringField
+      DisplayWidth = 50
+      FieldName = 'CLIN_RAZA'
+      Origin = 'NBFDADOS.CLIENTENBF.CLIN_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_CLINCLIN_ID: TAutoIncField
+      FieldName = 'CLIN_ID'
+      Origin = 'NBFDADOS.CLIENTENBF.CLIN_ID'
+    end
+  end
+  object Q_TOS: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select TOS_ID,TOS_NOME  from TPOS order by TOS_NOME')
+    ValidateWithMask = True
+    Left = 711
+    Top = 407
+    object Q_TOSTOS_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'TOS_NOME'
+      Origin = 'NBFDADOS.TPOS.TOS_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_TOSTOS_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'TOS_ID'
+      Origin = 'NBFDADOS.TPOS.TOS_ID'
+      Visible = False
+    end
+  end
+  object UPD_CTT: TUpdateSQL
+    ModifySQL.Strings = (
+      'update CONTRATO'
+      'set'
+      '  CLIN_ID = :CLIN_ID,'
+      '  CTT_NOME = :CTT_NOME,'
+      '  TOS_ID = :TOS_ID,'
+      '  CTT_DT_INICIO = :CTT_DT_INICIO,'
+      '  CTT_DT_FINAL = :CTT_DT_FINAL,'
+      '  EMP_ID = :EMP_ID,'
+      '  CTT_TERCEIRO = :CTT_TERCEIRO,'
+      '  PAR_ID = :PAR_ID,'
+      '  MIN_M2 = :MIN_M2'
+      'where'
+      '  CTT_ID = :OLD_CTT_ID')
+    InsertSQL.Strings = (
+      'insert into CONTRATO'
+      
+        '  (CLIN_ID, CTT_NOME, TOS_ID, CTT_DT_INICIO, CTT_DT_FINAL, EMP_I' +
+        'D, CTT_TERCEIRO, '
+      '   PAR_ID, MIN_M2)'
+      'values'
+      
+        '  (:CLIN_ID, :CTT_NOME, :TOS_ID, :CTT_DT_INICIO, :CTT_DT_FINAL, ' +
+        ':EMP_ID, '
+      '   :CTT_TERCEIRO, :PAR_ID, :MIN_M2)')
+    DeleteSQL.Strings = (
+      'delete from CONTRATO'
+      'where'
+      '  CTT_ID = :OLD_CTT_ID')
+    Left = 540
+    Top = 192
+  end
+  object Q_CTTxSERV: TwwQuery
+    AutoCalcFields = False
+    CachedUpdates = True
+    BeforePost = Q_CTTxSERVBeforePost
+    AfterPost = Q_CTTxSERVAfterPost
+    BeforeDelete = Q_CTTxSERVBeforeDelete
+    AfterDelete = Q_CTTxSERVAfterDelete
+    OnNewRecord = Q_CTTxSERVNewRecord
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_CTT
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CONTRATO_SERVICO where CTT_ID = :CTT_ID')
+    ControlType.Strings = (
+      'CTTSERV_COBRADO;CustomEdit;wwDBComboBox1')
+    ValidateWithMask = True
+    Left = 375
+    Top = 311
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'CTT_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_CTTxSERVSER_NOME: TStringField
+      DisplayLabel = 'Servi'#231'o'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'SER_NOME'
+      LookupDataSet = Q_SERV
+      LookupKeyFields = 'SER_ID'
+      LookupResultField = 'SER_NOME'
+      KeyFields = 'SER_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxSERVTSER_NOME: TStringField
+      DisplayLabel = 'Tipo de Servi'#231'o'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'TSER_NOME'
+      LookupDataSet = Q_TSERV
+      LookupKeyFields = 'TSER_ID'
+      LookupResultField = 'TSER_NOME'
+      KeyFields = 'TSER_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxSERVCTTSERV_COBRADO: TStringField
+      DisplayLabel = 'Cobrar ?'
+      DisplayWidth = 13
+      FieldName = 'CTTSERV_COBRADO'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTTSERV_COBRADO'
+      FixedChar = True
+      Size = 1
+    end
+    object Q_CTTxSERVTDOC_NOME: TStringField
+      DisplayLabel = 'Tipo de Documento'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'TDOC_NOME'
+      LookupDataSet = Q_TDTO
+      LookupKeyFields = 'TDOC_ID'
+      LookupResultField = 'TDOC_NOME'
+      KeyFields = 'TDOC_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxSERVCTTSERV_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'CTTSERV_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTTSERV_ID'
+      Visible = False
+    end
+    object Q_CTTxSERVCTT_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'CTT_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTT_ID'
+      Visible = False
+    end
+    object Q_CTTxSERVSER_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'SER_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.SER_ID'
+      Visible = False
+    end
+    object Q_CTTxSERVTSER_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TSER_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.TSER_ID'
+      Visible = False
+    end
+    object Q_CTTxSERVTDOC_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TDOC_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.TDOC_ID'
+      Visible = False
+    end
+  end
+  object DS_CTTxSERV: TwwDataSource
+    DataSet = Q_CTTxSERV
+    OnDataChange = DS_CTTxSERVDataChange
+    Left = 647
+    Top = 312
+  end
+  object UPD_CTTxSERV: TUpdateSQL
+    ModifySQL.Strings = (
+      'update CONTRATO_SERVICO'
+      'set'
+      '  CTT_ID = :CTT_ID,'
+      '  SER_ID = :SER_ID,'
+      '  TSER_ID = :TSER_ID,'
+      '  CTTSERV_COBRADO = :CTTSERV_COBRADO,'
+      '  TDOC_ID = :TDOC_ID'
+      'where'
+      '  CTTSERV_ID = :OLD_CTTSERV_ID')
+    InsertSQL.Strings = (
+      'insert into CONTRATO_SERVICO'
+      '  (CTT_ID, SER_ID, TSER_ID, CTTSERV_COBRADO, TDOC_ID)'
+      'values'
+      '  (:CTT_ID, :SER_ID, :TSER_ID, :CTTSERV_COBRADO, :TDOC_ID)')
+    DeleteSQL.Strings = (
+      'delete from CONTRATO_SERVICO'
+      'where'
+      '  CTTSERV_ID = :OLD_CTTSERV_ID')
+    Left = 647
+    Top = 416
+  end
+  object Q_SERV: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      
+        'Select A.*,B.TSER_NOME from SERVICO A,TPSERVICO B where A.TSER_I' +
+        'D = B.TSER_ID'
+      'order by B.TSER_NOME,A.SER_NOME')
+    ValidateWithMask = True
+    Left = 743
+    Top = 296
+    object Q_SERVSER_NOME: TStringField
+      DisplayLabel = 'Servi'#231'o'
+      DisplayWidth = 40
+      FieldName = 'SER_NOME'
+      Origin = 'NBFDADOS.SERVICO.SER_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_SERVTSER_NOME: TStringField
+      DisplayLabel = 'Tipo de Servi'#231'o'
+      DisplayWidth = 40
+      FieldName = 'TSER_NOME'
+      Origin = 'NBFDADOS.TPSERVICO.TSER_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_SERVSER_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'SER_ID'
+      Origin = 'NBFDADOS.SERVICO.SER_ID'
+      Visible = False
+    end
+    object Q_SERVTSER_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TSER_ID'
+      Origin = 'NBFDADOS.SERVICO.TSER_ID'
+      Visible = False
+    end
+  end
+  object Q_TSERV: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select * from TPSERVICO ')
+    ValidateWithMask = True
+    Left = 415
+    Top = 320
+    object Q_TSERVTSER_ID: TAutoIncField
+      FieldName = 'TSER_ID'
+      Origin = 'NBFDADOS.TPSERVICO.TSER_ID'
+    end
+    object Q_TSERVTSER_NOME: TStringField
+      FieldName = 'TSER_NOME'
+      Origin = 'NBFDADOS.TPSERVICO.TSER_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_TSERVTSER_CONCEITO: TMemoField
+      FieldName = 'TSER_CONCEITO'
+      Origin = 'NBFDADOS.TPSERVICO.TSER_CONCEITO'
+      BlobType = ftMemo
+    end
+  end
+  object Q_CTTxESPEC: TwwQuery
+    AutoCalcFields = False
+    CachedUpdates = True
+    BeforePost = Q_CTTxESPECBeforePost
+    AfterPost = Q_CTTxESPECAfterPost
+    AfterDelete = Q_CTTxESPECAfterDelete
+    OnNewRecord = Q_CTTxESPECNewRecord
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_CTTxSERV
+    RequestLive = True
+    SQL.Strings = (
+      'select * from CONTRATO_ESPECIFICACOES '
+      'where'
+      'CTTSERV_ID = :CTTSERV_ID'
+      'order by CTTESPEC_ORDEM')
+    UpdateObject = UPD_CTTxESPEC
+    ControlType.Strings = (
+      'CTTESPEC_TPCARGA;CustomEdit;wwDBComboBox2')
+    ValidateWithMask = True
+    Left = 504
+    Top = 384
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'CTTSERV_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_CTTxESPECCTTESPEC_ORDEM: TIntegerField
+      DisplayLabel = 'Ordem'
+      DisplayWidth = 10
+      FieldName = 'CTTESPEC_ORDEM'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_ORDEM'
+    end
+    object Q_CTTxESPECUCOB_NOME: TStringField
+      DisplayLabel = 'Unidade de Cobran'#231'a'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'UCOB_NOME'
+      LookupDataSet = Q_UCOB
+      LookupKeyFields = 'UCOB_ID'
+      LookupResultField = 'UCOB_NOME'
+      KeyFields = 'UCOB_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxESPECCTTESPEC_TPCARGA: TStringField
+      DisplayLabel = 'Tipo de Carga'
+      DisplayWidth = 23
+      FieldName = 'CTTESPEC_TPCARGA'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_TPCARGA'
+      FixedChar = True
+      Size = 1
+    end
+    object Q_CTTxESPECCLIF_NOME: TStringField
+      DisplayLabel = 'Cliente Final'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'CLIF_NOME'
+      LookupDataSet = Q_CLIF
+      LookupKeyFields = 'CLIF_ID'
+      LookupResultField = 'CLIF_RAZA'
+      KeyFields = 'CLIF_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxESPECREG_NOME: TStringField
+      DisplayLabel = 'Regi'#227'o'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'REG_NOME'
+      LookupDataSet = Q_REG
+      LookupKeyFields = 'REG_ID'
+      LookupResultField = 'REG_NOME'
+      KeyFields = 'REG_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxESPECVEIC_NOME: TStringField
+      DisplayLabel = 'Tipo de Ve'#237'culo'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'VEIC_NOME'
+      LookupDataSet = Q_VEIC
+      LookupKeyFields = 'VEIC_ID'
+      LookupResultField = 'VEIC_NOME'
+      KeyFields = 'VEIC_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxESPECTPRO_NOME: TStringField
+      DisplayLabel = 'Tipo de Poduto'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'TPRO_NOME'
+      LookupDataSet = Q_TPROD
+      LookupKeyFields = 'TPRO_ID'
+      LookupResultField = 'TPRO_NOME'
+      KeyFields = 'TPRO_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxESPECCTTESPEC_QTDEPALLET_DE: TIntegerField
+      DisplayLabel = 'Qtde Pallet de'
+      DisplayWidth = 10
+      FieldName = 'CTTESPEC_QTDEPALLET_DE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_QTDEPALLET_DE'
+    end
+    object Q_CTTxESPECCTTESPEC_QTDEPALLET_ATE: TIntegerField
+      DisplayLabel = 'Qtde Pallet at'#233
+      DisplayWidth = 10
+      FieldName = 'CTTESPEC_QTDEPALLET_ATE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_QTDEPALLET_ATE'
+    end
+    object Q_CTTxESPECCTTESPEC_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'CTTESPEC_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECCTT_ID: TIntegerField
+      FieldName = 'CTT_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTT_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECSER_ID: TIntegerField
+      FieldName = 'SER_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.SER_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECTSER_ID: TIntegerField
+      FieldName = 'TSER_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.TSER_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECUCOB_ID: TIntegerField
+      FieldName = 'UCOB_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.UCOB_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECCLIF_ID: TIntegerField
+      FieldName = 'CLIF_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CLIF_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECVEIC_ID: TIntegerField
+      FieldName = 'VEIC_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.VEIC_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECREG_ID: TIntegerField
+      FieldName = 'REG_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.REG_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECTPRO_ID: TIntegerField
+      FieldName = 'TPRO_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.TPRO_ID'
+      Visible = False
+    end
+    object Q_CTTxESPECCTTESPEC_FATOR: TFloatField
+      FieldName = 'CTTESPEC_FATOR'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_FATOR'
+      DisplayFormat = '##0.000000'
+      EditFormat = '##0.000000'
+    end
+    object Q_CTTxESPECCTTESPEC_PESO_DE: TFloatField
+      FieldName = 'CTTESPEC_PESO_DE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_PESO_DE'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+    object Q_CTTxESPECCTTESPEC_PESO_ATE: TFloatField
+      FieldName = 'CTTESPEC_PESO_ATE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_PESO_ATE'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+    object Q_CTTxESPECCTTESPEC_AREA_DE: TFloatField
+      FieldName = 'CTTESPEC_AREA_DE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_AREA_DE'
+      DisplayFormat = '###,###,##0.0'
+      EditFormat = '###,###,##0.0'
+    end
+    object Q_CTTxESPECCTTESPEC_AREA_ATE: TFloatField
+      FieldName = 'CTTESPEC_AREA_ATE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_AREA_ATE'
+      DisplayFormat = '###,###,##0.0'
+      EditFormat = '###,###,##0.0'
+    end
+    object Q_CTTxESPECCTTESPEC_VOL_DE: TFloatField
+      FieldName = 'CTTESPEC_VOL_DE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_VOL_DE'
+      DisplayFormat = '###,###,##0.0'
+      EditFormat = '###,###,##0.0'
+    end
+    object Q_CTTxESPECCTTSERV_ID: TIntegerField
+      FieldName = 'CTTSERV_ID'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTSERV_ID'
+    end
+    object Q_CTTxESPECCTTESPEC_VOL_ATE: TFloatField
+      FieldName = 'CTTESPEC_VOL_ATE'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_VOL_ATE'
+      DisplayFormat = '###,###,##0.0'
+      EditFormat = '###,###,##0.0'
+    end
+    object Q_CTTxESPECCTTESPEC_MINIMA: TFloatField
+      FieldName = 'CTTESPEC_MINIMA'
+      Origin = 'NBFDADOS.CONTRATO_ESPECIFICACOES.CTTESPEC_MINIMA'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '###,###,##0.00'
+    end
+  end
+  object DS_CTTxESPEC: TwwDataSource
+    DataSet = Q_CTTxESPEC
+    Left = 703
+    Top = 352
+  end
+  object UPD_CTTxESPEC: TUpdateSQL
+    ModifySQL.Strings = (
+      'update CONTRATO_ESPECIFICACOES'
+      'set'
+      '  CTTESPEC_ORDEM = :CTTESPEC_ORDEM,'
+      '  CTT_ID = :CTT_ID,'
+      '  SER_ID = :SER_ID,'
+      '  TSER_ID = :TSER_ID,'
+      '  CTTESPEC_FATOR = :CTTESPEC_FATOR,'
+      '  CTTESPEC_MINIMA = :CTTESPEC_MINIMA,'
+      '  UCOB_ID = :UCOB_ID,'
+      '  CTTESPEC_TPCARGA = :CTTESPEC_TPCARGA,'
+      '  CLIF_ID = :CLIF_ID,'
+      '  VEIC_ID = :VEIC_ID,'
+      '  REG_ID = :REG_ID,'
+      '  TPRO_ID = :TPRO_ID,'
+      '  CTTESPEC_PESO_DE = :CTTESPEC_PESO_DE,'
+      '  CTTESPEC_PESO_ATE = :CTTESPEC_PESO_ATE,'
+      '  CTTESPEC_AREA_DE = :CTTESPEC_AREA_DE,'
+      '  CTTESPEC_AREA_ATE = :CTTESPEC_AREA_ATE,'
+      '  CTTESPEC_QTDEPALLET_DE = :CTTESPEC_QTDEPALLET_DE,'
+      '  CTTESPEC_QTDEPALLET_ATE = :CTTESPEC_QTDEPALLET_ATE,'
+      '  CTTESPEC_VOL_DE = :CTTESPEC_VOL_DE,'
+      '  CTTESPEC_VOL_ATE = :CTTESPEC_VOL_ATE,'
+      '  CTTSERV_ID = :CTTSERV_ID'
+      'where'
+      '  CTTESPEC_ID = :OLD_CTTESPEC_ID')
+    InsertSQL.Strings = (
+      'insert into CONTRATO_ESPECIFICACOES'
+      '  (CTTESPEC_ORDEM, CTT_ID, SER_ID, TSER_ID, CTTESPEC_FATOR, '
+      
+        '   CTTESPEC_MINIMA, UCOB_ID, CTTESPEC_TPCARGA, CLIF_ID, VEIC_ID,' +
+        ' '
+      'REG_ID, '
+      '   TPRO_ID, CTTESPEC_PESO_DE, CTTESPEC_PESO_ATE, '
+      'CTTESPEC_AREA_DE, CTTESPEC_AREA_ATE, '
+      '   CTTESPEC_QTDEPALLET_DE, CTTESPEC_QTDEPALLET_ATE, '
+      'CTTESPEC_VOL_DE, CTTESPEC_VOL_ATE, CTTSERV_ID)'
+      'values'
+      
+        '  (:CTTESPEC_ORDEM, :CTT_ID, :SER_ID, :TSER_ID, :CTTESPEC_FATOR,' +
+        ' '
+      
+        '   :CTTESPEC_MINIMA, :UCOB_ID, :CTTESPEC_TPCARGA, :CLIF_ID, :VEI' +
+        'C_ID, '
+      ':REG_ID, '
+      '   :TPRO_ID, :CTTESPEC_PESO_DE, :CTTESPEC_PESO_ATE, '
+      ':CTTESPEC_AREA_DE, '
+      '   :CTTESPEC_AREA_ATE, :CTTESPEC_QTDEPALLET_DE, '
+      ':CTTESPEC_QTDEPALLET_ATE, '
+      '   :CTTESPEC_VOL_DE, :CTTESPEC_VOL_ATE, :CTTSERV_ID)')
+    DeleteSQL.Strings = (
+      'delete from CONTRATO_ESPECIFICACOES'
+      'where'
+      '  CTTESPEC_ID = :OLD_CTTESPEC_ID')
+    Left = 703
+    Top = 352
+  end
+  object Q_UCOB: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select * from UnidCOBRANCA order by UCOB_NOME')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    object Q_UCOBUCOB_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'UCOB_NOME'
+      Origin = 'NBFDADOS.UnidCOBRANCA.UCOB_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_UCOBUCOB_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'UCOB_ID'
+      Origin = 'NBFDADOS.UnidCOBRANCA.UCOB_ID'
+      Visible = False
+    end
+  end
+  object Q_CLIF: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_CLIN
+    SQL.Strings = (
+      'select A.*,B.CLIF_RAZA  from Cliente_NBFinal A,ClienteFINAL B'
+      'where'
+      'CLIN_ID = :CLIN_ID and'
+      'B.CLIF_ID = A.CLIF_ID'
+      'order by B.CLIF_RAZA')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'CLIN_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_CLIFCLIF_RAZA: TStringField
+      DisplayLabel = 'Cliente Final'
+      DisplayWidth = 50
+      FieldName = 'CLIF_RAZA'
+      Origin = 'NBFDADOS.ClienteFINAL.CLIF_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_CLIFNBFINAL_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'NBFINAL_ID'
+      Origin = 'NBFDADOS.Cliente_NBFinal.NBFINAL_ID'
+      Visible = False
+    end
+    object Q_CLIFCLIF_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'CLIF_ID'
+      Origin = 'NBFDADOS.Cliente_NBFinal.CLIF_ID'
+      Visible = False
+    end
+    object Q_CLIFCLIN_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'CLIN_ID'
+      Origin = 'NBFDADOS.Cliente_NBFinal.CLIN_ID'
+      Visible = False
+    end
+    object Q_CLIFNBFINAL_DT_INCL: TDateTimeField
+      DisplayWidth = 18
+      FieldName = 'NBFINAL_DT_INCL'
+      Origin = 'NBFDADOS.Cliente_NBFinal.NBFINAL_DT_INCL'
+      Visible = False
+    end
+    object Q_CLIFNBFINAL_COD_CLIN: TStringField
+      FieldName = 'NBFINAL_COD_CLIN'
+      Origin = 'NBFDADOS.Cliente_NBFinal.NBFINAL_COD_CLIN'
+      FixedChar = True
+      Size = 10
+    end
+  end
+  object Q_REG: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select * from regiao order by reg_NOME')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    object Q_REGREG_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'REG_NOME'
+      Origin = 'NBFDADOS.regiao.REG_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_REGREG_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'REG_ID'
+      Origin = 'NBFDADOS.regiao.REG_ID'
+      Visible = False
+    end
+  end
+  object Q_VEIC: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'Select * from TPVEICULO order by veic_ordem')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    object Q_VEICVEIC_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'VEIC_NOME'
+      Origin = 'NBFDADOS.TPVEICULO.VEIC_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_VEICVEIC_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'VEIC_ID'
+      Origin = 'NBFDADOS.TPVEICULO.VEIC_ID'
+      Visible = False
+    end
+  end
+  object Q_TPROD: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_CLIN
+    SQL.Strings = (
+      'select * from TPPRODUTO_CLINBF where'
+      'CLIN_ID = :CLIN_ID ')
+    ValidateWithMask = True
+    Left = 711
+    Top = 462
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'CLIN_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_TPRODTPRO_NOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'TPRO_NOME'
+      Origin = 'NBFDADOS.TPPRODUTO_CLINBF.TPRO_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_TPRODTPRO_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'TPRO_ID'
+      Origin = 'NBFDADOS.TPPRODUTO_CLINBF.TPRO_ID'
+      Visible = False
+    end
+    object Q_TPRODCLIN_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'CLIN_ID'
+      Origin = 'NBFDADOS.TPPRODUTO_CLINBF.CLIN_ID'
+      Visible = False
+    end
+  end
+  object Q_GERAESPEC: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+  end
+  object DS_CLIN: TwwDataSource
+    DataSet = Q_CLIN
+    Left = 703
+    Top = 352
+  end
+  object Q_TDTO: TwwQuery
+    AutoCalcFields = False
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_TOS
+    SQL.Strings = (
+      'select A.*,B.TDOC_NOME from TPDOC_TPOS A,TPDOC B  where '
+      'TOS_ID = :TOS_ID and'
+      'B.TDOC_ID = A.TDOC_ID and'
+      'B.TDOC_CONTRATO = '#39'S'#39
+      'order by  B.TDOC_NOME')
+    ValidateWithMask = True
+    Left = 695
+    Top = 231
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'TOS_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_TDTOTDOC_NOME: TStringField
+      DisplayLabel = 'Tipo de Documento'
+      DisplayWidth = 40
+      FieldName = 'TDOC_NOME'
+      Origin = 'NBFDADOS.TPDOC.TDOC_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_TDTOTDTO_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'TDTO_ID'
+      Origin = 'NBFDADOS.TPDOC_TPOS.TDTO_ID'
+      Visible = False
+    end
+    object Q_TDTOTOS_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TOS_ID'
+      Origin = 'NBFDADOS.TPDOC_TPOS.TOS_ID'
+      Visible = False
+    end
+    object Q_TDTOTDOC_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TDOC_ID'
+      Origin = 'NBFDADOS.TPDOC_TPOS.TDOC_ID'
+      Visible = False
+    end
+    object Q_TDTOTDTO_ORDEM: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'TDTO_ORDEM'
+      Origin = 'NBFDADOS.TPDOC_TPOS.TDTO_ORDEM'
+      Visible = False
+    end
+  end
+  object DS_TOS: TwwDataSource
+    DataSet = Q_TOS
+    Left = 703
+    Top = 352
+  end
+  object Q_ESPECdel: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+  end
+  object Q_SERVdel: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+  end
+  object Q_OSconsulta: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+  end
+  object Q_AUX: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    ValidateWithMask = True
+    Left = 95
+    Top = 286
+  end
+  object wwSearchDialog1: TwwSearchDialog
+    Selected.Strings = (
+      'CLIN_RAZA'#9'50'#9'Raz'#227'o Social'#9'F'
+      'CLIN_NOME'#9'30'#9'Fantasia'#9'F')
+    GridTitleAlignment = taCenter
+    GridColor = clAqua
+    GridOptions = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgPerfectRowFit]
+    SearchTable = Q_CTT2
+    Caption = 'Pesquisa de Clientes em Contratos'
+    MaxWidth = 0
+    MaxHeight = 450
+    CharCase = ecUpperCase
+    Left = 703
+    Top = 352
+  end
+  object Q_CTT2: TwwQuery
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select CLIN_ID,CLIN_RAZA,CLIN_NOME'
+      ' from CLIENTENBF where exists(Select CLIN_ID from CONTRATO '
+      'where CLIENTENBF.CLIN_ID  = CLIN_ID  )'
+      '')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    object Q_CTT2CLIN_RAZA: TStringField
+      DisplayLabel = 'Raz'#227'o Social'
+      DisplayWidth = 50
+      FieldName = 'CLIN_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_CTT2CLIN_NOME: TStringField
+      DisplayLabel = 'Fantasia'
+      DisplayWidth = 30
+      FieldName = 'CLIN_NOME'
+      FixedChar = True
+      Size = 30
+    end
+    object Q_CTT2CLIN_ID: TAutoIncField
+      DisplayLabel = 'Cliente NBF'
+      DisplayWidth = 10
+      FieldName = 'CLIN_ID'
+      Visible = False
+    end
+  end
+  object wwSearchDialog2: TwwSearchDialog
+    Selected.Strings = (
+      'SER_NOME'#9'40'#9'Servi'#231'o'#9'F'
+      'TSER_NOME'#9'40'#9'Tipo de Servi'#231'o'#9'F')
+    GridTitleAlignment = taCenter
+    GridColor = clAqua
+    GridOptions = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgPerfectRowFit]
+    SearchTable = Q_CTTxSERV2
+    Caption = 'Pesquisa de Servi'#231'os no Contrato'
+    MaxWidth = 0
+    MaxHeight = 450
+    CharCase = ecUpperCase
+    Left = 703
+    Top = 352
+  end
+  object Q_CTTxSERV2: TwwQuery
+    AutoCalcFields = False
+    BeforePost = Q_CTTxSERVBeforePost
+    OnNewRecord = Q_CTTxSERVNewRecord
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    DataSource = DS_CTT
+    SQL.Strings = (
+      'select * from CONTRATO_SERVICO where CTT_ID = :CTT_ID')
+    ControlType.Strings = (
+      'CTTSERV_COBRADO;CustomEdit;wwDBComboBox1')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    ParamData = <
+      item
+        DataType = ftAutoInc
+        Name = 'CTT_ID'
+        ParamType = ptUnknown
+      end>
+    object Q_CTTxSERV2SER_NOME: TStringField
+      DisplayLabel = 'Servi'#231'o'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'SER_NOME'
+      LookupDataSet = Q_SERV
+      LookupKeyFields = 'SER_ID'
+      LookupResultField = 'SER_NOME'
+      KeyFields = 'SER_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxSERV2TSER_NOME: TStringField
+      DisplayLabel = 'Tipo de Servi'#231'o'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'TSER_NOME'
+      LookupDataSet = Q_TSERV
+      LookupKeyFields = 'TSER_ID'
+      LookupResultField = 'TSER_NOME'
+      KeyFields = 'TSER_ID'
+      Size = 40
+      Lookup = True
+    end
+    object Q_CTTxSERV2CTTSERV_ID: TAutoIncField
+      FieldName = 'CTTSERV_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTTSERV_ID'
+      Visible = False
+    end
+    object Q_CTTxSERV2CTT_ID: TIntegerField
+      FieldName = 'CTT_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTT_ID'
+      Visible = False
+    end
+    object Q_CTTxSERV2SER_ID: TIntegerField
+      FieldName = 'SER_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.SER_ID'
+      Visible = False
+    end
+    object Q_CTTxSERV2TSER_ID: TIntegerField
+      FieldName = 'TSER_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.TSER_ID'
+      Visible = False
+    end
+    object Q_CTTxSERV2CTTSERV_COBRADO: TStringField
+      DisplayLabel = 'Cobrar ?'
+      DisplayWidth = 13
+      FieldName = 'CTTSERV_COBRADO'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.CTTSERV_COBRADO'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+    object Q_CTTxSERV2TDOC_ID: TIntegerField
+      FieldName = 'TDOC_ID'
+      Origin = 'NBFDADOS.CONTRATO_SERVICO.TDOC_ID'
+      Visible = False
+    end
+  end
+  object Q_CTT3: TwwQuery
+    AutoCalcFields = False
+    BeforeDelete = Q_CTTBeforeDelete
+    DatabaseName = 'NBFDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select A.*,B.CLIN_RAZA,C.TOS_NOME '
+      ' from CONTRATO A,CLIENTENBF B,TPOS C'
+      'where '
+      'A.CLIN_ID = B.CLIN_ID  and'
+      'A.TOS_ID = C.TOS_ID '
+      'order by B.CLIN_NOME')
+    ValidateWithMask = True
+    Left = 703
+    Top = 352
+    object Q_CTT3CLIN_RAZA: TStringField
+      DisplayLabel = 'Cliente NBF'
+      DisplayWidth = 47
+      FieldName = 'CLIN_RAZA'
+      Origin = 'NBFDADOS.CLIENTENBF.CLIN_RAZA'
+      FixedChar = True
+      Size = 50
+    end
+    object Q_CTT3CTT_NOME: TStringField
+      DisplayLabel = 'Nome do Contrato'
+      DisplayWidth = 30
+      FieldName = 'CTT_NOME'
+      Origin = 'NBFDADOS.CONTRATO.CTT_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_CTT3TOS_NOME: TStringField
+      DisplayLabel = 'Tipo de O.S.'
+      DisplayWidth = 35
+      FieldName = 'TOS_NOME'
+      Origin = 'NBFDADOS.TPOS.TOS_NOME'
+      FixedChar = True
+      Size = 40
+    end
+    object Q_CTT3CTT_DT_INICIO: TDateTimeField
+      Alignment = taCenter
+      DisplayLabel = 'Data In'#237'cio'
+      DisplayWidth = 14
+      FieldName = 'CTT_DT_INICIO'
+      Origin = 'NBFDADOS.CONTRATO.CTT_DT_INICIO'
+    end
+    object Q_CTT3CTT_DT_FINAL: TDateTimeField
+      Alignment = taCenter
+      DisplayLabel = 'Data T'#233'rmino'
+      DisplayWidth = 14
+      FieldName = 'CTT_DT_FINAL'
+      Origin = 'NBFDADOS.CONTRATO.CTT_DT_FINAL'
+    end
+    object Q_CTT3CTT_ID: TAutoIncField
+      FieldName = 'CTT_ID'
+      Origin = 'NBFDADOS.CONTRATO.CTT_ID'
+      Visible = False
+    end
+    object Q_CTT3CLIN_ID: TIntegerField
+      FieldName = 'CLIN_ID'
+      Origin = 'NBFDADOS.CONTRATO.CLIN_ID'
+      Visible = False
+    end
+    object Q_CTT3TOS_ID: TIntegerField
+      FieldName = 'TOS_ID'
+      Origin = 'NBFDADOS.CONTRATO.TOS_ID'
+      Visible = False
+    end
+    object Q_CTT3EMP_ID: TIntegerField
+      FieldName = 'EMP_ID'
+      Origin = 'NBFDADOS.CONTRATO.EMP_ID'
+      Visible = False
+    end
+    object Q_CTT3CTT_TERCEIRO: TStringField
+      FieldName = 'CTT_TERCEIRO'
+      Origin = 'NBFDADOS.CONTRATO.CTT_TERCEIRO'
+      Visible = False
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DS_CTT3: TwwDataSource
+    DataSet = Q_CTT3
+    Left = 703
+    Top = 352
+  end
+  object Q_EMP: TwwQuery
+    DatabaseName = 'NbfDados'
+    SessionName = 'Sec_BaseDados'
+    SQL.Strings = (
+      'select * from parametro  ')
+    ValidateWithMask = True
+    Left = 591
+    Top = 355
+    object Q_EMPPAR_NOME: TStringField
+      DisplayWidth = 30
+      FieldName = 'PAR_NOME'
+      Origin = 'NBFDADOS.parametro.PAR_NOME'
+      FixedChar = True
+      Size = 30
+    end
+    object Q_EMPPAR_ID: TAutoIncField
+      DisplayWidth = 10
+      FieldName = 'PAR_ID'
+      Origin = 'NBFDADOS.parametro.PAR_ID'
+      Visible = False
+    end
+  end
+end

@@ -1,0 +1,386 @@
+unit URelConhFAT;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Qrctrls, gtQrCtrls, QuickRpt, ExtCtrls, Db, DBTables, Wwquery;
+
+type
+  TFRelConhFAT = class(TForm)
+    ESTOQ: TQuickRep;
+    QRBand1: TQRBand;
+    QRImage1: TgtQRImage;
+    QRLabel3: TgtQRLabel;
+    QRLabel4: TgtQRLabel;
+    QRLabel5: TgtQRLabel;
+    QRSysData3: TgtQRSysData;
+    QRSysData2: TgtQRSysData;
+    QRSysData1: TgtQRSysData;
+    QRLabel37: TgtQRLabel;
+    QRLabel6: TgtQRLabel;
+    QRShape1: TgtQRShape;
+    QRLabel8: TgtQRLabel;
+    QRLabel2: TgtQRLabel;
+    QRLabel7: TgtQRLabel;
+    QRShape3: TgtQRShape;
+    QRLabel1: TgtQRLabel;
+    QRLabel9: TgtQRLabel;
+    QRLabel10: TgtQRLabel;
+    QRLabel11: TgtQRLabel;
+    QRLabel13: TgtQRLabel;
+    QRLabel14: TgtQRLabel;
+    QRLabel17: TgtQRLabel;
+    QRBand2: TQRBand;
+    clin_id: TgtQRDBText;
+    QRDBText12: TgtQRDBText;
+    QRDBText2: TgtQRDBText;
+    QRDBText1: TgtQRDBText;
+    QRDBText3: TgtQRDBText;
+    QRDBText4: TgtQRDBText;
+    QRDBText5: TgtQRDBText;
+    QRDBText6: TgtQRDBText;
+    QRDBText7: TgtQRDBText;
+    QRDBText8: TgtQRDBText;
+    QRBand3: TQRBand;
+    QRLabel19: TgtQRLabel;
+    QRLabel29: TgtQRLabel;
+    QRLabel20: TgtQRLabel;
+    QRLabel21: TgtQRLabel;
+    Q_CONH: TwwQuery;
+    Q_CONHORD_CONH: TStringField;
+    Q_CONHORD_DATA: TDateTimeField;
+    Q_CONHORD_NOTAS: TStringField;
+    Q_CONHORD_QTDE_UV: TFloatField;
+    Q_CONHORD_PESO_TOTAL: TFloatField;
+    Q_CONHORD_TOTALPREST: TFloatField;
+    Q_CONHORD_PLACA: TStringField;
+    Q_CONHORD_VLR_FRETE: TFloatField;
+    Q_CONHORD_VLR_ICMS: TFloatField;
+    Q_CONHORD_VALORTOTAL: TFloatField;
+    Q_CONHCLIN_RAZA: TStringField;
+    gtQRLabel1: TgtQRLabel;
+    gtQRLabel2: TgtQRLabel;
+    gtQRDBText1: TgtQRDBText;
+    Q_AUX1: TwwQuery;
+    Q_CONHORD_Id: TAutoIncField;
+    gtQRLabel3: TgtQRLabel;
+    gtQRLabel4: TgtQRLabel;
+    gtQRLabel5: TgtQRLabel;
+    gtQRDBText2: TgtQRDBText;
+    Q_CONHORD_VLR_OUTROS: TFloatField;
+    gtQRLabel6: TgtQRLabel;
+    Q_AUX: TwwQuery;
+    QRGroup1: TQRGroup;
+    QRLabel12: TQRLabel;
+    QRDBText15: TQRDBText;
+    Q_CONHMANI_ID: TIntegerField;
+    gtQRLabel7: TgtQRLabel;
+    gtQRDBText3: TgtQRDBText;
+    qrDesconto: TwwQuery;
+    qrDescontoDESCONTO: TFloatField;
+    Q_CONHclin_id: TIntegerField;
+    gtQRLabel8: TgtQRLabel;
+    Q_CONHORD_TXENTREGA: TFloatField;
+    Q_CONHORD_SEGURO: TFloatField;
+    gtQRDBText4: TgtQRDBText;
+    gtQRLabel9: TgtQRLabel;
+    gtQRDBText5: TgtQRDBText;
+    gtQRLabel10: TgtQRLabel;
+    gtQRLabel11: TgtQRLabel;
+    procedure QRBand1BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure QRBand2AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+    procedure QRBand3BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure QRBand3AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+    procedure gtQRDBText1Print(sender: TObject; var Value: String);
+    procedure gtQRDBText2Print(sender: TObject; var Value: String);
+    function GeraDesconto(valor: Double): Double;
+    procedure QRDBText5Print(sender: TObject; var Value: String);
+    procedure QRDBText8Print(sender: TObject; var Value: String);
+    procedure QRDBText6Print(sender: TObject; var Value: String);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelConhFAT: TFRelConhFAT;
+  TOTALNF : real ;
+  TOTALFRETE : real ;
+  TOTALICMS : real ;
+  TOTALGERAL : real ;
+  TOTALPESO : real ;
+  TOTALQTDE : real ;
+  TOTALOUTROS : real ;
+
+  TOTALSEGURO : Real;
+  TOTALTXENTREGA : Real;
+
+  TOTALNFstr : string ;
+  TOTALFRETEstr : string ;
+  TOTALICMSstr : string ;
+  TOTALGERALstr : string ;
+ // TOTALGERAL : real ;
+  TOTALPESOstr : string ;
+  TOTALQTDEstr : string ;
+  TOTALOUTROSstr : string ;
+implementation
+
+uses UFatura, UFaturamento;
+
+{$R *.DFM}
+
+procedure TFRelConhFAT.QRBand1BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+  QRLabel7.caption := 'Controle de Tranporte - ' + Q_CONHCLIN_RAZA.ASSTRING  ;
+end;
+
+procedure TFRelConhFAT.FormCreate(Sender: TObject);
+begin
+  TOTALNF := 0.00 ;
+  TOTALFRETE := 0.00 ;
+  TOTALICMS := 0.00 ;
+  TOTALGERAL := 0.00 ;
+  TOTALPESO := 0.00 ;
+  TOTALQTDE := 0.00; 
+  TOTALOUTROS := 0.00 ;
+  TOTALSEGURO := 0.00;
+  TOTALTXENTREGA := 0.00;
+
+
+  Q_AUX.close;
+  Q_AUX.Sql.Clear;
+  Q_AUX.Sql.Add(' Select count(*) as xvalor from  OS (NOLOCK)') ;
+  Q_AUX.Sql.Add(' where OS_MARCADOR = ' + '''' + '*' + '''') ;
+  Q_AUX.Sql.Add(' and  FAT_ID = null');
+  Q_AUX.Sql.Add(' and OS_ID in(Select OS_ID from NF (NOLOCK))');
+  Q_AUX.open ;
+
+
+  IF VEM_DA_OS = '' then begin
+
+      //consulta de conhecimentos por fatura fat_os
+      Q_CONH.close ;
+      Q_CONH.SQL.clear ;
+      Q_CONH.SQL.add('SELECT  d.clin_id,  D.ORD_VLR_OUTROS,D.ORD_Id,D.ORD_CONH,D.ORD_DATA,D.ORD_NOTAS,D.ORD_QTDE_UV,D.ORD_PESO_TOTAL,') ;
+      Q_CONH.SQL.add('D.ORD_TOTALPREST,D.ORD_PLACA,D.ORD_VLR_FRETE,D.ORD_VLR_ICMS,D.ORD_VALORTOTAL,E.CLIN_RAZA,D.MANI_ID, D.ORD_TXENTREGA, D.ORD_SEGURO');
+
+      IF Q_AUX.fieldbyname('XVALOR').asinteger > 0 then begin
+          Q_CONH.SQL.add('FROM   NF A (NOLOCK),OS C (NOLOCK),ORDEM_COLETA_ENTREGA D (NOLOCK),CLIENTENBF E (NOLOCK),FATURA G  (NOLOCK), OS_FAT H ')  ;
+          Q_CONH.SQL.add('where A.OS_Id   = C.OS_ID  ')  ;
+          Q_CONH.SQL.add('and   D.OS_ID = C.OS_ID   ')  ;
+      end else begin
+          Q_CONH.SQL.add('FROM   OS C (NOLOCK),ORDEM_COLETA_ENTREGA D (NOLOCK) ,CLIENTENBF E (NOLOCK),FATURA G (NOLOCK), OS_FAT H')  ;
+          Q_CONH.SQL.add('where  D.OS_ID = C.OS_ID   ')  ;
+      end ;
+
+      Q_CONH.SQL.add('and   E.CLIN_ID = C.CLIN_ID   ')  ;
+      Q_CONH.SQL.add('  and   G.FAT_ID  = H.FAT_ID  and   C.OS_ID  = H.OS_ID  ')  ;
+      Q_CONH.Sql.Add('and   D.ORD_STATUS = ' + '''' + 'E' + '''' ) ;
+      Q_CONH.Sql.Add('and D.FAT_ID IN (SELECT FAT_ID FROM FATURA ');
+      Q_CONH.SQL.add('WHERE  FAT_NUM  >= ' + '''' + FFATURA.wwDBEdit4.text + '''') ;
+
+      IF FFATURA.wwDBEdit5.text <> '' then
+         Q_CONH.SQL.add('and  FAT_NUM  <= ' + '''' + FFATURA.wwDBEdit5.text + '''') ;
+
+      Q_CONH.SQL.add(' )');
+
+      Q_CONH.SQL.add(' group by d.clin_id, D.ORD_VLR_OUTROS, D.ORD_Id,D.ORD_CONH,D.ORD_DATA,D.ORD_NOTAS,D.ORD_QTDE_UV,D.ORD_PESO_TOTAL,') ;
+      Q_CONH.SQL.add(' D.ORD_TOTALPREST,D.ORD_PLACA,D.ORD_VLR_FRETE,D.ORD_VLR_ICMS,D.ORD_VALORTOTAL,E.CLIN_RAZA ,D.MANI_ID, D.ORD_TXENTREGA, D.ORD_SEGURO') ;
+      Q_CONH.SQL.add(' order  by  D.ORD_CONH') ;
+      Q_CONH.SQL.SaveToFile('C:\SQL FATURAMENTO.TXT');
+      Q_CONH.open ;
+  end else begin
+
+      //previa do faturamento - fat-OS
+
+      Q_CONH.close ;
+      Q_CONH.SQL.clear ;
+      Q_CONH.SQL.add('SELECT  D.CLIN_ID,  D.ORD_VLR_OUTROS,D.ORD_Id,D.ORD_CONH,D.ORD_DATA,D.ORD_NOTAS,D.ORD_QTDE_UV,D.ORD_PESO_TOTAL,') ;
+      Q_CONH.SQL.add('D.ORD_TOTALPREST,D.ORD_PLACA,D.ORD_VLR_FRETE,D.ORD_VLR_ICMS,D.ORD_VALORTOTAL,E.CLIN_RAZA,D.MANI_ID');
+
+      IF Q_AUX.fieldbyname('XVALOR').asinteger > 0 then begin
+         Q_CONH.SQL.add('FROM   NF A (NOLOCK),OS C,ORDEM_COLETA_ENTREGA D (NOLOCK),CLIENTENBF E (NOLOCK) ')  ;
+         Q_CONH.SQL.add('where A.OS_Id   = C.OS_ID  ')  ;
+      end else begin
+          Q_CONH.SQL.add('FROM   OS C (NOLOCK),ORDEM_COLETA_ENTREGA D (NOLOCK),CLIENTENBF E (NOLOCK)')  ;
+          Q_CONH.SQL.add('where  C.OS_Id  is not null  ')  ;
+      end ;
+
+      Q_CONH.SQL.add('and   C.OS_MARCADOR = ' + '''' + '*' + '''') ;
+
+
+      //verifica todos os Conhecimentos mesmo os q nao foram emitidos
+      if FFaturamento.chkConhecimentos.Checked then
+          Q_CONH.SQL.add(' AND D.SEL = ''*''  and   D.ORD_STATUS  = ' + '''' + 'E' + '''');
+
+      //miguel fat_os
+      //Q_CONH.SQL.add('and   C.FAT_ID = null');
+      Q_CONH.SQL.add('and   D.OS_ID = C.OS_ID    AND D.FAT_ID IS NULL')  ;
+      Q_CONH.SQL.add('and   E.CLIN_ID = C.CLIN_ID  ')  ;
+      Q_CONH.SQL.add('group by  D.CLIN_ID, D.ORD_VLR_OUTROS, D.ORD_Id,D.ORD_CONH,D.ORD_DATA,D.ORD_NOTAS,D.ORD_QTDE_UV,D.ORD_PESO_TOTAL,') ;
+      Q_CONH.SQL.add('D.ORD_TOTALPREST,D.ORD_PLACA,D.ORD_VLR_FRETE,D.ORD_VLR_ICMS,D.ORD_VALORTOTAL,E.CLIN_RAZA ,D.MANI_ID') ;
+      Q_CONH.SQL.add(' order  by  D.ORD_CONH') ;
+
+
+      Q_CONH.open ;
+
+  end ;
+
+
+end;
+
+procedure TFRelConhFAT.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Q_CONH.close ;
+  action := cafree ;
+end;
+
+procedure TFRelConhFAT.QRBand2AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+   TOTALNFstr := '' ;
+   TOTALNFstr := formatfloat('0.00',Q_CONHORD_VALORTOTAL.asfloat)  ;
+   TOTALNF := (TOTALNF + STRTOFLOAT(TOTALNFstr)) ;
+
+
+   TOTALFRETEstr := '' ;
+   TOTALFRETEstr := formatfloat('0.00',Q_CONHORD_VLR_FRETE.asfloat)  ;
+   TOTALFRETE := (TOTALFRETE + STRTOFLOAT(TOTALFRETEstr)) ;
+
+
+   TOTALICMSstr := '' ;
+   TOTALICMSstr := formatfloat('0.00',Q_CONHORD_VLR_ICMS.asfloat)  ;
+   TOTALICMS := (TOTALICMS + STRTOFLOAT(TOTALICMSstr)) ;
+
+
+   TOTALGERALstr := '' ;
+   TOTALGERALstr := formatfloat('0.00',Q_CONHORD_TOTALPREST.asfloat)  ;
+   TOTALGERAL := (TOTALGERAL + STRTOFLOAT(TOTALGERALstr)) ;
+
+   TOTALPESOstr := '' ;
+   TOTALPESOstr := formatfloat('0.0000',Q_CONHORD_PESO_TOTAL.asfloat)  ;
+   TOTALPESO := (TOTALPESO + STRTOFLOAT(TOTALPESOstr)) ;
+
+   TOTALQTDEstr := '' ;
+   TOTALQTDEstr := formatfloat('0.000',Q_CONHORD_QTDE_UV.asfloat)  ;
+   TOTALQTDE := (TOTALQTDE + STRTOFLOAT(TOTALQTDEstr)) ;
+
+
+   TOTALOUTROSstr := '' ;
+   TOTALOUTROSstr := formatfloat('0.000',(Q_CONHORD_VLR_OUTROS.asfloat - Q_CONHORD_VLR_ICMS.asfloat - Q_CONHORD_TXENTREGA.AsFloat - Q_CONHORD_SEGURO.AsFloat))  ;
+   TOTALOUTROS := (TOTALOUTROS + STRTOFLOAT(TOTALOUTROSstr)) ;
+
+
+   TOTALSEGURO := TOTALSEGURO + Q_CONHORD_SEGURO.AsFloat;
+   TOTALTXENTREGA := TOTALTXENTREGA + Q_CONHORD_TXENTREGA.AsFloat;
+
+
+
+end;
+
+procedure TFRelConhFAT.QRBand3BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+    QRLabel29.caption := formatfloat('###,###,##0.00',TOTALNF)    ;
+
+
+    QRLabel20.caption := formatfloat('###,###,##0.00',GeraDesconto( TOTALFRETE))    ;
+    QRLabel21.caption := formatfloat('###,###,##0.00',GeraDesconto(TOTALICMS) )   ;
+    gtQRLabel1.caption := formatfloat('###,###,##0.00',GeraDesconto(TOTALGERAL))    ;
+    gtQRLabel6.caption := formatfloat('###,###,##0.00',GeraDesconto(TOTALOUTROS))    ;
+
+
+    gtQRLabel4.caption := formatfloat('###,###,##0.000',TOTALQTDE)    ;
+    gtQRLabel3.caption := formatfloat('###,###,##0.0000',TOTALPESO)    ;
+
+    gtQRLabel10.Caption := formatfloat('###,###,##0.00',TOTALTXENTREGA)    ;
+    gtQRLabel11.Caption := formatfloat('###,###,##0.00',TOTALSEGURO)    ;
+
+end;
+
+procedure TFRelConhFAT.QRBand3AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+    TOTALNF := 0.00     ;
+    TOTALFRETE := 0.00 ;
+    TOTALICMS := 0.00 ;
+    TOTALGERAL := 0.00 ;
+
+    TOTALQTDE := 0.00 ;
+    TOTALPESO := 0.00 ;
+    TOTALOUTROS := 0.00 ;
+
+    TOTALSEGURO := 0.00;
+    TOTALTXENTREGA := 0.00;
+
+ end    ;
+
+procedure TFRelConhFAT.gtQRDBText1Print(sender: TObject;
+  var Value: String);
+begin
+
+   Q_AUX1.close ;
+   Q_AUX1.Sql.Clear ;
+   Q_AUX1.Sql.Add('select NFI_LOAD from nf (NOLOCK)') ;
+   Q_AUX1.Sql.Add('where ORD_ID = ' + Q_CONHORD_Id.asstring ) ;
+   Q_AUX1.open ;
+
+   value :=  Q_AUX1.fieldbyname('NFI_LOAD').asstring ;
+
+end;
+
+procedure TFRelConhFAT.gtQRDBText2Print(sender: TObject;
+  var Value: String);
+begin
+  value := formatfloat('###,###,##0.00',GeraDesconto((Q_CONHORD_VLR_OUTROS.asfloat - Q_CONHORD_VLR_ICMS.asfloat - Q_CONHORD_TXENTREGA.AsFloat - Q_CONHORD_SEGURO.AsFloat))) ;
+end;
+
+function TFRelConhFAT.GeraDesconto(valor: Double): Double;
+var novovalor, desconto : Double;
+begin
+        desconto := 0;
+        novovalor := valor;
+
+             qrDesconto.CLOSE;
+             qrDesconto.Params[0].AsInteger := Q_CONHclin_id.Value;
+             qrDesconto.Open;
+             if qrDescontoDESCONTO.AsString <> '' then
+             begin
+                 if qrDescontoDESCONTO.Value > 0 then
+                 begin
+                      desconto := qrDescontoDESCONTO.Value;
+                      novovalor := valor - ((valor * desconto) / 100);
+                 end
+             end;
+
+        if novovalor < 0 then novovalor := 0;
+
+        Result := novovalor;
+end;
+
+procedure TFRelConhFAT.QRDBText5Print(sender: TObject; var Value: String);
+begin
+  Value := FormatFloat('###,##0.00', GeraDesconto(Q_CONHORD_VLR_FRETE.Value))  ;
+end;
+
+procedure TFRelConhFAT.QRDBText8Print(sender: TObject; var Value: String);
+begin
+    Value := FormatFloat('###,##0.00', GeraDesconto(Q_CONHORD_VLR_ICMS.Value))  ;
+end;
+
+procedure TFRelConhFAT.QRDBText6Print(sender: TObject; var Value: String);
+begin
+    Value := FormatFloat('###,##0.00', GeraDesconto(Q_CONHORD_TOTALPREST.Value))  ;
+end;
+
+end.

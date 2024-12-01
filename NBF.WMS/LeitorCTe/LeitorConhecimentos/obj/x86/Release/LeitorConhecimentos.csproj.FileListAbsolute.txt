@@ -1,0 +1,17 @@
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\bin\Release\LeitorConhecimentos.exe
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\bin\Release\LeitorConhecimentos.pdb
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.Form1.resources
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.frmConsula.resources
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.Properties.Resources.resources
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.csproj.GenerateResource.Cache
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.exe
+C:\Sources\NBF D7\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.pdb
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.exe
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.pdb
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\bin\Release\LeitorConhecimentos.exe
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\bin\Release\LeitorConhecimentos.pdb
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.csprojResolveAssemblyReference.cache
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.Form1.resources
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.frmConsula.resources
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.Properties.Resources.resources
+C:\Users\migue\Google Drive\Sources\NBF Dev\LeitorCTe\LeitorConhecimentos\obj\x86\Release\LeitorConhecimentos.csproj.GenerateResource.Cache

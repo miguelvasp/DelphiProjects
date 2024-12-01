@@ -1,0 +1,494 @@
+object frmEtiquetaManifesto: TfrmEtiquetaManifesto
+  Left = 273
+  Top = 143
+  BorderStyle = bsSingle
+  Caption = 'Impressão de Etiquetas'
+  ClientHeight = 499
+  ClientWidth = 914
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  Scaled = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Label1: TLabel
+    Left = 16
+    Top = 24
+    Width = 191
+    Height = 14
+    Caption = 'Informe a quantidade de etiquetas'
+  end
+  object Quickrep1: TQuickRep
+    Left = 54
+    Top = 129
+    Width = 567
+    Height = 283
+    Frame.Color = clBlack
+    Frame.DrawTop = True
+    Frame.DrawBottom = False
+    Frame.DrawLeft = False
+    Frame.DrawRight = False
+    DataSet = qrRel
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Arial'
+    Font.Style = []
+    Functions.Strings = (
+      'PAGENUMBER'
+      'COLUMNNUMBER'
+      'REPORTTITLE')
+    Functions.DATA = (
+      '0'
+      '0'
+      #39#39)
+    Options = [FirstPageHeader, LastPageFooter]
+    Page.Columns = 1
+    Page.Orientation = poLandscape
+    Page.PaperSize = Custom
+    Page.Values = (
+      0
+      750
+      0
+      1500
+      0
+      300
+      0)
+    PrinterSettings.Copies = 1
+    PrinterSettings.Duplex = False
+    PrinterSettings.FirstPage = 0
+    PrinterSettings.LastPage = 0
+    PrinterSettings.OutputBin = Auto
+    PrintIfEmpty = True
+    SnapToGrid = True
+    Units = MM
+    Zoom = 100
+    object Barcode1: TBarcode
+      Left = 212
+      Top = 168
+      Width = 73
+      Height = 57
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      AutoWidth = True
+      BarColor = clBlack
+      BackgroundColor = clWhite
+      BarcodeType = btInterleaved2of5
+      Digits = '0000'
+      Version = 'Registered 1.1'
+      Author.Name = 'Leonardo Augusto Rezende Santos'
+      Author.Phone = '(034)236-8620'
+      Author.Email = 'leonardo@nacionalnet.com.br; leo@triang.com.br'
+      BarCaption = True
+      RescaleEAN = True
+    end
+    object DetailBand1: TQRBand
+      Left = 0
+      Top = 0
+      Width = 454
+      Height = 567
+      Frame.Color = clBlack
+      Frame.DrawTop = False
+      Frame.DrawBottom = False
+      Frame.DrawLeft = False
+      Frame.DrawRight = False
+      AlignToBottom = False
+      Color = clWhite
+      ForceNewColumn = False
+      ForceNewPage = True
+      Size.Values = (
+        1500.1875
+        1201.20833333333)
+      BandType = rbDetail
+      object QRDBText1: TQRDBText
+        Left = 16
+        Top = 48
+        Width = 216
+        Height = 57
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          150.8125
+          42.3333333333333
+          127
+          571.5)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = qrRel
+        DataField = 'NUMERO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -48
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 36
+      end
+      object QRLabel1: TQRLabel
+        Left = 16
+        Top = 16
+        Width = 110
+        Height = 23
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          60.8541666666667
+          42.3333333333333
+          42.3333333333333
+          291.041666666667)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'Nota Fiscal:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 14
+      end
+      object QRLabel2: TQRLabel
+        Left = 16
+        Top = 120
+        Width = 83
+        Height = 23
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          60.8541666666667
+          42.3333333333333
+          317.5
+          219.604166666667)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'Produto:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 14
+      end
+      object QRDBText2: TQRDBText
+        Left = 16
+        Top = 144
+        Width = 172
+        Height = 42
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          111.125
+          42.3333333333333
+          381
+          455.083333333333)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = qrRel
+        DataField = 'PRODUTO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -35
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 26
+      end
+      object QRLabel3: TQRLabel
+        Left = 16
+        Top = 208
+        Width = 72
+        Height = 23
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          60.8541666666667
+          42.3333333333333
+          550.333333333333
+          190.5)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'Cliente:'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 14
+      end
+      object QRDBText3: TQRDBText
+        Left = 16
+        Top = 235
+        Width = 84
+        Height = 45
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          119.0625
+          42.3333333333333
+          621.770833333333
+          222.25)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Color = clWhite
+        DataSet = qrRel
+        DataField = 'CLIENTE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 14
+      end
+    end
+  end
+  object wwDBGrid1: TwwDBGrid
+    Left = 672
+    Top = 64
+    Width = 889
+    Height = 425
+    Selected.Strings = (
+      'NFI_NUMERO'#9'10'#9'Nota'
+      'CLIN_RAZA'#9'50'#9'Emitente'
+      'NFI_DEST_RAZA'#9'30'#9'Destinatário'
+      'PRO_COD'#9'16'#9'Produto'
+      'INF_QTDE'#9'10'#9'Quantidade')
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 0
+    ShowHorzScrollBar = True
+    DataSource = DataSource1
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
+    TabOrder = 0
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+    IndicatorColor = icBlack
+  end
+  object Edit1: TEdit
+    Left = 216
+    Top = 16
+    Width = 121
+    Height = 22
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 352
+    Top = 14
+    Width = 75
+    Height = 25
+    Caption = 'Visualizar'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object qrBusca: TADOQuery
+    Connection = FMenu.ADOConnection
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'mani_id'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT'
+      #9'A.NFI_NUMERO, A.NFI_CODI, I.PRO_ID,'
+      #9'A.NFI_DEST_RAZA,'
+      #9'I.PRO_COD,'
+      #9'I.INF_QTDE,'
+      #9'P.QTDE_UVUE,'
+      #9'c.CLIN_RAZA'
+      'FROM NF A INNER JOIN NF_ITENS I'
+      'ON A.NFI_CODI = I.NFI_CODI INNER JOIN PRODUTO P'
+      'ON I.PRO_ID = P.PRO_ID inner join CLIENTENBF C'
+      'on a.NFI_EMIT_CLI = c.CLIN_ID'
+      'WHERE MANI_ID = :mani_id'
+      'ORDER BY A.NFI_NUMERO, I.PRO_COD')
+    Left = 472
+    Top = 64
+    object qrBuscaNFI_NUMERO: TStringField
+      DisplayLabel = 'Nota'
+      DisplayWidth = 10
+      FieldName = 'NFI_NUMERO'
+      Size = 10
+    end
+    object qrBuscaCLIN_RAZA: TStringField
+      DisplayLabel = 'Emitente'
+      DisplayWidth = 50
+      FieldName = 'CLIN_RAZA'
+      Size = 50
+    end
+    object qrBuscaNFI_DEST_RAZA: TStringField
+      DisplayLabel = 'Destinatário'
+      DisplayWidth = 30
+      FieldName = 'NFI_DEST_RAZA'
+      Size = 50
+    end
+    object qrBuscaPRO_COD: TStringField
+      DisplayLabel = 'Produto'
+      DisplayWidth = 16
+      FieldName = 'PRO_COD'
+      Size = 16
+    end
+    object qrBuscaINF_QTDE: TFloatField
+      DisplayLabel = 'Quantidade'
+      DisplayWidth = 10
+      FieldName = 'INF_QTDE'
+    end
+    object qrBuscaQTDE_UVUE: TFloatField
+      DisplayWidth = 10
+      FieldName = 'QTDE_UVUE'
+      Visible = False
+    end
+    object qrBuscaNFI_CODI: TAutoIncField
+      FieldName = 'NFI_CODI'
+      ReadOnly = True
+      Visible = False
+    end
+    object qrBuscaPRO_ID: TIntegerField
+      FieldName = 'PRO_ID'
+      Visible = False
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = qrBusca
+    OnDataChange = DataSource1DataChange
+    Left = 512
+    Top = 64
+  end
+  object qrExec: TADOQuery
+    Connection = FMenu.ADOConnection
+    Parameters = <
+      item
+        Name = 'NFI_CODI'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'PRO_ID'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'QTDE_E'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'CH'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'Exec GERA_ETIQUETA_MANIFESTO'
+      #9':NFI_CODI,'
+      #9':PRO_ID,'
+      #9':QTDE_E,'
+      #9':CH')
+    Left = 368
+    Top = 56
+  end
+  object qrRel: TADOQuery
+    Connection = FMenu.ADOConnection
+    Parameters = <
+      item
+        Name = 'ch'
+        Attributes = [paSigned, paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Size = 4
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT * FROM ETIQUETA_MANIFESTO'
+      'where ch = :ch')
+    Left = 318
+    Top = 233
+    object qrRelNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Size = 50
+    end
+    object qrRelCLIENTE: TStringField
+      FieldName = 'CLIENTE'
+      Size = 150
+    end
+    object qrRelPRODUTO: TStringField
+      FieldName = 'PRODUTO'
+      Size = 50
+    end
+    object qrRelCH: TIntegerField
+      FieldName = 'CH'
+    end
+  end
+end

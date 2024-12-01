@@ -1,0 +1,985 @@
+unit UfrmConciliacaoFrete;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Mask, wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, DBClient,
+  Provider, Db, ADODB, ExtCtrls, RzPanel, JvComponent, JvDBGridExport,
+  Grids, DBGrids, JvExDBGrids, JvDBGrid, RzButton, RzTabs, Gauges, ComObj,
+  DBCtrls, Wwdbigrd, Wwdbgrid;
+
+type
+  TfrmConciliacaoFrete = class(TForm)
+    RzPanel1: TRzPanel;
+    qrTrans: TADOQuery;
+    qrTransTRANS_ID: TAutoIncField;
+    qrTransTRANS_FANTASIA: TStringField;
+    dspTrans: TDataSetProvider;
+    cdsTrans: TClientDataSet;
+    cdsTransTRANS_FANTASIA: TStringField;
+    cdsTransTRANS_ID: TAutoIncField;
+    Label3: TLabel;
+    cboTrans: TwwDBLookupCombo;
+    cboMes: TwwDBComboBox;
+    edtAno: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    RzBitBtn1: TRzBitBtn;
+    RzBitBtn2: TRzBitBtn;
+    dsConcilia: TDataSource;
+    SaveDialog1: TSaveDialog;
+    cdsConcilia: TClientDataSet;
+    cdsConciliaTransportadora: TStringField;
+    RzPageControl1: TRzPageControl;
+    TabSheet1: TRzTabSheet;
+    TabSheet2: TRzTabSheet;
+    JvDBGrid1: TJvDBGrid;
+    JvDBGrid2: TJvDBGrid;
+    cdsConciliaPIS: TStringField;
+    cdsConciliaRG: TStringField;
+    cdsConciliaCNPJ: TStringField;
+    cdsConciliaFRETE_1: TFloatField;
+    cdsConciliaFRETE_2: TFloatField;
+    cdsConciliaCOMBUSTIVEL_1: TFloatField;
+    cdsConciliaCOMBUSTIVEL_2: TFloatField;
+    cdsConciliaEMPRESTIMO1: TFloatField;
+    cdsConciliaEMPRESTIMO2: TFloatField;
+    cdsConciliaNEXTE1: TFloatField;
+    cdsConciliaNEXTEL2: TFloatField;
+    cdsConciliaNOTA1: TFloatField;
+    cdsConciliaNOTA2: TFloatField;
+    cdsConciliaFALTA1: TFloatField;
+    cdsConciliaFALTA2: TFloatField;
+    cdsConciliaAVARIA1: TFloatField;
+    cdsConciliaAVARIA2: TFloatField;
+    cdsConciliaPAMCARY1: TFloatField;
+    cdsConciliaPAMCARY2: TFloatField;
+    cdsConciliaOUTROSA1: TFloatField;
+    cdsConciliaOUTROSA2: TFloatField;
+    cdsConciliaADIANTAMENTO1: TFloatField;
+    cdsConciliaADIANTAMENTO2: TFloatField;
+    qrTransportadoras: TADOQuery;
+    qrTransportadorasTRANS_ID: TIntegerField;
+    qrTransportadorasTRANS_RAZA: TStringField;
+    dspTransportadoras: TDataSetProvider;
+    cdsTransportadoras: TClientDataSet;
+    cdsTransportadorasTRANS_ID: TIntegerField;
+    cdsTransportadorasTRANS_RAZA: TStringField;
+    qrFrete: TADOQuery;
+    qrFreteFRETE: TFloatField;
+    qrDespesas: TADOQuery;
+    qrDespesasTIPO: TIntegerField;
+    qrDespesasDESPESA: TFloatField;
+    pnlGauge: TPanel;
+    Gauge1: TGauge;
+    Label4: TLabel;
+    cdsConciliaOUTROS_T: TFloatField;
+    cdsConciliaLIQUIDO: TFloatField;
+    cdsConciliaFRETE_T: TFloatField;
+    cdsConciliaCOMBUST_T: TFloatField;
+    cdsConciliaBASE_INSS: TFloatField;
+    cdsConciliaINSS: TFloatField;
+    cdsConciliaBASE_IRRF: TFloatField;
+    cdsConciliaIRRF: TFloatField;
+    cdsConciliaSEST: TFloatField;
+    cdsConciliaEMPREST_T: TFloatField;
+    cdsConciliaADIANT_T: TFloatField;
+    cdsConciliah: TFloatField;
+    qrTransportadorasTRANS_CNPJ: TStringField;
+    qrTransportadorasTRANS_INSCRICAO: TStringField;
+    cdsTransportadorasTRANS_CNPJ: TStringField;
+    cdsTransportadorasTRANS_INSCRICAO: TStringField;
+    cboMess: TComboBox;
+    Label6: TLabel;
+    cboAno: TComboBox;
+    Label7: TLabel;
+    Label5: TLabel;
+    RzBitBtn3: TRzBitBtn;
+    RzPageControl2: TRzPageControl;
+    TabSheet3: TRzTabSheet;
+    TabSheet4: TRzTabSheet;
+    wwDBGrid1: TwwDBGrid;
+    qrBusca: TADOQuery;
+    qrBuscaid: TAutoIncField;
+    qrBuscaTRANS_ID: TIntegerField;
+    qrBuscaFRETE_1: TFloatField;
+    qrBuscaFRETE_2: TFloatField;
+    qrBuscaCOMBUSTIVEL_1: TFloatField;
+    qrBuscaCOMBUSTIVEL_2: TFloatField;
+    qrBuscaEMPRESTIMO_1: TFloatField;
+    qrBuscaEMPRESTIMO_2: TFloatField;
+    qrBuscaNEXTEL_1: TFloatField;
+    qrBuscaNEXTEL_2: TFloatField;
+    qrBuscaNOTA_1: TFloatField;
+    qrBuscaNOTA_2: TFloatField;
+    qrBuscaFALTAPROD_1: TFloatField;
+    qrBuscaFALTAPROD_2: TFloatField;
+    qrBuscaAVARIA_1: TFloatField;
+    qrBuscaAVARIA_2: TFloatField;
+    qrBuscaPAMCARY_1: TFloatField;
+    qrBuscaPAMCARY_2: TFloatField;
+    qrBuscaOUTROS_1: TFloatField;
+    qrBuscaOUTROS_2: TFloatField;
+    qrBuscaADIANTAMENTO_1: TFloatField;
+    qrBuscaADIANTAMENTO_2: TFloatField;
+    qrBuscaIRRF_1: TFloatField;
+    qrBuscaIRRF_2: TFloatField;
+    qrBuscaSEST_1: TFloatField;
+    qrBuscaSEST_2: TFloatField;
+    qrBuscaINSS_1: TFloatField;
+    qrBuscaINSS_2: TFloatField;
+    qrBuscaLIQUIDO_1: TFloatField;
+    qrBuscaLIQUIDO_2: TFloatField;
+    qrBuscaTOTAL_LIQUIDO: TFloatField;
+    qrBuscaTOTAL_IRRF: TFloatField;
+    qrBuscaTOTAL_SEST: TFloatField;
+    qrBuscaTOTAL_INSS: TFloatField;
+    qrBuscaBASE_INSS_1: TFloatField;
+    qrBuscaBASE_INSS_2: TFloatField;
+    qrBuscaBASE_IRRF_1: TFloatField;
+    qrBuscaBASE_IRRF_2: TFloatField;
+    qrBuscaCH: TIntegerField;
+    qrBuscaDEFINITIVO: TStringField;
+    qrBuscaTRANSPORTADORA: TStringField;
+    DataSource1: TDataSource;
+    Label8: TLabel;
+    DBEdit1: TDBEdit;
+    RzGroupBox1: TRzGroupBox;
+    RzGroupBox2: TRzGroupBox;
+    Label9: TLabel;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    Label11: TLabel;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    Label13: TLabel;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    Label15: TLabel;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    Label17: TLabel;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    Label19: TLabel;
+    DBEdit12: TDBEdit;
+    DBEdit13: TDBEdit;
+    Label21: TLabel;
+    DBEdit14: TDBEdit;
+    DBEdit15: TDBEdit;
+    Label23: TLabel;
+    DBEdit16: TDBEdit;
+    DBEdit17: TDBEdit;
+    Label25: TLabel;
+    DBEdit18: TDBEdit;
+    DBEdit19: TDBEdit;
+    Label27: TLabel;
+    DBEdit20: TDBEdit;
+    DBEdit21: TDBEdit;
+    Label29: TLabel;
+    DBEdit22: TDBEdit;
+    DBEdit23: TDBEdit;
+    Label31: TLabel;
+    DBEdit24: TDBEdit;
+    DBEdit25: TDBEdit;
+    Label33: TLabel;
+    DBEdit26: TDBEdit;
+    DBEdit27: TDBEdit;
+    Label35: TLabel;
+    DBEdit28: TDBEdit;
+    DBEdit29: TDBEdit;
+    Label37: TLabel;
+    DBEdit30: TDBEdit;
+    DBEdit31: TDBEdit;
+    Label39: TLabel;
+    DBEdit32: TDBEdit;
+    DBEdit33: TDBEdit;
+    Label10: TLabel;
+    Label12: TLabel;
+    Label14: TLabel;
+    Label16: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    Label22: TLabel;
+    Label24: TLabel;
+    Label26: TLabel;
+    Label28: TLabel;
+    Label30: TLabel;
+    Label32: TLabel;
+    Label34: TLabel;
+    Label36: TLabel;
+    Label38: TLabel;
+    Label40: TLabel;
+    qrProcedure: TADOQuery;
+    RzGroupBox3: TRzGroupBox;
+    Label41: TLabel;
+    DBEdit34: TDBEdit;
+    Label42: TLabel;
+    DBEdit35: TDBEdit;
+    Label43: TLabel;
+    DBEdit36: TDBEdit;
+    Label44: TLabel;
+    DBEdit37: TDBEdit;
+    RzBitBtn4: TRzBitBtn;
+    dsExcel: TDataSource;
+    edtQuinzena1: TEdit;
+    edtQuinzena2: TEdit;
+    pnlResumo: TPanel;
+    RzBitBtn5: TRzBitBtn;
+    RadioGroup1: TRadioGroup;
+    Label45: TLabel;
+    DBText1: TDBText;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    memo1: TMemo;
+    qrParametro: TADOQuery;
+    qrParametroRodapeFrete: TStringField;
+    qrBuscaSEL: TStringField;
+    CheckBox1: TCheckBox;
+    qrBuscaPIS: TStringField;
+    qrBuscaRG: TStringField;
+    qrBuscaCPF: TStringField;
+    procedure FormCreate(Sender: TObject);
+    procedure RzBitBtn2Click(Sender: TObject);
+    procedure RzBitBtn1Click(Sender: TObject);
+    procedure cdsConciliaCalcFields(DataSet: TDataSet);
+    procedure RzBitBtn3Click(Sender: TObject);
+    procedure RzBitBtn4Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure RzBitBtn5Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Procedure Conciliar;
+  end;
+
+var
+  frmConciliacaoFrete: TfrmConciliacaoFrete;
+  objExcel,Sheet: OleVariant;
+implementation
+
+uses UMenu, ufrmRPA, ufrmRelResumoFrete;
+
+{$R *.DFM}
+
+procedure TfrmConciliacaoFrete.FormCreate(Sender: TObject);
+begin
+  edtAno.Text := FormatDateTime('yyyy', date);
+  cdsTrans.Open;
+  qrParametro.Open;
+
+  memo1.Lines.Text := qrParametroRodapeFrete.AsString;
+
+end;
+
+procedure TfrmConciliacaoFrete.RzBitBtn2Click(Sender: TObject);
+Const
+  // SheetType
+  XlChart = -4109;
+  XlWorksheet = -4167;
+  // WBATemplate
+  XlWBATWorksheet = -4167;
+  XlWBATChart = -4109;
+  // Page Setup
+  XlPortrait = 1;
+  XlLandscape = 2;
+  XlPaperA4 = 9;
+  // Format Cells
+  XlBottom = -4107;
+  XlLeft = -4131;
+  XlRight = -4152;
+  XlTop = -4160;
+  // Text Alignment
+  XlHAlignCenter = -4108;
+  XlVAlignCenter = -4108;
+  // Cell Borders
+  XlThick = 4;
+  XlThin = 2;
+Var
+
+  linha : Integer;
+  total : Integer;
+  celula :string;
+  Periodos : Integer;
+begin
+
+
+    SaveDialog1.Execute;
+
+    if SaveDialog1.FileName = '' then
+        Abort;
+
+    objExcel := CreateOleObject('Excel.Application');
+    objExcel.Visible := True;
+    objExcel.Workbooks.Add;
+    objExcel.Workbooks[1].Sheets.Add;
+    objExcel.Workbooks[1].WorkSheets[1].Name := 'Pagamento de Frete';
+    Sheet := objExcel.Workbooks[1].WorkSheets['Pagamento de Frete'];
+
+    linha := 1;
+
+    Sheet.cells[linha,1] := 'N°';
+    Sheet.cells[linha,2] := 'Transportadora';
+    Sheet.cells[linha,3] := 'PIS';
+    Sheet.cells[linha,4] := 'RG';
+    Sheet.cells[linha,5] := 'CPF';
+    Sheet.cells[linha,6] := 'Frete 1°Q';
+    Sheet.cells[linha,7] := 'Frete 2°Q';
+    Sheet.cells[linha,8] := 'Combustível 1°Q';
+    Sheet.cells[linha,9] := 'Combustível 2°Q';
+    Sheet.cells[linha,10] := 'Empréstimo 1°Q';
+    Sheet.cells[linha,11] := 'Empréstimo 2°Q';
+    Sheet.cells[linha,12] := 'Nextel 1°Q';
+    Sheet.cells[linha,13] := 'Nextel 2°Q';
+    Sheet.cells[linha,14] := 'Notas 1°Q';
+    Sheet.cells[linha,15] := 'Notas 2°Q';
+    Sheet.cells[linha,16] := 'Falta Prod. 1°Q';
+    Sheet.cells[linha,17] := 'Falta Prod. 2°Q';
+    Sheet.cells[linha,18] := 'Avaria 1°Q';
+    Sheet.cells[linha,19] := 'Avaria 2°Q';
+    Sheet.cells[linha,20] := 'Pamcary 1°Q';
+    Sheet.cells[linha,21] := 'Pamcary 2°Q';
+    Sheet.cells[linha,22] := 'Outros 1°Q';
+    Sheet.cells[linha,23] := 'Outros 2°Q';
+    Sheet.cells[linha,24] := 'Adiant. 1°Q';
+    Sheet.cells[linha,25] := 'Adiant. 2°Q';
+    Sheet.cells[linha,26] := 'Frete Total';
+    Sheet.cells[linha,27] := 'Comb. Total';
+    Sheet.cells[linha,28] := 'Outros Total';
+    Sheet.cells[linha,29] := 'Líquido';
+    Sheet.cells[linha,30] := 'Base INSS';
+    Sheet.cells[linha,31] := 'INSS';
+    Sheet.cells[linha,32] := 'Base IRRF';
+    Sheet.cells[linha,33] := 'IRRF';
+    Sheet.cells[linha,34] := 'Sest/Senat';
+    Sheet.cells[linha,35] := 'Empréstimo';
+    Sheet.cells[linha,36] := 'Adiant.';
+    Sheet.cells[linha,37] := 'Líquidos';
+
+    total := cdsConcilia.RecordCount;
+
+    Sheet.Range['A1','AL' + IntToStr(total+1)].Font.size := 8;
+    Sheet.Range['A1','AL1'].Interior.Color := clsilver;
+    Sheet.Range['A1'].ColumnWidth := 9;
+    Sheet.Range['B1'].ColumnWidth := 26;
+    Sheet.Range['C1'].ColumnWidth := 14;
+    Sheet.Range['D1'].ColumnWidth := 14;
+    Sheet.Range['E1'].ColumnWidth := 14;
+    Sheet.Range['F1','AL' + IntToStr(total)].ColumnWidth := 12;
+    Sheet.cells[2,1] := 'Líquidos';
+
+
+    cdsConcilia.First;
+    WHILE NOT cdsConcilia.Eof do begin
+            Inc(linha);
+            Sheet.cells[linha,1] := linha - 1;
+            Sheet.cells[linha,2] := cdsConciliaTransportadora.Value;
+            Sheet.cells[linha,3].NumberFormat := '@';
+            Sheet.cells[linha,3] := cdsConciliaPIS.Value;
+            Sheet.cells[linha,4].NumberFormat := '@';
+            Sheet.cells[linha,4] := cdsConciliaRG.Value;
+            Sheet.cells[linha,5].NumberFormat := '@';
+            Sheet.cells[linha,5] := cdsConciliaCNPJ.Value;
+            Sheet.cells[linha,6] := cdsConciliaFRETE_1.Value;
+            Sheet.cells[linha,7] := cdsConciliaFRETE_2.Value;
+            Sheet.cells[linha,8] := cdsConciliaCOMBUSTIVEL_1.Value;
+            Sheet.cells[linha,9] := cdsConciliaCOMBUSTIVEL_2.Value;
+            Sheet.cells[linha,10] := cdsConciliaEMPRESTIMO1.Value;
+            Sheet.cells[linha,11] := cdsConciliaEMPRESTIMO2.Value;
+            Sheet.cells[linha,12] := cdsConciliaNEXTE1.Value;
+            Sheet.cells[linha,13] := cdsConciliaNEXTEL2.Value;
+            Sheet.cells[linha,14] := cdsConciliaNOTA1.Value;
+            Sheet.cells[linha,15] := cdsConciliaNOTA2.Value;
+            Sheet.cells[linha,16] := cdsConciliaFALTA1.Value;
+            Sheet.cells[linha,17] := cdsConciliaFALTA2.Value;
+            Sheet.cells[linha,18] := cdsConciliaAVARIA1.Value;
+            Sheet.cells[linha,19] := cdsConciliaAVARIA2.Value  ;
+            Sheet.cells[linha,20] := cdsConciliaPAMCARY1.Value;
+            Sheet.cells[linha,21] := cdsConciliaPAMCARY2.Value;
+            Sheet.cells[linha,22] := cdsConciliaOUTROSA1.Value;
+            Sheet.cells[linha,23] := cdsConciliaOUTROSA2.Value;
+            Sheet.cells[linha,24] := cdsConciliaADIANTAMENTO1.Value;
+            Sheet.cells[linha,25] := cdsConciliaADIANTAMENTO2.Value;
+            Sheet.cells[linha,26] := cdsConciliaFRETE_T.Value;
+            Sheet.cells[linha,27] := cdsConciliaCOMBUST_T.Value;
+            Sheet.cells[linha,28] := cdsConciliaOUTROS_T.Value;
+            Sheet.cells[linha,29] := cdsConciliaLIQUIDO.Value;
+            Sheet.cells[linha,30] := cdsConciliaBASE_INSS.Value;
+            Sheet.cells[linha,31] := cdsConciliaINSS.Value;
+            Sheet.cells[linha,32] := cdsConciliaBASE_IRRF.Value;
+            Sheet.cells[linha,33] := cdsConciliaIRRF.Value;
+            Sheet.cells[linha,34] := cdsConciliaSEST.Value;
+            Sheet.cells[linha,35] := cdsConciliaEMPREST_T.Value;
+            Sheet.cells[linha,36] := cdsConciliaADIANT_T.Value;
+            Sheet.cells[linha,37] := 0;
+            cdsConcilia.Next;
+            Application.ProcessMessages;
+    end;// end while
+
+
+end;
+
+procedure TfrmConciliacaoFrete.RzBitBtn1Click(Sender: TObject);
+begin
+   { if cboMes.Text = '' then begin
+       MessageBox(Self.Handle, 'Informe o mês de conciliação', 'Erro', MB_OK + MB_ICONERROR)  ;
+       Abort;
+    end;}
+    RzBitBtn3.Enabled := True;
+    RzBitBtn4.Enabled := True;
+    RzBitBtn5.Enabled := True;
+    Conciliar;
+    
+end;
+
+procedure TfrmConciliacaoFrete.Conciliar;
+var
+        D1, D2, DM : TDateTime;
+        DiaFinal : Integer;
+        Quinzena_1, Quinzena_2 : string;
+        mes : Integer;
+        TRANSPORTADOR : string;
+begin
+
+   if cboMess.Text = '' then begin
+       ShowMessage('Informe o mês de referência');
+       Abort;
+   end;
+
+   if cboAno.Text = '' then begin
+       ShowMessage('Informe o ano de referência');
+       Abort;
+   end;
+
+   IF cboTrans.Text <> '' then
+        TRANSPORTADOR := cboTrans.LookupValue
+   else
+        TRANSPORTADOR := '0';
+
+
+   mes := cboMess.ItemIndex;
+
+   Quinzena_1 := '15/' + FormatFloat('00', mes - 1) + '/' + cboAno.Text; //procura o dia 15 do mes anterior
+   Quinzena_2 := '01/' + FormatFloat('00', mes) + '/' + cboAno.Text;
+
+   edtQuinzena1.Text := Quinzena_1;
+   edtQuinzena2.Text := Quinzena_2;
+
+
+   try
+       D1 := StrToDate(Quinzena_1);
+       D2 := StrToDate('15/' + FormatFloat('00', mes) + '/' + cboAno.Text)
+   except
+
+   end;
+
+
+
+
+
+
+   //executa a consulta no banco de dados
+    with qrProcedure do begin
+        close;
+        sql.Clear;
+        sql.Add('EXEC STP_FRETE_CONCILIACAO ' + QuotedStr(FormatDateTime('YYYYMMDD', D1)) +    ', '   +  QuotedStr(FormatDateTime('YYYYMMDD', D2))   +    ',' + FMenu.SqlUsuariosCH.AsString + ', ' + TRANSPORTADOR);
+        ExecSQL;
+    end;
+
+    qrBusca.Close;
+    qrBusca.Parameters[0].Value := FMenu.SqlUsuariosCH.AsInteger;
+    qrBusca.Open;
+
+
+    Abort;
+
+
+       //limpa o dataset
+   cdsConcilia.EmptyDataSet;
+   
+
+   //buscar as transportadoras
+   cdsTransportadoras.Close;
+   qrTransportadoras.CLOSE;
+   qrTransportadoras.SQL.Clear;
+   qrTransportadoras.SQL.Add(
+   ' SELECT DISTINCT '+
+   '         A.TRANS_ID , B.TRANS_RAZA, B.TRANS_CNPJ, B.TRANS_INSCRICAO '+
+   ' FROM PGTO_FRETE A INNER JOIN TRANSPORTADORA B    '+
+   ' ON A.TRANS_ID = B.TRANS_ID   '+
+   ' WHERE CONVERT(CHAR(10), A.DATA_FECHAMENTO, 112) >= :D1 '+
+   ' AND CONVERT(CHAR(10), A.DATA_FECHAMENTO, 112) <= :D2 ');
+
+   IF cboTrans.Text <> '' then
+        qrTransportadoras.SQL.ADD(' AND A.TRANS_ID = ' + cboTrans.LookupValue);
+
+
+   qrTransportadoras.SQL.Add( ' ORDER BY B.TRANS_RAZA ');
+
+   qrTransportadoras.Parameters[0].Value := FormatDateTime('YYYYMMDD', D1);
+   qrTransportadoras.Parameters[1].Value := FormatDateTime('YYYYMMDD', D2);
+   cdsTransportadoras.Open;
+
+
+   Gauge1.MaxValue := cdsTrans.RecordCount;
+   Gauge1.Progress := 0;
+   pnlGauge.Visible := True;
+   Application.ProcessMessages;
+
+   cdsTransportadoras.First;
+   while not cdsTransportadoras.Eof do begin
+         Gauge1.Progress := Gauge1.Progress + 1;
+
+         //ADD REGISTRO
+         cdsConcilia.Append;
+
+                 cdsConciliaTransportadora.Value := cdsTransportadorasTRANS_RAZA.Value;
+                 cdsConciliaRG.Value := cdsTransportadorasTRANS_INSCRICAO.Value;
+                 cdsConciliaCNPJ.Value := cdsTransportadorasTRANS_CNPJ.Value;
+
+                 //PROCURA O VALOR DO FRETE 1° QUINZENA
+                 qrFrete.Close;
+                 qrFrete.Parameters[0].Value := cdsTransportadorasTRANS_ID.Value;
+                 qrFrete.Parameters[1].Value := FormatDateTime('YYYYMMDD', StrToDate(Quinzena_1));
+                 qrFrete.Open;
+
+                 cdsConciliaFRETE_1.Value := qrFreteFRETE.Value;
+
+
+
+
+
+                 //PROCURA O VALOR DO FRETE 2° QUINZENA
+                 qrFrete.Close;
+                 qrFrete.Parameters[0].Value := cdsTransportadorasTRANS_ID.Value;
+                 qrFrete.Parameters[1].Value := FormatDateTime('YYYYMMDD', StrToDate(Quinzena_2));
+                 qrFrete.Open;
+
+                 cdsConciliaFRETE_2.Value := qrFreteFRETE.Value;
+
+
+
+
+                 //PROCURA AS DESPESAS 
+                 qrDespesas.Close;
+                 qrDespesas.Parameters[0].Value := cdsTransportadorasTRANS_ID.Value;
+                 qrDespesas.Parameters[1].Value := FormatDateTime('YYYYMMDD', D1);
+                 qrDespesas.Parameters[2].Value := FormatDateTime('YYYYMMDD', D2);
+                 qrDespesas.Open;
+
+                 while not  qrDespesas.Eof do begin
+                        case qrDespesasTIPO.Value of
+                            //1° QUINZENA
+                            1 :  cdsConciliaCOMBUSTIVEL_1.Value := qrDespesasDESPESA.Value;
+                            3 :  cdsConciliaEMPRESTIMO1.Value := qrDespesasDESPESA.Value;
+                            5 :  cdsConciliaNEXTE1.Value := qrDespesasDESPESA.Value;
+                            7 :  cdsConciliaNOTA1.Value := qrDespesasDESPESA.Value;
+                            9 :  cdsConciliaFALTA1.Value := qrDespesasDESPESA.Value;
+                            11:  cdsConciliaAVARIA1.Value := qrDespesasDESPESA.Value;
+                            13:  cdsConciliaPAMCARY1.Value := qrDespesasDESPESA.Value;
+                            15:  cdsConciliaOUTROSA1.Value := qrDespesasDESPESA.Value;
+                            17:  cdsConciliaADIANTAMENTO1.Value := qrDespesasDESPESA.Value;
+
+                            //2° QUINZENA
+                            2 :  cdsConciliaCOMBUSTIVEL_2.Value := qrDespesasDESPESA.Value;
+                            4 :  cdsConciliaEMPRESTIMO2.Value := qrDespesasDESPESA.Value;
+                            6 :  cdsConciliaNEXTEL2.Value := qrDespesasDESPESA.Value;
+                            8 :  cdsConciliaNOTA2.Value := qrDespesasDESPESA.Value;
+                            10:  cdsConciliaFALTA2.Value := qrDespesasDESPESA.Value;
+                            12:  cdsConciliaAVARIA2.Value := qrDespesasDESPESA.Value;
+                            14:  cdsConciliaPAMCARY2.Value := qrDespesasDESPESA.Value;
+                            16:  cdsConciliaOUTROSA2.Value := qrDespesasDESPESA.Value;
+                            18:  cdsConciliaADIANTAMENTO2.Value := qrDespesasDESPESA.Value;
+                        end;
+
+                        qrDespesas.Next;
+                 end;
+
+
+
+
+         cdsConcilia.Post;
+         Application.ProcessMessages;
+         cdsTransportadoras.Next;
+   end;//end while
+
+   pnlGauge.Visible := False;
+
+
+
+
+end;
+
+procedure TfrmConciliacaoFrete.cdsConciliaCalcFields(DataSet: TDataSet);
+begin
+
+    //efetua calculo de valores de totais e impostos
+    cdsConciliaFRETE_T.Value := (cdsConciliaFRETE_1.Value + cdsConciliaFRETE_2.Value) ;
+    cdsConciliaCOMBUST_T.Value := cdsConciliaCOMBUSTIVEL_1.Value + cdsConciliaCOMBUSTIVEL_2.Value;
+    cdsConciliaOUTROS_T.Value := cdsConciliaOUTROSA1.Value + cdsConciliaOUTROSA2.Value;
+    cdsConciliaLIQUIDO.Value := cdsConciliaFRETE_T.Value - (cdsConciliaCOMBUST_T.Value + cdsConciliaNEXTE1.Value + cdsConciliaNEXTEL2.Value +
+                                                            cdsConciliaNOTA1.Value + cdsConciliaNOTA2.Value + cdsConciliaFALTA1.Value + cdsConciliaFALTA2.Value +
+                                                            cdsConciliaAVARIA1.Value + cdsConciliaAVARIA2.Value + cdsConciliaPAMCARY1.Value + cdsConciliaPAMCARY2.Value +
+                                                            cdsConciliaOUTROS_T.Value);
+
+    cdsConciliaBASE_INSS.Value := (cdsConciliaLIQUIDO.Value * 20) / 100;
+    cdsConciliaINSS.Value := (cdsConciliaBASE_INSS.Value * 11) / 100;
+    cdsConciliaEMPREST_T.Value := cdsConciliaEMPRESTIMO1.Value + cdsConciliaEMPRESTIMO2.Value;
+    cdsConciliaADIANT_T.Value := cdsConciliaADIANTAMENTO1.Value + cdsConciliaADIANTAMENTO2.Value;
+
+
+    cdsConciliaSEST.Value := cdsConciliaBASE_INSS.Value * 0.025;
+
+    cdsConciliaBASE_IRRF.Value := (cdsConciliaLIQUIDO.Value * 0.4) - cdsConciliaSEST.Value - cdsConciliaINSS.Value;
+
+    IF (cdsConciliaBASE_IRRF.Value > 1372.81) and (cdsConciliaBASE_IRRF.Value <= 2743.25) then
+        cdsConciliaIRRF.Value := (15 * (cdsConciliaBASE_IRRF.Value - 1372.81)) / 100;
+
+
+    IF cdsConciliaBASE_IRRF.Value > 2743.25 then
+        cdsConciliaIRRF.Value := (27.5 * (cdsConciliaBASE_IRRF.Value - 2743.25)) / 100;
+
+    IF cdsConciliaBASE_IRRF.Value <= 2743.25 then
+        cdsConciliaIRRF.Value := 0;
+
+end;
+
+procedure TfrmConciliacaoFrete.RzBitBtn3Click(Sender: TObject);
+var TotalServicos : Real;
+begin
+
+if  CheckBox1.Checked then begin
+  frmRPA := TfrmRPA.Create(Self);
+  with frmRPA do begin
+      qrTransp.Close;
+      qrTransp.Parameters[0].Value := qrBuscaTRANS_ID.AsInteger;
+      qrTransp.Open;
+      lbTotal1.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+      lbTotal2.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+      //adicionamos os fretes
+      TotalServicos := qrBuscaFRETE_1.AsFloat + qrBuscaLIQUIDO_2.AsFloat;
+
+      //subtraimos os descontos
+      TotalServicos := TotalServicos - qrBuscaCOMBUSTIVEL_1.AsFloat - qrBuscaCOMBUSTIVEL_2.AsFloat -
+                       qrBuscaNEXTEL_1.AsFloat - qrBuscaNEXTEL_2.AsFloat - qrBuscaNOTA_1.AsFloat -
+                       qrBuscaNOTA_2.AsFloat - qrBuscaFALTAPROD_1.AsFloat - qrBuscaFALTAPROD_2.AsFloat -
+                       qrBuscaAVARIA_1.AsFloat - qrBuscaAVARIA_2.AsFloat - qrBuscaPAMCARY_1.AsFloat -
+                       qrBuscaPAMCARY_2.AsFloat;
+      lbValorPrestado.Caption := FormatFloat('###,###,##0.00', TotalServicos);
+      lbValorPrestado2.Caption := FormatFloat('###,###,##0.00', TotalServicos);
+      lbVlrAdiantamento.Caption :=  FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat + qrBuscaADIANTAMENTO_2.AsFloat);
+      lbVlrOutros.Caption := FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_1.AsFloat + qrBuscaEMPRESTIMO_2.AsFloat);
+      lbIRRF.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_IRRF.AsFloat);
+      lbSESTSENAT.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_SEST.AsFloat);
+      lbINSS.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_INSS.AsFloat);
+      lbData.Caption := DateTimeToStr(Date);
+      QuickRep1.Preview;
+      Close;
+  end;
+  Abort;
+end;
+
+
+
+        qrBusca.First;
+        while not qrBusca.Eof do begin
+                if qrBuscaSEL.AsString = 'S' then begin
+                          frmRPA := TfrmRPA.Create(Self);
+                          with frmRPA do begin
+                              qrTransp.Close;
+                              qrTransp.Parameters[0].Value := qrBuscaTRANS_ID.AsInteger;
+                              qrTransp.Open;
+                              lbTotal1.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+                              lbTotal2.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+                              //adicionamos os fretes
+                              TotalServicos := qrBuscaFRETE_1.AsFloat + qrBuscaLIQUIDO_2.AsFloat;
+
+                              //subtraimos os descontos
+                              TotalServicos := TotalServicos - qrBuscaCOMBUSTIVEL_1.AsFloat - qrBuscaCOMBUSTIVEL_2.AsFloat -
+                                               qrBuscaNEXTEL_1.AsFloat - qrBuscaNEXTEL_2.AsFloat - qrBuscaNOTA_1.AsFloat -
+                                               qrBuscaNOTA_2.AsFloat - qrBuscaFALTAPROD_1.AsFloat - qrBuscaFALTAPROD_2.AsFloat -
+                                               qrBuscaAVARIA_1.AsFloat - qrBuscaAVARIA_2.AsFloat - qrBuscaPAMCARY_1.AsFloat -
+                                               qrBuscaPAMCARY_2.AsFloat;
+                              lbValorPrestado.Caption := FormatFloat('###,###,##0.00', TotalServicos);
+                              lbValorPrestado2.Caption := FormatFloat('###,###,##0.00', TotalServicos);
+                              lbVlrAdiantamento.Caption :=  FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat + qrBuscaADIANTAMENTO_2.AsFloat);
+                              lbVlrOutros.Caption := FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_1.AsFloat + qrBuscaEMPRESTIMO_2.AsFloat);
+                              lbIRRF.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_IRRF.AsFloat);
+                              lbSESTSENAT.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_SEST.AsFloat);
+                              lbINSS.Caption := FormatFloat('###,###,##0.00', qrBuscaTOTAL_INSS.AsFloat);
+                              lbData.Caption := DateTimeToStr(Date);
+                              QuickRep1.Print;
+                              Close;
+                          end;
+                end;
+                qrBusca.Next;
+        end;
+
+
+
+end;
+
+procedure TfrmConciliacaoFrete.RzBitBtn4Click(Sender: TObject);
+var linha : Integer;
+    Excel : Variant;
+    i, Coluna : Integer;
+
+
+begin
+
+  linha := 1;
+
+  excel := CreateOleObject('excel.application');
+  Excel.WorkBooks.Add;
+
+  //escrevemos os cabeçalhos
+  for i := 0 to pred(dsExcel.DataSet.FieldCount) do begin
+      Excel.Cells[Linha, i + 1] :=  dsExcel.DataSet.Fields[i].DisplayName;
+  end;
+
+  dsExcel.DataSet.First;
+  while not dsExcel.DataSet.Eof do begin
+      Inc(linha);
+      for i := 0 to pred(dsExcel.DataSet.FieldCount) do begin
+           //escreve valor inteiro
+           if dsExcel.DataSet.Fields[i].DataType in [ftSmallint, ftInteger, ftLargeint, ftAutoInc] then
+              Excel.Cells[Linha, i + 1] :=  dsExcel.DataSet.Fields[i].AsInteger
+           //escreve valor decimal
+           else if dsExcel.DataSet.Fields[i].DataType = ftFloat then  begin
+              Excel.Cells[Linha, i + 1] :=  StrToFloat(FormatFloat('##0.00',dsExcel.DataSet.Fields[i].AsFloat));
+              //Excel.Cells[Linha, i + 1].numberFormat := '0,00' ;
+           end
+           //esreve valores de data
+           else if dsExcel.DataSet.Fields[i].DataType in [ftDate, ftDateTime] then begin
+               Excel.Cells[Linha, i + 1] :=  FormatDateTime(' dd/mm/yyyy', dsExcel.DataSet.Fields[i].AsDateTime);
+               Excel.Cells[Linha, i + 1].NumberFormat := 'm/d/yyyy';
+           end
+           else
+           begin
+               Excel.Cells[Linha, i + 1].NumberFormat := '@';
+               Excel.Cells[Linha, i + 1] :=  dsExcel.DataSet.Fields[i].AsString;
+           end;
+      end;
+
+      dsExcel.DataSet.Next;
+      Application.ProcessMessages;
+  end;
+
+  Excel.Range['A:Z'].EntireColumn.AutoFit;
+
+  //escrevemos a segunda planilha
+
+   Excel.WorkBooks.Add;
+   qrBusca.First;
+
+   Excel.Cells[1, 1] := 'Transportadora';
+   Excel.Cells[1, 2] := 'INSS/PIS';
+   Excel.Cells[1, 3] := 'RG';
+   Excel.Cells[1, 4] := 'CPF';
+   Excel.Cells[1, 5] := 'Frete Bruto';
+   Excel.Cells[1, 6] := 'Comb.';
+   Excel.Cells[1, 7] := 'Outros';
+   Excel.Cells[1, 8] := 'Liquido';
+   Excel.Cells[1, 9] := 'INSS';
+   Excel.Cells[1, 10] := 'SEST/SENAT';
+   Excel.Cells[1, 11] := 'EMPRESTIMO';
+   Excel.Cells[1, 12] := 'ADIANT.';
+   Excel.Cells[1, 13] := 'Líquidos';
+
+   linha := 1;
+
+   while not qrBusca.Eof do begin
+       Inc(linha);
+       Excel.Cells[linha, 1] := qrBuscaTRANSPORTADORA.AsString;
+       Excel.Cells[Linha, 2].NumberFormat := '@';
+       Excel.Cells[linha, 2] := qrBuscaPIS.AsString;
+       Excel.Cells[Linha, 3].NumberFormat := '@';
+       Excel.Cells[linha, 3] := qrBuscaRG.AsString;
+       Excel.Cells[Linha, 4].NumberFormat := '@';
+       Excel.Cells[linha, 4] := qrBuscaCPF.AsString;
+       Excel.Cells[linha, 5] := StrToFloat(FormatFloat('##0.00',qrBuscaFRETE_1.AsFloat + qrBuscaFRETE_2.AsFloat));
+       Excel.Cells[linha, 6] := StrToFloat(FormatFloat('##0.00',qrBuscaCOMBUSTIVEL_1.AsFloat + qrBuscaCOMBUSTIVEL_2.AsFloat));
+       Excel.Cells[linha, 7] := StrToFloat(FormatFloat('##0.00',qrBuscaOUTROS_1.AsFloat + qrBuscaOUTROS_2.AsFloat));
+       Excel.Cells[linha, 8] := StrToFloat(FormatFloat('##0.00',(qrBuscaFRETE_1.AsFloat + qrBuscaFRETE_2.AsFloat) - (qrBuscaCOMBUSTIVEL_1.AsFloat + qrBuscaCOMBUSTIVEL_2.AsFloat) - (qrBuscaOUTROS_1.AsFloat + qrBuscaOUTROS_2.AsFloat)));
+       Excel.Cells[linha, 9] := StrToFloat(FormatFloat('##0.00',qrBuscaTOTAL_INSS.AsFloat));
+       Excel.Cells[linha, 10] := StrToFloat(FormatFloat('##0.00',qrBuscaTOTAL_SEST.AsFloat));
+       Excel.Cells[linha, 11] := StrToFloat(FormatFloat('##0.00',qrBuscaEMPRESTIMO_1.AsFloat + qrBuscaEMPRESTIMO_2.AsFloat));
+       Excel.Cells[linha, 12] := StrToFloat(FormatFloat('##0.00',qrBuscaADIANTAMENTO_1.AsFloat + qrBuscaADIANTAMENTO_2.AsFloat));
+       Excel.Cells[linha, 13] := StrToFloat(FormatFloat('##0.00',qrBuscaTOTAL_LIQUIDO.AsFloat));
+       qrBusca.Next;
+   end;
+
+  Excel.Range['A:Z'].EntireColumn.AutoFit;
+
+  Excel.Application.Visible := true;
+
+end;
+
+procedure TfrmConciliacaoFrete.Button2Click(Sender: TObject);
+begin
+ pnlResumo.Visible := False;
+end;
+
+procedure TfrmConciliacaoFrete.RzBitBtn5Click(Sender: TObject);
+var Aux, Q1, Q2 : string;
+begin
+   RadioGroup1.Items.Clear;
+
+   Aux := FormatDateTime('mmmm', StrToDate(edtQuinzena1.Text));
+   Q1 := 'Segunda quinzena de ' + Aux + ' de ' + cboAno.Text;
+   Q2 := 'Primeira quinzena de ' + LowerCase(cboMess.Text) + ' de ' + cboAno.Text;
+   RadioGroup1.Items.Add(Q1);
+   RadioGroup1.Items.Add(Q2);
+   RadioGroup1.ItemIndex := 0;
+   pnlResumo.Visible := True;
+
+
+
+
+end;
+
+procedure TfrmConciliacaoFrete.Button1Click(Sender: TObject);
+var data : TDateTime;
+begin
+
+
+    if CheckBox1.Checked then begin
+        frmRelResumoFrete := TfrmRelResumoFrete.Create(Self);
+        with frmRelResumoFrete do begin
+            lbTitulo.Caption := 'Resumo frete ' +    RadioGroup1.Items.Strings[RadioGroup1.itemindex];
+            lbTransp.Caption := qrBuscaTRANSPORTADORA.AsString;
+            if RadioGroup1.ItemIndex = 0 then begin
+                lbFrete.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFRETE_1.AsFloat);
+                lbCombustivel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaCOMBUSTIVEL_1.AsFloat );
+                lbEmprestimo.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_1.AsFloat );
+                lbNextel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNEXTEL_1.AsFloat);
+                lbNotas.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNOTA_1.AsFloat);
+                lbFalta.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFALTAPROD_1.AsFloat);
+                lbAvarias.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaAVARIA_1.AsFloat);
+                lbPamcary.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaPAMCARY_1.AsFloat);
+                lbOutros.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaOUTROS_1.AsFloat);
+                lbAdiantamento.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat);
+                lbLiquido.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaLIQUIDO_1.AsFloat);
+                lbSest.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaSEST_1.AsFloat );
+                lbBaseIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_IRRF_1.AsFloat );
+                lbIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaIRRF_1.AsFloat);
+                lbBaseINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_INSS_1.AsFloat);
+                lbINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaINSS_1.AsFloat);
+                data := StrToDate(edtQuinzena1.Text);
+            end;
+
+
+            if RadioGroup1.ItemIndex = 1 then begin
+                lbFrete.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFRETE_2.AsFloat + qrBuscaFRETE_1.AsFloat);
+                lbCombustivel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaCOMBUSTIVEL_2.AsFloat + qrBuscaCOMBUSTIVEL_1.AsFloat);
+                lbEmprestimo.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_2.AsFloat + qrBuscaEMPRESTIMO_1.AsFloat);
+                lbNextel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNEXTEL_2.AsFloat + qrBuscaNEXTEL_1.AsFloat);
+                lbNotas.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNOTA_1.AsFloat + qrBuscaNOTA_2.AsFloat);
+                lbFalta.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFALTAPROD_1.AsFloat + qrBuscaFALTAPROD_2.AsFloat);
+                lbAvarias.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaAVARIA_1.AsFloat + qrBuscaAVARIA_2.AsFloat);
+                lbPamcary.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaPAMCARY_1.AsFloat + qrBuscaPAMCARY_2.AsFloat);
+                lbOutros.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaOUTROS_1.AsFloat + qrBuscaOUTROS_2.AsFloat);
+                lbAdiantamento.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat + qrBuscaADIANTAMENTO_2.AsFloat);
+                lbLiquido.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+                lbSest.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_SEST.AsFloat );
+                lbBaseIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_IRRF_1.AsFloat + qrBuscaBASE_IRRF_2.AsFloat );
+                lbIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_IRRF.AsFloat);
+                lbBaseINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_INSS_2.AsFloat + qrBuscaBASE_INSS_1.AsFloat);
+                lbINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_INSS.AsFloat);
+                data := StrToDate(edtQuinzena2.Text);
+            end;
+
+
+            qrManifestos.Close;
+            qrManifestos.Parameters[0].Value := qrBuscaTRANS_ID.AsInteger;
+            qrManifestos.Parameters[1].Value :=FormatDateTime('YYYYMMDD', data);
+            qrManifestos.Open;
+            QRMemo1.Lines := memo1.Lines;
+
+
+            QuickRep1.Preview  ;
+            Close;
+            pnlResumo.Visible := False;
+            Abort;
+        end;
+    end;
+
+
+
+
+
+  IF qrBusca.State = DSEDIT then
+        qrBusca.Post;
+
+
+  qrBusca.First;
+  while not qrBusca.Eof do begin
+    if qrBuscaSEL.AsString = 'S' then begin
+        frmRelResumoFrete := TfrmRelResumoFrete.Create(Self);
+        with frmRelResumoFrete do begin
+            lbTitulo.Caption := 'Resumo frete ' +    RadioGroup1.Items.Strings[RadioGroup1.itemindex];
+            lbTransp.Caption := qrBuscaTRANSPORTADORA.AsString;
+            if RadioGroup1.ItemIndex = 0 then begin
+                lbFrete.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFRETE_1.AsFloat);
+                lbCombustivel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaCOMBUSTIVEL_1.AsFloat );
+                lbEmprestimo.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_1.AsFloat );
+                lbNextel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNEXTEL_1.AsFloat);
+                lbNotas.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNOTA_1.AsFloat);
+                lbFalta.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFALTAPROD_1.AsFloat);
+                lbAvarias.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaAVARIA_1.AsFloat);
+                lbPamcary.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaPAMCARY_1.AsFloat);
+                lbOutros.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaOUTROS_1.AsFloat);
+                lbAdiantamento.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat);
+                lbLiquido.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaLIQUIDO_1.AsFloat);
+                lbSest.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaSEST_1.AsFloat );
+                lbBaseIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_IRRF_1.AsFloat );
+                lbIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaIRRF_1.AsFloat);
+                lbBaseINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_INSS_1.AsFloat);
+                lbINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaINSS_1.AsFloat);
+                data := StrToDate(edtQuinzena1.Text);
+            end;
+
+
+            if RadioGroup1.ItemIndex = 1 then begin
+                lbFrete.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFRETE_2.AsFloat + qrBuscaFRETE_1.AsFloat);
+                lbCombustivel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaCOMBUSTIVEL_2.AsFloat + qrBuscaCOMBUSTIVEL_1.AsFloat);
+                lbEmprestimo.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaEMPRESTIMO_2.AsFloat + qrBuscaEMPRESTIMO_1.AsFloat);
+                lbNextel.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNEXTEL_2.AsFloat + qrBuscaNEXTEL_1.AsFloat);
+                lbNotas.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaNOTA_1.AsFloat + qrBuscaNOTA_2.AsFloat);
+                lbFalta.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaFALTAPROD_1.AsFloat + qrBuscaFALTAPROD_2.AsFloat);
+                lbAvarias.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaAVARIA_1.AsFloat + qrBuscaAVARIA_2.AsFloat);
+                lbPamcary.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaPAMCARY_1.AsFloat + qrBuscaPAMCARY_2.AsFloat);
+                lbOutros.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaOUTROS_1.AsFloat + qrBuscaOUTROS_2.AsFloat);
+                lbAdiantamento.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaADIANTAMENTO_1.AsFloat + qrBuscaADIANTAMENTO_2.AsFloat);
+                lbLiquido.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_LIQUIDO.AsFloat);
+                lbSest.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_SEST.AsFloat );
+                lbBaseIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_IRRF_1.AsFloat + qrBuscaBASE_IRRF_2.AsFloat );
+                lbIRRF.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_IRRF.AsFloat);
+                lbBaseINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaBASE_INSS_2.AsFloat + qrBuscaBASE_INSS_1.AsFloat);
+                lbINSS.Caption := 'R$ ' + FormatFloat('###,###,##0.00', qrBuscaTOTAL_INSS.AsFloat);
+                data := StrToDate(edtQuinzena2.Text);
+            end;
+
+
+            qrManifestos.Close;
+            qrManifestos.Parameters[0].Value := qrBuscaTRANS_ID.AsInteger;
+            qrManifestos.Parameters[1].Value :=FormatDateTime('YYYYMMDD', data);
+            qrManifestos.Open;
+            QRMemo1.Lines := memo1.Lines;
+
+
+            QuickRep1.Print;
+            Close;
+
+        end;
+       end;
+     qrBusca.Next;
+    end;
+  pnlResumo.Visible := False;
+
+end;
+
+end.

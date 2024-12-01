@@ -1,0 +1,153 @@
+object frmEstoqueAnalitico: TfrmEstoqueAnalitico
+  Left = 228
+  Top = 131
+  Width = 979
+  Height = 563
+  Caption = 'Consulta de Estoque Analitico'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 963
+    Height = 105
+    Align = alTop
+    TabOrder = 0
+    object lbMaterial: TLabel
+      Left = 104
+      Top = 3
+      Width = 57
+      Height = 16
+      Caption = 'Material'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbMarca: TLabel
+      Left = 104
+      Top = 27
+      Width = 44
+      Height = 16
+      Caption = 'Marca'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbLocal: TLabel
+      Left = 104
+      Top = 51
+      Width = 39
+      Height = 16
+      Caption = 'Local'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lbQtde: TLabel
+      Left = 104
+      Top = 75
+      Width = 85
+      Height = 16
+      Caption = 'Quantidade:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 14
+      Top = 3
+      Width = 57
+      Height = 16
+      Caption = 'Material'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 14
+      Top = 27
+      Width = 44
+      Height = 16
+      Caption = 'Marca'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 14
+      Top = 51
+      Width = 39
+      Height = 16
+      Caption = 'Local'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 14
+      Top = 75
+      Width = 85
+      Height = 16
+      Caption = 'Quantidade:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object wwDBGrid1: TwwDBGrid
+    Left = 0
+    Top = 105
+    Width = 963
+    Height = 420
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 0
+    ShowHorzScrollBar = True
+    Align = alClient
+    TabOrder = 1
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+  end
+  object ADOQuery1: TADOQuery
+    Parameters = <>
+    Left = 432
+    Top = 272
+  end
+end

@@ -1,0 +1,685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinanceiroDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NFe">
+          <Key>
+            <PropertyRef Name="IdNFe" />
+          </Key>
+          <Property Name="IdNFe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmitente" Type="int" />
+          <Property Name="Ambiente" Type="int" />
+          <Property Name="cDV" Type="int" />
+          <Property Name="ide_cUF" Type="int" />
+          <Property Name="ide_natOp" Type="varchar" MaxLength="255" />
+          <Property Name="ide_indPag" Type="int" />
+          <Property Name="ide_mode" Type="int" />
+          <Property Name="ide_serie" Type="varchar" MaxLength="255" />
+          <Property Name="ide_nNF" Type="int" />
+          <Property Name="ide_dEmi" Type="datetime" />
+          <Property Name="ide_dSaiEnt" Type="datetime" />
+          <Property Name="ide_tpNF" Type="int" />
+          <Property Name="ide_cMunFG" Type="int" />
+          <Property Name="ide_tpImp" Type="int" />
+          <Property Name="ide_finNFe" Type="int" />
+          <Property Name="ide_tpEmis" Type="int" />
+          <Property Name="ide_procEmi" Type="int" />
+          <Property Name="ide_verProc" Type="varchar" MaxLength="255" />
+          <Property Name="ide_NFref" Type="varchar" MaxLength="255" />
+          <Property Name="ide_CondPagDesc" Type="varchar" MaxLength="255" />
+          <Property Name="ide_indFinal" Type="int" />
+          <Property Name="ide_indPres" Type="int" />
+          <Property Name="ide_cNF" Type="int" />
+          <Property Name="emi_CNPJ" Type="varchar" MaxLength="255" />
+          <Property Name="emi_CPF" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xNome" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xFant" Type="varchar" MaxLength="255" />
+          <Property Name="emi_IE" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xLgr" Type="varchar" MaxLength="255" />
+          <Property Name="emi_nro" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xCpl" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xBairro" Type="varchar" MaxLength="255" />
+          <Property Name="emi_cMun" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xMun" Type="varchar" MaxLength="255" />
+          <Property Name="emi_UF" Type="varchar" MaxLength="255" />
+          <Property Name="emi_CEP" Type="varchar" MaxLength="255" />
+          <Property Name="emi_cPais" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xPais" Type="varchar" MaxLength="255" />
+          <Property Name="emi_Fone" Type="varchar" MaxLength="255" />
+          <Property Name="emi_IEST" Type="varchar" MaxLength="255" />
+          <Property Name="emi_IM" Type="varchar" MaxLength="255" />
+          <Property Name="emi_CNAE" Type="varchar" MaxLength="255" />
+          <Property Name="emi_CRT" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xContato" Type="varchar" MaxLength="255" />
+          <Property Name="emi_xContatoEmail" Type="varchar" MaxLength="255" />
+          <Property Name="emi_idCSRT" Type="varchar" MaxLength="255" />
+          <Property Name="emi_CSRT" Type="varchar" MaxLength="255" />
+          <Property Name="emi_chaveNFe" Type="varchar" MaxLength="255" />
+          <Property Name="dest_CNPJ" Type="varchar" MaxLength="255" />
+          <Property Name="dest_CPF" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xNome" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xFant" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xlgr" Type="varchar" MaxLength="255" />
+          <Property Name="dest_nro" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xCpl" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xBairro" Type="varchar" MaxLength="255" />
+          <Property Name="dest_cMun" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xMun" Type="varchar" MaxLength="255" />
+          <Property Name="dest_UF" Type="varchar" MaxLength="255" />
+          <Property Name="dest_CEP" Type="varchar" MaxLength="255" />
+          <Property Name="dest_cPais" Type="varchar" MaxLength="255" />
+          <Property Name="dest_xPais" Type="varchar" MaxLength="255" />
+          <Property Name="dest_fone" Type="varchar" MaxLength="255" />
+          <Property Name="dest_IE" Type="varchar" MaxLength="255" />
+          <Property Name="dest_IESUF" Type="varchar" MaxLength="255" />
+          <Property Name="dest_email" Type="varchar" MaxLength="255" />
+          <Property Name="dest_indIEDest" Type="varchar" MaxLength="255" />
+          <Property Name="dest_IdExtrangeiro" Type="varchar" MaxLength="255" />
+          <Property Name="tot_vBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMS" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vBCST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFrete" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vSeg" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vDesc" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vII" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vIPI" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vPIS" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vCOFINS" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vOutro" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vNF" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vTotTrib" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSDeson" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSUFDest_Opc" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSUFRemet" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPUFDest" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCP" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPSTRet" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vIPIDevol" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="tra_modFrete" Type="varchar" MaxLength="255" />
+          <Property Name="tra_CNPJ" Type="varchar" MaxLength="255" />
+          <Property Name="tra_CPF" Type="varchar" MaxLength="255" />
+          <Property Name="tra_xNome" Type="varchar" MaxLength="255" />
+          <Property Name="tra_IE" Type="varchar" MaxLength="255" />
+          <Property Name="tra_xEnder" Type="varchar" MaxLength="255" />
+          <Property Name="tra_xMun" Type="varchar" MaxLength="255" />
+          <Property Name="tra_UF" Type="varchar" MaxLength="255" />
+          <Property Name="Recibo" Type="varchar" MaxLength="255" />
+          <Property Name="Protocolo" Type="varchar" MaxLength="255" />
+          <Property Name="DtAutorizacao" Type="datetime" />
+          <Property Name="MsgRetorno" Type="ntext" />
+          <Property Name="NFeStatus" Type="varchar" MaxLength="255" />
+          <Property Name="DtCancelamento" Type="datetime" />
+          <Property Name="Justificativa" Type="ntext" />
+          <Property Name="ChaveAut" Type="varchar" MaxLength="50" />
+          <Property Name="ProtocoloCancelamento" Type="varchar" MaxLength="255" />
+          <Property Name="veic_Placa" Type="varchar" MaxLength="255" />
+          <Property Name="veic_UF" Type="varchar" MaxLength="255" />
+          <Property Name="veic_RNTC" Type="varchar" MaxLength="255" />
+          <Property Name="vol_qVol" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vol_esp" Type="varchar" MaxLength="255" />
+          <Property Name="vol_Marca" Type="varchar" MaxLength="255" />
+          <Property Name="vol_nVol" Type="varchar" MaxLength="255" />
+          <Property Name="vol_pesoL" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vol_pesoB" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vol_lacres" Type="varchar" MaxLength="255" />
+          <Property Name="infAdic" Type="ntext" />
+          <Property Name="IdExterno" Type="int" />
+          <Property Name="pag_tPag" Type="varchar" MaxLength="255" />
+          <Property Name="pag_vPag" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="CCeTexto" Type="varchar" MaxLength="1000" />
+          <Property Name="UFSaidaPais" Type="varchar" MaxLength="255" />
+          <Property Name="xLocEmbarq" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NFeProduto">
+          <Key>
+            <PropertyRef Name="IdNFeProduto" />
+          </Key>
+          <Property Name="IdNFeProduto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNFe" Type="int" />
+          <Property Name="cProd" Type="varchar" MaxLength="255" />
+          <Property Name="cEAN" Type="varchar" MaxLength="255" />
+          <Property Name="xProd" Type="varchar" MaxLength="255" />
+          <Property Name="NCM" Type="varchar" MaxLength="255" />
+          <Property Name="CEST" Type="varchar" MaxLength="255" />
+          <Property Name="CFOP" Type="varchar" MaxLength="255" />
+          <Property Name="uCom" Type="varchar" MaxLength="50" />
+          <Property Name="qCom" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vUnCom" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="cEANTrib" Type="varchar" MaxLength="255" />
+          <Property Name="uTrib" Type="varchar" MaxLength="255" />
+          <Property Name="qTrib" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vUnTrib" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vOutro" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="indTot" Type="int" />
+          <Property Name="xPed" Type="varchar" MaxLength="255" />
+          <Property Name="ICMS_origem" Type="varchar" MaxLength="255" />
+          <Property Name="ICMS_CST" Type="varchar" MaxLength="255" />
+          <Property Name="ICMS_modBC" Type="int" />
+          <Property Name="ICMS_redBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pICMS" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vICMS" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_modBCST" Type="int" />
+          <Property Name="ICMS_pMVAST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pRedBCST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBCST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vST" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBCSTRet" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vICMSSTRet" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pCredSN" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vCredICMSSN" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_CST" Type="varchar" MaxLength="50" />
+          <Property Name="IPI_Enq" Type="varchar" MaxLength="50" />
+          <Property Name="IPI_pIpi" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_vIPI" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_CST" Type="varchar" MaxLength="50" />
+          <Property Name="PIS_pPis" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_vPis" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_CST" Type="varchar" MaxLength="50" />
+          <Property Name="COFINS_pCofins" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_vCofins" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="infAdic" Type="ntext" />
+          <Property Name="vFrete" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vSeg" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="vDesc" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_vBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_vBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_vBC" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="pis_qBCProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="pis_vAliqProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="cofins_qBCProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="cofins_vAliqProd" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_CNPJProd" Type="varchar" MaxLength="50" />
+          <Property Name="ipi_cSelo" Type="varchar" MaxLength="50" />
+          <Property Name="ipi_qSelo" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_clEnq" Type="varchar" MaxLength="50" />
+          <Property Name="ipi_qUnid" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_vUnid" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="IdExternoItem" Type="int" />
+        </EntityType>
+        <Association Name="FK_NFeProduto_NFe">
+          <End Role="NFe" Type="Self.NFe" Multiplicity="0..1" />
+          <End Role="NFeProduto" Type="Self.NFeProduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NFe">
+              <PropertyRef Name="IdNFe" />
+            </Principal>
+            <Dependent Role="NFeProduto">
+              <PropertyRef Name="IdNFe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinanceiroDevModelStoreContainer">
+          <EntitySet Name="NFe" EntityType="Self.NFe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NFeProduto" EntityType="Self.NFeProduto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NFeProduto_NFe" Association="Self.FK_NFeProduto_NFe">
+            <End Role="NFe" EntitySet="NFe" />
+            <End Role="NFeProduto" EntitySet="NFeProduto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinanceiroDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NFe">
+          <Key>
+            <PropertyRef Name="IdNFe" />
+          </Key>
+          <Property Name="IdNFe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmitente" Type="Int32" />
+          <Property Name="Ambiente" Type="Int32" />
+          <Property Name="cDV" Type="Int32" />
+          <Property Name="ide_cUF" Type="Int32" />
+          <Property Name="ide_natOp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ide_indPag" Type="Int32" />
+          <Property Name="ide_mode" Type="Int32" />
+          <Property Name="ide_serie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ide_nNF" Type="Int32" />
+          <Property Name="ide_dEmi" Type="DateTime" Precision="3" />
+          <Property Name="ide_dSaiEnt" Type="DateTime" Precision="3" />
+          <Property Name="ide_tpNF" Type="Int32" />
+          <Property Name="ide_cMunFG" Type="Int32" />
+          <Property Name="ide_tpImp" Type="Int32" />
+          <Property Name="ide_finNFe" Type="Int32" />
+          <Property Name="ide_tpEmis" Type="Int32" />
+          <Property Name="ide_procEmi" Type="Int32" />
+          <Property Name="ide_verProc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ide_NFref" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ide_CondPagDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ide_indFinal" Type="Int32" />
+          <Property Name="ide_indPres" Type="Int32" />
+          <Property Name="ide_cNF" Type="Int32" />
+          <Property Name="dest_CNPJ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_CPF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xNome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xFant" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xlgr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_nro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xCpl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xBairro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_cMun" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xMun" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_UF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_CEP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_cPais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_xPais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_fone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_IE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_IESUF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_indIEDest" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dest_IdExtrangeiro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tot_vBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMS" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vBCST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFrete" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vSeg" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vDesc" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vII" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vIPI" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vPIS" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vCOFINS" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vOutro" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vNF" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vTotTrib" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSDeson" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSUFDest_Opc" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vICMSUFRemet" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPUFDest" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCP" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vFCPSTRet" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tot_vIPIDevol" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="tra_modFrete" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_CNPJ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_CPF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_xNome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_IE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_xEnder" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_xMun" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tra_UF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Recibo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Protocolo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DtAutorizacao" Type="DateTime" Precision="3" />
+          <Property Name="MsgRetorno" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NFeStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DtCancelamento" Type="DateTime" Precision="3" />
+          <Property Name="Justificativa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChaveAut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProtocoloCancelamento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="veic_Placa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="veic_UF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="veic_RNTC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vol_qVol" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vol_esp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vol_Marca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vol_nVol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="vol_pesoL" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vol_pesoB" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vol_lacres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="infAdic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdExterno" Type="Int32" />
+          <Property Name="pag_tPag" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="pag_vPag" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="CCeTexto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="UFSaidaPais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="xLocEmbarq" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NFeProduto" Relationship="Self.FK_NFeProduto_NFe" FromRole="NFe" ToRole="NFeProduto" />
+          <Property Name="emi_CNPJ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_CPF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xNome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xFant" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_IE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xLgr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_nro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xCpl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xBairro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_cMun" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xMun" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_UF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_CEP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_cPais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xPais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_Fone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_IEST" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_IM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_CNAE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_CRT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xContato" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_xContatoEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_idCSRT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_CSRT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="emi_chaveNFe" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NFeProduto">
+          <Key>
+            <PropertyRef Name="IdNFeProduto" />
+          </Key>
+          <Property Name="IdNFeProduto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNFe" Type="Int32" />
+          <Property Name="cProd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cEAN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="xProd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NCM" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CEST" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CFOP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uCom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="qCom" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vUnCom" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="cEANTrib" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uTrib" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="qTrib" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vUnTrib" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vOutro" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="indTot" Type="Int32" />
+          <Property Name="xPed" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ICMS_origem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ICMS_CST" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ICMS_modBC" Type="Int32" />
+          <Property Name="ICMS_redBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pICMS" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vICMS" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_modBCST" Type="Int32" />
+          <Property Name="ICMS_pMVAST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pRedBCST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBCST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vST" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vBCSTRet" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vICMSSTRet" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_pCredSN" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ICMS_vCredICMSSN" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_CST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPI_Enq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IPI_pIpi" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_vIPI" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_CST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PIS_pPis" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_vPis" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_CST" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COFINS_pCofins" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_vCofins" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="infAdic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vFrete" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vSeg" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="vDesc" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IPI_vBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PIS_vBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="COFINS_vBC" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="pis_qBCProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="pis_vAliqProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="cofins_qBCProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="cofins_vAliqProd" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_CNPJProd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ipi_cSelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ipi_qSelo" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_clEnq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ipi_qUnid" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ipi_vUnid" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="IdExternoItem" Type="Int32" />
+          <NavigationProperty Name="NFe" Relationship="Self.FK_NFeProduto_NFe" FromRole="NFeProduto" ToRole="NFe" />
+        </EntityType>
+        <Association Name="FK_NFeProduto_NFe">
+          <End Role="NFe" Type="Self.NFe" Multiplicity="0..1" />
+          <End Role="NFeProduto" Type="Self.NFeProduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NFe">
+              <PropertyRef Name="IdNFe" />
+            </Principal>
+            <Dependent Role="NFeProduto">
+              <PropertyRef Name="IdNFe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinanceiroDevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NFe" EntityType="Self.NFe" />
+          <EntitySet Name="NFeProduto" EntityType="Self.NFeProduto" />
+          <AssociationSet Name="FK_NFeProduto_NFe" Association="Self.FK_NFeProduto_NFe">
+            <End Role="NFe" EntitySet="NFe" />
+            <End Role="NFeProduto" EntitySet="NFeProduto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinanceiroDevModelStoreContainer" CdmEntityContainer="FinanceiroDevEntities">
+          <EntitySetMapping Name="NFe">
+            <EntityTypeMapping TypeName="FinanceiroDevModel.NFe">
+              <MappingFragment StoreEntitySet="NFe">
+                <ScalarProperty Name="emi_chaveNFe" ColumnName="emi_chaveNFe" />
+                <ScalarProperty Name="emi_CSRT" ColumnName="emi_CSRT" />
+                <ScalarProperty Name="emi_idCSRT" ColumnName="emi_idCSRT" />
+                <ScalarProperty Name="emi_xContatoEmail" ColumnName="emi_xContatoEmail" />
+                <ScalarProperty Name="emi_xContato" ColumnName="emi_xContato" />
+                <ScalarProperty Name="emi_CRT" ColumnName="emi_CRT" />
+                <ScalarProperty Name="emi_CNAE" ColumnName="emi_CNAE" />
+                <ScalarProperty Name="emi_IM" ColumnName="emi_IM" />
+                <ScalarProperty Name="emi_IEST" ColumnName="emi_IEST" />
+                <ScalarProperty Name="emi_Fone" ColumnName="emi_Fone" />
+                <ScalarProperty Name="emi_xPais" ColumnName="emi_xPais" />
+                <ScalarProperty Name="emi_cPais" ColumnName="emi_cPais" />
+                <ScalarProperty Name="emi_CEP" ColumnName="emi_CEP" />
+                <ScalarProperty Name="emi_UF" ColumnName="emi_UF" />
+                <ScalarProperty Name="emi_xMun" ColumnName="emi_xMun" />
+                <ScalarProperty Name="emi_cMun" ColumnName="emi_cMun" />
+                <ScalarProperty Name="emi_xBairro" ColumnName="emi_xBairro" />
+                <ScalarProperty Name="emi_xCpl" ColumnName="emi_xCpl" />
+                <ScalarProperty Name="emi_nro" ColumnName="emi_nro" />
+                <ScalarProperty Name="emi_xLgr" ColumnName="emi_xLgr" />
+                <ScalarProperty Name="emi_IE" ColumnName="emi_IE" />
+                <ScalarProperty Name="emi_xFant" ColumnName="emi_xFant" />
+                <ScalarProperty Name="emi_xNome" ColumnName="emi_xNome" />
+                <ScalarProperty Name="emi_CPF" ColumnName="emi_CPF" />
+                <ScalarProperty Name="emi_CNPJ" ColumnName="emi_CNPJ" />
+                <ScalarProperty Name="IdNFe" ColumnName="IdNFe" />
+                <ScalarProperty Name="IdEmitente" ColumnName="IdEmitente" />
+                <ScalarProperty Name="Ambiente" ColumnName="Ambiente" />
+                <ScalarProperty Name="cDV" ColumnName="cDV" />
+                <ScalarProperty Name="ide_cUF" ColumnName="ide_cUF" />
+                <ScalarProperty Name="ide_natOp" ColumnName="ide_natOp" />
+                <ScalarProperty Name="ide_indPag" ColumnName="ide_indPag" />
+                <ScalarProperty Name="ide_mode" ColumnName="ide_mode" />
+                <ScalarProperty Name="ide_serie" ColumnName="ide_serie" />
+                <ScalarProperty Name="ide_nNF" ColumnName="ide_nNF" />
+                <ScalarProperty Name="ide_dEmi" ColumnName="ide_dEmi" />
+                <ScalarProperty Name="ide_dSaiEnt" ColumnName="ide_dSaiEnt" />
+                <ScalarProperty Name="ide_tpNF" ColumnName="ide_tpNF" />
+                <ScalarProperty Name="ide_cMunFG" ColumnName="ide_cMunFG" />
+                <ScalarProperty Name="ide_tpImp" ColumnName="ide_tpImp" />
+                <ScalarProperty Name="ide_finNFe" ColumnName="ide_finNFe" />
+                <ScalarProperty Name="ide_tpEmis" ColumnName="ide_tpEmis" />
+                <ScalarProperty Name="ide_procEmi" ColumnName="ide_procEmi" />
+                <ScalarProperty Name="ide_verProc" ColumnName="ide_verProc" />
+                <ScalarProperty Name="ide_NFref" ColumnName="ide_NFref" />
+                <ScalarProperty Name="ide_CondPagDesc" ColumnName="ide_CondPagDesc" />
+                <ScalarProperty Name="ide_indFinal" ColumnName="ide_indFinal" />
+                <ScalarProperty Name="ide_indPres" ColumnName="ide_indPres" />
+                <ScalarProperty Name="ide_cNF" ColumnName="ide_cNF" />
+                <ScalarProperty Name="dest_CNPJ" ColumnName="dest_CNPJ" />
+                <ScalarProperty Name="dest_CPF" ColumnName="dest_CPF" />
+                <ScalarProperty Name="dest_xNome" ColumnName="dest_xNome" />
+                <ScalarProperty Name="dest_xFant" ColumnName="dest_xFant" />
+                <ScalarProperty Name="dest_xlgr" ColumnName="dest_xlgr" />
+                <ScalarProperty Name="dest_nro" ColumnName="dest_nro" />
+                <ScalarProperty Name="dest_xCpl" ColumnName="dest_xCpl" />
+                <ScalarProperty Name="dest_xBairro" ColumnName="dest_xBairro" />
+                <ScalarProperty Name="dest_cMun" ColumnName="dest_cMun" />
+                <ScalarProperty Name="dest_xMun" ColumnName="dest_xMun" />
+                <ScalarProperty Name="dest_UF" ColumnName="dest_UF" />
+                <ScalarProperty Name="dest_CEP" ColumnName="dest_CEP" />
+                <ScalarProperty Name="dest_cPais" ColumnName="dest_cPais" />
+                <ScalarProperty Name="dest_xPais" ColumnName="dest_xPais" />
+                <ScalarProperty Name="dest_fone" ColumnName="dest_fone" />
+                <ScalarProperty Name="dest_IE" ColumnName="dest_IE" />
+                <ScalarProperty Name="dest_IESUF" ColumnName="dest_IESUF" />
+                <ScalarProperty Name="dest_email" ColumnName="dest_email" />
+                <ScalarProperty Name="dest_indIEDest" ColumnName="dest_indIEDest" />
+                <ScalarProperty Name="dest_IdExtrangeiro" ColumnName="dest_IdExtrangeiro" />
+                <ScalarProperty Name="tot_vBC" ColumnName="tot_vBC" />
+                <ScalarProperty Name="tot_vICMS" ColumnName="tot_vICMS" />
+                <ScalarProperty Name="tot_vBCST" ColumnName="tot_vBCST" />
+                <ScalarProperty Name="tot_vST" ColumnName="tot_vST" />
+                <ScalarProperty Name="tot_vProd" ColumnName="tot_vProd" />
+                <ScalarProperty Name="tot_vFrete" ColumnName="tot_vFrete" />
+                <ScalarProperty Name="tot_vSeg" ColumnName="tot_vSeg" />
+                <ScalarProperty Name="tot_vDesc" ColumnName="tot_vDesc" />
+                <ScalarProperty Name="tot_vII" ColumnName="tot_vII" />
+                <ScalarProperty Name="tot_vIPI" ColumnName="tot_vIPI" />
+                <ScalarProperty Name="tot_vPIS" ColumnName="tot_vPIS" />
+                <ScalarProperty Name="tot_vCOFINS" ColumnName="tot_vCOFINS" />
+                <ScalarProperty Name="tot_vOutro" ColumnName="tot_vOutro" />
+                <ScalarProperty Name="tot_vNF" ColumnName="tot_vNF" />
+                <ScalarProperty Name="tot_vTotTrib" ColumnName="tot_vTotTrib" />
+                <ScalarProperty Name="tot_vICMSDeson" ColumnName="tot_vICMSDeson" />
+                <ScalarProperty Name="tot_vICMSUFDest_Opc" ColumnName="tot_vICMSUFDest_Opc" />
+                <ScalarProperty Name="tot_vICMSUFRemet" ColumnName="tot_vICMSUFRemet" />
+                <ScalarProperty Name="tot_vFCPUFDest" ColumnName="tot_vFCPUFDest" />
+                <ScalarProperty Name="tot_vFCP" ColumnName="tot_vFCP" />
+                <ScalarProperty Name="tot_vFCPST" ColumnName="tot_vFCPST" />
+                <ScalarProperty Name="tot_vFCPSTRet" ColumnName="tot_vFCPSTRet" />
+                <ScalarProperty Name="tot_vIPIDevol" ColumnName="tot_vIPIDevol" />
+                <ScalarProperty Name="tra_modFrete" ColumnName="tra_modFrete" />
+                <ScalarProperty Name="tra_CNPJ" ColumnName="tra_CNPJ" />
+                <ScalarProperty Name="tra_CPF" ColumnName="tra_CPF" />
+                <ScalarProperty Name="tra_xNome" ColumnName="tra_xNome" />
+                <ScalarProperty Name="tra_IE" ColumnName="tra_IE" />
+                <ScalarProperty Name="tra_xEnder" ColumnName="tra_xEnder" />
+                <ScalarProperty Name="tra_xMun" ColumnName="tra_xMun" />
+                <ScalarProperty Name="tra_UF" ColumnName="tra_UF" />
+                <ScalarProperty Name="Recibo" ColumnName="Recibo" />
+                <ScalarProperty Name="Protocolo" ColumnName="Protocolo" />
+                <ScalarProperty Name="DtAutorizacao" ColumnName="DtAutorizacao" />
+                <ScalarProperty Name="MsgRetorno" ColumnName="MsgRetorno" />
+                <ScalarProperty Name="NFeStatus" ColumnName="NFeStatus" />
+                <ScalarProperty Name="DtCancelamento" ColumnName="DtCancelamento" />
+                <ScalarProperty Name="Justificativa" ColumnName="Justificativa" />
+                <ScalarProperty Name="ChaveAut" ColumnName="ChaveAut" />
+                <ScalarProperty Name="ProtocoloCancelamento" ColumnName="ProtocoloCancelamento" />
+                <ScalarProperty Name="veic_Placa" ColumnName="veic_Placa" />
+                <ScalarProperty Name="veic_UF" ColumnName="veic_UF" />
+                <ScalarProperty Name="veic_RNTC" ColumnName="veic_RNTC" />
+                <ScalarProperty Name="vol_qVol" ColumnName="vol_qVol" />
+                <ScalarProperty Name="vol_esp" ColumnName="vol_esp" />
+                <ScalarProperty Name="vol_Marca" ColumnName="vol_Marca" />
+                <ScalarProperty Name="vol_nVol" ColumnName="vol_nVol" />
+                <ScalarProperty Name="vol_pesoL" ColumnName="vol_pesoL" />
+                <ScalarProperty Name="vol_pesoB" ColumnName="vol_pesoB" />
+                <ScalarProperty Name="vol_lacres" ColumnName="vol_lacres" />
+                <ScalarProperty Name="infAdic" ColumnName="infAdic" />
+                <ScalarProperty Name="IdExterno" ColumnName="IdExterno" />
+                <ScalarProperty Name="pag_tPag" ColumnName="pag_tPag" />
+                <ScalarProperty Name="pag_vPag" ColumnName="pag_vPag" />
+                <ScalarProperty Name="CCeTexto" ColumnName="CCeTexto" />
+                <ScalarProperty Name="UFSaidaPais" ColumnName="UFSaidaPais" />
+                <ScalarProperty Name="xLocEmbarq" ColumnName="xLocEmbarq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NFeProduto">
+            <EntityTypeMapping TypeName="FinanceiroDevModel.NFeProduto">
+              <MappingFragment StoreEntitySet="NFeProduto">
+                <ScalarProperty Name="IdNFeProduto" ColumnName="IdNFeProduto" />
+                <ScalarProperty Name="IdNFe" ColumnName="IdNFe" />
+                <ScalarProperty Name="cProd" ColumnName="cProd" />
+                <ScalarProperty Name="cEAN" ColumnName="cEAN" />
+                <ScalarProperty Name="xProd" ColumnName="xProd" />
+                <ScalarProperty Name="NCM" ColumnName="NCM" />
+                <ScalarProperty Name="CEST" ColumnName="CEST" />
+                <ScalarProperty Name="CFOP" ColumnName="CFOP" />
+                <ScalarProperty Name="uCom" ColumnName="uCom" />
+                <ScalarProperty Name="qCom" ColumnName="qCom" />
+                <ScalarProperty Name="vUnCom" ColumnName="vUnCom" />
+                <ScalarProperty Name="vProd" ColumnName="vProd" />
+                <ScalarProperty Name="cEANTrib" ColumnName="cEANTrib" />
+                <ScalarProperty Name="uTrib" ColumnName="uTrib" />
+                <ScalarProperty Name="qTrib" ColumnName="qTrib" />
+                <ScalarProperty Name="vUnTrib" ColumnName="vUnTrib" />
+                <ScalarProperty Name="vOutro" ColumnName="vOutro" />
+                <ScalarProperty Name="indTot" ColumnName="indTot" />
+                <ScalarProperty Name="xPed" ColumnName="xPed" />
+                <ScalarProperty Name="ICMS_origem" ColumnName="ICMS_origem" />
+                <ScalarProperty Name="ICMS_CST" ColumnName="ICMS_CST" />
+                <ScalarProperty Name="ICMS_modBC" ColumnName="ICMS_modBC" />
+                <ScalarProperty Name="ICMS_redBC" ColumnName="ICMS_redBC" />
+                <ScalarProperty Name="ICMS_vBC" ColumnName="ICMS_vBC" />
+                <ScalarProperty Name="ICMS_pICMS" ColumnName="ICMS_pICMS" />
+                <ScalarProperty Name="ICMS_vICMS" ColumnName="ICMS_vICMS" />
+                <ScalarProperty Name="ICMS_modBCST" ColumnName="ICMS_modBCST" />
+                <ScalarProperty Name="ICMS_pMVAST" ColumnName="ICMS_pMVAST" />
+                <ScalarProperty Name="ICMS_pRedBCST" ColumnName="ICMS_pRedBCST" />
+                <ScalarProperty Name="ICMS_vBCST" ColumnName="ICMS_vBCST" />
+                <ScalarProperty Name="ICMS_pST" ColumnName="ICMS_pST" />
+                <ScalarProperty Name="ICMS_vST" ColumnName="ICMS_vST" />
+                <ScalarProperty Name="ICMS_vBCSTRet" ColumnName="ICMS_vBCSTRet" />
+                <ScalarProperty Name="ICMS_vICMSSTRet" ColumnName="ICMS_vICMSSTRet" />
+                <ScalarProperty Name="ICMS_pCredSN" ColumnName="ICMS_pCredSN" />
+                <ScalarProperty Name="ICMS_vCredICMSSN" ColumnName="ICMS_vCredICMSSN" />
+                <ScalarProperty Name="IPI_CST" ColumnName="IPI_CST" />
+                <ScalarProperty Name="IPI_Enq" ColumnName="IPI_Enq" />
+                <ScalarProperty Name="IPI_pIpi" ColumnName="IPI_pIpi" />
+                <ScalarProperty Name="IPI_vIPI" ColumnName="IPI_vIPI" />
+                <ScalarProperty Name="PIS_CST" ColumnName="PIS_CST" />
+                <ScalarProperty Name="PIS_pPis" ColumnName="PIS_pPis" />
+                <ScalarProperty Name="PIS_vPis" ColumnName="PIS_vPis" />
+                <ScalarProperty Name="COFINS_CST" ColumnName="COFINS_CST" />
+                <ScalarProperty Name="COFINS_pCofins" ColumnName="COFINS_pCofins" />
+                <ScalarProperty Name="COFINS_vCofins" ColumnName="COFINS_vCofins" />
+                <ScalarProperty Name="infAdic" ColumnName="infAdic" />
+                <ScalarProperty Name="vFrete" ColumnName="vFrete" />
+                <ScalarProperty Name="vSeg" ColumnName="vSeg" />
+                <ScalarProperty Name="vDesc" ColumnName="vDesc" />
+                <ScalarProperty Name="IPI_vBC" ColumnName="IPI_vBC" />
+                <ScalarProperty Name="PIS_vBC" ColumnName="PIS_vBC" />
+                <ScalarProperty Name="COFINS_vBC" ColumnName="COFINS_vBC" />
+                <ScalarProperty Name="pis_qBCProd" ColumnName="pis_qBCProd" />
+                <ScalarProperty Name="pis_vAliqProd" ColumnName="pis_vAliqProd" />
+                <ScalarProperty Name="cofins_qBCProd" ColumnName="cofins_qBCProd" />
+                <ScalarProperty Name="cofins_vAliqProd" ColumnName="cofins_vAliqProd" />
+                <ScalarProperty Name="ipi_CNPJProd" ColumnName="ipi_CNPJProd" />
+                <ScalarProperty Name="ipi_cSelo" ColumnName="ipi_cSelo" />
+                <ScalarProperty Name="ipi_qSelo" ColumnName="ipi_qSelo" />
+                <ScalarProperty Name="ipi_clEnq" ColumnName="ipi_clEnq" />
+                <ScalarProperty Name="ipi_qUnid" ColumnName="ipi_qUnid" />
+                <ScalarProperty Name="ipi_vUnid" ColumnName="ipi_vUnid" />
+                <ScalarProperty Name="IdExternoItem" ColumnName="IdExternoItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

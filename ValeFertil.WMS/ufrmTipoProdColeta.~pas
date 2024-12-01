@@ -1,0 +1,27 @@
+unit ufrmTipoProdColeta;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Db, ADODB;
+
+type
+  TForm2 = class(TForm)
+    ADOQuery1: TADOQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+uses UMenu;
+
+{$R *.DFM}
+
+end.

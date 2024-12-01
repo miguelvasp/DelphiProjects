@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4af693a97354dafb45cb5f310064e13" Name="Diagram1">
+        <EntityTypeShape EntityType="FinanceiroModel.MateriaisSimone" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinanceiroModel.Local" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FinanceiroModel.GRUPO_MATERIAL" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="FinanceiroModel.MATERIAIS" Width="1.5" PointX="3" PointY="4.125" />
+        <AssociationConnector Association="FinanceiroModel.FK_MATERIAIS_GRUPO_MATERIAL" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

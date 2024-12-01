@@ -1,0 +1,526 @@
+unit U_DataDebCred;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Grids, StdCtrls, Buttons, Db, DBTables, Wwquery, wwdblook, Mask, ExtCtrls,
+  wwstorep;
+
+type
+  TFDataDebCred = class(TForm)
+    Q_BANC: TwwQuery;
+    Q_BANCBAN_CODI: TStringField;
+    Q_BANCBAN_NOME: TStringField;
+    Q_Items: TwwQuery;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    MaskEdit1: TMaskEdit;
+    wwDBLookupCombo3: TwwDBLookupCombo;
+    SBT_SAIR: TSpeedButton;
+    BitBtn2: TBitBtn;
+    BitBtn1: TBitBtn;
+    STP_ATUASALD: TStoredProc;
+    Panel3: TPanel;
+    StringGrid1: TStringGrid;
+    Q_TOTAIS: TwwQuery;
+    Label4: TLabel;
+    Label7: TLabel;
+    lbl_TotPag: TLabel;
+    lbl_TotRec: TLabel;
+    STP_INSERE_CPAMOVI_DEBCRED: TwwStoredProc;
+    STP_INSERE_CPAMOVI_DEBCRED_REC: TwwStoredProc;
+    lbSelecao: TLabel;
+    Q_RECCLI: TwwQuery;
+    Q_RECCLICLI_RAZA: TStringField;
+    Q_RECCLICLI_CODI: TAutoIncField;
+    cboCliente: TwwDBLookupCombo;
+    Q_PagForn: TwwQuery;
+    Q_PagFornFOR_CODI: TStringField;
+    Q_PagFornFOR_RAZA: TStringField;
+    cboForn: TwwDBLookupCombo;
+    lbTipo: TLabel;
+    lbClin: TLabel;
+    Label14: TLabel;
+    edtEmissaoI: TMaskEdit;
+    Label15: TLabel;
+    edtEmissaoF: TMaskEdit;
+    Label3: TLabel;
+    edtVencI: TMaskEdit;
+    Label5: TLabel;
+    edtVencF: TMaskEdit;
+    SpeedButton1: TSpeedButton;
+    CheckBox1: TCheckBox;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure SBT_SAIRClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormActivate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FDataDebCred: TFDataDebCred;
+
+implementation
+uses CPPMENU, U_PesqMovBanc ;
+{$R *.DFM}
+
+procedure TFDataDebCred.BitBtn1Click(Sender: TObject);
+var iLinha : integer ;
+    Str_Pag: String;
+    Str_Rec: String;
+begin
+
+  Label4.Visible := False;
+  lbl_TotPag.Visible := False;
+  lbl_TotRec.Visible := False;
+  Label7.Visible := False;
+
+
+  //miguel
+  if (wwDBLooKupCombo3.text = '') then
+  begin
+      MessageBox(Self.Handle, 'Informe a conta bancária!', 'Informação', MB_OK);
+      Abort;
+  end;
+
+  // Monta o StringGrid
+        // linha
+        StringGrid1.Cells[1, 0] := 'Documento';
+        StringGrid1.Cells[2, 0] := '           Valor';
+        StringGrid1.Cells[3, 0] := 'Vencimento ';
+        StringGrid1.Cells[4, 0] := 'Tipo';
+        StringGrid1.Cells[5, 0] := 'Fornecedor/Cliente ';
+        StringGrid1.Cells[6, 0] := 'No.CP/CR';
+        StringGrid1.Cells[7, 0] := 'Sequência';
+        iLinha := 1 ;
+
+  if lbTipo.Caption = 'C' then begin
+        // Recebimentos
+        lbl_TotRec.Visible := True;
+        Label7.Visible := True;
+        Q_Items.close;
+        Q_ITems.Sql.Clear;
+        Q_Items.Sql.Add('Select A.*,B.REC_CODI,B.REC_RAZA, b.REC_VENC from  CPAIREC A , CPARECE B ');
+        Q_Items.Sql.Add('where A.IRE_CODI = B.REC_CODI  ') ;
+        Q_Items.Sql.add(' and IRE_DDEB is null ');
+        if (wwDBLooKupCombo3.text <> '') and (wwDBLooKupCombo3.LookupValue <> '') then
+           Q_Items.Sql.add(' and IRE_BANC = ' + '''' + Q_BANCBAN_CODI.asstring + '''') ;
+        if cboCliente.Text <> '' then
+           Q_Items.sql.Add('AND REC_CLIE = ' + cboCliente.LookupValue);
+
+        IF edtEmissaoI.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.REC_EMIS, 112) >= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtEmissaoI.Text))));
+
+        IF edtEmissaoF.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.REC_EMIS, 112) <= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtEmissaoF.Text))));
+
+
+        IF edtVencI.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.REC_VENC, 112) >= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtVencI.Text))));
+
+        IF edtVencF.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.REC_VENC, 112) <= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtVencF.Text))));
+
+        Q_Items.Sql.add(' order by  IRE_DOCT');
+        Q_Items.open;
+
+
+
+
+        while not Q_ITemS.eof do begin
+          StringGrid1.Cells[0, iLinha] := '';
+          StringGrid1.Cells[1, iLinha] := Q_ITEMS.fieldbyname('IRE_DOCT').asstring;
+          StringGrid1.Cells[2, iLinha] := Format('%16s',[FormatFloat('###,###,##0.00',Q_ITEMS.fieldbyname('IRE_VTOT').asfloat)]) ;
+          StringGrid1.Cells[3, iLinha] := formatdatetime('DD/MM/YYYY',Q_ITEMS.fieldbyname('REC_VENC').asdatetime) ;
+          StringGrid1.Cells[4, iLinha] := 'Rec.';
+          StringGrid1.Cells[5, iLinha] := Q_ITEMS.fieldbyname('REC_RAZA').asstring ;
+          StringGrid1.Cells[6, iLinha] := Q_ITEMS.fieldbyname('IRE_CODI').asstring ;
+          StringGrid1.Cells[7, iLinha] := Q_ITEMS.fieldbyname('IRE_SEQU').asstring ;
+          iLinha := iLinha   + 1;
+          Q_ITEMS.next;
+        end;
+        StringGrid1.rowcount := iLinha  ;
+  end;
+        
+
+
+
+  if lbTipo.Caption = 'D' then begin
+        Label4.Visible := True;
+        lbl_TotPag.Visible := True;
+        Q_Items.close;
+        Q_ITems.Sql.Clear;
+       //Pagamentos
+        Q_Items.Sql.Add('Select A.*,B.RAZAO,B.NUMERO, b.Vencimento, b.Emissao from  CPAIPAG A , CPAPAGA B ');
+        Q_Items.Sql.Add('where A.NUMERO = B.NUMERO  ') ;
+       //Q_Items.Sql.Add('and   A.NUMERO = C.NUMEROCP  ') ;
+        Q_Items.Sql.add(' and DATADEBITO is null ');
+        if wwDBLooKupCombo3.text <> '' then
+           Q_Items.Sql.add(' and A.BANCOCONTA = ' + '''' + Q_BANCBAN_CODI.asstring + '''') ;
+
+
+        if cboForn.Text <> '' then
+           Q_Items.sql.Add('AND Fornecedor = ' + QuotedStr(cboForn.LookupValue));
+
+        IF edtEmissaoI.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.Emissao, 112) >= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtEmissaoI.Text))));
+
+        IF edtEmissaoF.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.Emissao, 112) <= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtEmissaoF.Text))));
+
+
+        IF edtVencI.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.Vencimento, 112) >= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtVencI.Text))));
+
+        IF edtVencF.Text <> '  /  /    ' then
+           Q_Items.sql.Add(' and convert(varchar, b.Vencimento, 112) <= ' + QuotedStr(FormatDateTime('yyyyMMdd', StrToDate(edtVencF.Text))));
+
+
+
+
+        Q_Items.Sql.add(' order by  A.DOCUMENTO');
+        Q_Items.open;
+
+
+
+        while not Q_ITemS.eof do begin
+          StringGrid1.Cells[0, iLinha] := '';
+          StringGrid1.Cells[1, iLinha] := Q_ITEMS.fieldbyname('DOCUMENTO').asstring;
+          StringGrid1.Cells[2, iLinha] := Format('%16s',[FormatFloat('###,###,##0.00',Q_ITEMS.fieldbyname('VALORPAGO').asfloat)]) ;
+          StringGrid1.Cells[3, iLinha] := formatdatetime('DD/MM/YYYY',Q_ITEMS.fieldbyname('Vencimento').asdatetime) ;
+          StringGrid1.Cells[4, iLinha] := 'Pag.';
+          StringGrid1.Cells[5, iLinha] := Q_ITEMS.fieldbyname('RAZAO').asstring ;
+          StringGrid1.Cells[6, iLinha] := Q_ITEMS.fieldbyname('Numero').asstring ;
+          StringGrid1.Cells[7, iLinha] := Q_ITEMS.fieldbyname('Sequencia').asstring ;
+          iLinha := iLinha   + 1;
+          Q_ITEMS.next;
+        end;
+        if iLinha = 1 then
+           StringGrid1.rowcount := iLinha +  1
+        else StringGrid1.rowcount := iLinha  ;
+        Q_Items.close;
+  end;
+
+
+
+  StringGrid1.visible := true ;
+
+ // TOTAIS
+ with Q_TOTAIS do
+    Begin
+    Str_Pag := ' SELECT SUM(IP.ValorPago) as TOT_PAG '+
+               ' FROM   CPAIPAG IP, ' +
+               '        CPAPAGA P   ' +
+               ' WHERE  IP.NUMERO = P.NUMERO  '+
+               ' AND    DATADEBITO IS NULL ';
+
+    Str_Rec := ' SELECT SUM(IR.IRE_SALD) as TOT_REC '+
+               ' FROM   CPAIREC IR, ' +
+               '        CPARECE R   ' +
+               ' WHERE  IR.IRE_CODI = R.REC_CODI '+
+               ' AND    IRE_DDEB IS NULL ';
+    if wwDBLooKupCombo3.text <> '' then
+        Begin
+        Str_Pag := Str_Pag + ' AND IP.BANCOCONTA = ' + '''' + Q_BANCBAN_CODI.asstring + ''' ';
+        Str_Rec := Str_Rec + ' AND IR.IRE_BANC   = ' + '''' + Q_BANCBAN_CODI.asstring + ''' ';
+        end;
+    Close;
+    Sql.Clear;
+    Sql.Add(Str_Pag);
+    Open;
+    lbl_TotPag.Caption := FormatFloat('###,###,##0.00',FieldByName('TOT_PAG').AsFloat);
+    Close;
+    Sql.Clear;
+    Sql.Add(Str_Rec);
+    Open;
+    lbl_TotRec.Caption := FormatFloat('###,###,##0.00',FieldByName('TOT_REC').AsFloat);
+    End; // With
+
+
+
+
+
+end;
+
+procedure TFDataDebCred.StringGrid1DblClick(Sender: TObject);
+var
+   DOCU     : String ;
+   IntLinha : Integer ;
+   MARCA    : Boolean;
+   totalGeral : real;
+   aux : string;
+begin
+with StringGrid1 do
+  Begin
+  if Cells[0, Row] <> '»'  then
+     Begin
+     Cells[0, Row] := '»';
+     MARCA := True;
+     end
+  else
+     Begin
+     Cells[0, Row] := ' ';
+     MARCA := False;
+     end;
+  DOCU :=  Cells[1, Row];
+
+  for IntLinha := 1 to RowCount do
+  begin
+        if MARCA and (Cells[1,IntLinha] = DOCU) then begin
+                Cells[0, IntLinha] := '»';
+
+        end;
+        if Not MARCA and (Cells[1,IntLinha] = DOCU) then
+                Cells[0, IntLinha] := ' ';
+
+  end;
+        
+  end;
+
+
+
+
+
+ totalGeral := 0;
+ with StringGrid1 do begin
+  for IntLinha := 1 to RowCount do
+  begin
+     if  Cells[0, IntLinha] = '»' then begin
+         aux := Cells[2, IntLinha] ;
+         aux := StringReplace(aux,'.','', []);
+         totalGeral := totalGeral + StrToFloat(Trim(aux));
+     end;
+  end;
+ end;
+  lbSelecao.Caption := 'Total selecionado: ' + FormatFloat('###,###,##0.00', totalGeral);
+
+end;
+
+
+procedure TFDataDebCred.BitBtn2Click(Sender: TObject);
+var dDATA : tdatetime ;
+    IntLinha : Integer ;
+begin
+  if maskedit1.text = '  /  /    '  then
+  begin
+        MessageDlg('Data de Débito/Crédito em Branco !',mterror, [mbOk], 0);
+        Maskedit1.setfocus ;
+        abort ;
+  end;
+
+
+  //miguel
+  if (wwDBLooKupCombo3.text = '') then
+  begin
+      MessageBox(Self.Handle, 'Informe a conta bancária!', 'Informação', MB_OK);
+      Abort;
+  end;
+
+  ddata := strtodate(Maskedit1.text);
+  IntLinha := 1 ;
+
+
+
+
+
+  
+    //miguel
+    //verifica se a data de credito não está dentro do periodo conciliado na movimentação bancária
+    if FMenu.Conciliacao(wwDBLookupCombo3.LookupValue, dDATA) then
+    begin
+      MessageBox(Self.Handle, 'Não é possível efetuar alterações nesta conta bancária, este período está conciliado!',
+              'Informação do Sistema', MB_OK + MB_ICONEXCLAMATION);
+      Abort;
+    end;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+  for IntLinha := 1 to StringGrid1.rowcount do
+  begin
+        Try
+           FMenu.DATABASE1.StartTransaction;
+           if (StringGrid1.Cells[4, IntLinha] = 'Pag.') and (StringGrid1.Cells[0,IntLinha] = '»') then
+           begin
+              Q_Items.sql.clear;
+              Q_Items.Sql.add('Update CPAIPAG set DataDebito = '+ ''''+ formatdatetime('MM/DD/YYYY',dData)+ '''') ;
+              Q_Items.Sql.Add('where Numero = '+  StringGrid1.Cells[6, IntLinha] );
+              Q_ITems.SQl.Add('and  Sequencia = '+  StringGrid1.Cells[7, IntLinha]);
+              Q_Items.ExecSQL;
+
+
+                try
+                  STP_INSERE_CPAMOVI_DEBCRED.ParamByName('@V_NUMERO').Value :=   StringGrid1.Cells[6, IntLinha] ;
+                  STP_INSERE_CPAMOVI_DEBCRED.ParamByName('@SEQUENCIA').Value := StringGrid1.Cells[7, IntLinha] ;
+                  STP_INSERE_CPAMOVI_DEBCRED.ExecProc;
+
+                finally
+                end;
+
+
+
+              //end ;
+
+
+           end ;
+
+
+
+           if (StringGrid1.Cells[4, IntLinha] = 'Rec.') and (StringGrid1.Cells[0,IntLinha] = '»') then
+           begin
+              Q_Items.sql.clear;
+              Q_Items.Sql.add('Update CPAIREC set IRE_DDEB = '+ ''''+ formatdatetime('MM/DD/YYYY',dData)+ '''') ;
+              Q_Items.Sql.Add('where IRE_CODI = '+  StringGrid1.Cells[6, IntLinha] );
+              Q_ITems.SQl.Add('and  IRE_SEQU = '+  StringGrid1.Cells[7, IntLinha]);
+              Q_Items.ExecSQL;
+
+                       try
+                        STP_INSERE_CPAMOVI_DEBCRED_REC.ParamByName('@V_NUMERO').Value :=   StringGrid1.Cells[6, IntLinha] ;
+                        STP_INSERE_CPAMOVI_DEBCRED_REC.ParamByName('@SEQUENCIA').Value := StringGrid1.Cells[7, IntLinha] ;
+                        STP_INSERE_CPAMOVI_DEBCRED_REC.ExecProc;
+
+                      finally
+                      end;
+
+                ///end ;
+
+           end ;
+           FMenu.DATABASE1.Commit;
+
+          except
+           On E:EDBEngineError do
+           begin
+              MessageDlg('Problemas ao gravar no Banco de Dados!'+#13+#10+E.Message, mtError, [mbOK], 0);
+              FMenu.DATABASE1.RollBack;
+              break ;
+           end;
+        End;
+  end;
+
+
+
+
+
+
+  try
+    STP_ATUASALD.ParamByName('@Banco').Value := wwDBLookupCombo3.lookupvalue ;
+    STP_ATUASALD.ExecProc;
+
+  finally
+  end;
+  BitBtn1.click;
+  //end;
+ lbSelecao.Caption :=  ' Total selecionado:  0,00';
+ ShowMessage('Atualização de data de débito efetuada com sucesso!');
+ Self.Close;
+end;
+
+
+
+
+procedure TFDataDebCred.SBT_SAIRClick(Sender: TObject);
+begin
+  close  ;
+
+end;
+
+
+procedure TFDataDebCred.FormCreate(Sender: TObject);
+begin
+  Q_BANC.open ;
+  Q_PagForn.Open;
+  Q_RECCLI.Open;
+end;
+
+procedure TFDataDebCred.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Q_BANC.close ;
+  action :=cafree;
+end;
+
+
+procedure TFDataDebCred.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+  begin
+    key := #0;
+    perform(WM_nextdlgctl,0,0);
+  end;
+
+end;
+
+procedure TFDataDebCred.FormActivate(Sender: TObject);
+begin
+//        CENTRO(Self,False);
+end;
+
+procedure TFDataDebCred.SpeedButton1Click(Sender: TObject);
+begin
+   Application.CreateForm(TFPesqMovBanc, FPesqMovBanc);
+   FPesqMovBanc.wwDBLookupCombo1.Text := wwDBLookupCombo3.Text;
+   FPesqMovBanc.wwDBLookupCombo1.LookupValue := wwDBLookupCombo3.LookupValue;
+   FPesqMovBanc.ME_REC_VENC1.Text :=  MaskEdit1.Text;
+   FPesqMovBanc.ME_REC_VENC2.Text := MaskEdit1.Text;
+   FPesqMovBanc.SBT_PESQ.Click;
+   FPesqMovBanc.ShowModal ;
+   FPesqMovBanc.Release ;
+end;
+
+procedure TFDataDebCred.CheckBox1Click(Sender: TObject);
+var
+   DOCU     : String ;
+   IntLinha : Integer ;
+   MARCA    : Boolean;
+   totalGeral : real;
+   aux, marcadorx : string;
+begin
+  with StringGrid1 do begin
+      if CheckBox1.Checked then
+            marcadorx := '»'
+      else
+            marcadorx   := ' ';
+
+
+      for IntLinha := 1 to RowCount do
+      begin
+         Cells[0, IntLinha] := marcadorx;
+      end;
+
+      totalGeral := 0;
+      with StringGrid1 do begin
+      for IntLinha := 1 to RowCount do
+      begin
+         if  Cells[0, IntLinha] = '»' then begin
+             aux := Cells[2, IntLinha] ;
+             aux := StringReplace(aux,'.','', []);
+             if aux <> '' then
+                totalGeral := totalGeral + StrToFloat(Trim(aux));
+         end;
+      end;
+
+  end;//end string grid
+  end;
+
+  lbSelecao.Caption := 'Total selecionado: ' + FormatFloat('###,###,##0.00', totalGeral);
+end;
+
+end.

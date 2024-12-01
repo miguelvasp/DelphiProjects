@@ -1,0 +1,299 @@
+unit UFHistNF;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  wwdblook, Mask, StdCtrls, Buttons, ExtCtrls, wwdbedit, Db, DBTables,
+  Wwquery, Wwdotdot, Wwdbcomb, Wwdatsrc, DBCtrls, wwstorep, Gauges;
+
+type
+  TFFHistNF = class(TForm)
+    Panel3: TPanel;
+    SpeedButton3: TSpeedButton;
+    Label16: TLabel;
+    Panel2: TPanel;
+    SBT_VISU: TSpeedButton;
+    Label1: TLabel;
+    GroupBox6: TGroupBox;
+    Label4: TLabel;
+    Q_PROD: TwwQuery;
+    Q_PRODPRO_COD: TStringField;
+    Q_PRODPRO_DESC: TStringField;
+    Q_PRODPRO_ID: TAutoIncField;
+    DS_PROD: TwwDataSource;
+    Q_TPROD: TwwQuery;
+    Q_TPRODTPRO_NOME: TStringField;
+    Q_TPRODTPRO_ID: TAutoIncField;
+    Q_TPRODCLIN_ID: TIntegerField;
+    Q_AUX: TwwQuery;
+    Label20: TLabel;
+    combo_cliente: TwwDBLookupCombo;
+    Q_CLINBF: TwwQuery;
+    Q_CLINBFCLIN_RAZA: TStringField;
+    Q_CLINBFCLIN_ID: TAutoIncField;
+    STP_HISTORICONF: TwwStoredProc;
+    dbnf: TEdit;
+    Label3: TLabel;
+    mskDataI: TMaskEdit;
+    Label5: TLabel;
+    mskDataF: TMaskEdit;
+    Label6: TLabel;
+    edtOS: TEdit;
+    edtManifesto: TEdit;
+    Label7: TLabel;
+    rdTipoNF: TRadioGroup;
+    rgOrdenacao: TRadioGroup;
+    rgStatusNF: TRadioGroup;
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cboclientefinalEnter(Sender: TObject);
+    procedure cboclientefinalExit(Sender: TObject);
+    procedure Data1Exit(Sender: TObject);
+    procedure Data1Enter(Sender: TObject);
+    procedure Data2Enter(Sender: TObject);
+    procedure Data2Exit(Sender: TObject);
+    procedure dbnf3Enter(Sender: TObject);
+    procedure dbnf3Exit(Sender: TObject);
+    procedure cboprodutoEnter(Sender: TObject);
+    procedure cboprodutoExit(Sender: TObject);
+    procedure SBT_VISUClick(Sender: TObject);
+    procedure combo_produtoExit(Sender: TObject);
+    procedure combo_produtoEnter(Sender: TObject);
+    procedure wwDBLookupCombo2Enter(Sender: TObject);
+    procedure wwDBLookupCombo2Exit(Sender: TObject);
+    procedure MaskEdit2Enter(Sender: TObject);
+    procedure MaskEdit2Exit(Sender: TObject);
+    procedure combo_clienteEnter(Sender: TObject);
+    procedure combo_clienteExit(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FFHistNF: TFFHistNF;
+
+nota: string;
+cliN, Tipo, NotaF, DataI, DataF, OSHist, ManifestoHist : string;
+
+implementation
+uses UHistNF, UMenu;
+
+{$R *.DFM}
+
+procedure TFFHistNF.SpeedButton3Click(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFFHistNF.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+     Q_CLINBF.close ;
+     ACTION := CAFREE;
+
+end;
+
+procedure TFFHistNF.cboclientefinalEnter(Sender: TObject);
+begin
+(Sender as TwwDBlookupcombo).Color := ClAqua;
+end;
+
+procedure TFFHistNF.cboclientefinalExit(Sender: TObject);
+begin
+(Sender as TwwDBlookupcombo).Color := Clwindow;
+end;
+
+procedure TFFHistNF.Data1Exit(Sender: TObject);
+begin
+(Sender as TMaskedit).Color := Clwindow;
+end;
+
+procedure TFFHistNF.Data1Enter(Sender: TObject);
+begin
+  (Sender as TMaskedit).Color := ClAqua;
+end;
+
+procedure TFFHistNF.Data2Enter(Sender: TObject);
+begin
+  (Sender as TMaskedit).Color := ClAqua;
+end;
+
+procedure TFFHistNF.Data2Exit(Sender: TObject);
+begin
+(Sender as TMaskedit).Color := Clwindow;
+end;
+
+procedure TFFHistNF.dbnf3Enter(Sender: TObject);
+begin
+(Sender as TwwDbEdit).Color := ClAqua;
+end;
+
+procedure TFFHistNF.dbnf3Exit(Sender: TObject);
+begin
+(Sender as TwwDBEdit).color := ClWindow;
+end;
+
+procedure TFFHistNF.cboprodutoEnter(Sender: TObject);
+begin
+
+(SENDER AS TWWDBLOOKUPCOMBO).COLOR := CLAQUA;
+end;
+
+procedure TFFHistNF.cboprodutoExit(Sender: TObject);
+begin
+   (Sender as TwwDBlookupcombo).Color := Clwindow;
+end;
+
+procedure TFFHistNF.SBT_VISUClick(Sender: TObject);
+begin
+
+ DataI := '';
+ DataF := '';
+ OSHist := '';
+ ManifestoHist := '';
+
+  If combo_cliente.text = '' then begin
+     MessageDlg('Cliente NBF esta em branco !',mtWarning,[mbok],0);
+     combo_cliente.setfocus ;
+     abort ;
+  end ;
+
+  if dbnf.text <> '' then
+       nota := dbnf.Text  ;
+  if combo_cliente.text <> '' then
+       cliN := combo_cliente.lookupvalue ;
+
+  {/************** miguel *************/}
+   if rdTipoNF.ItemIndex = 0 then
+      Tipo := 'Todas'
+   else if rdTipoNF.ItemIndex = 1 then
+      Tipo := 'Entrada'
+   else if rdTipoNF.ItemIndex = 2 then
+      Tipo := 'Saída';
+
+
+   if mskDataI.Text <>  '  /  /    ' then
+      DataI := mskDataI.Text;
+
+   if mskDataF.Text <> '  /  /    ' then
+      DataF := mskDataF.Text;
+
+   if edtOS.Text <> '' then
+      OSHist := edtOS.Text;
+
+   if edtManifesto.Text <> '' then
+      ManifestoHist := edtManifesto.Text;
+  {/************** end ****************/}
+  
+
+
+ {
+ 			@NF  varchar(10), 
+                        @CLIN_ID int,
+			@CH INT,
+			@DataI VARCHAR(8),
+			@DataF VARCHAR(8),
+			@OSHist VARCHAR(9),
+			@ManifestoHist VARCHAR(9)
+ }
+
+
+         ////
+         try
+         Begin
+           STP_HISTORICONF.ParamByName('@NF').Value        := nota ;
+           STP_HISTORICONF.ParamByName('@CLIN_ID').Value   := combo_cliente.lookupvalue ;
+           STP_HISTORICONF.ParamByName('@CH').Value        := FMenu.SqlUsuariosCH.asstring ;
+
+
+           {/************** miguel *************/}
+
+           IF DataI <> '' then
+                STP_HISTORICONF.ParamByName('@DATAI').Value     := FormatDateTime('YYYYMMDD',StrToDate(DataI))
+           else
+                STP_HISTORICONF.ParamByName('@DATAI').Value := '';
+
+           IF DataF <> '' then
+                STP_HISTORICONF.ParamByName('@DATAF').Value     := FormatDateTime('YYYYMMDD',StrToDate(DataF) + 1) 
+           else
+                STP_HISTORICONF.ParamByName('@DATAF').Value := '';
+
+           STP_HISTORICONF.ParamByName('@OSHist').Value  := OSHist;
+
+           STP_HISTORICONF.ParamByName('@ManifestoHist').Value  := ManifestoHist;
+
+
+            {/************** end ****************/}
+
+
+           STP_HISTORICONF.Execproc   ;
+          End
+         except
+          begin
+           MessageDlg('Geração de Histórico de Nota Fiscal, com erro !',mtInformation,[mbOk], 0);
+           abort  ;
+          end;
+         end;
+         ////
+
+ Application.Createform(TFHistNF,FHistNF);
+ FHistNF.ShowModal;
+ FHistNF.Release  ;
+
+
+  nota := '';
+  CLIN := '' ;
+end;
+
+procedure TFFHistNF.combo_produtoExit(Sender: TObject);
+begin
+  
+    (Sender as TwwDBlookupcombo).Color := Clwindow ;  
+end;
+
+procedure TFFHistNF.combo_produtoEnter(Sender: TObject);
+begin
+
+ (Sender as TwwDBlookupcombo).Color := ClAqua;
+end;
+
+procedure TFFHistNF.wwDBLookupCombo2Enter(Sender: TObject);
+begin
+  (Sender as TwwDBlookupcombo).Color := ClAqua;
+end;
+
+procedure TFFHistNF.wwDBLookupCombo2Exit(Sender: TObject);
+begin
+  (Sender as TwwDBlookupcombo).Color := Clwindow;
+end;
+
+procedure TFFHistNF.MaskEdit2Enter(Sender: TObject);
+begin
+  (Sender as TMaskedit).Color := ClAqua;
+end;
+
+procedure TFFHistNF.MaskEdit2Exit(Sender: TObject);
+begin
+  (Sender as TMaskedit).Color := Clwindow ;
+end;
+
+procedure TFFHistNF.combo_clienteEnter(Sender: TObject);
+begin
+  (Sender as TwwDBlookupcombo).Color := ClAqua;
+end;
+
+procedure TFFHistNF.combo_clienteExit(Sender: TObject);
+begin
+  (Sender as TwwDBlookupcombo).Color := Clwindow ;
+end;
+
+procedure TFFHistNF.FormCreate(Sender: TObject);
+begin
+   Q_CLINBF.open ;
+end;
+
+end.

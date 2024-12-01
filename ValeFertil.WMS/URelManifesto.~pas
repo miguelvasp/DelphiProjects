@@ -1,0 +1,671 @@
+unit URelManifesto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Qrctrls, QuickRpt, ExtCtrls, Db, Wwdatsrc, DBTables, Wwquery;
+
+type
+  TFRelManifesto = class(TForm)
+    MANIF: TQuickRep;
+    QRBand1: TQRBand;
+    QRImage1: TQRImage;                                                           
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRLabel5: TQRLabel;
+    QRSysData3: TQRSysData;
+    QRSysData2: TQRSysData;
+    QRSysData1: TQRSysData;
+    QRLabel37: TQRLabel;
+    clin_id: TQRDBText;
+    QRLabel6: TQRLabel;
+    QRShape1: TQRShape;
+    QRDBText1: TQRDBText;
+    QRLabel8: TQRLabel;
+    QRDBText2: TQRDBText;
+    QRLabel9: TQRLabel;
+    QRDBText3: TQRDBText;
+    QRLabel10: TQRLabel;
+    QRDBText4: TQRDBText;
+    QRShape2: TQRShape;
+    QRGroup1: TQRGroup;
+    QRSubDetail1: TQRSubDetail;
+    QRShape3: TQRShape;
+    QRDBText5: TQRDBText;
+    QRDBText6: TQRDBText;
+    QRDBText9: TQRDBText;
+    QRSubDetail2: TQRSubDetail;
+    QRLabel15: TQRLabel;
+    QRLabel17: TQRLabel;
+    QRDBText10: TQRDBText;
+    QRDBText11: TQRDBText;
+    Q_MANIF: TwwQuery;
+    Q_MANIFMANI_ID: TAutoIncField;
+    Q_MANIFMANI_TIPOCARGA: TStringField;
+    Q_MANIFMANI_PESO: TFloatField;
+    Q_MANIFMANI_QTDEPALLET: TIntegerField;
+    Q_MANIFMANI_VOLUME: TFloatField;
+    Q_MANIFTRANS_ID: TIntegerField;
+    Q_MANIFMOT_ID: TIntegerField;
+    Q_MANIFVEIC_ID: TIntegerField;
+    Q_MANIFMANI_DATA: TDateTimeField;
+    Q_MANIFMANI_CENDERECO: TStringField;
+    Q_MANIFMANI_CENDERECOCOMPL: TStringField;
+    Q_MANIFMANI_CENDERECOBAIRRO: TStringField;
+    Q_MANIFMANI_CMUNICIPIO: TStringField;
+    Q_MANIFMANI_CUF_SIGLA: TStringField;
+    Q_MANIFMANI_CCEP: TStringField;
+    Q_MANIFMANI_CTEL1: TStringField;
+    Q_MANIFMANI_CTEL2: TStringField;
+    Q_MANIFMANI_CFAX: TStringField;
+    Q_MANIFMANI_CEMAIL: TStringField;
+    Q_MANIFMANI_CCONTATO: TStringField;
+    Q_MANIFMANI_EENDERECO: TStringField;
+    Q_MANIFMANI_EENDERECOCOMPL: TStringField;
+    Q_MANIFMANI_EENDERECOBAIRRO: TStringField;
+    Q_MANIFMANI_EMUNICIPIO: TStringField;
+    Q_MANIFMANI_EUF_SIGLA: TStringField;
+    Q_MANIFMANI_ECEP: TStringField;
+    Q_MANIFMANI_ETEL1: TStringField;
+    Q_MANIFMANI_ETEL2: TStringField;
+    Q_MANIFMANI_EFAX: TStringField;
+    Q_MANIFMANI_EEMAIL: TStringField;
+    Q_MANIFMANI_ECONTATO: TStringField;
+    Q_MANIFPAR_ID: TIntegerField;
+    Q_TRANS: TwwQuery;
+    Q_TRANSTRANS_ID: TAutoIncField;
+    Q_TRANSTRANS_RAZA: TStringField;
+    DS_MANIF: TwwDataSource;
+    Q_TRMOT: TwwQuery;
+    Q_TRMOTMOT_NOME: TStringField;
+    Q_TRMOTMOT_ID: TAutoIncField;
+    Q_TRMOTTRANS_ID: TIntegerField;
+    Q_VEIC: TwwQuery;
+    Q_VEICVEIC_ID: TAutoIncField;
+    Q_VEICVEIC_NOME: TStringField;
+    Q_TRMOTMOT_VEIC_PLACa: TStringField;
+    Q_PAR: TwwQuery;
+    Q_PARPAR_ID: TAutoIncField;
+    Q_PARPAR_NOME: TStringField;
+    Q_RMP: TwwQuery;
+    Q_RMPPRO_COD: TStringField;
+    Q_RMPPRO_DESC: TStringField;
+    Q_RMPMRP_PESO: TFloatField;
+    Q_RMPMRP_VOLUME: TFloatField;
+    Q_RMPMRP_QTDEPALLET: TIntegerField;
+    Q_RMPMRP_ID: TAutoIncField;
+    Q_RMPMANI_ID: TIntegerField;
+    Q_RMPPRO_ID: TIntegerField;
+    Q_NF: TwwQuery;
+    Q_NFMANI_ORDEM: TIntegerField;
+    Q_NFNFI_DTENTREGA: TDateTimeField;
+    Q_NFNFI_DEST_RAZA: TStringField;
+    Q_NFNFI_EMIT_CLI: TIntegerField;
+    QRLabel11: TQRLabel;
+    QRLabel12: TQRLabel;
+    QRLabel13: TQRLabel;
+    QRLabel14: TQRLabel;
+    QRLabel16: TQRLabel;
+    QRDBText12: TQRDBText;
+    QRLabel18: TQRLabel;
+    QRDBText14: TQRDBText;
+    Q_PROD: TwwQuery;
+    Q_PRODPRO_ID: TAutoIncField;
+    Q_PRODUVEN_ID_EXP: TIntegerField;
+    Q_PRODPRO_QTDE_PALLET: TIntegerField;
+    Q_PRODPRO_COD: TStringField;
+    DS_RMP: TwwDataSource;
+    QRLabel19: TQRLabel;
+    QRLabel20: TQRLabel;
+    QRLabel23: TQRLabel;
+    QRBand2: TQRBand;
+    Q_AUX: TwwQuery;
+    QRMemo1: TQRMemo;
+    QRShape6: TQRShape;
+    QRMemo2: TQRMemo;
+    QRLabel1: TQRLabel;
+    QRDBText13: TQRDBText;
+    QRBand3: TQRBand;
+    QRLabel24: TQRLabel;
+    QRDBText7: TQRDBText;
+    QRLabel25: TQRLabel;
+    QRDBText8: TQRDBText;
+    QRLabel26: TQRLabel;
+    QRLabel28: TQRLabel;
+    QRLabel27: TQRLabel;
+    QRShape4: TQRShape;
+    QRShape5: TQRShape;
+    QRLabel7: TQRLabel;
+    QRLabel29: TQRLabel;
+    QRLabel30: TQRLabel;
+    QRDBText15: TQRDBText;
+    Q_TRMOTMOT_CPF: TStringField;
+    Q_MANIFMANI_QTDEUV: TFloatField;
+    Q_PRODPRO_QTDE_PALLETUV: TFloatField;
+    Q_PRODQTDE_UVUE: TFloatField;
+    Q_RMPMRP_QTDE: TFloatField;
+    QRDBText16: TQRDBText;
+    QRDBText17: TQRDBText;
+    QRDBText18: TQRDBText;
+    QRDBText19: TQRDBText;
+    DS_NF: TwwDataSource;
+    Q_MUNI: TwwQuery;
+    Q_MUNIMUN_ID: TAutoIncField;
+    Q_MUNIMUN_NOME: TStringField;
+    QRDBText20: TQRDBText;
+    Q_CLIF: TwwQuery;
+    Q_NFNFI_DEST_CLI: TIntegerField;
+    Q_CLIFCLIf_RAZA: TStringField;
+    Q_CLIFCLIf_ENDERECO: TStringField;
+    Q_CLIFCLIf_ENDERECO_COMPL: TStringField;
+    Q_CLIFCLIf_ENDERECO_BAIRRO: TStringField;
+    Q_CLIFCLIf_CEP: TStringField;
+    Q_CLIFMUN_ID: TIntegerField;
+    Q_CLIFCLIF_ID: TAutoIncField;
+    QRShape7: TQRShape;
+    QRLabel31: TQRLabel;
+    QRLabel32: TQRLabel;
+    QRLabel33: TQRLabel;
+    QRLabel34: TQRLabel;
+    QRLabel35: TQRLabel;
+    Q_CLIFMUN_NOME: TStringField;
+    Q_CLIFUF_SIGLA: TStringField;
+    QRLabel36: TQRLabel;
+    QRDBText21: TQRDBText;
+    Q_NFNFI_NUMERO: TStringField;
+    Q_NFNFI_DEST_ENDERECO: TStringField;
+    Q_NFNFI_DEST_CEP: TStringField;
+    Q_NFNFI_DEST_COMPL: TStringField;
+    Q_NFNFI_DEST_BAIRRO: TStringField;
+    Q_NFNFI_DEST_UF_SIGLA: TStringField;
+    Q_NFMUN_NOME: TStringField;
+    QRLabel38: TQRLabel;
+    qrProEspecifico: TwwQuery;
+    qrProEspecificoPALE_ID: TAutoIncField;
+    qrProEspecificoCLIN_ID: TIntegerField;
+    qrProEspecificoPRO_ID: TIntegerField;
+    qrProEspecificoCLIF_ID: TIntegerField;
+    qrProEspecificoPALE_LASTRO: TIntegerField;
+    qrProEspecificoPALE_ALTURA: TIntegerField;
+    qrProEspecificoPALE_QTDE_PALLET: TIntegerField;
+    qrProEspecificoPALE_QTDE_PALLETUV: TFloatField;
+    Q_PRODPRO_ALTURA: TIntegerField;
+    Q_PRODPRO_LASTRO: TIntegerField;
+    QRLabel42: TQRLabel;
+    QRLabel43: TQRLabel;
+    QRLabel45: TQRLabel;
+    QRLabel46: TQRLabel;
+    QRLabel47: TQRLabel;
+    qrUven: TwwQuery;
+    qrUvenunidade: TStringField;
+    lbun: TQRLabel;
+    lbune: TQRLabel;
+    Q_PRODUVEN_ID: TIntegerField;
+    QRLabel21: TQRLabel;
+    QRLabel22: TQRLabel;
+    QRLabel39: TQRLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure QRSubDetail1BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure QRSubDetail2BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure QRSubDetail1AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+    procedure QRBand3BeforePrint(Sender: TQRCustomBand;
+      var PrintBand: Boolean);
+    procedure QRBand1AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+    procedure QRSubDetail2AfterPrint(Sender: TQRCustomBand;
+      BandPrinted: Boolean);
+    procedure QRLabel19Print(sender: TObject; var Value: String);
+    procedure QRLabel22Print(sender: TObject; var Value: String);
+    procedure QRLabel38Print(sender: TObject; var Value: String);
+    procedure QRLabel39Print(sender: TObject; var Value: String);
+    procedure QRLabel44Print(sender: TObject; var Value: String);
+    procedure QRLabel45Print(sender: TObject; var Value: String);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelManifesto: TFRelManifesto;
+  IMPR_CLI : string ;
+  CONTA_UE : real ;
+  CONTA_PALLET :real ;
+  SALDO : real ;
+  SALDO_UV : real ;
+  UV, UE, F_UV, F_UE : Double;
+  TOTALIZADOR_PALLET : real ; 
+implementation
+uses UFRelManifesto ,UManifesto, UMENU, U_Funcoes ;
+{$R *.DFM}
+
+procedure TFRelManifesto.FormCreate(Sender: TObject);
+begin
+      UE := 0;
+      UV := 0;
+      F_UV := 0;
+      F_UE := 0;
+      TOTALIZADOR_PALLET := 0 ;
+  IF (MANIFESTO = 'S') then begin
+        Q_MANIF.SQL.clear ;
+        Q_MANIF.SQL.ADD('Select * from manifesto where MANI_ID <> null');
+        Q_MANIF.SQL.ADD(' and MANI_ID = '  + FManifesto.Q_MANIFMANI_ID.AsString) ;
+        Q_MANIF.Open ;
+  end else begin
+        Q_MANIF.SQL.clear ;
+        Q_MANIF.SQL.ADD('Select * from manifesto where MANI_ID <> null');
+        if DATAI <> 0.0 then
+               Q_MANIF.SQL.ADD ( 'and convert(Char(10),MANI_DATA,112) >= ' +''''+ formatdatetime('YYYYMMDD',DATAI) + '''') ;
+        if DATAF <> 0.0 then
+               Q_MANIF.SQL.ADD ( 'and convert(Char(10),MANI_DATA,112) <= ' +''''+ formatdatetime('YYYYMMDD',DATAF) + '''') ;
+        if TRA <> '' then
+               Q_MANIF.SQL.ADD ( 'and TRANS_ID =   ' + TRA ) ;
+        if NUM <> '' then
+               Q_MANIF.SQL.ADD ( 'and MANI_ID =  ' + NUM ) ;
+        Q_MANIF.Open ;
+  end ;
+
+
+  Q_TRANS.open ;
+  Q_TRMOT.open ;
+  Q_VEIC.open ;
+  Q_PAR.open ;
+  Q_RMP.open ;
+  Q_NF.open ;
+  Q_MUNI.open ;
+  Q_PROD.open ;
+  Q_CLIF.open ;
+end;
+
+procedure TFRelManifesto.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Q_MANIF.close ;
+  Q_TRANS.close ;
+  Q_TRMOT.close ;
+  Q_VEIC.close ;
+  Q_PAR.close ;
+  Q_RMP.close ;
+  Q_NF.close ;
+  Q_PROD.close ;
+  Q_MUNI.close ;
+  MANIFESTO := '' ;
+  Q_CLIF.close ;
+  action := cafree ;
+end;
+
+procedure TFRelManifesto.QRSubDetail1BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+var
+   SALDO2 : string ;
+   SALDO3 : string ;
+   achei : Boolean;
+   ALTURA, LASTRO, Pallet_Qtde, totalPalets, int_Aux: Real;
+begin
+       qrProEspecifico.Close;
+       qrProEspecifico.Params[0].AsInteger := Q_RMPPRO_ID.Value;
+       qrProEspecifico.Params[1].AsInteger := Q_MANIFMANI_ID.Value;
+       qrProEspecifico.Open;
+
+       achei := True;
+
+       if qrProEspecifico.IsEmpty then
+           achei := False;
+
+       ALTURA := 0;
+       LASTRO := 0;
+       totalPalets := 0;
+       CONTA_PALLET := 0;
+       SALDO := 0;
+       int_Aux := 0;
+
+       if achei then //efetua os caluclos com a paletização especifica
+       begin
+            ALTURA := qrProEspecificoPALE_ALTURA.Value;
+            LASTRO := qrProEspecificoPALE_LASTRO.Value;
+       end else begin //efetua os calculos com a paletização normal
+            ALTURA := Q_PRODPRO_ALTURA.Value;
+            LASTRO := Q_PRODPRO_LASTRO.Value;
+       end;   //end if achei
+
+
+       //mostra como foi formado o palete
+       QRLabel47.Caption := FloatToStr(LASTRO) + 'x' +  FloatToStr(ALTURA);
+
+       Pallet_Qtde := ALTURA * LASTRO;
+
+       totalPalets := Int( (Q_RMPMRP_QTDE.AsInteger / Q_PRODQTDE_UVUE.AsInteger) / Pallet_Qtde );
+
+
+       CONTA_UE := 0 ;
+       CONTA_PALLET := 0 ;
+
+      { miguel
+      if achei then
+            CONTA_PALLET := Q_RMPMRP_QTDEPALLET.Value
+       else
+            CONTA_PALLET := int(Q_RMPMRP_QTDE.asfloat/Q_PRODPRO_QTDE_PALLETUV.asfloat); }
+
+
+       CONTA_PALLET := totalPalets;
+
+
+       //informa q qtde de pallets
+       if CONTA_PALLET > 0 then  begin
+          Qrlabel20.caption :=  FLOATTOSTR(CONTA_PALLET)
+       end else begin
+          Qrlabel20.caption := '0' ;
+       end;
+
+       //calcula saldo de produtos
+       SALDO :=  Q_RMPMRP_QTDE.asfloat - (CONTA_PALLET * (Pallet_Qtde  * Q_PRODQTDE_UVUE.AsInteger));
+
+       //informa UE
+       int_Aux := (int(CONTA_PALLET) * (Pallet_Qtde  * Q_PRODQTDE_UVUE.AsInteger))/ Q_PRODQTDE_UVUE.AsInteger;
+
+       //qtde UE
+       QRLabel19.Caption := FormatFloat('0', int_Aux);
+       UE := ue + int_Aux;
+       //qtde UV
+    //   QRLabel22.Caption := FormatFloat('0', (CONTA_PALLET * (Pallet_Qtde  * Q_PRODQTDE_UVUE.AsInteger)));
+       UV := UV + (CONTA_PALLET * Pallet_Qtde);
+
+
+       qrUven.Close;
+       qrUven.Params[0].AsInteger := Q_PRODUVEN_ID.AsInteger;
+       qrUven.Open;
+       lbune.Caption := LowerCase(qrUvenunidade.Value);
+
+       qrUven.Close;
+       qrUven.Params[0].AsInteger := Q_PRODUVEN_ID_EXP.AsInteger;
+       qrUven.Open;
+       lbun.Caption :=  LowerCase(qrUvenunidade.Value);
+
+
+
+       //tratamos as frações
+       if saldo > 0 then begin
+           //SALDO EM UE
+           QRLabel22.Caption := FormatFloat('###,##0.000', SALDO / Q_PRODQTDE_UVUE.AsInteger);
+           QRLabel39.Caption := lbun.Caption;
+           F_UE := F_UE + SALDO / Q_PRODQTDE_UVUE.AsInteger ;
+           //SALDO EM UV
+           QRLabel43.Caption := FormatFloat('###,##0.000', SALDO );
+           F_UV := F_UV + SALDO;
+       end else begin
+           QRLabel22.Caption := '0';
+           QRLabel39.Caption := '';
+           QRLabel43.Caption := '0';
+       end;
+
+
+       ///////////////////////// comentado miguel /////////////////////////////
+
+       //se nao for pallete especifico
+      { IF ((Q_RMPMRP_QTDE.asfloat -(CONTA_PALLET*Q_PRODPRO_QTDE_PALLETUV.asfloat)) > 0) and (achei = False) then begin
+
+           SALDO := (Q_RMPMRP_QTDE.asfloat -(CONTA_PALLET*Q_PRODPRO_QTDE_PALLETUV.asfloat));
+           SALDO_UV := SALDO  ;
+
+           CONTA_UE := int(SALDO_UV/Q_PRODQTDE_UVUE.asfloat) ;
+
+           SALDO3 := formatfloat('0',(Q_RMPMRP_QTDE.asfloat/Q_PRODQTDE_UVUE.asfloat)) ;
+           ///IF  (SALDO2 =  formatfloat('0.000',(Q_ESTQESTQ_QTDE.asfloat))) then
+               Qrlabel19.caption :=  SALDO3 ;
+          ///  else
+             ///// QRLabel23.caption :=  floatTOSTR(int(UE));
+
+           ///Qrlabel19.caption :=  FLOATTOSTR(CONTA_UE);
+
+
+           SALDO := 0 ;
+           SALDO := (strtoint(SALDO3)*Q_PRODQTDE_UVUE.asfloat) ;
+
+           SALDO2 := formatfloat('0.000',SALDO_UV - SALDO);
+
+           if (strtofloat(SALDO2) > 0) then
+                 Qrlabel22.caption :=  SALDO2
+            else Qrlabel22.caption := '0' ;
+
+
+       end else begin
+           CONTA_UE := (CONTA_PALLET * Q_PRODPRO_QTDE_PALLET.asinteger);
+           Qrlabel19.caption :=  FLOATTOSTR(CONTA_UE);
+           Qrlabel22.caption := '-' ;
+       end ;
+
+
+       //se for palete especifico
+       IF achei then begin                                      // Q_PRODPRO_QTDE_PALLETUV
+
+           SALDO := (Q_RMPMRP_QTDE.asfloat -(CONTA_PALLET*qrProEspecificoPALE_QTDE_PALLETUV.AsFloat));
+           SALDO_UV := SALDO  ;
+                                                       //
+           CONTA_UE := int(SALDO_UV/ Q_PRODQTDE_UVUE.asfloat  ) ;
+
+           SALDO3 := formatfloat('0',(Q_RMPMRP_QTDE.asfloat/Q_PRODQTDE_UVUE.asfloat)) ;
+           ///IF  (SALDO2 =  formatfloat('0.000',(Q_ESTQESTQ_QTDE.asfloat))) then
+               Qrlabel19.caption :=  SALDO3 ;
+          ///  else
+             ///// QRLabel23.caption :=  floatTOSTR(int(UE));
+
+           ///Qrlabel19.caption :=  FLOATTOSTR(CONTA_UE);
+
+
+           SALDO := 0 ;
+           SALDO := (strtoint(SALDO3)*Q_PRODQTDE_UVUE.asfloat) ;
+
+           SALDO2 := formatfloat('0.000',SALDO_UV - SALDO);
+
+           if (strtofloat(SALDO2) > 0) then
+                 Qrlabel22.caption :=  SALDO2
+            else Qrlabel22.caption := '0' ;
+
+
+       end;     }
+
+
+
+       /////////comentado ate aqui     miguel
+
+
+       IMPR_CLI := 'S' ;
+end;
+
+procedure TFRelManifesto.QRSubDetail2BeforePrint(Sender: TQRCustomBand;
+var PrintBand: Boolean);
+begin
+     IF (IMPR_CLI = '') then begin
+
+         QRLabel15.enabled := false ;
+         QRLabel17.enabled := false ;
+         QRLabel31.enabled := false ;
+         QRLabel32.enabled := false ;
+         QRLabel33.enabled := false ;
+         QRLabel34.enabled := false ;
+         QRLabel35.enabled := false ;
+         QRLabel36.enabled := false ;
+         QRShape7.enabled := false ;
+
+         QRLabel18.enabled := false ;
+         QRDBText14.enabled := false ;
+         QRLABEL23.enabled := false ;
+         qrlabel38.Enabled := False;
+//         qrlabel39.Enabled := False;
+
+
+         QRLabel15.TOP := 1 ;
+         QRLabel17.TOP := 1 ;
+         QRLabel31.TOP := 1 ;
+         QRLabel32.TOP := 1 ;
+         QRLabel33.TOP := 1 ;
+         QRLabel34.TOP := 1 ;
+         QRLabel35.TOP := 1 ;
+         QRLabel36.TOP := 1 ;
+
+         QRLabel18.TOP := 1 ;
+         QRDBText14.TOP := 1 ;
+         QRLABEL23.top := 1;
+//         QRLabel44.Top := 1;
+         QRLabel45.Top := 1;
+         QRLabel38.top := 1;
+//         QRLabel39.Top := 1;
+
+
+         QRSubDetail2.height := 18 ; //23
+
+
+         QRDBText10.top := 1 ;
+         QRDBText11.top := 1;
+         QRDBText16.top := 1 ;
+         QRDBText17.top := 1 ;
+         QRDBText18.top := 1 ;
+         QRDBText19.top := 1 ;
+         QRDBText20.top := 1 ;
+         QRDBText21.top := 1 ;
+
+     end else begin
+         QRLabel15.enabled := true ;
+         QRLabel17.enabled := true ;
+         QRLabel31.enabled := true ;
+         QRLabel32.enabled := true ;
+         QRLabel33.enabled := true ;
+         QRLabel34.enabled := true ;
+         QRLabel35.enabled := true ;
+         QRLabel36.enabled := true ;
+         QRShape7.enabled := true ;
+
+         QRLabel18.enabled := true ;
+         QRDBText14.enabled := true ;
+         QRLABEL23.enabled := true ;
+         QRLabel38.Enabled := True;
+//         qrlabel39.Enabled := True;
+
+         QRLabel15.TOP := 23 ;
+         QRLabel17.TOP := 23 ;
+         QRLabel31.TOP := 23 ;
+         QRLabel32.TOP := 23 ;
+         QRLabel33.TOP := 23 ;
+         QRLabel34.TOP := 23 ;
+         QRLabel35.TOP := 23 ;
+         QRLabel36.TOP := 23 ;
+
+         QRLabel18.TOP := 3 ;
+         QRDBText14.TOP := 3 ;
+         QRLABEL23.TOP := 3 ;
+//         QRLabel44.Top := 3;
+         QRLabel45.Top := 3;
+         QRLabel38.top := 3;
+//         QRLabel39.Top := 3;
+
+         QRSubDetail2.height := 59 ;
+
+         QRDBText10.top := 40 ;
+         QRDBText11.top := 40 ;
+         QRDBText16.top := 40 ;
+         QRDBText17.top := 40 ;
+         QRDBText18.top := 40 ;
+         QRDBText19.top := 40 ;
+         QRDBText20.top := 40 ;
+         QRDBText21.top := 40 ;
+
+         QRLABEL23.caption := floattostr(TOTALIZADOR_PALLET);
+         //QRLABEL20.caption := strtoint(CONTA_UV);
+     end ;
+
+     IF Q_NFNFI_DEST_CLI.asstring <> '' then
+         Q_CLIF.locate('CLIF_ID',Q_NFNFI_DEST_CLI.asstring,[]) ;
+     IMPR_CLI := '' ;
+end;
+
+procedure TFRelManifesto.QRSubDetail1AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+     TOTALIZADOR_PALLET := (TOTALIZADOR_PALLET + CONTA_PALLET);
+end;
+
+procedure TFRelManifesto.QRBand3BeforePrint(Sender: TQRCustomBand;
+  var PrintBand: Boolean);
+begin
+    Q_AUX.close ;
+    Q_AUX.Sql.Clear ;
+    Q_AUX.Sql.Add('Select COUNT(*) as QTDEREG from MANIFESTO_RESUMOPRODUTO ') ;
+    Q_AUX.Sql.Add(' where MANI_ID = ' +Q_MANIFMANI_ID.asstring ) ;
+    Q_AUX.open  ;
+
+    QRLabel28.caption  := Q_AUX.fieldbyname('QTDEREG').asstring ;
+
+    Q_AUX.close ;
+    Q_AUX.Sql.Clear ;
+    Q_AUX.Sql.Add('SELECT  SUM(DIS.QTDE)  QTDEREG ') ;
+    Q_AUX.Sql.Add(' FROM   (SELECT 1  QTDE ') ;
+    Q_AUX.Sql.Add(' FROM   NF ') ;
+    Q_AUX.Sql.Add(' WHERE   MANI_ID = ' +Q_MANIFMANI_ID.asstring ) ;
+    Q_AUX.Sql.Add(' GROUP BY  NFI_DEST_CLI) DIS ') ;
+    Q_AUX.open  ;
+
+    QRLabel7.caption  := Q_AUX.fieldbyname('QTDEREG').asstring ;
+
+end;
+
+procedure TFRelManifesto.QRBand1AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+  Qrlabel29.caption := Q_TRMOTMOT_NOME.asstring ; 
+end;
+
+procedure TFRelManifesto.QRSubDetail2AfterPrint(Sender: TQRCustomBand;
+  BandPrinted: Boolean);
+begin
+  TOTALIZADOR_PALLET := 0 ;
+end;
+
+procedure TFRelManifesto.QRLabel19Print(sender: TObject;
+  var Value: String);
+begin
+  // if Funcoes.IsNumeric(QRLABEL19.Caption)   then
+  //    UE := UE + StrToFloat(QRLABEL19.Caption);
+end;
+procedure TFRelManifesto.QRLabel22Print(sender: TObject;
+  var Value: String);
+begin
+  //if Funcoes.IsNumeric(QRLABEL22.Caption)   then
+
+//  UV := UV + StrToFloat(QRLabel22.Caption);
+end;
+
+procedure TFRelManifesto.QRLabel38Print(sender: TObject;
+  var Value: String);
+begin
+  Value := FloatToStr(UE);
+  UE := 0;
+end;
+
+procedure TFRelManifesto.QRLabel39Print(sender: TObject;
+  var Value: String);
+begin
+  Value := FloatToStr(UV);
+  UV := 0;
+end;
+
+procedure TFRelManifesto.QRLabel44Print(sender: TObject;
+  var Value: String);
+begin
+  Value := FloatToStr(F_UE);
+  F_UE := 0;
+end;
+
+procedure TFRelManifesto.QRLabel45Print(sender: TObject;
+  var Value: String);
+begin
+  Value := FormatFloat('###,##0.000',F_UV);
+  F_UV := 0;
+end;
+
+end.

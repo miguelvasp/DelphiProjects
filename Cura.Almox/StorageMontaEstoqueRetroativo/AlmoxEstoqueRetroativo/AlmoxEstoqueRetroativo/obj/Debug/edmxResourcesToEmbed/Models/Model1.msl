@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StorageCuraModelStoreContainer" CdmEntityContainer="StorageCuraEntities">
+    <EntitySetMapping Name="Datas">
+      <EntityTypeMapping TypeName="StorageCuraModel.Datas">
+        <MappingFragment StoreEntitySet="Datas">
+          <ScalarProperty Name="IdDatas" ColumnName="IdDatas" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KardexTemp">
+      <EntityTypeMapping TypeName="StorageCuraModel.KardexTemp">
+        <MappingFragment StoreEntitySet="KardexTemp">
+          <ScalarProperty Name="KAR_ID" ColumnName="KAR_ID" />
+          <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+          <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+          <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+          <ScalarProperty Name="N_LOTE" ColumnName="N_LOTE" />
+          <ScalarProperty Name="VALID" ColumnName="VALID" />
+          <ScalarProperty Name="DATA" ColumnName="DATA" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="USUARIOATIVO" ColumnName="USUARIOATIVO" />
+          <ScalarProperty Name="TD_ID" ColumnName="TD_ID" />
+          <ScalarProperty Name="DOCTO" ColumnName="DOCTO" />
+          <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+          <ScalarProperty Name="FOR_CODI" ColumnName="FOR_CODI" />
+          <ScalarProperty Name="almox_id" ColumnName="almox_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stoHistoricoEstoque">
+      <EntityTypeMapping TypeName="StorageCuraModel.stoHistoricoEstoque">
+        <MappingFragment StoreEntitySet="stoHistoricoEstoque">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataReferencia" ColumnName="DataReferencia" />
+          <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+          <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+          <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+          <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+          <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+          <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+          <ScalarProperty Name="REPOSICAO" ColumnName="REPOSICAO" />
+          <ScalarProperty Name="AUTOMATICO" ColumnName="AUTOMATICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwKardex">
+      <EntityTypeMapping TypeName="StorageCuraModel.vwKardex">
+        <MappingFragment StoreEntitySet="vwKardex">
+          <ScalarProperty Name="GRU_ID" ColumnName="GRU_ID" />
+          <ScalarProperty Name="Reposicao" ColumnName="Reposicao" />
+          <ScalarProperty Name="almox_id" ColumnName="almox_id" />
+          <ScalarProperty Name="FOR_CODI" ColumnName="FOR_CODI" />
+          <ScalarProperty Name="UNI_ID" ColumnName="UNI_ID" />
+          <ScalarProperty Name="DOCTO" ColumnName="DOCTO" />
+          <ScalarProperty Name="TD_ID" ColumnName="TD_ID" />
+          <ScalarProperty Name="USUARIOATIVO" ColumnName="USUARIOATIVO" />
+          <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="QTDE" ColumnName="QTDE" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="DATA" ColumnName="DATA" />
+          <ScalarProperty Name="VALID" ColumnName="VALID" />
+          <ScalarProperty Name="N_LOTE" ColumnName="N_LOTE" />
+          <ScalarProperty Name="LOCAL_ID" ColumnName="LOCAL_ID" />
+          <ScalarProperty Name="MARCA_ID" ColumnName="MARCA_ID" />
+          <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+          <ScalarProperty Name="KAR_ID" ColumnName="KAR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

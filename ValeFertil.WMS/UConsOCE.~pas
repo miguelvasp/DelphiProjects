@@ -1,0 +1,3673 @@
+unit UConsOCE;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Db, Wwdatsrc, DBTables, Wwquery, Grids, Wwdbigrd, Wwdbgrid, wwdblook,
+  StdCtrls, Mask, wwdbedit, ComCtrls, Tabnotbk, Buttons, ExtCtrls,
+  Wwdotdot, Wwdbcomb, DBCtrls, Wwtable, wwstorep, DBClient, Provider, ADODB;
+
+type
+  TFConsOCE = class(TForm)
+    Panel2: TPanel;
+    SpeedButton3: TSpeedButton;
+    Label4: TLabel;
+    Panel8: TPanel;
+    Q_VEIC3: TwwQuery;
+    Q_VEIC3VEIC_NOME: TStringField;
+    Q_VEIC3VEIC_ID: TAutoIncField;
+    Q_REG2: TwwQuery;
+    Q_UF1: TwwQuery;
+    Q_UF1UF_NOME: TStringField;
+    Q_UF1UF_SIGLA: TStringField;
+    Q_UF1UF_ALIQUOTA: TFloatField;
+    Q_MUNI: TwwQuery;
+    Q_MUNIMUN_NOME: TStringField;
+    Q_MUNIDIPAM: TStringField;
+    Q_MUNIMUN_ID: TAutoIncField;
+    Q_MUNIUF_SIGLA: TStringField;
+    Q_MUNI2: TwwQuery;
+    Q_UF2: TwwQuery;
+    Q_UF2UF_SIGLA: TStringField;
+    Q_UF2UF_NOME: TStringField;
+    Q_UF2UF_ALIQUOTA: TFloatField;
+    Q_MUNI2MUN_ID: TAutoIncField;
+    Q_MUNI2DIPAM: TStringField;
+    Q_MUNI2MUN_NOME: TStringField;
+    Q_MUNI2UF_SIGLA: TStringField;
+    Q_MUNI2REG_ID: TIntegerField;
+    Q_REG2REG_ID: TAutoIncField;
+    Q_REG2REG_NOME: TStringField;
+    Q_AUX: TwwQuery;
+    TabbedNotebook1: TTabbedNotebook;
+    Panel1: TPanel;
+    Label63: TLabel;
+    Label1: TLabel;
+    wwDBComboBox5: TwwDBComboBox;
+    Q_CLIF3: TwwQuery;
+    Q_CLIF3CLIF_ID: TAutoIncField;
+    Q_CLIF3CLIF_RAZA: TStringField;
+    Label2: TLabel;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label21: TLabel;
+    GroupBox4: TGroupBox;
+    Label31: TLabel;
+    GroupBox5: TGroupBox;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Label26: TLabel;
+    Label39: TLabel;
+    Label40: TLabel;
+    Label43: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    DBText2: TDBText;
+    DBText5: TDBText;
+    DBText7: TDBText;
+    DBText8: TDBText;
+    DBText9: TDBText;
+    DBText10: TDBText;
+    DBText11: TDBText;
+    DBText12: TDBText;
+    DBText13: TDBText;
+    DBText15: TDBText;
+    DBText16: TDBText;
+    DBText17: TDBText;
+    DBText19: TDBText;
+    DBText20: TDBText;
+    DBText22: TDBText;
+    Label49: TLabel;
+    DBText24: TDBText;
+    Label50: TLabel;
+    DBText25: TDBText;
+    Label9: TLabel;
+    DBText1: TDBText;
+    Label16: TLabel;
+    DBText3: TDBText;
+    TabbedNotebook2: TTabbedNotebook;
+    GroupBox2: TGroupBox;
+    Label20: TLabel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    wwDBEdit2: TwwDBEdit;
+    wwDBEdit3: TwwDBEdit;
+    wwDBEdit4: TwwDBEdit;
+    wwDBLookupCombo6: TwwDBLookupCombo;
+    wwDBEdit5: TwwDBEdit;
+    wwDBEdit7: TwwDBEdit;
+    wwDBEdit8: TwwDBEdit;
+    wwDBEdit9: TwwDBEdit;
+    wwDBEdit11: TwwDBEdit;
+    wwDBEdit13: TwwDBEdit;
+    wwDBLookupCombo14: TwwDBLookupCombo;
+    GroupBox3: TGroupBox;
+    Label8: TLabel;
+    Label42: TLabel;
+    Label12: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label17: TLabel;
+    Label41: TLabel;
+    Label19: TLabel;
+    Label15: TLabel;
+    DBE_CLI_FEND: TwwDBEdit;
+    wwDBEdit18: TwwDBEdit;
+    DBLC_DBE_FEST: TwwDBLookupCombo;
+    DBE_CLI_FFAX: TwwDBEdit;
+    DBE_CLI_FTEL: TwwDBEdit;
+    DBE_CLI_FEMA: TwwDBEdit;
+    DBE_CLI_FTE2: TwwDBEdit;
+    wwDBEdit16: TwwDBEdit;
+    wwDBEdit1: TwwDBEdit;
+    DBE_CLI_FCEP: TwwDBEdit;
+    wwDBLookupCombo15: TwwDBLookupCombo;
+    Q_CLIN: TwwQuery;
+    Q_CLINCLIN_ID: TAutoIncField;
+    Q_CLINCLIN_RAZA: TStringField;
+    Q_TRANS: TwwQuery;
+    Q_TRANSTRANS_ID: TAutoIncField;
+    Q_TRANSTRANS_RAZA: TStringField;
+    Q_PAR: TwwQuery;
+    DBText4: TDBText;
+    Label52: TLabel;
+    Panel7: TPanel;
+    Label48: TLabel;
+    Label54: TLabel;
+    Q_UF: TwwQuery;
+    Q_UFUF_SIGLA: TStringField;
+    Q_UFUF_NOME: TStringField;
+    Q_UFUF_ALIQUOTA: TFloatField;
+    DS_CLIN: TwwDataSource;
+    Q_CLINUF_SIGLA: TStringField;
+    DS_UF: TwwDataSource;
+    DBText6: TDBText;
+    Q_PARPAR_ID: TAutoIncField;
+    Q_PARCLIN_ID: TIntegerField;
+    DS_PAR: TwwDataSource;
+    GroupBox6: TGroupBox;
+    DBText21: TDBText;
+    GroupBox7: TGroupBox;
+    DBText23: TDBText;
+    SpeedButton1: TSpeedButton;
+    T_ACEN: TwwTable;
+    T_ACENACE_CASC: TIntegerField;
+    T_ACENACE_DESC: TStringField;
+    T_ACENACE_NOVO: TStringField;
+    Q_AUX1: TwwQuery;
+    Q_PARCLIN_NOME: TStringField;
+    Q_PARCLIN_ENDERECO: TStringField;
+    Q_PARCLIN_ENDERECO_COMPL: TStringField;
+    Q_TRANSTRANS_ENDERECO: TStringField;
+    Q_TRANSTRANS_ENDERECO_COMPL: TStringField;
+    Q_TRANSTRANS_CNPJ: TStringField;
+    Q_TRANSTRANS_PESSOA: TStringField;
+    Q_TRANSMUN_ID: TIntegerField;
+    wwDBComboBox3: TwwDBComboBox;
+    DBNavigator1: TDBNavigator;
+    Label45: TLabel;
+    DBText26: TDBText;
+    Q_CFA: TwwQuery;
+    Q_CFACFA_ID: TAutoIncField;
+    Q_CFACFA_CODI: TStringField;
+    wwDBEdit38: TwwDBEdit;
+    BitBtn3: TBitBtn;
+    STP_CALC: TwwStoredProc;
+    wwDBGrid3: TwwDBGrid;
+    Q_OCE: TwwQuery;
+    Q_OCEOS_ID: TIntegerField;
+    Q_OCEVEICNOME: TStringField;
+    Q_OCEREGNOME: TStringField;
+    Q_OCECLIFraza: TStringField;
+    Q_OCEORD_ID: TAutoIncField;
+    Q_OCEORD_CONSIGN: TStringField;
+    Q_OCEORD_PESO_TOTAL: TFloatField;
+    Q_OCEORD_VOLUME: TFloatField;
+    Q_OCEORD_QTDE_PALLET: TFloatField;
+    Q_OCEORD_VALORTOTAL: TFloatField;
+    Q_OCEORD_TPCARGA: TStringField;
+    Q_OCEORD_QTDE_UV: TFloatField;
+    Q_OCEORD_PLACA: TStringField;
+    Q_OCEORD_TOTALPREST: TFloatField;
+    Q_OCEORD_VLR_ICMS: TFloatField;
+    Q_OCEORD_NOTAS: TStringField;
+    Q_OCETRANS_ID_REDES: TIntegerField;
+    Q_OCEORD_PAGO: TStringField;
+    Q_OCECLIN_ID: TIntegerField;
+    Q_OCEORD_VLR_FRETE: TFloatField;
+    Q_OCEORD_VLR_SECCAT: TFloatField;
+    Q_OCEORD_VLR_DESPACHO: TFloatField;
+    Q_OCEORD_VLR_PEDAGIO: TFloatField;
+    Q_OCEORD_VLR_OUTROS: TFloatField;
+    Q_OCEVEIC_ID_RECEB: TIntegerField;
+    Q_OCEREG_ID: TIntegerField;
+    Q_OCEMANI_ID: TIntegerField;
+    Q_OCETRANS_ID: TIntegerField;
+    Q_OCEVEIC_ID: TIntegerField;
+    Q_OCEORD_COLETA_ENTREGA: TStringField;
+    Q_OCEORD_COL_ENDERECO: TStringField;
+    Q_OCEORD_COL_ENDERECO_COMPL: TStringField;
+    Q_OCEORD_COL_ENDERECO_BAIRRO: TStringField;
+    Q_OCEMUN_ID_COL: TIntegerField;
+    Q_OCEORD_COL_MUNICIPIO: TStringField;
+    Q_OCEUF_SIGLA_COL: TStringField;
+    Q_OCEORD_COL_CEP: TStringField;
+    Q_OCEORD_COL_TEL1: TStringField;
+    Q_OCEORD_COL_TEL2: TStringField;
+    Q_OCEORD_COL_FAX: TStringField;
+    Q_OCEORD_COL_EMAIL: TStringField;
+    Q_OCEORD_COL_CONTATO: TStringField;
+    Q_OCEORD_ENT_ENDERECO: TStringField;
+    Q_OCEORD_ENT_ENDERECO_COMPL: TStringField;
+    Q_OCEORD_ENT_ENDERECO_BAIRRO: TStringField;
+    Q_OCEMUN_ID_ENT: TIntegerField;
+    Q_OCEORD_ENT_MUNICIPIO: TStringField;
+    Q_OCEUF_SIGLA_ENT: TStringField;
+    Q_OCEORD_ENT_CEP: TStringField;
+    Q_OCEORD_ENT_TEL1: TStringField;
+    Q_OCEORD_ENT_TEL2: TStringField;
+    Q_OCEORD_ENT_FAX: TStringField;
+    Q_OCEORD_ENT_EMAIL: TStringField;
+    Q_OCEORD_ENT_CONTATO: TStringField;
+    Q_OCECLIF_ID: TIntegerField;
+    Q_OCECLINraza: TStringField;
+    Q_OCETRANSRaza: TStringField;
+    Q_OCEMUNIdesc: TStringField;
+    Q_OCEMUNIdescENT: TStringField;
+    Q_OCETransEND: TStringField;
+    Q_OCETransENDCOMPL: TStringField;
+    Q_OCETransCNPJ: TStringField;
+    Q_OCETransPESSOA: TStringField;
+    Q_OCETransMUN_ID: TIntegerField;
+    Q_OCEORD_ALIQ: TFloatField;
+    Q_OCEORD_REDESPACHO: TStringField;
+    Q_OCECFA_ID: TIntegerField;
+    Q_OCEUFCli: TStringField;
+    UPD_OCE: TUpdateSQL;
+    DS_OCE: TwwDataSource;
+    Q_OCEMARCADOR: TStringField;
+    BitBtn4: TBitBtn;
+    btNem: TBitBtn;
+    RadioGroup1: TRadioGroup;
+    Q_PARMUN_ID: TIntegerField;
+    Label18: TLabel;
+    DBText14: TDBText;
+    BitBtn1: TBitBtn;
+    Q_OCEORD_STATUS: TStringField;
+    DBCB_CLI_PESS: TwwDBComboBox;
+    Q_OCEORD_CONH: TStringField;
+    Q_OCEORD_MINUTA: TStringField;
+    DS_CFA: TwwDataSource;
+    Q_OCECFACODI: TStringField;
+    SpeedButton2: TSpeedButton;
+    Q_CLINmun_ID: TIntegerField;
+    Q_PARDATA: TDateTimeField;
+    wwDBEdit6: TwwDBEdit;
+    Q_AUX2: TwwQuery;
+    Q_PARCAMINHO_MATRICIAL_CONH: TStringField;
+    BitBtn6: TBitBtn;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Label44: TLabel;
+    BitBtn7: TBitBtn;
+    wwDBEdit10: TwwDBEdit;
+    Q_OCEORD_OBS: TStringField;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    BitBtn2: TBitBtn;
+    BitBtn5: TBitBtn;
+    RadioGroup2: TRadioGroup;
+    Panel9: TPanel;
+    Label53: TLabel;
+    GroupBox8: TGroupBox;
+    Label56: TLabel;
+    Label57: TLabel;
+    Label58: TLabel;
+    Label59: TLabel;
+    Label60: TLabel;
+    DBText18: TDBText;
+    GroupBox9: TGroupBox;
+    Label61: TLabel;
+    GroupBox10: TGroupBox;
+    Label62: TLabel;
+    Label64: TLabel;
+    Label65: TLabel;
+    Label66: TLabel;
+    Label67: TLabel;
+    Label68: TLabel;
+    Label69: TLabel;
+    Label70: TLabel;
+    Label71: TLabel;
+    Label72: TLabel;
+    GroupBox11: TGroupBox;
+    GroupBox12: TGroupBox;
+    Label73: TLabel;
+    Label74: TLabel;
+    wwDBLookupCombo1: TwwDBLookupCombo;
+    wwDBLookupCombo4: TwwDBLookupCombo;
+    DS_CLIF3: TwwDataSource;
+    RadioGroup3: TRadioGroup;
+    wwDBEdit20: TwwDBEdit;
+    wwDBEdit15: TwwDBEdit;
+    wwDBEdit17: TwwDBEdit;
+    wwDBEdit21: TwwDBEdit;
+    wwDBEdit22: TwwDBEdit;
+    wwDBEdit23: TwwDBEdit;
+    wwDBEdit24: TwwDBEdit;
+    wwDBEdit25: TwwDBEdit;
+    wwDBEdit12: TwwDBEdit;
+    wwDBEdit26: TwwDBEdit;
+    wwDBEdit27: TwwDBEdit;
+    wwDBEdit14: TwwDBEdit;
+    wwDBEdit28: TwwDBEdit;
+    wwDBEdit29: TwwDBEdit;
+    wwDBLookupCombo3: TwwDBLookupCombo;
+    wwDBLookupCombo5: TwwDBLookupCombo;
+    SpeedButton5: TSpeedButton;
+    Panel10: TPanel;
+    Grid: TwwDBGrid;
+    BitBtn8: TBitBtn;
+    Q_NF99: TwwQuery;
+    Q_NF99NFI_CODI: TAutoIncField;
+    Q_NF99NFI_NUMERO: TStringField;
+    Q_NF99NFI_MARCADOR_CTRCGEN: TStringField;
+    DS_NF99: TwwDataSource;
+    wwDBEdit19: TwwDBEdit;
+    Label55: TLabel;
+    wwDBLookupCombo7: TwwDBLookupCombo;
+    Q_MANI: TwwQuery;
+    Q_MANIMANI_ID: TAutoIncField;
+    DS_MANI: TwwDataSource;
+    Q_MANITRANS_ID: TIntegerField;
+    Q_MANIVEIC_ID: TIntegerField;
+    Q_MANIMANI_TIPOCARGA: TStringField;
+    Q_MANIPAR_ID: TIntegerField;
+    Q_MANIREG_ID: TIntegerField;
+    Q_MANIVEIC_ID_FRETE: TIntegerField;
+    Q_MANIMOT_ID: TIntegerField;
+    Q_NF99NFI_TOTA: TFloatField;
+    Q_NF99NFI_PBRU: TFloatField;
+    Q_NF99NFI_VOL: TFloatField;
+    Q_CLIF3UF_SIGLA: TStringField;
+    Label51: TLabel;
+    DBText27: TDBText;
+    SpeedButton4: TSpeedButton;
+    UPD_NF99: TUpdateSQL;
+    Label75: TLabel;
+    wwDBEdit30: TwwDBEdit;
+    Q_OCEORD_GENERICO: TStringField;
+    qrCFOP: TwwQuery;
+    qrCFOPcfa_codi: TStringField;
+    dsCFOP: TDataSource;
+    CheckBox1: TCheckBox;
+    Button1: TButton;
+    qrDesconto: TwwQuery;
+    qrDescontoclin_desconto: TFloatField;
+    qrDescontouf_sigla: TStringField;
+    qrLoad: TwwQuery;
+    qrLoadnfi_load: TStringField;
+    DBText28: TDBText;
+    Label76: TLabel;
+    btnConfirmaValores: TButton;
+    qrConfirma: TwwQuery;
+    dspOCE: TDataSetProvider;
+    cdsOCE: TClientDataSet;
+    cdsOCEMARCADOR: TStringField;
+    cdsOCEORD_STATUS: TStringField;
+    cdsOCEORD_CONH: TStringField;
+    cdsOCEORD_MINUTA: TStringField;
+    cdsOCEOS_ID: TIntegerField;
+    cdsOCEVEICNOME: TStringField;
+    cdsOCEREGNOME: TStringField;
+    cdsOCECLIFraza: TStringField;
+    cdsOCECFACODI: TStringField;
+    cdsOCEORD_ID: TAutoIncField;
+    cdsOCEORD_CONSIGN: TStringField;
+    cdsOCEORD_PESO_TOTAL: TFloatField;
+    cdsOCEORD_VOLUME: TFloatField;
+    cdsOCEORD_QTDE_PALLET: TFloatField;
+    cdsOCEORD_VALORTOTAL: TFloatField;
+    cdsOCEORD_TPCARGA: TStringField;
+    cdsOCEORD_QTDE_UV: TFloatField;
+    cdsOCEORD_PLACA: TStringField;
+    cdsOCEORD_TOTALPREST: TFloatField;
+    cdsOCEORD_VLR_ICMS: TFloatField;
+    cdsOCEORD_NOTAS: TStringField;
+    cdsOCETRANS_ID_REDES: TIntegerField;
+    cdsOCEORD_PAGO: TStringField;
+    cdsOCECLIN_ID: TIntegerField;
+    cdsOCEORD_VLR_FRETE: TFloatField;
+    cdsOCEORD_VLR_SECCAT: TFloatField;
+    cdsOCEORD_VLR_DESPACHO: TFloatField;
+    cdsOCEORD_VLR_PEDAGIO: TFloatField;
+    cdsOCEORD_VLR_OUTROS: TFloatField;
+    cdsOCEVEIC_ID_RECEB: TIntegerField;
+    cdsOCEREG_ID: TIntegerField;
+    cdsOCEMANI_ID: TIntegerField;
+    cdsOCETRANS_ID: TIntegerField;
+    cdsOCEVEIC_ID: TIntegerField;
+    cdsOCEORD_COLETA_ENTREGA: TStringField;
+    cdsOCEORD_COL_ENDERECO: TStringField;
+    cdsOCEORD_COL_ENDERECO_COMPL: TStringField;
+    cdsOCEORD_COL_ENDERECO_BAIRRO: TStringField;
+    cdsOCEMUN_ID_COL: TIntegerField;
+    cdsOCEORD_COL_MUNICIPIO: TStringField;
+    cdsOCEUF_SIGLA_COL: TStringField;
+    cdsOCEORD_COL_CEP: TStringField;
+    cdsOCEORD_COL_TEL1: TStringField;
+    cdsOCEORD_COL_TEL2: TStringField;
+    cdsOCEORD_COL_FAX: TStringField;
+    cdsOCEORD_COL_EMAIL: TStringField;
+    cdsOCEORD_COL_CONTATO: TStringField;
+    cdsOCEORD_ENT_ENDERECO: TStringField;
+    cdsOCEORD_ENT_ENDERECO_COMPL: TStringField;
+    cdsOCEORD_ENT_ENDERECO_BAIRRO: TStringField;
+    cdsOCEMUN_ID_ENT: TIntegerField;
+    cdsOCEORD_ENT_MUNICIPIO: TStringField;
+    cdsOCEUF_SIGLA_ENT: TStringField;
+    cdsOCEORD_ENT_CEP: TStringField;
+    cdsOCEORD_ENT_TEL1: TStringField;
+    cdsOCEORD_ENT_TEL2: TStringField;
+    cdsOCEORD_ENT_FAX: TStringField;
+    cdsOCEORD_ENT_EMAIL: TStringField;
+    cdsOCEORD_ENT_CONTATO: TStringField;
+    cdsOCECLIF_ID: TIntegerField;
+    cdsOCECLINraza: TStringField;
+    cdsOCETRANSRaza: TStringField;
+    cdsOCEMUNIdesc: TStringField;
+    cdsOCEMUNIdescENT: TStringField;
+    cdsOCETransEND: TStringField;
+    cdsOCETransENDCOMPL: TStringField;
+    cdsOCETransCNPJ: TStringField;
+    cdsOCETransPESSOA: TStringField;
+    cdsOCETransMUN_ID: TIntegerField;
+    cdsOCEORD_ALIQ: TFloatField;
+    cdsOCEORD_REDESPACHO: TStringField;
+    cdsOCECFA_ID: TIntegerField;
+    cdsOCEUFCli: TStringField;
+    cdsOCEORD_OBS: TStringField;
+    cdsOCEORD_GENERICO: TStringField;
+    dspAUX1: TDataSetProvider;
+    cdsAUX1: TClientDataSet;
+    dspClin: TDataSetProvider;
+    cdsClin: TClientDataSet;
+    cdsClinCLIN_RAZA: TStringField;
+    cdsClinCLIN_ID: TAutoIncField;
+    cdsClinUF_SIGLA: TStringField;
+    cdsClinmun_ID: TIntegerField;
+    cdsClinQ_UF: TDataSetField;
+    dspMani: TDataSetProvider;
+    cdsMani: TClientDataSet;
+    cdsManiMANI_ID: TAutoIncField;
+    cdsManiTRANS_ID: TIntegerField;
+    cdsManiVEIC_ID: TIntegerField;
+    cdsManiMANI_TIPOCARGA: TStringField;
+    cdsManiPAR_ID: TIntegerField;
+    cdsManiREG_ID: TIntegerField;
+    cdsManiVEIC_ID_FRETE: TIntegerField;
+    cdsManiMOT_ID: TIntegerField;
+    cdsManiQ_NF99: TDataSetField;
+    dspNF99: TDataSetProvider;
+    cdsNF99: TClientDataSet;
+    cdsNF99NFI_MARCADOR_CTRCGEN: TStringField;
+    cdsNF99NFI_NUMERO: TStringField;
+    cdsNF99NFI_CODI: TAutoIncField;
+    cdsNF99NFI_TOTA: TFloatField;
+    cdsNF99NFI_PBRU: TFloatField;
+    cdsNF99NFI_VOL: TFloatField;
+    dspTrans: TDataSetProvider;
+    cdsTrans: TClientDataSet;
+    cdsTransTRANS_RAZA: TStringField;
+    cdsTransTRANS_ID: TAutoIncField;
+    cdsTransTRANS_ENDERECO: TStringField;
+    cdsTransTRANS_ENDERECO_COMPL: TStringField;
+    cdsTransTRANS_CNPJ: TStringField;
+    cdsTransTRANS_PESSOA: TStringField;
+    cdsTransMUN_ID: TIntegerField;
+    dspAux: TDataSetProvider;
+    cdsAux: TClientDataSet;
+    qrConfirmaORD_ID: TIntegerField;
+    qrConfirmaVLR_FRETE: TFloatField;
+    qrConfirmaTOTAL: TFloatField;
+    dspConfirma: TDataSetProvider;
+    cdsConfirma: TClientDataSet;
+    cdsConfirmaORD_ID: TIntegerField;
+    cdsConfirmaVLR_FRETE: TFloatField;
+    cdsConfirmaTOTAL: TFloatField;
+    qrAux: TwwQuery;
+    qrConsManifesto: TwwQuery;
+    qrConsManifestoMANI_ID: TIntegerField;
+    qrConsManifestoqtde: TIntegerField;
+    DSPConsManifesto: TDataSetProvider;
+    cdsConsManifesto: TClientDataSet;
+    cdsConsManifestoMANI_ID: TIntegerField;
+    cdsConsManifestoqtde: TIntegerField;
+    dspMuni: TDataSetProvider;
+    cdsMuni: TClientDataSet;
+    cdsMuniMUN_NOME: TStringField;
+    cdsMuniDIPAM: TStringField;
+    cdsMuniMUN_ID: TAutoIncField;
+    cdsMuniUF_SIGLA: TStringField;
+    wwDBEdit31: TwwDBEdit;
+    wwDBEdit32: TwwDBEdit;
+    wwDBEdit33: TwwDBEdit;
+    Button2: TButton;
+    qrLiberaConh: TwwQuery;
+    qrUpdateNF: TwwQuery;
+    wwQuery1: TwwQuery;
+    qrUpdateStatus: TADOQuery;
+    qrOCEAux: TADOQuery;
+    qrOCEAuxORD_ID: TIntegerField;
+    qrOCEAuxVLR_FRETE: TFloatField;
+    qrOCEAuxTOTAL: TFloatField;
+    qrOCEAuxSEC_CAT: TFloatField;
+    qrOCEAuxDESPACHO: TFloatField;
+    qrOCEAuxPEDAGIO: TFloatField;
+    qrOCEAuxOUTROS: TFloatField;
+    qrOCEAuxALIQ: TFloatField;
+    qrOCEAuxICMS: TFloatField;
+    Q_PARPAR_ID_1: TAutoIncField;
+    Q_PARPAR_NOME: TStringField;
+    Q_PARPAR_RAZA: TStringField;
+    Q_PARPAR_CNPJ: TStringField;
+    Q_PARPAR_INSC: TStringField;
+    Q_PARPAR_ENDERECO: TStringField;
+    Q_PARPAR_ENDERECO_COMPL: TStringField;
+    Q_PARPAR_ENDERECO_BAIRRO: TStringField;
+    Q_PARPAR_UF_SIGLA: TStringField;
+    Q_PARPAR_CEP: TStringField;
+    Q_PARPAR_TEL: TStringField;
+    Q_PARPAR_FAX: TStringField;
+    Q_PARPAR_EMAIL: TStringField;
+    Q_PARAR_ID: TIntegerField;
+    Q_PARMUN_ID_1: TIntegerField;
+    Q_PARAR_ID_OPER: TIntegerField;
+    Q_PARULT_TAG: TIntegerField;
+    Q_PARPALLET_M2: TFloatField;
+    Q_PARCO_SER_ID: TIntegerField;
+    Q_PAREN_SER_ID: TIntegerField;
+    Q_PARFLAGTELA: TStringField;
+    Q_PARFLAGTELA2: TStringField;
+    Q_PARFLAGTELA3: TStringField;
+    Q_PARCLIN_ID_1: TIntegerField;
+    Q_PARVERSAO: TStringField;
+    Q_PARFLAGTELA_USUARIO: TStringField;
+    Q_PARFLAGTELA_DATA: TDateTimeField;
+    Q_PARFLAGTELA2_USUARIO: TStringField;
+    Q_PARFLAGTELA2_DATA: TDateTimeField;
+    Q_PARPORTA: TIntegerField;
+    Q_PARHOST: TStringField;
+    Q_PARCAMINHO: TStringField;
+    Q_PARULT_FATURA: TIntegerField;
+    Q_PARULT_NF: TIntegerField;
+    Q_PARULT_CONH: TIntegerField;
+    Q_PARAR_ID_AVARIA: TIntegerField;
+    Q_PARULT_MINUTA: TIntegerField;
+    Q_PARULT_NFPROV: TIntegerField;
+    Q_PARULT_CONHPROV: TIntegerField;
+    Q_PARULT_MINUTAPROV: TIntegerField;
+    Q_PARCAMINHO_MATRICIAL: TStringField;
+    Q_PARCAMINHO_MATRICIAL_FATURA: TStringField;
+    Q_PARCAMINHO_MATRICIAL_CONH_1: TStringField;
+    Q_PARDATA_1: TDateTimeField;
+    Q_PARConnectionString: TStringField;
+    Q_PARIBGE_ID: TIntegerField;
+    qrAuxMun: TADOQuery;
+    qrAuxMunMUN_ID: TAutoIncField;
+    qrAuxMunDIPAM: TStringField;
+    qrAuxMunMUN_NOME: TStringField;
+    qrAuxMunUF_SIGLA: TStringField;
+    qrAuxMunREG_ID: TIntegerField;
+    qrAuxMunIBGE_ID: TIntegerField;
+    Label77: TLabel;
+    wwDBEdit34: TwwDBEdit;
+    wwDBEdit35: TwwDBEdit;
+    Label78: TLabel;
+    Q_OCEORD_TXENTREGA: TFloatField;
+    Q_OCEORD_SEGURO: TFloatField;
+    cdsOCEORD_TXENTREGA: TFloatField;
+    cdsOCEORD_SEGURO: TFloatField;
+    pnlComplementar: TPanel;
+    Label79: TLabel;
+    Label80: TLabel;
+    edtVFrete: TEdit;
+    Label81: TLabel;
+    edtVPedagio: TEdit;
+    Label82: TLabel;
+    edtVTxEntrega: TEdit;
+    Label83: TLabel;
+    edtVDespacho: TEdit;
+    Label84: TLabel;
+    edtSeguro: TEdit;
+    Button3: TButton;
+    Button4: TButton;
+    STP_CTRC_COMPLEMENTAR: TADOStoredProc;
+    btnComplementar: TButton;
+    qrAuxMun2: TADOQuery;
+    Label85: TLabel;
+    edtVAliqICMS: TEdit;
+    Label87: TLabel;
+    edtValorICMS: TEdit;
+    Label88: TLabel;
+    edtTotalPresta: TEdit;
+    DBText29: TDBText;
+    Q_OCENFI_REENTREGA: TIntegerField;
+    cdsOCENFI_REENTREGA: TIntegerField;
+    btnGerarNFSE: TButton;
+    Q_OCEGEROU_NFSE: TStringField;
+    cdsOCEGEROU_NFSE: TStringField;
+    qryAux: TADOQuery;
+    lblNFSE: TLabel;
+    qryNotasServicoDivididas: TADOQuery;
+    qryNotasServicoDivididasNFI_NUMERO: TStringField;
+    Q_OCEORD_DATA: TDateTimeField;
+    cdsOCEORD_DATA: TDateTimeField;
+    btnClonar: TButton;
+    qrExecClone: TwwQuery;
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DS_OCEDataChange(Sender: TObject; Field: TField);
+    procedure wwDBGrid3CalcCellColors(Sender: TObject; Field: TField;
+      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+      ABrush: TBrush);
+    procedure SpeedButton1Click(Sender: TObject);
+    function MUDALETR(LETRA: string): string;
+    procedure Q_OCEAfterPost(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure Q_OCEBeforePost(DataSet: TDataSet);
+    procedure Q_OCEMARCADORChange(Sender: TField);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure btNemClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure wwDBEdit10Enter(Sender: TObject);
+    procedure wwDBEdit10Exit(Sender: TObject);
+    procedure BitBtn6Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
+    procedure RadioGroup3Click(Sender: TObject);
+    procedure wwDBLookupCombo2Exit(Sender: TObject);
+    procedure wwDBLookupCombo1Enter(Sender: TObject);
+    procedure wwDBLookupCombo4Enter(Sender: TObject);
+    procedure wwDBLookupCombo4Exit(Sender: TObject);
+    procedure wwDBEdit20Enter(Sender: TObject);
+    procedure wwDBLookupCombo3Enter(Sender: TObject);
+    procedure wwDBLookupCombo3Exit(Sender: TObject);
+    procedure wwDBLookupCombo5Enter(Sender: TObject);
+    procedure wwDBLookupCombo5Exit(Sender: TObject);
+    procedure wwDBEdit20Exit(Sender: TObject);
+    procedure wwDBEdit15Enter(Sender: TObject);
+    procedure wwDBEdit15Exit(Sender: TObject);
+    procedure wwDBEdit17Enter(Sender: TObject);
+    procedure wwDBEdit17Exit(Sender: TObject);
+    procedure wwDBEdit21Enter(Sender: TObject);
+    procedure wwDBEdit21Exit(Sender: TObject);
+    procedure wwDBEdit29Enter(Sender: TObject);
+    procedure wwDBEdit29Exit(Sender: TObject);
+    procedure wwDBEdit22Enter(Sender: TObject);
+    procedure wwDBEdit23Enter(Sender: TObject);
+    procedure wwDBEdit24Enter(Sender: TObject);
+    procedure wwDBEdit25Enter(Sender: TObject);
+    procedure wwDBEdit12Enter(Sender: TObject);
+    procedure wwDBEdit26Enter(Sender: TObject);
+    procedure wwDBEdit27Enter(Sender: TObject);
+    procedure wwDBEdit14Enter(Sender: TObject);
+    procedure wwDBEdit28Enter(Sender: TObject);
+    procedure wwDBEdit22Exit(Sender: TObject);
+    procedure wwDBEdit23Exit(Sender: TObject);
+    procedure wwDBEdit24Exit(Sender: TObject);
+    procedure wwDBEdit25Exit(Sender: TObject);
+    procedure wwDBEdit12Exit(Sender: TObject);
+    procedure wwDBEdit26Exit(Sender: TObject);
+    procedure wwDBEdit27Exit(Sender: TObject);
+    procedure wwDBEdit14Exit(Sender: TObject);
+    procedure wwDBEdit28Exit(Sender: TObject);
+    procedure Q_OCENewRecord(DataSet: TDataSet);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure BitBtn8Click(Sender: TObject);
+    procedure Q_NF99NFI_MARCADOR_CTRCGENChange(Sender: TField);
+    procedure wwDBLookupCombo7Enter(Sender: TObject);
+    procedure wwDBLookupCombo7Exit(Sender: TObject);
+    procedure wwDBLookupCombo7CloseUp(Sender: TObject; LookupTable,
+      FillTable: TDataSet; modified: Boolean);
+    procedure Q_OCEBeforeInsert(DataSet: TDataSet);
+    procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure Label51DblClick(Sender: TObject);
+    procedure btnConfirmaValoresClick(Sender: TObject);
+    procedure Label4DblClick(Sender: TObject);
+    procedure cdsOCEAfterPost(DataSet: TDataSet);
+    procedure cdsOCENewRecord(DataSet: TDataSet);
+    procedure cdsOCEBeforeInsert(DataSet: TDataSet);
+    procedure cdsOCEMARCADORChange(Sender: TField);
+    procedure cdsNF99NFI_MARCADOR_CTRCGENChange(Sender: TField);
+    procedure Button2Click(Sender: TObject);
+    procedure cdsOCEBeforePost(DataSet: TDataSet);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure btnComplementarClick(Sender: TObject);
+    procedure cdsOCENFI_REENTREGAGetText(Sender: TField; var Text: String;
+      DisplayText: Boolean);
+    procedure btnGerarNFSEClick(Sender: TObject);
+    procedure lblNFSEDblClick(Sender: TObject);
+    procedure btnClonarClick(Sender: TObject);
+   
+  private
+    function GeraDesconto() : string;
+    procedure ConvefereValores;
+  public
+    { Public declarations }
+  end;
+
+var
+  FConsOCE: TFConsOCE;
+  SQL : string ;
+  LOCF: INTEGER;
+  NOVONUMERO : string ;
+  STROCE : STRING ;
+
+  SDS : INTEGER ;
+  NOTASEMBARRA : string ;
+  NOTAS : string ;
+
+  NOTASGENERICO : string ;
+  FINAL : string ; 
+implementation
+uses UOS, UFaturamento, USenha, U_FUNCOES, UConsultaCTRC, UMenu,
+  ufrmGeraNFSE, frmPesqNfServico ;
+{$R *.DFM}
+
+procedure TFConsOCE.SpeedButton3Click(Sender: TObject);
+begin
+   close ;
+end;
+
+procedure TFConsOCE.FormCreate(Sender: TObject);
+VAR IK : Integer;
+begin
+   for IK := 0 TO PRED(ComponentCount) do begin
+       if Components[IK] is TwwDBGrid then begin
+           (Components[IK] as TwwDBGrid).TitleColor := clBtnFace;
+           (Components[IK] as TwwDBGrid).TitleFont.Color := clBlack;
+       end;
+   end;
+
+  try
+
+  with Q_AUX do begin
+      Close;
+      sql.Clear;
+      sql.Add('UPDATE ORDEM_COLETA_ENTREGA SET CFA_ID = 563 WHERE CFA_ID = 860');
+      ExecSQL;
+  end;
+  except
+
+  end;
+
+  if FMenu.SqlUsuariosNOME.Value = 'SA' then
+        CheckBox1.Visible := True;
+
+      FINAL := '' ;
+
+  IF  PESQUISAOCE = '*'  Then begin
+        Q_OCE.close;
+        Q_OCE.Sql.Clear;
+        Q_OCE.Sql.Add(' Select * from ORDEM_COLETA_ENTREGA ') ;
+        Q_OCE.Sql.Add(' where OS_ID=' + FFaturamento.Q_OSOS_ID.asstring );
+        Q_OCE.Sql.Add(' order by ORD_CONH ' );
+      //miguel  Q_OCE.open ;
+  end ;
+
+  IF  PESQOCE = '*'  Then begin
+        Q_OCE.close;
+        Q_OCE.Sql.Clear;
+        Q_OCE.Sql.Add(' Select * from ORDEM_COLETA_ENTREGA ') ;
+        Q_OCE.Sql.Add(' where ORD_CONH =' + '''' + FConsultaCTRC.Q_CTRCORD_CONH.asstring + '''');
+        Q_OCE.Sql.Add(' order by ORD_CONH ' );
+       //miguel Q_OCE.open ;
+  end ;
+
+
+  //miguel  Q_OCE.open ;
+  
+  if FMenu.lbOs_id.Caption <> '0' then
+  begin
+     Q_OCE.Close;
+     Q_OCE.SQL.Clear;
+     Q_OCE.sql.Add('Select A.* from ORDEM_COLETA_ENTREGA A where A.OS_ID = ' + FMenu.lbOs_id.Caption);
+     Q_OCE.sql.Add('AND A.NFSO_ID IS NULL');
+  end;
+
+  cdsOCE.Open;
+  Q_REG2.open ;
+  Q_VEIC3.open ;
+  Q_UF1.open ;
+  Q_UF2.open ;
+ // cdsMuni.Open;
+  Q_MUNI.open ;
+  Q_MUNI2.open ;
+  Q_CLIF3.open ;
+
+  Q_PAR.open ;
+ // Q_CLIN.open ;
+ cdsClin.Open;
+  //Q_TRANS.open ;
+  cdsTrans.Open;
+ // Q_OCE.open ;
+  Q_UF.open ;
+  T_ACEN.open;
+ // Q_CFa.open ;
+
+ qrConfirma.Close;
+ qrConfirma.Params[0].AsInteger := cdsOCEOS_ID.Value;
+ cdsConfirma.Open;
+
+ qrConsManifesto.Close;
+ qrConsManifesto.Params[0].AsInteger := cdsOCEOS_ID.Value;
+ cdsConsManifesto.Open;
+
+  TabbedNotebook2.pageindex := 0 ;
+  TabbedNotebook1.pageindex := 0 ;
+
+
+
+end;
+
+procedure TFConsOCE.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ //miguel Q_OCE.close ;
+  FINAL := 'S' ;
+
+  Q_CLIF3.close ;
+  Q_REG2.close ;
+  Q_VEIC3.close ;
+  Q_UF1.close ;
+  Q_UF2.close ;
+  Q_MUNI.close ;
+  Q_MUNI2.close;
+
+  Q_PAR.close ;
+  Q_CLIN.close ;
+  Q_TRANS.close ;
+  //miguel Q_OCE.close ;
+  Q_UF.close ;
+  T_ACEN.close ;
+  Q_CFa.close ;
+
+  SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '' + ''''   ;
+
+   Q_AUX.Close;
+   Q_AUX.SQL.CLEAR;
+   Q_AUX.SQL.ADD(SQL);
+   Q_AUX.ExecSQL;
+
+  PESQOCE := '' ;
+
+ Q_AUX.Close;
+ Q_AUX.SQL.CLEAR;
+ Q_AUX.SQL.ADD('UPDATE NF SET ');
+ Q_AUX.SQL.ADD('NFI_MARCADOR_CTRCGEN = ' + '''' + '' + '''');
+ Q_AUX.execsql ;
+
+ action := cafree ;
+end;
+
+procedure TFConsOCE.DS_OCEDataChange(Sender: TObject; Field: TField);
+begin
+
+
+ if cdsOCEORD_ID.AsString <> '' then
+ begin
+    // se existir bloqueia o botao para confirmação de valores e compara com o valor atual
+    if cdsConfirma.active then
+    begin
+         if cdsConfirma.Locate('ORD_ID', cdsOCEORD_ID.Value, []) then
+              btnConfirmaValores.Enabled := False
+         else //efetua a comparação
+         begin
+              btnConfirmaValores.Enabled := True;
+         end;
+         if cdsOCEORD_STATUS.Value = 'E' then begin
+            btnComplementar.Visible := True;
+            btnClonar.Visible := true;
+         end
+         else begin
+            btnComplementar.Visible := False;
+            btnClonar.Visible := False;
+         end;
+
+
+    end;      
+ end;
+
+
+
+  if cdsOCEGEROU_NFSE.AsString = 'S' then  begin
+        btnGerarNFSE.Visible := False;
+        SpeedButton1.Visible := False;
+        BitBtn1.Visible := False;
+  end
+  else begin
+    SpeedButton1.Visible := true;
+        BitBtn1.Visible := true;
+        btnGerarNFSE.Visible := btnConfirmaValores.Enabled;
+  end;
+
+
+  //lista as notas de serviço gerdas
+  if cdsOCEGEROU_NFSE.Value = 'S' then begin
+      with qryNotasServicoDivididas  do begin
+          Close;
+          Parameters[0].Value := cdsOCEORD_ID.AsInteger;
+          Open;
+      end;
+      lblNFSE.Caption := 'NFSEs: ';
+      while not qryNotasServicoDivididas.Eof do begin
+            lblNFSE.Caption := lblNFSE.Caption + qryNotasServicoDivididasNFI_NUMERO.AsString + ' ';
+            qryNotasServicoDivididas.Next;
+      end;
+  end;
+
+
+
+
+  IF FINAL = '' then begin
+             IF cdsOCEORD_COLETA_ENTREGA.asstring = 'C' then  begin
+                  Label4.caption := 'Consulta de Ordem de Coleta'  ;
+                  TabbedNotebook2.visible := true ;
+                  Panel7.visible := true ;
+                  Label54.caption := 'Ordem de Coleta não confirmada'
+             end else begin
+                  Label4.caption := 'Consulta de Ordem de Entrega' ;
+                  TabbedNotebook2.visible := false  ;
+                  Panel7.visible := true ;
+                  Label54.caption := 'Ordem de Entrega não confirmada'
+             end ;
+
+             IF  cdsOCEMANI_ID.asstring <> ''then begin
+                  { cdsAux.close ;
+                   Q_AUX.Sql.Clear ;
+                   Q_AUX.Sql.Add(' select count(*) as qtde   from ORDEM_COLETA_ENTREGA A,MANIFESTO B ');
+                   Q_AUX.Sql.Add(' WHERE  B.MANI_ID = A.MANI_ID ');
+                   Q_AUX.Sql.Add(' and B.CONFIRMA_MANI <> ' + '''' + 'S' + '''' ) ;
+                   Q_AUX.Sql.Add(' and B.MANI_ID = ' + cdsOCEMANI_ID.asstring  ) ;
+                   cdsAux.open ;
+
+                   IF (cdsAux.fieldbyname('qtde').asinteger > 0) then begin
+                       Panel1.enabled := false ;
+                       abort ;
+                   end else Panel1.enabled := true ; }
+
+                  IF cdsConsManifesto.Active then
+                  BEGIN
+                      IF cdsConsManifesto.Locate('MANI_ID', cdsOCEMANI_ID.Value, []) then
+                      begin
+                          IF cdsConsManifestoqtde.Value > 0 then
+                          begin
+                              Panel1.enabled := false ;
+                              abort ;
+                          end
+                          else
+                            Panel1.enabled := true ;
+                      end;
+                  end;
+             end ;
+
+             IF cdsOCEORD_CONSIGN.asstring = 'S' then
+                DBText6.visible := true
+              ELSE
+                DBText6.visible := false ;
+
+            ///IF  Q_OCEORD_PAGO.asstring = 'N' then
+              ////   Label51.caption := 'Não' else  Label51.caption := 'Sim' ;
+
+            IF PESQOCE <> '*' then begin
+                     SpeedButton1.enabled := true  ;
+                     BitBtn1.enabled := true;
+                     BitBtn2.enabled := true;
+                     BtNEM.enabled := true;
+                     BitBtn6.enabled := true;
+                     BitBtn3.enabled := true;
+
+                 IF FOS.CDSOSOS_CONCLUIDA.asstring = 'S' then begin
+                     BitBtn3.enabled := false;
+                    // DBNavigator1.enabled := false ;
+
+                     wwDBEdit38.enabled  := false ;
+                     wwDBEdit31.enabled  := false ;
+                     wwDBEdit32.enabled  := false ;
+                     wwDBEdit33.enabled  := false ;
+                     wwDBEdit6.enabled  := false ;
+                     wwDBEdit34.enabled  := false ;
+                     wwDBEdit35.Enabled := False;
+
+                 end else begin
+                     BitBtn3.enabled := true;
+                   //  DBNavigator1.enabled := true ;
+                     wwDBEdit38 .enabled  := true ;
+                     wwDBEdit31.enabled  := True ;
+                     wwDBEdit32.enabled  := True ;
+                     wwDBEdit33.enabled  := True ;
+                     wwDBEdit6.enabled  := True ;
+                     wwDBEdit34.enabled  := True ;
+                     wwDBEdit35.Enabled := True;
+                 end ;
+            end else begin
+                SpeedButton1.enabled := false ;
+                BitBtn1.enabled := false;
+                BitBtn2.enabled := false;
+                BtNEM.enabled := false;
+                BitBtn6.enabled := false;
+                BitBtn3.enabled := false;
+            end ;
+  end ; 
+  IF cdsOCE.ACTIVE = True then
+  begin
+  qrCFOP.Close;
+  qrCFOP.Params[0].AsInteger := cdsOCECFA_ID.Value;
+  qrCFOP.Open;
+
+
+  Q_CFA.Close;
+  Q_CFA.Params[0].AsInteger := cdsOCECFA_ID.Value;
+  Q_CFA.Open;
+  end;
+
+end;
+
+procedure TFConsOCE.wwDBGrid3CalcCellColors(Sender: TObject; Field: TField;
+  State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
+begin
+
+     { miguel - comentado para evitar gasto de memoria
+     IF  cdsOCEMANI_ID.asstring <> ''then begin
+
+           cdsAux.close ;
+           Q_AUX.Sql.Clear ;
+           Q_AUX.Sql.Add(' select count(*) as qtde   from ORDEM_COLETA_ENTREGA A,MANIFESTO B ');
+           Q_AUX.Sql.Add(' WHERE  B.MANI_ID = A.MANI_ID ');
+           Q_AUX.Sql.Add(' and B.CONFIRMA_MANI = ' + '''' + 'S' + '''' ) ;
+           Q_AUX.Sql.Add(' and B.MANI_ID = ' + cdsOCEMANI_ID.asstring  ) ;
+           cdsAux.open ;
+
+           IF (cdsAux.fieldbyname('qtde').asinteger = 0) then begin
+               AFont.color := clwhite;
+               if not highlight then   begin
+                  ABrush.color := cLRED;
+                  AFont.Color := clblack;
+                End else begin
+                  ABrush.color := cLRED;
+                  Afont.color := clblack;
+                end ;
+           end ;
+      end ; }
+
+
+     IF cdsOCEMARCADOR.AsString = '*' THEN begin
+        AFONT.Color:= CLNAVY ;
+        if  not highlight then
+           ABrush.COLOR:= CLWhite
+          else
+           ABrush.COLOR:= CLaqua ;
+     end ELSE begin
+        AFONT.COLOR:= CLRed  ;
+          if not  highlight then
+           ABrush.COLOR:= CLWhite
+          else
+            ABrush.COLOR:= CLaqua;
+     end ;
+
+
+end;
+
+procedure TFConsOCE.SpeedButton1Click(Sender: TObject);
+ Const Brancos = '                                                                                                    '  +
+      '                                                                                                    ' ;
+var
+    STRSTRING : string ;
+    F         :  TextFile ;
+    conti : integer ;
+
+   CARACTER_NF : integer ;
+   TOTAL_ACUMULADO : integer ;
+   IMPR_NUMNF : string ;
+   IMPR_NUMNF2 : string ;
+   IMPR_NUMNF_OBS    : string ;
+
+   CFOP : string;
+begin
+
+
+    ///verifica se todos os CRTC estão confirmados
+   cdsAux.close ;
+   Q_AUX.Sql.Clear ;
+   Q_AUX.Sql.Add(' SELECT COUNT(ORD_ID)  AS ACHEI FROM ORDEM_COLETA_ENTREGA WHERE OS_ID = ' + cdsOCEOS_ID.AsString );
+   Q_AUX.Sql.Add(' AND ORD_ID NOT IN (SELECT ORD_ID FROM OEC_AUX)  ') ;
+   cdsAux.open ;
+
+   IF cdsAux.FieldByName('ACHEI').AsInteger > 0 then
+   begin
+        MessageBox(Self.Handle, 'Existem conhecimentos sem confirmação!', 'Erro', MB_OK + MB_ICONERROR)  ;
+        Abort;
+   end;
+
+
+
+
+ IF (FOS.CDSOSOS_CONCLUIDA.asstring <> 'S') then begin
+      MessageDlg('Para imprimir o Conhecimento e/ou Minuta será necessário Concluir a Ordem de Serviço !',mtWarning,[mbok],0);
+      abort ;
+   end ;
+
+
+
+
+
+
+
+
+
+
+   cdsAux.close ;
+   Q_AUX.Sql.Clear ;
+   Q_AUX.Sql.Add(' select count(*) as qtde   from ORDEM_COLETA_ENTREGA ');
+   Q_AUX.Sql.Add(' WHERE  MARCADOR = ' + '''' + '*' + ''''  ) ;
+   cdsAux.open ;
+
+   IF (cdsAux.fieldbyname('qtde').asinteger = 0) then begin
+      MessageDlg('Não foi selecionado nenhum Conhecimento e/ou Minuta!',mtWarning,[mbok],0);
+      abort ;
+
+   end ;
+
+
+
+  IF RadioGroup1.itemindex =  0 then begin
+
+      cdsOCE.first ;
+      While not (cdsOCE.eof) do begin
+
+            //BUSCA OS DADOS DE VALORES GUARDADOS NA TABELA OEC_AUX
+            qrOCEAux.Close;
+            qrOCEAux.Parameters[0].Value := cdsOCEORD_ID.Value;
+            qrOCEAux.Open;
+
+      
+
+            IF (cdsOCEMARCADOR.asstring = '*')
+               and (cdsOCEORD_STATUS.asstring = 'A') then begin
+
+                   IF (  ((cdsOCEMUN_ID_ENT.asstring =  cdsOCEMUN_ID_COL.asstring) and
+                         (cdsOCEMUN_ID_ENT.asstring <> Q_PARMUN_ID.asstring))
+                          or
+                         (cdsOCEMUN_ID_ENT.asstring <>  cdsOCEMUN_ID_COL.asstring)  )then begin
+
+                       ////Assignfile(F,'LPT1');
+                       ////Assignfile(F,'\\elisangela\EpsonFX-2180');
+                       
+
+                     //  IF CheckBox1.Checked then
+                       //Assignfile(F,'C:\Atelier\NFconhe.txt')  ;
+                       //else
+                         // Assignfile(F,Q_PARCAMINHO_MATRICIAL_CONH.asstring);
+                       //Rewrite(F);
+
+
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+
+
+
+                       cdsAux.close;
+                       Q_AUX.Sql.Clear;
+                       Q_AUX.Sql.Add(' SELECT ULT_CONH from PARAMETRO ') ;
+                       cdsAux.open;
+
+                       NOVONUMERO :=  inttostr(cdsAux.fieldbyname('ULT_CONH').asinteger + 1) ;
+
+                       Q_aux.close;
+                       Q_aux.Sql.Clear;
+                       Q_aux.Sql.Add(' UPDATE PARAMETRO SET  ULT_CONH = '  + '''' + NOVONUMERO + ''''  );
+                       Q_aux.ExecSql;
+
+                       Q_aux.close;
+                       Q_aux.Sql.Clear;
+                       Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET  ORD_CONH = '  + '''' + NOVONUMERO + ''''  );
+                       Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                       Q_aux.ExecSql;
+
+                       //BUSCA OS DADOS DE VALORES GUARDADOS NA TABELA OEC_AUX
+                        qrOCEAux.Close;
+                        qrOCEAux.Parameters[0].Value := cdsOCEORD_ID.Value;
+                        qrOCEAux.Open;
+
+
+                       
+
+
+
+                       StrString := copy(Brancos,1,117{91}) + NOVONUMERO ;//Nat.da Operação
+                       //writeln(F,StrString,#27#50);
+                       ////writeln(F,'',#27#50);
+
+                       IF copy(Q_CFACFA_CODI.asstring,1,1) = '5' then
+                             //   CFOP := '5360'   Miguel, alterado por solicitação do Alberto
+                             CFOP := '5352'
+                       else
+                             CFOP := Q_CFACFA_CODI.asstring;
+
+
+                       StrString := copy(Brancos,1,90{83}) + 'SERVIÇOS' +  copy(Brancos,1,35) + copy(CFOP,1,1) + '.' + copy(CFOP,2,3);//Nat.da Operação
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+                       ////writeln(F,StrString,#27#50)  ;
+                       ///writeln(F,StrString,#27#50) ;
+                       ///writeln(F,StrString,#27#50) ;
+                       ///writeln(F,StrString,#27#50) ;
+
+                       IF Q_PAR.Active = False then Q_PAR.Open;
+
+                       qrAuxMun.Close;
+                       qrAuxMun.Parameters[0].Value := Q_PARMUN_ID.AsInteger;
+                       qrAuxMun.Open;
+
+
+
+                       StrString := copy(Brancos,1,94{85}) + qrAuxMunMUN_NOME.AsString + ', ' + formatdatetime('DD/MM/YYYY', Q_PARDATA.asdatetime);// Local e Data Emissão
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+                       //Writeln(F,'');
+                       //Writeln(F,'',#27#50);
+                       ///writeln(F,'',#27#50);
+                       ///writeln(F,'',#27#50);
+
+                       StrString := copy(Brancos,1,12) + Trim(cdsOCECLINraza.asstring) + copy(BRANCOS,1,50-length (Trim(cdsOCECLINraza.asstring))) +
+                            copy(Brancos,1,22{12}) + Trim(cdsOCECLIFraza.asstring) + copy(BRANCOS,1,50-length (Trim(cdsOCECLIFraza.asstring)))  ;
+
+
+                       StrString := MUDALETR(StrString ) ;
+                      // writeln(F,StrString,#27#50);
+
+                       cdsAux.close ;
+                       Q_AUX.Sql.Clear ;
+                       Q_AUX.Sql.Add(' Select A.*,B.MUN_NOME from CLIENTENBF A,MUNICIPIO B ') ;
+                       Q_AUX.Sql.Add(' where A.CLIN_ID  = ' + cdsOCECLIN_ID.asstring  ) ;
+                       Q_AUX.Sql.Add(' and A.MUN_ID = B.MUN_ID ') ;
+                       cdsAux.Open ;
+
+                       cdsAUX1.CLOSE;
+                       Q_AUX1.Sql.Clear ;
+                       Q_AUX1.Sql.Add(' Select A.*,B.MUN_NOME from CLIENTEFINAL A,MUNICIPIO B ') ;
+                       Q_AUX1.Sql.Add(' where A.CLIF_ID  = ' + cdsOCECLIF_ID.asstring  ) ;
+                       Q_AUX1.Sql.Add(' and A.MUN_ID = B.MUN_ID ') ;
+                       cdsAUX1.Open ;
+
+
+                       StrString := copy(Brancos,1,12) + Trim(cdsAux.fieldbyname('CLIN_ENDERECO').asstring) +
+                                    copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('CLIN_ENDERECO').asstring))) +
+
+                                    copy(Brancos,1,1) + Trim(cdsAux.fieldbyname('CLIN_ENDERECO_COMPL').asstring) +
+                                    copy(BRANCOS,1,20 - length (Trim(cdsAux.fieldbyname('CLIN_ENDERECO_COMPL').asstring))) +
+
+                                    copy(Brancos,1,11{1}) + Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO').asstring) +
+                                    copy(BRANCOS,1,40 - length (Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO').asstring)))+
+
+                                    copy(Brancos,1,1) + Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO_COMPL').asstring) +
+                                    copy(BRANCOS,1,20 - length (Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO_COMPL').asstring))) ;
+
+
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+                       StrString := copy(Brancos,1,12) + Trim(cdsAux.fieldbyname('MUN_NOME').asstring) +
+                                    copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('MUN_NOME').asstring))) +
+
+                                    copy(Brancos,1,14{13}) + Trim(cdsAux.fieldbyname('UF_SIGLA').asstring) +
+                                    copy(BRANCOS,1,2  - length (Trim(cdsAux.fieldbyname('UF_SIGLA').asstring))) +
+
+                                    copy(Brancos,1,{24}16) + Trim(cdsAUX1.fieldbyname('MUN_NOME').asstring) +
+                                    copy(BRANCOS,1,40  - length (Trim(cdsAUX1.fieldbyname('MUN_NOME').asstring)))+
+
+                                    copy(Brancos,1,{8}15) + Trim(cdsAUX1.fieldbyname('UF_SIGLA').asstring) +
+                                    copy(BRANCOS,1,2  - length (Trim(cdsAUX1.fieldbyname('UF_SIGLA').asstring))) ;
+
+                       StrString := MUDALETR(StrString ) ;
+                      // writeln(F,StrString,#27#50);
+                       cdsAUX1.Close;
+                       Q_AUX1.Sql.Clear ;
+                       Q_AUX1.Sql.Add(' Select * from CLIENTENBF') ;
+                       Q_AUX1.Sql.Add(' where CLIN_ID  = ' + cdsOCECLIN_ID.asstring  ) ;
+                       cdsAUX1.Open ;
+
+                       cdsAux.close ;
+                       Q_AUX.Sql.Clear ;
+                       Q_AUX.Sql.Add(' Select * from CLIENTEFINAL ') ;
+                       Q_AUX.Sql.Add(' where CLIF_ID  = ' + cdsOCECLIF_ID.asstring  ) ;
+                       cdsAux.Open ;
+
+
+                       if (cdsAUX1.fieldbyname('CLIN_PESSOA').asstring  = 'J') then
+                           cdsAUX1.fieldbyname('CLIN_CGCCPF').EditMask := '99.999.999/9999-99;0;_'
+                       else
+                           cdsAUX1.fieldbyname('CLIN_CGCCPF').EditMask := '999.999.999/99;0;_';
+
+                       if (cdsAux.fieldbyname('CLIF_PESSOA').asstring  = 'J') then
+                           cdsAux.fieldbyname('CLIF_CGCCPF').EditMask := '99.999.999/9999-99;0;_'
+                       else
+                           cdsAux.fieldbyname('CLIF_CGCCPF').EditMask := '999.999.999/99;0;_';
+
+
+                       StrString :=
+                         copy(Brancos,1,4) + Trim(cdsAUX1.fieldbyname('CLIN_INSCRG').asstring) +
+                         copy(BRANCOS,1,15-length (Trim(cdsAUX1.fieldbyname('CLIN_INSCRG').asstring))) +
+                         copy(Brancos,1,{19}21) + Trim(cdsAUX1.fieldbyname('CLIN_CGCCPF').DisplayText) +
+                         copy(BRANCOS,1,15-length (Trim(cdsAUX1.fieldbyname('CLIN_CGCCPF').DisplayText))) +
+
+                         copy(Brancos,1,{13}19) + Trim(cdsAux.fieldbyname('CLIF_INSCRG').asstring) +
+                         copy(BRANCOS,1,15-length (Trim(cdsAux.fieldbyname('CLIF_INSCRG').asstring))) +
+                         copy(Brancos,1,{16}22) + Trim(cdsAux.fieldbyname('CLIF_CGCCPF').DisplayText) +
+                         copy(BRANCOS,1,15-length (Trim(cdsAux.fieldbyname('CLIF_CGCCPF').DisplayText)));
+
+                       StrString := MUDALETR(StrString ) ;
+                      // writeln(F,StrString,#27#50);
+                       ///Writeln(F,'');
+                      // Writeln(F,'',#27#50);
+
+
+                       IF  cdsOCEORD_CONSIGN.asstring = 'S' then begin
+                           StrString := copy(Brancos,1,12) + Trim(Q_PARCLIN_NOMe.asstring) +
+                                        copy(BRANCOS,1,40  - length (Trim(Q_PARCLIN_NOME.asstring))) ;
+
+                           IF cdsOCEORD_PAGO.asstring = 'N' then
+                              StrString := StrString + copy(Brancos,1,83{77}) + 'XXX'
+                            else
+                              StrString := StrString + copy(Brancos,1,58{52}) + 'XXX' ;
+
+
+                           StrString := MUDALETR(StrString ) ;
+                           //writeln(F,StrString,#27#50);
+                       end else begin
+                            IF cdsOCEORD_PAGO.asstring = 'N' then
+                              StrString :=  copy(Brancos,1,135) + 'XXX'
+                            else
+                              StrString :=  copy(Brancos,1,110) + 'XXX' ;
+                           StrString := MUDALETR(StrString ) ;
+                          // writeln(F,StrString,#27#50);
+                       end ;
+
+                       IF  cdsOCEORD_CONSIGN.asstring = 'S' then begin
+
+                           StrString := copy(Brancos,1,12) + Trim(Q_PARCLIN_ENDERECO.asstring) +
+                                        copy(BRANCOS,1,40  - length (Q_PARCLIN_ENDERECO.asstring)) +
+
+                                    copy(Brancos,1,1) + Trim(Q_PARCLIN_ENDERECO_COMPL.asstring) +
+                                    copy(BRANCOS,1,20 - length (Trim(Q_PARCLIN_ENDERECO_COMPL.asstring))) +
+
+                                    copy(Brancos,1,8{1}) + Trim(cdsOCETRANSRaza.asstring) +
+                                    copy(BRANCOS,1,40 - length (cdsOCETRANSRaza.asstring));
+                       end else begin
+                            StrString := copy(Brancos,1,61) + Trim(cdsOCETRANSRaza.asstring) +
+                                    copy(BRANCOS,1,40 - length (cdsOCETRANSRaza.asstring));
+                       end ;
+
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+                       IF  cdsOCEORD_CONSIGN.asstring = 'S' then begin
+                           cdsAux.close ;
+                           Q_AUX.Sql.Clear ;
+                           Q_AUX.Sql.Add(' Select A.*,B.MUN_NOME from PARAMETRO A,MUNICIPIO B,CLIENTENBF C ') ;
+                           Q_AUX.Sql.Add(' where A.CLIN_ID  = ' + Q_PARCLIN_ID.asstring  ) ;
+                           Q_AUX.Sql.Add(' and B.MUN_ID = C.MUN_ID ') ;
+                           Q_AUX.Sql.Add(' and A.CLIN_ID = C.CLIN_ID ') ;
+                           cdsAux.Open ;
+
+                           StrString := copy(Brancos,1,12) + Trim(cdsAux.fieldbyname('MUN_NOME').asstring) +
+                                     copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('MUN_NOME').asstring))) +
+
+                                     copy(Brancos,1,31{22}) + Trim(cdsOCETRANSEND.asstring) +
+                                            copy(BRANCOS,1,40 - length (cdsOCETRANSEND.asstring)) +
+
+                                     copy(Brancos,1,1) + Trim(cdsOCETRANSENDcompl.asstring) +
+                                            copy(BRANCOS,1,20 - length (cdsOCETRANSENDcompl.asstring))  ;
+
+                       end else begin
+                            StrString :=  copy(Brancos,1,21) + Trim(cdsOCETRANSEND.asstring) +
+                                            copy(BRANCOS,1,40 - length (cdsOCETRANSEND.asstring)) +
+
+                                     copy(Brancos,1,1) + Trim(cdsOCETRANSENDcompl.asstring) +
+                                            copy(BRANCOS,1,20 - length (cdsOCETRANSENDcompl.asstring))  ;
+                       end ;
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+                       IF cdsOCETransMUN_ID.asstring <> '' then begin
+                           cdsAux.close ;
+                           Q_AUX.Sql.Clear ;
+                           Q_AUX.Sql.Add(' Select MUN_NOME from MUNICIPIO ') ;
+                           Q_AUX.Sql.Add(' where MUN_ID = ' + cdsOCETransMUN_ID.asstring );
+                           cdsAux.Open ;
+
+                           StrString := copy(Brancos,1,82{74}) + Trim(cdsAux.fieldbyname('MUN_NOME').asstring) +
+                                     copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('MUN_NOME').asstring)));
+
+
+                           StrString := MUDALETR(StrString ) ;
+                          // writeln(F,StrString,#27#50);
+
+
+                           if (cdsOCETransPESSOA.asstring  = 'J') then
+                               cdsOCETranscnpj.EditMask := '99.999.999/9999-99;0;_'
+                           else
+                               cdsOCETranscnpj.EditMask := '999.999.999/99;0;_';
+
+                           StrString := copy(Brancos,1,{74}82) + Trim(cdsOCETRANScnpj.DisplayText) +
+                                        copy(BRANCOS,1,15  - length (cdsOCETRANScnpj.DisplayText)) ;
+
+                           StrString := MUDALETR(StrString ) ;
+                          // writeln(F,StrString,#27#50);
+                       end else begin
+                          //Writeln(F,'');
+                          ///Writeln(F,'');
+                         // Writeln(F,'',#27#50);
+                         // Writeln(F,'',#27#50);
+                       end ;
+                       //Writeln(F,'');
+                       //Writeln(F,'');
+                       //Writeln(F,'');
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                                   { 241449/1 241439/1
+                                    241439/1   }
+                       NOTASEMBARRA := '' ;
+                       NOTAS := '' ;
+                       ////CARACTER_NF := 0 ;
+                       ////TOTAL_ACUMULADO := 0 ;
+                       ////IMPR_NUMNF := '' ;
+
+
+                           {ELIMINAR '/'  esta LIMITADO a 20 NOTAS}
+                       IF POS('/',cdsOCEORD_NOTAS.asstring) > 1 then  begin
+                           SDS := POS('/',cdsOCEORD_NOTAS.asstring)   ;
+                           NOTASEMBARRA := copy(cdsOCEORD_NOTAS.asstring,1,SDS-1) ;
+                           NOTAS := TRIM(copy(cdsOCEORD_NOTAS.asstring,SDS+3,45)) ;
+                       end ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+                       IF POS('/',NOTAS) > 1 then  begin
+                           SDS := POS('/',NOTAS)   ;
+                           NOTASEMBARRA := NOTASEMBARRA + ' ' +  copy(NOTAS,1,SDS-1) ;
+                           NOTAS := TRIM(copy(NOTAS,SDS+3,45)) ;
+                       END ;
+
+
+                       IF NOTASEMBARRA = '' then begin
+
+                           IF cdsOCEORD_COLETA_ENTREGA.asstring = 'E' then begin
+                               Q_AUX2.close ;
+                               Q_AUX2.Sql.Clear ;
+                               Q_AUX2.Sql.Add( ' select NFI_NUMERO from nf (nolock) ') ;
+                               Q_AUX2.Sql.Add( ' where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+                               Q_AUX2.open ;
+
+                               CARACTER_NF := 0 ;
+                               TOTAL_ACUMULADO := 0 ;
+                               IMPR_NUMNF := '' ;
+                               IMPR_NUMNF_OBS := '' ;
+
+                               while not Q_AUX2.eof do begin
+                                    CARACTER_NF := length(TRIM(Q_AUX2.fieldbyname('NFI_NUMERO').asstring))  ;
+
+                                    IF (CARACTER_NF + TOTAL_ACUMULADO) <= 27 then begin
+                                        IMPR_NUMNF := (IMPR_NUMNF + Q_AUX2.fieldbyname('NFI_NUMERO').asstring) + ' ' ;
+                                        TOTAL_ACUMULADO := (TOTAL_ACUMULADO + 1) + CARACTER_NF ;
+                                    end else
+                                        IMPR_NUMNF_OBS := (IMPR_NUMNF_OBS + Q_AUX2.fieldbyname('NFI_NUMERO').asstring) + ' ' ;
+
+                                  Q_AUX2.next ;
+                               end ;
+                           end else begin
+                               CARACTER_NF := 0 ;
+                               TOTAL_ACUMULADO := 0 ;
+                               IMPR_NUMNF := '' ;
+                               IMPR_NUMNF2 := '' ;
+                               IMPR_NUMNF_OBS := '' ;
+                               NOTASEMBARRA := cdsOCEORD_NOTAS.asstring ;
+
+                               while not (length(NOTASEMBARRA) = 0) do begin
+
+                                    IF  POS(' ',NOTASEMBARRA) > 0  then
+                                       IMPR_NUMNF2  := IMPR_NUMNF2 +  copy(NOTASEMBARRA,1,(POS(' ',NOTASEMBARRA))-1) + ' '
+                                     else
+                                       IMPR_NUMNF2  := IMPR_NUMNF2 +  NOTASEMBARRA ;
+
+                                    CARACTER_NF := length(TRIM(IMPR_NUMNF2));
+
+                                    IF (CARACTER_NF + TOTAL_ACUMULADO) <= 27 then begin
+
+                                         IF  POS(' ',NOTASEMBARRA) > 0  then begin
+                                              IMPR_NUMNF  := IMPR_NUMNF +  copy(NOTASEMBARRA,1,(POS(' ',NOTASEMBARRA))-1) + ' ';
+                                              NOTASEMBARRA := copy(NOTASEMBARRA,(POS(' ',NOTASEMBARRA))+1,100) ;
+                                         end else begin
+                                              IMPR_NUMNF  := IMPR_NUMNF +  NOTASEMBARRA ;
+                                              NOTASEMBARRA := '' ;
+                                         end ;
+
+                                    end  else begin
+                                        IMPR_NUMNF_OBS := (IMPR_NUMNF_OBS + NOTASEMBARRA) ;
+                                        NOTASEMBARRA := copy(NOTASEMBARRA,300,1) ;
+                                    end ;
+                               end ;
+
+                           end ;
+
+
+
+                           StrString := copy(Brancos,1,19) + Format('%9s',[FormatFloat('#######,##0.000',cdsOCEORD_QTDE_UV.asfloat)])+
+                                        copy(Brancos,1,4) + 'VOLUMES' +
+                                        copy(Brancos,1,5) + Format('%8s',[FormatFloat('######,##0.0',cdsOCEORD_PESO_TOTAL.asfloat)]) +
+
+                                        copy(Brancos,1,16) + Trim(IMPR_NUMNF) +
+                                        ////copy(Brancos,1,16) + Trim(Q_OCEORD_NOTAS.asstring) +
+                                       ////copy(BRANCOS,1,23 - length (Q_OCEORD_NOTAS.asstring)) +
+                                        copy(BRANCOS,1,23 - length (IMPR_NUMNF)) +
+
+                                        copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VALORTOTAL.asfloat)]) +
+
+                                        copy(Brancos,1,13) + Trim(cdsOCEORD_PLACA.asstring) +
+                                        copy(BRANCOS,1,8 - length (cdsOCEORD_PLACA.asstring));
+
+                       end else begin
+
+
+                             CARACTER_NF := 0 ;
+                             TOTAL_ACUMULADO := 0 ;
+                             IMPR_NUMNF := '' ;
+                             IMPR_NUMNF2 := '' ;
+                             IMPR_NUMNF_OBS := '' ;
+
+                             while not (length(NOTASEMBARRA) = 0) and
+                                       (NOTASEMBARRA <> 'S') do begin
+
+                                   IF  POS(' ',NOTASEMBARRA) > 0  then
+                                       IMPR_NUMNF2  := IMPR_NUMNF2 +  copy(NOTASEMBARRA,1,(POS(' ',NOTASEMBARRA))-1) + ' ' + NOTAS
+                                    else
+                                       IMPR_NUMNF2  := IMPR_NUMNF2 + NOTASEMBARRA   + ' ' + NOTAS ;
+
+                                  CARACTER_NF := length(TRIM(IMPR_NUMNF2));
+
+                                  IF (CARACTER_NF + TOTAL_ACUMULADO) <= 27 then begin
+                                     IF  POS(' ',NOTASEMBARRA) > 0  then begin
+                                         IMPR_NUMNF  := IMPR_NUMNF +  copy(NOTASEMBARRA,1,(POS(' ',NOTASEMBARRA))-1) + ' '  + NOTAS ;
+                                         NOTASEMBARRA := copy(NOTASEMBARRA,(POS(' ',NOTASEMBARRA))+1,100)
+                                     end else begin
+                                        IMPR_NUMNF  := IMPR_NUMNF +  NOTASEMBARRA  +  ' ' +  NOTAS ;
+                                        NOTASEMBARRA := '' ;
+                                     end ;
+
+                                  end  else begin
+                                      IMPR_NUMNF_OBS := (IMPR_NUMNF_OBS + NOTASEMBARRA)  + ' ' + NOTAS;
+                                      NOTASEMBARRA := copy(NOTASEMBARRA,300,1) ;
+                                  end ;
+                             end ;
+
+
+
+                            StrString := copy(Brancos,1,19) + Format('%9s',[FormatFloat('#######,##0.000',cdsOCEORD_QTDE_UV.asfloat)])+
+                                        copy(Brancos,1,4) + 'VOLUMES' +
+                                        copy(Brancos,1,5) + Format('%8s',[FormatFloat('######,##0.0',cdsOCEORD_PESO_TOTAL.asfloat)]) +
+
+                                         //copy(Brancos,1,16) + Trim(NOTASEMBARRA) +
+                                         ///copy(BRANCOS,1,23 - length (NOTASEMBARRA)) +
+                                         copy(Brancos,1,16) + Trim(IMPR_NUMNF) +
+                                         copy(BRANCOS,1,23 - length (IMPR_NUMNF)) +
+
+
+                                        copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VALORTOTAL.asfloat)]) +
+
+                                        copy(Brancos,1,13) + Trim(cdsOCEORD_PLACA.asstring) +
+                                        copy(BRANCOS,1,8 - length (cdsOCEORD_PLACA.asstring));
+
+                       end ;   //aqui
+
+
+
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+
+                       //Writeln(F,'');
+                       //Writeln(F,'');
+                       //Writeln(F,'');
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                     //  Writeln(F,'',#27#50);
+
+
+
+                       //comentada por miguel para colocar os valores da tabela OECAUX
+                       {StrString := copy(Brancos,1,33) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_FRETE.asfloat)]) +
+                                    copy(Brancos,1,12) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_SECCAT.asfloat)]) +
+                                    copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_DESPACHO.asfloat)]) +
+                                    copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_PEDAGIO.asfloat)]) +
+                                    copy(Brancos,1,13) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_OUTROS.asfloat)]) ; }
+
+
+                       StrString := copy(Brancos,1,33) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxVLR_FRETE.AsFloat)]);
+
+
+                       //VERIFICA SECAT
+                       IF qrOCEAuxSEC_CAT.AsString = '' then
+                          StrString := StrString +  copy(Brancos,1,12) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_SECCAT.asfloat)])
+                       else
+                          StrString := StrString +  copy(Brancos,1,12) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxSEC_CAT.AsFloat)])  ;
+
+                       //VERIFICA DESPACHO
+                       IF qrOCEAuxDESPACHO.AsString = '' then
+                           StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_DESPACHO.asfloat)])
+                       else
+                           StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxDESPACHO.asfloat)]);
+
+                       //VERIFICA PEDAGIO
+                       IF qrOCEAuxPEDAGIO.AsString = '' then
+                           StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_PEDAGIO.asfloat)])
+                       else
+                           StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxPEDAGIO.AsFloat)]);
+
+
+                       IF qrOCEAuxOUTROS.AsString = '' then
+                           StrString := StrString + copy(Brancos,1,13) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_OUTROS.asfloat)])
+                       else
+                           StrString := StrString + copy(Brancos,1,13) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxOUTROS.asfloat)]) ;
+
+                       StrString := MUDALETR(StrString ) ;
+                       //writeln(F,StrString,#27#50);
+
+                       //Writeln(F,'');
+                       //Writeln(F,'');
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+
+                        IF cdsOCEORD_ALIQ.asfloat > 0 then begin
+                          // StrString := copy(Brancos,1,15) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_TOTALPREST.asfloat)]) +
+                          //              copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_TOTALPREST.asfloat)]) +
+                          StrString := copy(Brancos,1,15) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxTOTAL.asfloat)]) +
+                                        copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxTOTAL.asfloat)]);
+
+                                    //VERIFICA OS VALORES NA TABELA OECAUX
+                                    IF qrOCEAuxALIQ.AsString = '' then
+                                        StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_ALIQ.asfloat)])
+                                    else
+                                        StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxALIQ.asfloat)]) ;
+                                    IF qrOCEAuxICMS.AsString = '' then
+                                        StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_ICMS.asfloat)])
+                                    else
+                                        StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxICMS.asfloat)])  ;
+
+                                        StrString := StrString +    copy(Brancos,1,6) + Trim(cdsOCEMUNIdesc.asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsOCEMUNIdesc.asstring)) +
+                                        copy(Brancos,1,7) + Trim(cdsOCEMUNIdescENT.asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsOCEMUNIdescENT.asstring));
+                        end else begin
+
+                                     IF cdsOCEORD_REDESPACHO.asstring <> 'S' then begin
+                                        StrString := copy(Brancos,1,15) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxTOTAL.asfloat)]) +
+                                        copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',0)]);
+
+                                    //VERIFICA OS VALORES NA TABELA OECAUX
+                                     IF qrOCEAuxALIQ.AsString = '' then
+                                        StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_ALIQ.asfloat)])
+                                    else
+                                        StrString := StrString + copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxALIQ.asfloat)]) ;
+                                    IF qrOCEAuxICMS.AsString = '' then
+                                        StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_ICMS.asfloat)])
+                                    else
+                                        StrString := StrString + copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',qrOCEAuxICMS.asfloat)])  ;
+
+
+                                      StrString := StrString +  copy(Brancos,1,6) + Trim(cdsOCEMUNIdesc.asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsOCEMUNIdesc.asstring)) +
+                                        copy(Brancos,1,7) + Trim(cdsOCEMUNIdescENT.asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsOCEMUNIdescENT.asstring));
+                                     end else begin
+                                         IF   cdsOCETRANS_ID_REDES.asstring  <> '' then begin
+                                           cdsAux.close ;
+                                           Q_AUX.Sql.Clear ;
+                                           Q_AUX.Sql.Add(' Select MUN_NOME from MUNICIPIO A,TRANSPORTADORA B') ;
+                                           Q_AUX.Sql.Add(' where B.TRANS_ID = ' + cdsOCETRANS_ID_REDES.asstring );
+                                           Q_AUX.Sql.Add(' and A.MUN_ID = B.MUN_ID ') ;
+                                           cdsAux.Open ;
+                                         end ;
+                                        StrString := copy(Brancos,1,15) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_TOTALPREST.asfloat)]) +
+                                        copy(Brancos,1,14) + Format('%10s',[FormatFloat('########,##0.00',0)]) +
+                                        copy(Brancos,1,6) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_ALIQ.asfloat)]) +
+                                        copy(Brancos,1,8) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VLR_ICMS.asfloat)])  +
+
+                                        copy(Brancos,1,6) + Trim(cdsOCEMUNIdesc.asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsOCEMUNIdesc.asstring)) +
+                                        copy(Brancos,1,7) + Trim(cdsAux.fieldbyname('MUN_NOME').asstring) +
+                                        copy(BRANCOS,1,20  - length (cdsAux.fieldbyname('MUN_NOME').asstring));
+
+                                     end     ;
+                        end  ;
+
+                       StrString := MUDALETR(StrString ) ;
+                      // writeln(F,StrString,#27#50);
+
+                      // Writeln(F,'',#27#50);
+
+
+                        with qrLoad do
+                        begin
+                            close;
+                            Params[0].AsInteger := cdsOCEORD_ID.Value;
+                            Open;
+                        end;
+                       /// cdsOCE.Edit;
+                       // cdsOCEORD_OBS.Value := cdsOCEORD_OBS.Value +  ' - Load:' + qrLoadnfi_load.AsString;
+
+
+                       IF cdsOCEORD_ALIQ.asfloat = 0.00 then begin
+
+                             StrString :=  copy(Brancos,1,30) + '                                   ';// + 'SUBST. TRIBUTARIA ART. 317 DO RICMS' ;   miguel alterado por solicitação do Alberto
+                             StrString := StrString +'-'+ GeraDesconto ;
+                             StrString := MUDALETR(StrString ) ;
+                           //  writeln(F,StrString,#27#50);
+
+
+                             IF FOS.CDSOSTOS_ID.asinteger = 5 then begin
+                                 StrString :=  copy(Brancos,1,30) + 'Material recebido do remetente, para despacho ao endereço do destinatário acima (saída da NBF)' ;
+                                 StrString := MUDALETR(StrString ) ;
+                                // writeln(F,StrString,#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(cdsOCEORD_OBS.asstring) +    ' - Load:' + qrLoadnfi_load.AsString +
+                                           copy(BRANCOS,1,50  - length (Trim(cdsOCEORD_OBS.asstring)));
+                                 StrString := MUDALETR(StrString ) ;
+                                // writeln(F,StrString,#27#50);
+
+                               {  StrString :=  copy(Brancos,1,30) + Trim(IMPR_NUMNF_OBS) +
+                                               copy(BRANCOS,1,50 - length (Trim(IMPR_NUMNF_OBS)));
+                                 StrString := MUDALETR(StrString ) ;
+                                 writeln(F,StrString,#27#50);  }
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,1,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,1,105))));
+                                 //adicionado por miguel
+                                 StrString := StrString +'-'+ GeraDesconto;
+
+                                 StrString := MUDALETR(StrString ) ;
+                                // writeln(F,StrString,#27#50);
+
+
+
+
+
+
+
+                                 {StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,106,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,106,105))));
+                                 StrString := MUDALETR(StrString ) ;
+                                 writeln(F,StrString,#27#50); }
+
+
+                             end else begin
+                                // Writeln(F,'',#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(cdsOCEORD_OBS.asstring) +  ' - Load:' + qrLoadnfi_load.AsString+
+                                           copy(BRANCOS,1,50  - length (Trim(cdsOCEORD_OBS.asstring)));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+
+
+
+                                { StrString :=  copy(Brancos,1,30) + Trim(IMPR_NUMNF_OBS) +
+                                               copy(BRANCOS,1,50 - length (Trim(IMPR_NUMNF_OBS)));
+                                 StrString := MUDALETR(StrString ) ;
+                                 writeln(F,StrString,#27#50);   }
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,1,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,1,105))));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+
+                             end ;
+
+                       end else begin
+
+                             IF FOS.CDSOSTOS_ID.asinteger = 5 then begin
+                                 StrString :=  copy(Brancos,1,30) + 'Material recebido do remetente, para despacho ao endereço do destinatário acima (saída da NBF)' ;
+                                 StrString := StrString +'-'+ GeraDesconto;
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(cdsOCEORD_OBS.asstring) +    ' - Load:' + qrLoadnfi_load.AsString +
+                                               copy(BRANCOS,1,50  - length (Trim(cdsOCEORD_OBS.asstring)));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,1,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,1,105))));
+
+                                 //adicionado por miguel
+                                 StrString := StrString +'-'+ GeraDesconto;
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,106,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,106,105))));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+                                // Writeln(F,'',#27#50);  //// 06/10/2005
+
+
+                              end else  begin
+                               //  writeln(F,'',#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(cdsOCEORD_OBS.asstring)   +    ' - Load:' + qrLoadnfi_load.AsString +
+                                               copy(BRANCOS,1,50  - length (Trim(cdsOCEORD_OBS.asstring)));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+
+
+                                 {StrString :=  copy(Brancos,1,30) + Trim(IMPR_NUMNF_OBS) +
+                                               copy(BRANCOS,1,50 - length (Trim(IMPR_NUMNF_OBS)));
+                                 StrString := MUDALETR(StrString ) ;
+                                 writeln(F,StrString,#27#50);  }
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,1,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,1,105))));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+                                 StrString :=  copy(Brancos,1,30) + Trim(copy(IMPR_NUMNF_OBS,106,105)) +
+                                               copy(BRANCOS,1,105 - length (Trim(copy(IMPR_NUMNF_OBS,106,105))));
+                                 StrString := MUDALETR(StrString ) ;
+                               //  writeln(F,StrString,#27#50);
+
+
+                              end ;
+
+                       end ;
+                       // miguel: desconto do valor
+
+
+                      // writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                      // Writeln(F,'',#27#50);
+                       CONTI := CONTI + 1 ;
+
+                     //  closefile(f) ;
+
+
+                       Q_aux.close;
+                       Q_aux.Sql.Clear;
+                       Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET  ORD_STATUS = '  + '''' + 'E' + '''' +',');
+                       Q_aux.Sql.Add(' ORD_DATA = ' + '''' + formatdatetime('MM/DD/YYYY',Now) + '''');
+                       Q_aux.Sql.Add(' where ORD_ID   = ' + cdsOCEORD_ID.asstring) ;
+                       Q_aux.ExecSql;
+
+
+                       //atualiza o status
+                       //qrUpdateStatus.Parameters[0].Value := cdsOCEORD_ID.Value;
+                       //qrUpdateStatus.ExecSQL;
+
+
+                   end ;
+
+            end ;
+
+          cdsOCE.next ;
+      end ;
+      cdsOCE.close;
+      cdsOCE.open;
+
+
+  end else begin
+      cdsOCE.first ;
+      While not (cdsOCE.eof)  do begin
+
+
+         IF (cdsOCEMARCADOR.asstring = '*')
+             and (cdsOCEORD_STATUS.asstring = 'A') then begin
+
+               IF  (cdsOCEMUN_ID_ENT.asstring =  cdsOCEMUN_ID_COL.asstring) and
+                   (cdsOCEMUN_ID_ENT.asstring = Q_PARMUN_ID.asstring)  then begin
+
+
+                //   Assignfile(F,'LPT1');
+                   ////Assignfile(F,'\\elisangela\EpsonFX-2180');
+                   //Assignfile(F,'NF.txt');
+                 //  Rewrite(F);
+
+               //    Writeln(F,'',#27#50);
+                //   Writeln(F,'',#27#50);
+
+
+                   cdsAux.close;
+                   Q_AUX.Sql.Clear;
+                   Q_AUX.Sql.Add(' SELECT ULT_MINUTA from PARAMETRO ') ;
+                   cdsAux.open;
+
+                   NOVONUMERO :=  inttostr(cdsAux.fieldbyname('ULT_MINUTA').asinteger + 1) ;
+
+                   Q_aux.close;
+                   Q_aux.Sql.Clear;
+                   Q_aux.Sql.Add(' UPDATE PARAMETRO SET  ULT_MINUTA = '  + '''' + NOVONUMERO + ''''  );
+                   Q_aux.ExecSql;
+
+                   Q_aux.close;
+                   Q_aux.Sql.Clear;
+                   Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET ORD_MINUTA = '  + '''' + NOVONUMERO + ''''  );
+                   Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                   Q_aux.ExecSql;
+
+                   
+
+
+                   StrString := copy(Brancos,1,117{91}) + NOVONUMERO ;//Nat.da Operação
+                //   writeln(F,StrString,#27#50);
+
+
+                   StrString := copy(Brancos,1,12) + Trim(cdsOCECLINraza.asstring) + copy(BRANCOS,1,50-length (Trim(cdsOCECLINraza.asstring))) +
+                   copy(Brancos,1,22{12}) + Trim(cdsOCECLIFraza.asstring) + copy(BRANCOS,1,50-length (Trim(cdsOCECLIFraza.asstring)))  ;
+
+
+                   StrString := MUDALETR(StrString ) ;
+                //   writeln(F,StrString,#27#50);
+
+                   cdsAux.close ;
+                   Q_AUX.Sql.Clear ;
+                   Q_AUX.Sql.Add(' Select A.*,B.MUN_NOME from CLIENTENBF A,MUNICIPIO B ') ;
+                   Q_AUX.Sql.Add(' where A.CLIN_ID  = ' + cdsOCECLIN_ID.asstring  ) ;
+                   Q_AUX.Sql.Add(' and A.MUN_ID = B.MUN_ID ') ;
+                   cdsAux.Open ;
+
+                   cdsAUX1.CLOSE;
+                   Q_AUX1.Sql.Clear ;
+                   Q_AUX1.Sql.Add(' Select A.*,B.MUN_NOME from CLIENTEFINAL A,MUNICIPIO B ') ;
+                   Q_AUX1.Sql.Add(' where A.CLIF_ID  = ' + cdsOCECLIF_ID.asstring  ) ;
+                   Q_AUX1.Sql.Add(' and A.MUN_ID = B.MUN_ID ') ;
+                   cdsAUX1.Open ;
+
+
+                   StrString := copy(Brancos,1,12) + Trim(cdsAux.fieldbyname('CLIN_ENDERECO').asstring) +
+                                copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('CLIN_ENDERECO').asstring))) +
+
+                                copy(Brancos,1,1) + Trim(cdsAux.fieldbyname('CLIN_ENDERECO_COMPL').asstring) +
+                                copy(BRANCOS,1,20 - length (Trim(cdsAux.fieldbyname('CLIN_ENDERECO_COMPL').asstring))) +
+
+                                copy(Brancos,1,11{1}) + Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO').asstring) +
+                                copy(BRANCOS,1,40 - length (Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO').asstring)))+
+
+                                copy(Brancos,1,1) + Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO_COMPL').asstring) +
+                                copy(BRANCOS,1,20 - length (Trim(cdsAUX1.fieldbyname('CLIF_ENDERECO_COMPL').asstring))) ;
+
+
+                   StrString := MUDALETR(StrString ) ;
+                 //  writeln(F,StrString,#27#50);
+
+                   StrString := copy(Brancos,1,12) + Trim(cdsAux.fieldbyname('MUN_NOME').asstring) +
+                                copy(BRANCOS,1,40  - length (Trim(cdsAux.fieldbyname('MUN_NOME').asstring))) +
+
+                                copy(Brancos,1,14{13}) + Trim(cdsAux.fieldbyname('UF_SIGLA').asstring) +
+                                copy(BRANCOS,1,2  - length (Trim(cdsAux.fieldbyname('UF_SIGLA').asstring))) +
+
+                                copy(Brancos,1,{24}16) + Trim(cdsAUX1.fieldbyname('MUN_NOME').asstring) +
+                                copy(BRANCOS,1,40  - length (Trim(cdsAUX1.fieldbyname('MUN_NOME').asstring)))+
+
+                                copy(Brancos,1,{8}15) + Trim(cdsAUX1.fieldbyname('UF_SIGLA').asstring) +
+                                copy(BRANCOS,1,2  - length (Trim(cdsAUX1.fieldbyname('UF_SIGLA').asstring))) ;
+
+                   StrString := MUDALETR(StrString ) ;
+                  // writeln(F,StrString,#27#50);
+
+                   cdsAUX1.close ;
+                   Q_AUX1.Sql.Clear ;
+                   Q_AUX1.Sql.Add(' Select * from CLIENTENBF') ;
+                   Q_AUX1.Sql.Add(' where CLIN_ID  = ' + cdsOCECLIN_ID.asstring  ) ;
+                   cdsAUX1.Open ;
+
+                   cdsAux.close ;
+                   Q_AUX.Sql.Clear ;
+                   Q_AUX.Sql.Add(' Select * from CLIENTEFINAL ') ;
+                   Q_AUX.Sql.Add(' where CLIF_ID  = ' + cdsOCECLIF_ID.asstring  ) ;
+                   cdsAux.Open ;
+
+
+                   if (cdsAUX1.fieldbyname('CLIN_PESSOA').asstring  = 'J') then
+                       cdsAUX1.fieldbyname('CLIN_CGCCPF').EditMask := '99.999.999/9999-99;0;_'
+                   else
+                       cdsAUX1.fieldbyname('CLIN_CGCCPF').EditMask := '999.999.999/99;0;_';
+
+                   if (cdsAux.fieldbyname('CLIF_PESSOA').asstring  = 'J') then
+                       cdsAux.fieldbyname('CLIF_CGCCPF').EditMask := '99.999.999/9999-99;0;_'
+                   else
+                       cdsAux.fieldbyname('CLIF_CGCCPF').EditMask := '999.999.999/99;0;_';
+
+
+                   StrString :=
+                     copy(Brancos,1,4) + Trim(cdsAUX1.fieldbyname('CLIN_INSCRG').asstring) +
+                     copy(BRANCOS,1,15-length (Trim(cdsAUX1.fieldbyname('CLIN_INSCRG').asstring))) +
+                     copy(Brancos,1,{19}21) + Trim(cdsAUX1.fieldbyname('CLIN_CGCCPF').DisplayText) +
+                     copy(BRANCOS,1,15-length (Trim(cdsAUX1.fieldbyname('CLIN_CGCCPF').DisplayText))) +
+
+                     copy(Brancos,1,{13}19) + Trim(cdsAux.fieldbyname('CLIF_INSCRG').asstring) +
+                     copy(BRANCOS,1,15-length (Trim(cdsAux.fieldbyname('CLIF_INSCRG').asstring))) +
+                     copy(Brancos,1,{16}22) + Trim(cdsAux.fieldbyname('CLIF_CGCCPF').DisplayText) +
+                     copy(BRANCOS,1,15-length (Trim(cdsAux.fieldbyname('CLIF_CGCCPF').DisplayText)));
+
+                   StrString := MUDALETR(StrString ) ;
+                 //  writeln(F,StrString,#27#50);
+                   ///Writeln(F,'');
+                 //  Writeln(F,'',#27#50);
+
+
+                   StrString := copy(Brancos,1,8) + Format('%9s',[FormatFloat('#######,##0.000',cdsOCEORD_QTDE_UV.asfloat)])+
+                                copy(Brancos,1,14) + Format('%8s',[FormatFloat('######,##0.0',cdsOCEORD_PESO_TOTAL.asfloat)]) +
+                                copy(Brancos,1,18) + Format('%10s',[FormatFloat('########,##0.00',cdsOCEORD_VALORTOTAL.asfloat)]) +
+                                copy(Brancos,1,7) + 'VOLUMES';
+
+                   StrString := MUDALETR(StrString ) ;
+              //     writeln(F,StrString,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+              //     writeln(F,#27#50);
+
+                   StrString := copy(Brancos,1,12) + Trim(cdsOCEORD_NOTAS.asstring) +
+                                copy(BRANCOS,1,50  - length (Trim(cdsOCEORD_NOTAS.asstring))) ;
+                   StrString := MUDALETR(StrString ) ;
+              //     writeln(F,StrString,#27#50);
+
+                  // closefile(f) ;
+
+                   Q_aux.close;
+                   Q_aux.Sql.Clear;
+                   Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET  ORD_STATUS = '  + '''' + 'E' + '''' + ',');
+                   Q_aux.Sql.Add(' ORD_DATA = ' + '''' + formatdatetime('MM/DD/YYYY',Q_PARDATA.asdatetime) + '''');
+                   Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                   Q_aux.ExecSql;
+
+
+
+                   //atualiza o status
+                       qrUpdateStatus.Parameters[0].Value := cdsOCEORD_ID.Value;
+                       qrUpdateStatus.ExecSQL;
+               end ;
+
+         end ;
+
+
+
+         cdsOCE.next ;
+      end ;
+
+      cdsOCE.close;
+      cdsOCE.open;
+  end ;
+
+
+end;
+
+function TFConsOCE.MUDALETR(LETRA: string): string;
+var
+  NOVALETRA         : string;
+  s                 : string;
+  M_DataLEN, i      : Integer;
+begin
+  NOVALETRA := '';
+  M_DataLEN := Length(LETRA);
+  for i := 1 to M_DataLEN do
+  begin
+    if T_Acen.FindKey([Ord(LETRA[i])]) then
+      s := T_Acen.FieldByName('ACE_NOVO').AsString
+    else
+      s := LETRA[i];
+    NOVALETRA := NOVALETRA + s;
+  end;
+  Result := NOVALETRA;
+end;
+
+procedure TFConsOCE.Q_OCEAfterPost(DataSet: TDataSet);
+
+var
+STROCE : string ;
+begin
+   STROCE := Q_OCEORD_ID.asstring   ;
+   try
+      FSenha.Dtb_BaseDados.ApplyUpdates([Q_OCE])
+   except
+      On E:EdbEngineError do
+      begin
+         MessageDlg('Erro ao Gravar Tabela, '+#13+#10+
+         E.Message,MtError,[MbOk],0);
+         
+      end;
+   end;
+   Q_OCE.close ;
+   Q_OCE.Open ;
+
+   if STROCE = '' then begin
+     cdsAux.close ;
+     Q_AUX.Sql.Clear ;
+     Q_AUX.Sql.Add( ' select max(ORD_ID) as Numero from ORDEM_COLETA_ENTREGA ' ) ;
+     cdsAux.open ;
+     STROCE := cdsAux.fieldbyname('Numero').asstring ;
+   end  ;
+     Q_OCE.locate('ORD_ID',STROCE,[])    ;
+
+
+   panel9.visible := false ;
+   Panel8.enabled := true ;
+   Label4.visible := true ;
+   Label51.visible := false ;
+
+end;
+
+procedure TFConsOCE.FormShow(Sender: TObject);
+begin
+   Panel1.setfocus;
+
+   //efetua o controle de de valores das OE
+   cdsOCE.First;
+   while not cdsOCE.Eof do
+   begin
+        ConvefereValores;
+        cdsOCE.Next;
+   end;
+   cdsOCE.First;
+end;
+
+procedure TFConsOCE.BitBtn3Click(Sender: TObject);
+var
+  RECALC : real ;
+  RECALC2 : real ;
+  TICM : string;
+begin
+
+
+
+     //CORRIGE O CODIGO DE FATURAMENTO
+     with qrAuxMun2 do begin
+         close;
+         sql.Clear;
+         SQL.Add(
+           'select uf_sigla from municipio where mun_id = ' + cdsOCEMUN_ID_ENT.AsString
+         );
+         Open;
+     end;
+
+     cdsOCE.EDIT;
+     Q_PAR.Open;
+     IF   qrAuxMun2.FieldByName('UF_SIGLA').AsString = Q_PARPAR_UF_SIGLA.AsString then  begin
+          cdsOCECFA_ID.Value := 563;
+          //cdsOCECFACODI.Value := '5352';
+     end else begin
+          cdsOCECFA_ID.Value := 654;
+          //cdsOCECFACODI.Value := '6352';
+     end;
+
+
+
+     STROCE :=       cdsOCEORD_ID.asstring ;
+
+     If (cdsOCE.state = dsedit )  then  cdsOCE.post ;
+
+
+
+     Q_AUX.Close;
+     Q_AUX.SQL.Clear;
+     Q_AUX.SQL.Add('SELECT CFA_TICM FROM FATURAMENTO WHERE CFA_ID = ' + cdsOCECFA_ID.AsString);
+     Q_AUX.OPEN;
+
+     TICM := Q_AUX.FIELDBYNAME('CFA_TICM').AsString;
+
+
+
+     cdsAux.close ;
+     Q_AUX.Sql.Clear ;
+     Q_AUX.Sql.Add( ' select SUM((ORD_VLR_OUTROS ') ;
+     Q_AUX.Sql.Add( ' +ORD_VLR_FRETE+ORD_VLR_SECCAT ') ;
+     //Q_AUX.Sql.Add(' +ORD_VLR_DESPACHO+ORD_VLR_PEDAGIO)-ORD_VLR_ICMS) as TOTAL') ;
+     Q_AUX.Sql.Add( ' +ORD_VLR_DESPACHO+ORD_VLR_PEDAGIO))  as TOTAL') ;
+     Q_AUX.Sql.Add( ' from ordem_coleta_entrega');
+     Q_AUX.Sql.Add( ' where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+     cdsAux.open ;
+
+
+     with qrAuxMun2 do begin
+         close;
+         sql.Clear;
+         SQL.Add(
+           'select uf_sigla from municipio where mun_id = ' + cdsOCEMUN_ID_ENT.AsString
+         );
+         Open;
+     end;
+
+
+     cdsAUX1.close ;
+     Q_AUX1.Sql.Clear ;
+     Q_AUX1.Sql.Add( '  SELECT UF_ALIQUOTACONH FROM UF ') ;
+     //Q_AUX1.Sql.Add( '  WHERE UF_SIGLA = ' + '''' +  cdsOCEUFCli.asstring + '''');  //DAVA ERRO - MIGUEL
+
+     Q_AUX1.Sql.Add( '  WHERE UF_SIGLA = ' + '''' +  qrAuxMun2.FieldByName('UF_SIGLA').AsString + '''');
+     cdsAUX1.open ;
+
+
+     IF((TICM = '4') OR (TICM = '5') OR (TICM = '6') OR (TICM = '9')) then begin
+
+           cdsAUX1.close ;
+           Q_AUX1.Sql.Clear ;
+           Q_AUX1.Sql.Add( '  SELECT 0.00 AS UF_ALIQUOTACONH ') ;
+           cdsAUX1.open ;
+
+     end ;
+
+
+
+     IF cdsAux.fieldbyname('TOTAL').asfloat <= 0 then begin
+         Q_AUX2.close;
+         Q_AUX2.sql.Clear;
+         Q_AUX2.sql.Add(' Update ORDEM_COLETA_ENTREGA  set  ORD_VLR_ICMS = ' + inttostr(0));
+         Q_AUX2.Sql.Add(' where ord_ID = ' + cdsOCEORD_ID.asstring) ;
+         Q_AUX2.ExecSql;
+
+         cdsAux.close ;
+         Q_AUX.Sql.Clear ;
+         Q_AUX.Sql.Add( ' select SUM((ORD_VLR_OUTROS ') ;
+         Q_AUX.Sql.Add( ' +ORD_VLR_FRETE+ORD_VLR_SECCAT ') ;
+         Q_AUX.Sql.Add( ' +ORD_VLR_DESPACHO+ORD_VLR_PEDAGIO))  as TOTAL') ;
+         Q_AUX.Sql.Add( ' from ordem_coleta_entrega');
+         Q_AUX.Sql.Add( ' where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+         cdsAux.open ;
+
+
+     end ;
+
+
+     Q_AUX2.close ;
+     Q_AUX2.Sql.Clear ;
+     Q_AUX2.Sql.Add( ' select sum(ORD_VLR_OUTROS-ORD_VLR_ICMS)as DIF from ordem_coleta_entrega');
+     Q_AUX2.Sql.Add( ' where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+     Q_AUX2.open ;
+
+
+
+
+
+     RECALC := (((cdsAux.fieldbyname('TOTAL').asfloat){ - (Q_OCEORD_VLR_ICMS.asfloat)})/
+            (1-cdsAUX1.fieldbyname('UF_ALIQUOTACONH').asfloat/100));
+
+
+     RECALC2 := (RECALC - ((cdsAux.fieldbyname('TOTAL').asfloat) {- (Q_OCEORD_VLR_ICMS.asfloat)})) ;
+
+
+
+
+     Q_AUX.close;
+     Q_AUX.sql.Clear;
+     Q_AUX.sql.Add(' Update ORDEM_COLETA_ENTREGA  set ORD_VLR_OUTROS = ' + Funcoes.Converte(floattostr((Q_AUX2.fieldbyname('DIF').asfloat) + RECALC2) ,',','.') + ',');
+     Q_AUX.Sql.Add(' ORD_VLR_ICMS = ' + Funcoes.Converte(floattostr(RECALC2) ,',','.') + ',');
+     Q_AUX.Sql.Add(' ORD_ALIQ = ' + Funcoes.Converte(floattostr(cdsAUX1.fieldbyname('UF_ALIQUOTACONH').asfloat) ,',','.'));
+     Q_AUX.Sql.Add(' where ord_ID = ' + cdsOCEORD_ID.asstring) ;
+     Q_AUX.ExecSql;
+
+
+
+     cdsAux.close ;
+     Q_AUX.Sql.Clear ;
+     Q_AUX.Sql.Add( ' select SUM(ORD_VLR_OUTROS+ ') ;
+     Q_AUX.Sql.Add( ' +ORD_VLR_FRETE+ORD_VLR_SECCAT ') ;
+     Q_AUX.Sql.Add( ' +ORD_VLR_DESPACHO+ORD_VLR_PEDAGIO)  as TOTAL') ;
+     Q_AUX.Sql.Add( ' from ordem_coleta_entrega');
+     Q_AUX.Sql.Add( ' where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+     cdsAux.open ;
+
+
+     Q_AUX1.close;
+     Q_AUX1.sql.Clear;
+     Q_AUX1.sql.Add(' Update ORDEM_COLETA_ENTREGA  set ORD_TOTALPREST = ' + Funcoes.Converte(floattostr(cdsAux.fieldbyname('TOTAL').asfloat) ,',','.'));
+     Q_AUX1.Sql.Add('  where ord_ID = ' + cdsOCEORD_ID.asstring ) ;
+     Q_AUX1.ExecSql;
+
+
+     cdsOCE.close;
+     cdsOCE.open ;
+     cdsOCE.locate('ORD_ID',STROCE,[])    ;
+
+end;
+
+procedure TFConsOCE.Q_OCEBeforePost(DataSet: TDataSet);
+begin
+
+
+
+ { Q_OCEORD_VLR_OUTROS.asfloat  :=  (Q_OCEORD_VLR_OUTROS.asfloat - Q_OCEORD_VLR_ICMS.asfloat) ;
+
+  Q_OCEORD_TOTALPREST.asfloat  :=  ( Q_OCEORD_VLR_OUTROS.asfloat + Q_OCEORD_VLR_FRETE.asfloat +
+                                     Q_OCEORD_VLR_SECCAT.asfloat + Q_OCEORD_VLR_DESPACHO.asfloat +
+                                     Q_OCEORD_VLR_PEDAGIO.asfloat ) ;
+  Q_OCEORD_VLR_ICMS.asfloat := 0 ;    }
+
+
+
+end ;
+
+procedure TFConsOCE.Q_OCEMARCADORChange(Sender: TField);
+
+begin
+   LOCF:=  cdsOCEORD_ID.AsInteger;
+
+
+     SQL:= '';
+
+     IF cdsOCEMARCADOR.AsString = '*' THEN BEGIN
+
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '*' + '''' +
+           '  where ORD_ID = ' + '''' + inttostr(LOCF) + ''''
+     END
+     ELSE BEGIN
+
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '' + '''' +
+           '  where ORD_ID = ' + '''' + inttostr(LOCF) + ''''
+     END;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+     cdsOCE.ClosE;
+     cdsOCE.Open;
+
+     cdsOCE.LOCATE('ORD_ID', LOCF,[]);
+
+
+
+end;
+
+procedure TFConsOCE.BitBtn4Click(Sender: TObject);
+
+begin
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '*' + ''''  ;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+
+     cdsOCE.ClosE;
+     cdsOCE.Open;
+
+
+end;
+
+procedure TFConsOCE.btNemClick(Sender: TObject);
+
+begin
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '' + ''''  ;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+
+     cdsOCE.ClosE;
+     cdsOCE.Open;
+
+    
+
+end;
+
+procedure TFConsOCE.BitBtn1Click(Sender: TObject);
+begin
+
+   Panel5.visible := true ;
+   Panel5.LEFT :=  117 ;
+   Panel5.top  :=  129 ;
+end;
+
+procedure TFConsOCE.BitBtn2Click(Sender: TObject);
+begin
+   IF RadioGroup1.itemindex =  0 then begin
+          If MessageDlg('Confirma os Conhecimentos selecionados ?',MtConfirmation,[MbYes,
+             MbNo],0)=MrNO Then abort ;
+
+          cdsOCE.first ;
+          While not (cdsOCE.eof) do begin
+
+               IF  (cdsOCEMARCADOR.asstring = '*') then begin
+
+                    IF (  ((cdsOCEMUN_ID_ENT.asstring =  cdsOCEMUN_ID_COL.asstring) and
+                           (cdsOCEMUN_ID_ENT.asstring <> Q_PARMUN_ID.asstring))
+                            or
+                           (cdsOCEMUN_ID_ENT.asstring <>  cdsOCEMUN_ID_COL.asstring)  )then begin
+
+                       IF RadioGroup2.itemindex =  0 then begin
+                           Q_aux.close;
+                           Q_aux.Sql.Clear;
+                           Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET  ORD_STATUS = '  + '''' + 'C' + '''');
+                           Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                           Q_aux.ExecSql;
+
+                           Q_aux.close;
+                           Q_aux.Sql.Clear;
+                           Q_aux.Sql.Add(' UPDATE NF SET  ORD_ID = null ');
+                           Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                           Q_aux.ExecSql;
+
+                       end else begin
+                          IF (cdsOCEORD_STATUS.asstring = 'E') then begin
+                               {Q_AUX.close;
+                               Q_AUX.Sql.Clear;
+                               Q_AUX.Sql.Add(' SELECT ULT_CONH from PARAMETRO ') ;
+                               Q_AUX.open;
+
+                               NOVONUMERO :=  inttostr(Q_AUX.fieldbyname('ULT_CONH').asinteger + 1) ;
+
+                               Q_aux.close;
+                               Q_aux.Sql.Clear;
+                               Q_aux.Sql.Add(' UPDATE PARAMETRO SET  ULT_CONH = '  + '''' + NOVONUMERO + ''''  );
+                               Q_aux.ExecSql;
+
+                               Q_aux.close;
+                               Q_aux.Sql.Clear;
+                               Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA SET  ORD_CONH = '  + '''' + NOVONUMERO + ''''  + ',');
+                               Q_aux.Sql.Add(' ORD_STATUS = '  + '''' + 'A' + '''');
+                               Q_aux.Sql.Add(' where ORD_ID = ' + Q_OCEORD_ID.asstring) ;
+                               Q_aux.ExecSql;   }
+
+
+                               Q_aux.close;
+                               Q_aux.Sql.Clear;
+                               Q_aux.Sql.Add(' UPDATE ORDEM_COLETA_ENTREGA set ORD_STATUS = '  + '''' + 'A' + '''');
+                               Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                               Q_aux.ExecSql;
+
+
+                               //apaga a chave de identificacao do CTE
+                               Q_aux.close;
+                               Q_aux.Sql.Clear;
+                               Q_aux.Sql.Add(' delete from cte_chave ');
+                               Q_aux.Sql.Add(' where ORD_ID = ' + cdsOCEORD_ID.asstring) ;
+                               Q_aux.ExecSql;
+
+                          end ;
+                       end ;
+
+                    end ;
+
+               end ;
+
+             cdsOCE.next ;
+          end ;
+
+
+          cdsOCE.close;
+          cdsOCE.open ;
+
+   end ;
+   Panel5.visible := false ;
+
+
+end;
+
+procedure TFConsOCE.BitBtn5Click(Sender: TObject);
+begin
+   Panel5.visible := false ;
+end;
+
+procedure TFConsOCE.SpeedButton2Click(Sender: TObject);
+begin
+    STROCE := cdsOCEORD_CONH.asstring ;
+
+     cdsClin.locate('CLIN_ID',cdsOCECLIN_ID.asstring,[])    ;
+
+     Q_AUX1.close;
+     Q_AUX1.sql.Clear;
+     Q_AUX1.sql.Add(' Update ORDEM_COLETA_ENTREGA  set MUN_ID_COL = ' + cdsClinmun_ID.asstring);
+     Q_AUX1.Sql.Add('  where ord_CONH = ' + '''' + cdsOCEORD_CONH.asstring + '''') ;
+     Q_AUX1.ExecSql;
+
+
+     cdsOCE.close;
+     cdsOCE.open ;
+     cdsOCE.locate('ORD_CONH',STROCE,[])    ;
+end;
+
+procedure TFConsOCE.wwDBEdit10Enter(Sender: TObject);
+begin
+   (Sender as TwwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit10Exit(Sender: TObject);
+begin
+   (Sender as TwwDBEdit).Color := Clwindow  ;
+end;
+
+procedure TFConsOCE.BitBtn6Click(Sender: TObject);
+begin
+  Panel3.visible := true ;
+  Panel3.Left := 141 ;
+  Panel3.TOP  := 76 ;
+end;
+
+procedure TFConsOCE.BitBtn7Click(Sender: TObject);
+begin
+   Panel3.visible := false  ;
+   If (cdsOCE.state = dsedit )  then  cdsOCE.post ;
+
+end;
+
+procedure TFConsOCE.RadioGroup3Click(Sender: TObject);
+begin
+       IF RadioGroup3.itemindex = 0 then  begin
+          //wwDBLookupCombo4.enabled := false  ;
+          ///Q_OCEORD_REDESPACHO.asstring := 'S' ;
+          cdsOCEORD_CONSIGN.asstring := 'S' ;
+
+                cdsAUX1.close;
+                Q_AUX1.sql.Clear;
+                Q_AUX1.sql.Add('  SELECT CFA_ID FROM FATURAMENTO ') ;
+                Q_AUX1.sql.Add(' WHERE CFA_CODI LIKE  ' + '''' + '%5352%' + '''') ;
+                cdsAUX1.open;
+
+                cdsOCECFA_ID.asstring :=  cdsAUX1.fieldbyname('CFA_ID').asstring ;
+       end  else begin
+         /// wwDBLookupCombo4.enabled := true ;
+         //// Q_OCEORD_REDESPACHO.asstring := 'N' ;
+          cdsOCEORD_CONSIGN.asstring := 'N' ;
+
+          IF Q_CLIF3UF_SIGLA.asstring = 'SP' then begin
+
+                cdsAUX1.close;
+                Q_AUX1.sql.Clear;
+                Q_AUX1.sql.Add('  SELECT CFA_ID FROM FATURAMENTO ') ;
+                Q_AUX1.sql.Add(' WHERE CFA_CODI LIKE ' + '''' + '%5352%' + '''') ;
+                cdsAUX1.open;
+
+                cdsOCECFA_ID.asstring :=  cdsAUX1.fieldbyname('CFA_ID').asstring ;
+
+          end else begin
+                cdsAUX1.close;
+                Q_AUX1.sql.Clear;
+                Q_AUX1.sql.Add('  SELECT CFA_ID FROM FATURAMENTO ') ;
+                Q_AUX1.sql.Add(' WHERE CFA_CODI LIKE ' + '''' + '%6352%' + '''') ;
+                cdsAUX1.open;
+
+                cdsOCECFA_ID.asstring :=  cdsAUX1.fieldbyname('CFA_ID').asstring ;
+          end ;
+
+       end ;
+
+end;
+
+procedure TFConsOCE.wwDBLookupCombo2Exit(Sender: TObject);
+begin
+           (Sender as TwwDBLookupCombo).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo1Enter(Sender: TObject);
+begin        
+  (Sender as TwwDBLookupCombo).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo4Enter(Sender: TObject);
+begin     
+  (Sender as TwwDBLookupCombo).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo4Exit(Sender: TObject);
+begin      
+  (Sender as TwwDBLookupCombo).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit20Enter(Sender: TObject);
+begin
+  
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo3Enter(Sender: TObject);
+begin   
+  (Sender as TwwDBLookupCombo).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo3Exit(Sender: TObject);
+begin
+
+  (Sender as TwwDBLookupCombo).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo5Enter(Sender: TObject);
+begin                 
+  (Sender as TwwDBLookupCombo).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo5Exit(Sender: TObject);
+begin
+  
+  (Sender as TwwDBLookupCombo).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit20Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit15Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit15Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit17Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit17Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit21Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit21Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit29Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit29Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit22Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit23Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit24Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit25Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit12Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit26Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit27Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit14Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit28Enter(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBEdit22Exit(Sender: TObject);
+begin
+  
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit23Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit24Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit25Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit12Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit26Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit27Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit14Exit(Sender: TObject);
+begin
+
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.wwDBEdit28Exit(Sender: TObject);
+begin
+  
+  (Sender as twwDBEdit).Color := Clwindow ;
+end;
+
+procedure TFConsOCE.Q_OCENewRecord(DataSet: TDataSet);
+begin
+
+  cdsAUX1.close;
+  Q_AUX1.sql.Clear;
+  Q_AUX1.sql.Add(' SELECT ULT_CONHPROV FROM PARAMETRO');
+  cdsAUX1.open;
+
+
+  cdsOCEOS_ID.asinteger    := FOS.CDSOSOS_ID.asinteger  ;
+  cdsOCEORD_CONH.asstring := inttostr(cdsAUX1.fieldbyname('ULT_CONHPROV').asinteger + 1) + '-P';
+  Q_OCECLIN_ID.asstring :=   FOS.CDSOSCLIN_ID.asstring ;
+
+
+  cdsAUX1.close;
+  Q_AUX1.sql.Clear;
+  Q_AUX1.sql.Add(' SELECT PAR_ENDERECO, PAR_ENDERECO_COMPL,') ;
+  Q_AUX1.sql.Add('        PAR_ENDERECO_BAIRRO,PAR_UF_SIGLA,') ;
+  Q_AUX1.sql.Add('        PAR_CEP, MUN_ID , PAR_TEL,') ;
+  Q_AUX1.sql.Add('        PAR_FAX,  PAR_EMAIL from PARAMETRO') ;
+  Q_AUX1.sql.Add(' WHERE PAR_ID = ' + inttostr(2)) ;
+  cdsAUX1.open;
+
+  Q_OCEORD_COL_CEP.asstring  :=  cdsAUX1.fieldbyname('PAR_CEP').asstring ;
+  Q_OCEORD_COL_ENDERECO.asstring   :=  cdsAUX1.fieldbyname('PAR_ENDERECO').asstring ;
+  Q_OCEORD_COL_ENDERECO_COMPL.asstring    := cdsAUX1.fieldbyname('PAR_ENDERECO_COMPL').asstring ;
+  Q_OCEORD_COL_ENDERECO_BAIRRO.asstring    :=  cdsAUX1.fieldbyname('PAR_ENDERECO_BAIRRO').asstring ;
+  Q_OCEMUN_ID_COL.asstring      :=   cdsAUX1.fieldbyname('MUN_ID').asstring ;
+  Q_OCEUF_SIGLA_COL.asstring    := cdsAUX1.fieldbyname('PAR_UF_SIGLA').asstring ;
+  Q_OCEORD_COL_TEL1.asstring    := cdsAUX1.fieldbyname('PAR_TEL').asstring ;
+  Q_OCEORD_COL_FAX.asstring     :=  cdsAUX1.fieldbyname('PAR_FAX').asstring ;
+  Q_OCEORD_COL_EMAIL.asstring   :=  cdsAUX1.fieldbyname('PAR_EMAIL').asstring ;
+
+
+end;
+
+procedure TFConsOCE.SpeedButton5Click(Sender: TObject);
+begin
+  {IF wwDBLookupCombo2.text = '' then begin
+     MessageDlg('Remetente é Campo de preenchimento obrigatório ',mtWarning,[mbok],0);
+     wwDBLookupCombo2.SetFocus;
+     Abort;
+  end ;   }
+
+  IF RadioGroup3.itemindex = -1 then  begin
+     MessageDlg('Consignatário é Campo de preenchimento obrigatório ',mtWarning,[mbok],0);
+     RadioGroup3.SetFocus;
+     Abort;
+  end ;
+
+  panel9.enabled  := false ;
+  panel10.visible := true  ;
+  panel10.left := 121 ;
+  panel10.top  := 238 ;
+
+  cdsMani.close ;
+  Q_MANI.close;
+  Q_MANI.Sql.Clear ;
+  Q_MANI.Sql.Add( 'select MANI_ID,TRANS_ID,VEIC_ID,MANI_TIPOCARGA,') ;
+  Q_MANI.Sql.Add( 'PAR_ID,REG_ID,VEIC_ID_FRETE,MOT_ID from manifesto ') ;
+  Q_MANI.Sql.Add( 'where  CONFIRMA_MANI = ' + '''' + 'S' + '''' );
+  Q_MANI.Sql.Add( 'and    MANI_ID in( ') ;
+  Q_MANI.Sql.Add( 'Select  A.MANI_ID  ') ;
+  Q_MANI.Sql.Add( ' from NF A,MUNICIPIO C, OS D, CONTRATO E  ') ;
+  Q_MANI.Sql.Add( 'where A.MUN_ID = C.MUN_ID ') ;
+  Q_MANI.Sql.Add( 'and  A.OS_ID = D.OS_ID  ') ;
+  Q_MANI.Sql.Add( 'and D.CTT_ID = E.CTT_ID ') ;
+  Q_MANI.Sql.Add( 'and (A.TDOC_ID = ' + inttostr(1) ) ;
+  Q_MANI.Sql.Add( '  or A.TDOC_ID = ' + inttostr(3) +')') ;
+  Q_MANI.Sql.Add( 'and ( A.NFI_STATUS = null or A.NFI_STATUS <> ' + '''' + 'C'  + ''''+')') ;
+  Q_MANI.Sql.Add( 'and A.NFI_TRANS = ' + '''' + 'S' + '''' );
+  Q_MANI.Sql.Add( 'and E.PAR_ID  = ' + inttostr(2));
+  Q_MANI.Sql.Add( 'AND (A.ORD_ID = null or A.ORD_ID = ' + '''' + '' + ''''+')') ;
+  Q_MANI.Sql.Add( 'and A.NFI_EMIT_CLI = ' +  cdsOCECLIN_ID.asstring) ;
+  Q_MANI.Sql.Add( 'and A.OS_ID = ' + FOS.CDSOSOS_ID.asstring + ')' );
+  cdsMani.open ;
+
+
+  
+end;
+
+procedure TFConsOCE.BitBtn8Click(Sender: TObject);
+begin
+
+ { IF Q_OCEORD_REDESPACHO.asstring = 'S' then begin
+        IF wwDBLookupCombo4.text = '' then begin
+           MessageDlg('Redespacho é Campo de preenchimento obrigatório ',mtWarning,[mbok],0);
+           wwDBLookupCombo4.SetFocus;
+           Abort;
+        end ;
+  end ;  }
+
+
+
+  IF wwDBLookupCombo7.text = '' then begin
+     MessageDlg('Manifesto de Carga é Campo de preenchimento obrigatório ',mtWarning,[mbok],0);
+     wwDBLookupCombo7.SetFocus;
+     Abort;
+  end ;
+
+  NOTASGENERICO := '' ;
+
+  cdsNF99.first ;
+  While not cdsNF99.eof do begin
+
+            IF  cdsNF99NFI_MARCADOR_CTRCGEN.asstring = '*' then begin
+                IF  NOTASGENERICO = '' then
+                   NOTASGENERICO :=     cdsNF99NFI_NUMERO.asstring
+                 else
+                     NOTASGENERICO :=    NOTASGENERICO + ' ' + cdsNF99NFI_NUMERO.asstring ;
+            end ;
+        ///MIGUEL : NESTE PONTO COLOCAR UM UPDATE PARA ADD O NUMERO ORD_ID NESSA NOTA.  QRUPDATENF
+
+            
+        cdsNF99.next ;
+  end ;
+
+
+  cdsOCEORD_NOTAS.asstring :=    NOTASGENERICO;
+  cdsOCEMANI_ID.asstring :=  cdsManiMANI_ID.asstring ;
+  cdsOCETRANS_ID.asstring  :=  cdsManiTRANS_ID.asstring ;
+  cdsOCEVEIC_ID.asstring  := cdsManiVEIC_ID.asstring ;
+  cdsOCEORD_TPCARGA.asstring  := cdsManiMANI_TIPOCARGA.asstring  ;
+  cdsOCEREG_ID.asstring   := cdsManiREG_ID.asstring ;
+  cdsOCEVEIC_ID_RECEB.asstring   := cdsManiVEIC_ID_FRETE.asstring ;
+  cdsOCEORD_COLETA_ENTREGA.asstring := 'E'  ;
+  cdsOCEORD_GENERICO.asstring := 'S' ;
+
+  Q_AUX2.Close;
+  Q_AUX2.SQL.CLEAR;
+  Q_AUX2.SQL.ADD('SELECT MOT_VEIC_PLACA FROM TRANSPORTADORA_MOTORISTA');
+  Q_AUX2.SQL.ADD('WHERE MOT_Id = ' + cdsManiMOT_ID.asstring);
+  Q_AUX2.open ;
+
+  cdsOCEORD_PLACA.asstring   := Q_AUX2.fieldbyname('MOT_VEIC_PLACA').asstring ;
+  cdsOCEORD_PAGO.asstring   := 'S' ;
+  cdsOCEORD_STATUS.asstring   := 'A' ;
+
+   {Q_OCEORD_PESO_TOTAL,
+   Q_OCEORD_VOLUME,
+   Q_OCEORD_VALORTOTAL  }
+
+   IF wwDBLookupCombo4.text <> '' then
+      cdsOCEORD_REDESPACHO.asstring := 'S'
+   else
+      cdsOCEORD_REDESPACHO.asstring := 'N'   ;
+
+  cdsNF99.close ;
+  cdsMani.open ;
+
+
+  panel9.enabled  := true ;
+  panel10.visible := false  ;
+end;
+
+procedure TFConsOCE.Q_NF99NFI_MARCADOR_CTRCGENChange(Sender: TField);
+VAR SQL: STRING;
+    SQLN: STRING;
+    CH: STRING;
+    LOCF: STRING;
+begin
+     LOCF:=  Q_NF99NFI_CODI.ASSTRING;
+
+     IF Q_NF99NFI_MARCADOR_CTRCGEN.AsString = '*' THEN BEGIN
+              SQL:= ' UPDATE NF SET NFI_MARCADOR_CTRCGEN =  ' + '''' + '*' + '''' +
+                    ' where  NFI_CODI = ' + LOCF ;
+     END  ELSE BEGIN
+            IF  LOCF <> '' then begin
+                SQL:= '  UPDATE NF SET NFI_MARCADOR_CTRCGEN =  ' + '''' + '' + '''' +
+                    ' where  NFI_CODI = ' + LOCF ;
+            end ;
+     END;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+     Q_NF99.ClosE;
+     Q_NF99.Open;
+
+     IF  LOCF <> '' then
+        Q_NF99.LOCATE('NFI_CODI', LOCF,[]);
+
+end;
+
+procedure TFConsOCE.wwDBLookupCombo7Enter(Sender: TObject);
+begin
+  (Sender as TwwDBLookupCombo).Color := Claqua ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo7Exit(Sender: TObject);
+begin                                         
+  (Sender as TwwDBLookupCombo).Color := Clwindow  ;
+end;
+
+procedure TFConsOCE.wwDBLookupCombo7CloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+begin
+  IF   cdsManiMANI_ID.asstring <> '' then begin
+        cdsNF99.close ;
+        Q_NF99.Sql.Clear ;
+        Q_NF99.Sql.Add( 'Select   A.NFI_CODI,A.NFI_NUMERO ,A.NFI_MARCADOR_CTRCGEN, ') ;
+        Q_NF99.Sql.Add( 'A.NFI_TOTA,A.NFI_PBRU,A.NFI_VOL  ') ;
+        Q_NF99.Sql.Add( 'from NF A,MUNICIPIO C, OS D, CONTRATO E  ') ;
+        Q_NF99.Sql.Add( 'where A.MUN_ID = C.MUN_ID  ') ;
+        Q_NF99.Sql.Add( 'and  A.OS_ID = D.OS_ID  ') ;
+        Q_NF99.Sql.Add( 'and D.CTT_ID = E.CTT_ID  ') ;
+        Q_NF99.Sql.Add( 'and (A.TDOC_ID = ' + inttostr(1) );
+        Q_NF99.Sql.Add( '  or A.TDOC_ID = ' + inttostr(3) +')') ;
+        Q_NF99.Sql.Add( 'and ( A.NFI_STATUS is null or A.NFI_STATUS <> ' + '''' + 'C'  + ''''+')') ;
+        Q_NF99.Sql.Add( 'and A.NFI_TRANS = ' + '''' + 'S' + '''' );
+        Q_NF99.Sql.Add( 'and E.PAR_ID  = ' + inttostr(2));
+        Q_NF99.Sql.Add( 'AND (A.ORD_ID is null or A.ORD_ID = ' + '''' + '' + '''' +')') ;
+        Q_NF99.Sql.Add( 'AND A.MANI_ID = ' + cdsManiMANI_ID.asstring   ) ;
+        Q_NF99.Sql.Add( 'order by A.NFI_NUMERO   ') ;
+        cdsNF99.open  ;
+  end ;
+
+
+end;
+
+procedure TFConsOCE.Q_OCEBeforeInsert(DataSet: TDataSet);
+begin
+
+   panel9.visible := true ;
+   Panel8.enabled := false ;
+
+   Label4.visible := false ;
+   Label51.visible := true ;
+   panel9.left  :=   2 ;
+   panel9.top   :=  48 ;
+   
+  /// wwDBLookupCombo1.SetFocus;
+
+
+end;
+
+
+procedure TFConsOCE.DBNavigator1Click(Sender: TObject;
+  Button: TNavigateBtn);
+begin
+     if button in [nbInsert] then  begin
+               panel9.visible := true ;
+               panel9.enabled := true ;
+               Panel8.enabled := false ;
+
+               Label4.visible := false ;
+               Label51.visible := true ;
+               panel9.left  :=   2 ;
+               panel9.top   :=  44 ;
+               //wwDBLookupCombo1.SetFocus;
+     end ;
+
+
+     if button in [nbPOST] then  begin
+          cdsNF99.close ;
+          Q_NF99.Sql.Clear ;
+          Q_NF99.Sql.Add( 'Select   NFI_CODI,NFI_NUMERO ,NFI_MARCADOR_CTRCGEN, ') ;
+          Q_NF99.Sql.Add( 'NFI_TOTA,NFI_PBRU,NFI_VOL from NF ') ;
+          Q_NF99.Sql.Add( 'Where  NFI_MARCADOR_CTRCGEN = ' + '''' + '*' + '''') ;
+          cdsNF99.open ;
+
+          cdsNF99.first ;
+          While not cdsNF99.eof do begin
+                        Q_AUX.Close;
+                        Q_AUX.SQL.CLEAR;
+                        Q_AUX.SQL.ADD('UPDATE NF SET ');
+                        Q_AUX.SQL.ADD('NFI_MARCADOR_CTRCGEN = ' + '''' + '' + '''' + ',' ) ;
+                        Q_AUX.SQL.ADD('ORD_ID = ' + cdsOCEORD_ID.asstring ) ;
+                        Q_AUX.SQL.ADD('where NFI_CODI = ' + cdsNF99NFI_CODI.asstring ) ;
+                        Q_AUX.execsql ;
+             cdsNF99.next ;
+          end ;
+     end ;
+
+
+
+
+     if button in [nbCANCEL] then  begin
+         panel9.visible := false ;
+         Panel8.enabled := true ;
+         Label4.visible := true ;
+         Label51.visible := false;
+         panel10.visible := false  ;
+     end ;
+
+end;
+
+procedure TFConsOCE.SpeedButton4Click(Sender: TObject);
+begin
+  panel9.enabled  := true ;
+  panel10.visible := false  ;
+end;
+
+procedure TFConsOCE.Label51DblClick(Sender: TObject);
+begin
+        CheckBox1.Visible := TRUE;
+end;
+
+function TFConsOCE.GeraDesconto: string;
+var Mensagem : string;
+    desconto : Double;
+    valor : Double;
+    novo_valor : Double;
+begin
+// rotina que calcula o valor de desconto e adiciona uma mensagem no corpo do ctrc
+    qrDesconto.Close;
+    qrDesconto.Params[0].AsInteger := cdsOCECLIN_ID.Value;
+    qrDesconto.Open;
+
+    if (qrDescontoclin_desconto.AsString = '') or (qrDescontoclin_desconto.Value = 0) then
+    begin
+        Result := '';
+    end
+    else
+    begin
+        Mensagem := '';
+        if UpperCase(qrDescontouf_sigla.Value) = 'SP' then
+        begin
+            desconto := qrDescontoclin_desconto.Value;
+            valor :=   cdsOCEORD_TOTALPREST.Value;
+            novo_valor := (valor * desconto) / 100;
+            Mensagem :=  'Desc. R$ ' + FormatFloat('###,##0.00',novo_valor) + ' Valor a pagar R$ ' + FormatFloat('###,##0.00', valor - novo_valor);
+        end;
+
+        Result := '   ' + Mensagem;
+    end;
+
+
+    with qrLoad do
+    begin
+        close;
+        Params[0].AsInteger := cdsOCEORD_ID.Value;
+        Open;
+    end;
+
+  {  if qrLoadnfi_load.AsString <> '' then
+        Result := Mensagem + '  -  Load: ' + qrLoadnfi_load.AsString;    }
+
+
+end;
+
+procedure TFConsOCE.btnConfirmaValoresClick(Sender: TObject);
+begin
+  if cdsOCE.State in [dsEdit, dsInsert] then
+        cdsOCE.Post;
+
+  //guardamos os valores na tabela OEC_aux
+
+  with qrAux do
+  begin
+        close;
+        sql.Clear;
+        sql.Add(' insert into OEC_AUX values ');
+        sql.Add(' (ROUND(:ord_id, 2), ROUND(:Frete, 2), ROUND(:Total, 2), ROUND(:SEC_CAT, 2), ROUND(:DESPACHO, 2), ROUND(:PEDAGIO, 2), ROUND(:OUTROS, 2), ROUND(:ALIQ, 2), ROUND(:ICMS, 2), ROUND(:ENTREGA, 2), ROUND(:SEGURO, 2))' );
+        Params[0].AsInteger := cdsOCEORD_ID.Value;
+        Params[1].AsFloat := cdsOCEORD_VLR_FRETE.Value;
+        Params[2].AsFloat := cdsOCEORD_TOTALPREST.Value;
+        Params[3].AsFloat := cdsOCEORD_VLR_SECCAT.Value;
+        Params[4].AsFloat := cdsOCEORD_VLR_DESPACHO.Value;
+        Params[5].AsFloat := cdsOCEORD_VLR_PEDAGIO.Value;
+        Params[6].AsFloat := cdsOCEORD_VLR_OUTROS.Value;
+        Params[7].AsFloat := cdsOCEORD_ALIQ.Value;
+        Params[8].AsFloat := cdsOCEORD_VLR_ICMS.Value;
+        Params[9].AsFloat := cdsOCEORD_TXENTREGA.AsFloat;
+        Params[10].AsFloat := cdsOCEORD_SEGURO.AsFloat;
+        ExecSQL;
+  end;
+  btnConfirmaValores.Enabled := False;
+  cdsConfirma.close;
+  cdsConfirma.Open;
+
+end;
+
+procedure TFConsOCE.ConvefereValores;
+begin
+//
+ //Miguel
+ //verifica se ja foi lançado o valor da oe na tabela auxiliar
+
+ if cdsOCEORD_ID.AsString <> '' then
+ begin
+     with qrAux do
+     begin
+         Close;
+         sql.Clear;
+         sql.Add('Select * from OEC_aux where ord_id = ' + cdsOCEORD_ID.AsString);
+         Open;
+     end;
+
+
+    // se existir bloqueia o botao para confirmação de valores e compara com o valor atual
+      if qrAux.FieldByName('Ord_id').AsString = '' then
+              btnConfirmaValores.Enabled := True
+      else //efetua a comparação
+      begin
+            btnConfirmaValores.Enabled := False;
+            if qrAux.FieldByName('VLR_FRETE').AsFloat <> cdsOCEORD_VLR_FRETE.Value then
+            begin
+                cdsOCE.Edit;
+                cdsOCEORD_VLR_FRETE.Value :=  qrAux.FieldByName('VLR_FRETE').AsFloat;
+                cdsOCEORD_TOTALPREST.Value := qrAux.FIELDBYNAME('TOTAL').AsFloat;
+                cdsOCE.Post;
+            end;
+       end;
+ end;
+end;
+
+procedure TFConsOCE.Label4DblClick(Sender: TObject);
+begin
+  CheckBox1.Visible := True;
+end;
+
+procedure TFConsOCE.cdsOCEAfterPost(DataSet: TDataSet);
+var oce : Integer;
+begin
+
+  oce := cdsOCEORD_ID.Value;
+  try
+       cdsOCE.ApplyUpdates(0);
+       cdsOCE.Close;
+       cdsOCE.Open;
+       cdsOCE.Locate('ORD_ID', oce , []);
+       panel9.visible := false ;
+       Panel8.enabled := true ;
+       Label4.visible := true ;
+       Label51.visible := false ;
+  except
+        MessageBox(Self.Handle, 'Aconteceu um erro ao tentar gravar as informações', 'Erro', MB_OK + MB_ICONERROR)  ;
+  end;
+end;
+
+procedure TFConsOCE.cdsOCENewRecord(DataSet: TDataSet);
+begin
+  cdsAUX1.close;
+  Q_AUX1.sql.Clear;
+  Q_AUX1.sql.Add(' SELECT ULT_CONHPROV FROM PARAMETRO');
+  cdsAUX1.open;
+
+
+  cdsOCEOS_ID.asinteger    := FOS.CDSOSOS_ID.asinteger  ;
+  cdsOCEORD_CONH.asstring := inttostr(cdsAUX1.fieldbyname('ULT_CONHPROV').asinteger + 1) + '-P';
+  cdsOCECLIN_ID.asstring :=   FOS.CDSOSCLIN_ID.asstring ;
+
+
+  cdsAUX1.close;
+  Q_AUX1.sql.Clear;
+  Q_AUX1.sql.Add(' SELECT PAR_ENDERECO, PAR_ENDERECO_COMPL,') ;
+  Q_AUX1.sql.Add('        PAR_ENDERECO_BAIRRO,PAR_UF_SIGLA,') ;
+  Q_AUX1.sql.Add('        PAR_CEP, MUN_ID , PAR_TEL,') ;
+  Q_AUX1.sql.Add('        PAR_FAX,  PAR_EMAIL from PARAMETRO') ;
+  Q_AUX1.sql.Add(' WHERE PAR_ID = ' + inttostr(2)) ;
+  cdsAUX1.open;
+
+  cdsOCEORD_COL_CEP.asstring  :=  cdsAUX1.fieldbyname('PAR_CEP').asstring ;
+  cdsOCEORD_COL_ENDERECO.asstring   :=  cdsAUX1.fieldbyname('PAR_ENDERECO').asstring ;
+  cdsOCEORD_COL_ENDERECO_COMPL.asstring    := cdsAUX1.fieldbyname('PAR_ENDERECO_COMPL').asstring ;
+  cdsOCEORD_COL_ENDERECO_BAIRRO.asstring    :=  cdsAUX1.fieldbyname('PAR_ENDERECO_BAIRRO').asstring ;
+  cdsOCEMUN_ID_COL.asstring      :=   cdsAUX1.fieldbyname('MUN_ID').asstring ;
+  cdsOCEUF_SIGLA_COL.asstring    := cdsAUX1.fieldbyname('PAR_UF_SIGLA').asstring ;
+  cdsOCEORD_COL_TEL1.asstring    := cdsAUX1.fieldbyname('PAR_TEL').asstring ;
+  cdsOCEORD_COL_FAX.asstring     :=  cdsAUX1.fieldbyname('PAR_FAX').asstring ;
+  cdsOCEORD_COL_EMAIL.asstring   :=  cdsAUX1.fieldbyname('PAR_EMAIL').asstring ;
+
+end;
+
+procedure TFConsOCE.cdsOCEBeforeInsert(DataSet: TDataSet);
+begin
+   panel9.visible := true ;
+   Panel8.enabled := false ;
+
+   Label4.visible := false ;
+   Label51.visible := true ;
+   panel9.left  :=   2 ;
+   panel9.top   :=  48 ;
+   
+  /// wwDBLookupCombo1.SetFocus;
+end;
+
+procedure TFConsOCE.cdsOCEMARCADORChange(Sender: TField);
+begin
+   LOCF:=  cdsOCEORD_ID.AsInteger;
+
+
+     SQL:= '';
+
+     IF cdsOCEMARCADOR.AsString = '*' THEN BEGIN
+
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '*' + '''' +
+           '  where ORD_ID = ' + '''' + inttostr(LOCF) + ''''
+     END
+     ELSE BEGIN
+
+     SQL:= ' UPDATE ORDEM_COLETA_ENTREGA set MARCADOR = ' + '''' + '' + '''' +
+           '  where ORD_ID = ' + '''' + inttostr(LOCF) + ''''
+     END;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+     cdsOCE.ClosE;
+     cdsOCE.Open;
+
+     cdsOCE.LOCATE('ORD_ID', LOCF,[]);
+end;
+
+procedure TFConsOCE.cdsNF99NFI_MARCADOR_CTRCGENChange(Sender: TField);
+VAR SQL: STRING;
+    SQLN: STRING;
+    CH: STRING;
+    LOCF: STRING;
+begin
+     LOCF:=  cdsNF99NFI_CODI.ASSTRING;
+
+     IF cdsNF99NFI_MARCADOR_CTRCGEN.AsString = '*' THEN BEGIN
+              SQL:= ' UPDATE NF SET NFI_MARCADOR_CTRCGEN =  ' + '''' + '*' + '''' +
+                    ' where  NFI_CODI = ' + LOCF ;
+     END  ELSE BEGIN
+            IF  LOCF <> '' then begin
+                SQL:= '  UPDATE NF SET NFI_MARCADOR_CTRCGEN =  ' + '''' + '' + '''' +
+                    ' where  NFI_CODI = ' + LOCF ;
+            end ;
+     END;
+
+     Q_AUX.Close;
+     Q_AUX.SQL.CLEAR;
+     Q_AUX.SQL.ADD(SQL);
+     Q_AUX.ExecSQL;
+
+     cdsNF99.ClosE;
+     cdsNF99.Open;
+
+     IF  LOCF <> '' then
+        cdsNF99.LOCATE('NFI_CODI', LOCF,[]);
+end;
+
+procedure TFConsOCE.Button2Click(Sender: TObject);
+begin
+{  if MessageBox(Self.Handle, 'Confirma alteração de valores?', 'confirmação', MB_YESNO + MB_ICONQUESTION) = 6 then
+   begin
+     qrLiberaConh.close;
+     qrLiberaConh.Params[0].AsInteger := cdsOCEORD_ID.Value;
+     qrLiberaConh.ExecSQL;
+   end;
+   }
+end;
+
+procedure TFConsOCE.cdsOCEBeforePost(DataSet: TDataSet);
+begin
+   cdsOCEORD_VLR_OUTROS.Value := cdsOCEORD_TXENTREGA.AsFloat + cdsOCEORD_SEGURO.AsFloat;
+end;
+
+procedure TFConsOCE.Button3Click(Sender: TObject);
+VAR ORD_ID : INTEGER;
+begin
+    IF MessageBox(Self.Handle, 'Confirma a geração do Conhecimento complementar?', 'Confirmação',
+                MB_YESNO + MB_ICONQUESTION) = 7  then
+    Abort;
+
+    ORD_ID := cdsOCEORD_ID.AsInteger;
+    //começamos a gerar os dados
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@ORD_ID').Value := cdsOCEORD_ID.AsInteger;
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@FRETE').Value :=  StrToFloat(edtVFrete.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@PEDAGIO').Value := StrToFloat(edtVPedagio.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@TX_ENTREGA').Value := StrToFloat(edtVTxEntrega.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@DESPACHO').Value := StrToFloat(edtVDespacho.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@SEGURO').Value :=  StrToFloat(edtSeguro.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@ALIQ_ICMS').Value :=  StrToFloat(edtVAliqICMS.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@VALOR_ICMS').Value :=  StrToFloat(edtValorICMS.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@TOTAL').Value :=  StrToFloat(edtTotalPresta.Text);
+    STP_CTRC_COMPLEMENTAR.Parameters.ParamByName('@BASE_ICMS').Value :=  0;
+    STP_CTRC_COMPLEMENTAR.ExecProc;
+
+
+    cdsOCE.Close;
+    cdsOCE.Open;
+
+    cdsOCE.Locate('ORD_ID', ORD_ID, []);
+
+    pnlComplementar.Visible := False;
+
+    ShowMessage('Conhecimento Complementar gerado com sucesso');
+
+
+
+end;
+
+procedure TFConsOCE.Button4Click(Sender: TObject);
+begin
+   pnlComplementar.Visible := False;
+end;
+
+procedure TFConsOCE.btnComplementarClick(Sender: TObject);
+begin
+   edtVPedagio.Text := '0,00';
+   edtVFrete.Text := '0,00';
+   edtVTxEntrega.Text := '0,00';
+   edtVDespacho.Text := '0,00';
+   edtSeguro.Text := '0,00';
+   edtVAliqICMS.Text := '0,00';
+   edtVAliqICMS.Text := '0,00';
+   edtTotalPresta.Text := '0,00';
+   pnlComplementar.Top := 336;
+   pnlComplementar.Left := 8;
+   pnlComplementar.Visible := True;
+end;
+
+procedure TFConsOCE.cdsOCENFI_REENTREGAGetText(Sender: TField;
+  var Text: String; DisplayText: Boolean);
+begin
+  if Sender.AsString <> '' then  begin
+      Text := 'Reentrega';
+  end;
+end;
+
+
+
+procedure TFConsOCE.btnGerarNFSEClick(Sender: TObject);
+var UF, UFDest, PESQ, LOAD : string;
+begin
+ if  cdsOCEGEROU_NFSE.AsString <> 'S' then begin
+     frmGeraNFSE := TfrmGeraNFSE.Create(Self);
+     with frmGeraNFSE do begin
+         //limpa a tabela
+         qryApaga.Parameters[0].Value := cdsOCEORD_ID.AsInteger;
+         qryApaga.ExecSQL;
+
+         with qryAux do begin
+             close;
+             sql.Clear;
+             sql.Add('select MUN_ID from CLIENTEFINAL where clif_id = ' + cdsOCECLIF_ID.AsString);
+             Open;
+         end;
+         UFDest := qryAux.FieldByName('MUN_ID').AsString;
+
+         with qryAux do begin
+             close;
+             sql.Clear;
+             sql.Add('select MUN_ID from PARAMETRO');
+             Open;
+         end;
+         UF := qryAux.FieldByName('MUN_ID').AsString;
+
+         IF  UF = UFDest then
+                PESQ := 'Municipio do Emitente'
+         else
+                PESQ := 'Municipio diferente do Emitente';
+
+         qryConfig.close;
+         qryConfig.Parameters[0].Value := PESQ;
+         qryConfig.open;
+
+         if qryConfig.IsEmpty then
+                ShowMessage('Configurações não encontradas')
+         else begin
+                //começa o recalculo das notas
+                qrygera.Close;
+                qrygera.Parameters[0].Value := cdsOCEORD_ID.AsInteger;
+                qrygera.Open;
+
+                //PROCURA O LOAD DAS NOTAS
+                with qryAux do begin
+                     close;
+                     sql.Clear;
+                     sql.Add('select NFI_LOAD FROM NF WHERE ORD_ID = ' + cdsOCEORD_ID.AsString);
+                     Open;
+                 end;
+
+                 LOAD := '';
+                 WHILE not qryAux.Eof do begin
+                        LOAD := LOAD + qryAux.FieldByName('NFI_LOAD').AsString + ' ';
+                        qryAux.next;
+                 end;
+
+                //gera frete
+                if  cdsOCEORD_VLR_FRETE.AsFloat > 0 then begin
+                  qrygera.Append;
+                  qrygeraORD_ID.AsInteger := cdsOCEORD_ID.AsInteger;
+                  qrygeraDOCUMENTO.Value := qryConfigFRETE.Value;
+                  qrygeraItem.Value := 'FRETE TRANSPORTE MUNICIPAL(NF ' + cdsOCEORD_NOTAS.AsString + ' LOAD:' + LOAD + ' ' + cdsOCECLIFraza.AsString + ')';
+                  qrygeraVALOR.Value := cdsOCEORD_VLR_FRETE.AsFloat;
+                  qrygera.Post;
+                end;
+
+                //gera despacho
+                if  cdsOCEORD_VLR_DESPACHO.AsFloat > 0 then begin
+                  qrygera.Append;
+                  qrygeraORD_ID.AsInteger := cdsOCEORD_ID.AsInteger;
+                  qrygeraDOCUMENTO.Value := qryConfigDESPACHO.Value;
+                  qrygeraItem.Value := 'Despacho(NF ' + cdsOCEORD_NOTAS.AsString + ' LOAD:' + LOAD + ' ' + cdsOCECLIFraza.AsString + ')';
+                  qrygeraVALOR.Value := cdsOCEORD_VLR_DESPACHO.AsFloat;
+                  qrygera.Post;
+                end;
+
+                //gera Pedagio
+                if  cdsOCEORD_VLR_PEDAGIO.AsFloat > 0 then begin
+                  qrygera.Append;
+                  qrygeraORD_ID.AsInteger := cdsOCEORD_ID.AsInteger;
+                  qrygeraDOCUMENTO.Value := qryConfigPEDAGIO.Value;
+                  qrygeraItem.Value := 'Pedágio';
+                  qrygeraVALOR.Value := cdsOCEORD_VLR_PEDAGIO.AsFloat;
+                  qrygera.Post;
+                end;
+
+                //gera Seguro
+                if  cdsOCEORD_SEGURO.AsFloat > 0 then begin
+                  qrygera.Append;
+                  qrygeraORD_ID.AsInteger := cdsOCEORD_ID.AsInteger;
+                  qrygeraDOCUMENTO.Value := qryConfigSEGURO.Value;
+                  qrygeraItem.Value := 'Seguro 0,10% do valor da NF R$ ' + FormatFloat('###,###,##0.00', cdsOCEORD_VALORTOTAL.AsFloat) ;
+                  qrygeraVALOR.Value := cdsOCEORD_VALORTOTAL.AsFloat * 0.001;
+                  qrygera.Post;
+                end;
+
+                //gera taxa entrega
+                if  cdsOCEORD_TXENTREGA.AsFloat > 0 then begin
+                  qrygera.Append;
+                  qrygeraORD_ID.AsInteger := cdsOCEORD_ID.AsInteger;
+                  qrygeraDOCUMENTO.Value := qryConfigDESCARGA.Value;
+                  qrygeraItem.Value := 'Taxa de Entrega';
+                  qrygeraVALOR.Value := cdsOCEORD_TXENTREGA.AsFloat;
+                  qrygera.Post;
+                end;
+                frmGeraNFSE.qrygera.Close;
+                frmGeraNFSE.qrygera.Parameters[0].Value := cdsOCEORD_ID.AsInteger;
+                frmGeraNFSE.qrygera.Open;
+                frmGeraNFSE.lblOrdId.Caption :=    cdsOCEORD_ID.AsString;
+                frmGeraNFSE.ShowModal;
+         end;
+
+     end;
+ end;
+end;
+
+procedure TFConsOCE.lblNFSEDblClick(Sender: TObject);
+begin
+   //procura as notas fiscais de serviço
+   fPesqNfServico := TfPesqNfServico.Create(Self);
+   fPesqNfServico.edtOrdID.Text := cdsOCEORD_ID.AsString;
+   fPesqNfServico.BitBtn1.Click;
+   fPesqNfServico.ShowModal;
+
+   
+end;
+
+procedure TFConsOCE.btnClonarClick(Sender: TObject);
+begin
+    if MessageBox(Self.Handle, 'Confirma a operação?', 'Confirmação', MB_YESNO) == 6 then
+    begin
+        qrExecClone.SQL.Clear;
+        qrExecClone.sql.Add('Exec STP_RENUMERA_CTE ' + IntToStr(cdsOCEORD_ID.Value));
+        qrExecClone.ExecSQL;
+
+        cdsOCE.Close;
+        cdsOCE.Open;
+
+        ShowMessage('Cohecimento clonado com sucesso!');
+    end;
+end;
+
+ENd.
+
+

@@ -1,0 +1,15 @@
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\LeitorNFe.exe
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\LeitorNFe.pdb
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.csprojAssemblyReference.cache
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.Form1.resources
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.Properties.Resources.resources
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.csproj.GenerateResource.cache
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.csproj.CoreCompileInputs.cache
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.exe
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.pdb
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\LeitorNFe.exe.config
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\EntityFramework.dll
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\EntityFramework.SqlServer.dll
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\EntityFramework.xml
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\bin\Debug\EntityFramework.SqlServer.xml
+C:\Sources\Almox_git\Almox\LeitorXML\LeitorNFe\obj\Debug\LeitorNFe.csproj.CopyComplete

@@ -1,0 +1,413 @@
+unit U_Funcoes;
+
+interface
+Uses SysUtils,Classes, ComObj, Db, ADODB;
+
+
+Type
+
+    TFuncoes = Class(TObject)
+
+    Function StrZero(Vl_Valor : String; Vl_Tam : Byte): String;
+    function CGC( STXT : String) : Boolean;
+    function CPF( STXT : String) : Boolean;
+    function Converte(Vl_Valor : String; Sinal : String; Vl_Sinal : Char): String;
+    function Remove(Vl_Valor : String; Sinal : String): String;
+    function MUDALETR(LETRA: string): string;
+    function RemoveAcentos(Str:String): String;
+    function RemoveLetras(Str:string): String;
+    function IsNumeric(str:String):Boolean;
+    function ControlaCNPJ(CNPJ : String) : string;
+    function TopNumber(value : real) : real;
+    Function Crypt(Action, Src: String): String;
+    function writeString(Value : string; iSize : Integer) : string;
+    function writeStringRight(Value: string; iSize: Integer): string;
+    function writeInt(Value, iSize : Integer) : string;
+    function writeFloat(Value : Double; iSize, Decimal : Integer; Virgula : Boolean) : string;
+    procedure GeraExcelDataset(Table : TADOQuery);
+    Private
+    Public
+
+End;
+
+Var
+   Funcoes : TFuncoes;
+   a : string;
+
+
+implementation
+uses USenha ;
+
+//
+//
+//
+Function TFuncoes.StrZero(Vl_Valor : String; Vl_Tam : Byte): String;
+//
+//
+//
+Var
+   Vl_Zeros : String;
+   i        : Byte;
+Begin
+   For i:= 1 to (Vl_Tam-Length(trim(Vl_Valor))) do
+      Vl_Zeros := Vl_Zeros + '0';
+      Result := Vl_Zeros + Vl_Valor;
+End;
+//
+//
+//
+function TFuncoes.CGC( STXT : String) : Boolean;
+//
+//
+//
+Var
+  A,B,C,D,E,F,G,H,I,J,K,L,X,M,Y,N : Integer;
+  DC : String[2];
+  RT : Boolean;
+begin
+  RT := true;
+  A:= StrtoInt(copy(STXT,1,1));
+  B:= StrtoInt(copy(STXT,2,1));
+  C:= StrtoInt(copy(STXT,3,1));
+  D:= StrtoInt(copy(STXT,4,1));
+  E:= StrtoInt(copy(STXT,5,1));
+  F:= StrtoInt(copy(STXT,6,1));
+  G:= StrtoInt(copy(STXT,7,1));
+  H:= StrtoInt(copy(STXT,8,1));
+  I:= StrtoInt(copy(STXT,9,1));
+  J:= StrtoInt(copy(STXT,10,1));
+  K:= StrtoInt(copy(STXT,11,1));
+  L:= StrtoInt(copy(STXT,12,1));
+  X:= 2*(L+D)+3*(K+C)+4*(J+B)+5*(I+A)+6*H+7*G+8*F+9*E;
+  M:= 11-((X)-(11*((X div 11))));
+  if M > 9 then
+     M:=0;
+  Y:= 2*(M+E)+3*(L+D)+4*(K+C)+5*(J+B)+6*(I+A)+7*H+8*G+9*F;
+  N:= 11-((Y)-(11*((Y div 11))));
+  if N > 9 then
+     N:=0;
+  DC:= copy((INTTOSTR(M)),1,1)+ copy((iNTTOSTR(N)),1,1);
+  if DC <> copy(STXT,13,2) then
+   Begin
+     RT := false;
+   end;
+   CGC := RT;
+end;
+//
+//
+//
+function TFuncoes.CPF( STXT : String) : Boolean;
+//
+//
+//
+Var
+  CP1,CP2,CP3,CPF1,CPF2,DC,A : String[15];
+  ACUMULA,CONTADOR,B,X,R,U,Y,V : Integer;
+  RT : Boolean;
+begin
+  RT := true;
+  CP1:= copy(STXT,1,3);
+  CP2:= copy(STXT,4,3);
+  CP3:= copy(STXT,7,3);
+  CPF1:= CP1+CP2+CP3;
+  ACUMULA:= 0;
+  for Contador:=2 to 10 do
+    Begin
+    A:= copy(CPF1,11-CONTADOR,1);
+    B:= Strtoint(A) * CONTADOR;
+    ACUMULA:=ACUMULA + B;
+  End;
+  X:= ACUMULA * 10;
+  R:= X-(X div 11)*11;
+  If R = 10 then
+     U:= 0
+    Else
+  U:= R;
+  CPF2:= CPF1 + copy(IntToStr(U),1,1);
+  ACUMULA:= 0;
+  For Contador:=2 to 11 do
+    Begin
+      A:= copy(CPF2,12-CONTADOR,1);
+      B:= Strtoint(A) * CONTADOR;
+      ACUMULA:=ACUMULA + B;
+  end;
+  Y:= ACUMULA * 10;
+  R:= Y-(Y div 11)*11;
+  If R = 10 then
+     V:= 0
+    Else
+  V:= R;
+  DC:= copy(INTTOSTR(U),1,1)+ copy(INTTOSTR(V),1,1);
+  if DC <> copy(STXT,10,2) then
+    Begin
+      RT := false;
+    end;
+
+  CPF := RT;
+end;
+    
+Function TFuncoes.Converte(Vl_Valor : String; Sinal : String; Vl_Sinal : Char): String;
+// Converte virgula para ponto quando o tipo for float
+// 1∫ parametro - a string a ser pesquisada
+// 2∫ parametro - a string a ser trocada
+// 3∫ parametro -  a string que ira susbstituir o 2∫ parametro
+begin
+  if Vl_Valor = '' then vL_Valor := '0' ;
+  while Pos(Sinal, Vl_Valor) > 0 do
+    Vl_Valor[Pos(Sinal, Vl_Valor)] := Vl_Sinal;
+    Result := Vl_Valor;
+end;
+
+Function TFuncoes.Remove(Vl_Valor : String; Sinal : String): String;
+begin
+   a := Vl_Valor;
+   while pos(Sinal,a) > 0 do
+        a := copy(a,0,pos(Sinal,a)-1)
+                + copy(a,pos(Sinal,a)+1,length(a));
+   Result := a;
+end;
+
+
+function TFuncoes.MUDALETR(LETRA: string): string;
+var
+  NOVALETRA         : string;
+  s                 : string;
+  M_DataLEN, i      : Integer;
+begin
+//  NOVALETRA := '';
+//  M_DataLEN := Length(LETRA);
+//  for i := 1 to M_DataLEN do
+//  begin
+//    if Dtm_BaseDados1.T_Acen.FindKey([Ord(LETRA[i])]) then
+//      s := Dtm_BaseDados1.T_Acen.FieldByName('ACE_NOVO').AsString
+//    else
+//      s := LETRA[i];
+//    NOVALETRA := NOVALETRA + s;
+//  end;
+  {   NOVALETRA := uppercase(NOVALETRA);}
+//  Result := NOVALETRA;
+end;
+
+
+function TFuncoes.RemoveAcentos(Str: String): String;
+Const ComAcento = '‡‚ÍÙ˚„ı·ÈÌÛ˙Á¸¿¬ ‘€√’¡…Õ”⁄«‹';
+SemAcento = 'aaeouaoaeioucuAAEOUAOAEIOUCU';
+Var
+x : Integer;
+Begin
+For x := 1 to Length(Str) do
+Begin
+if Pos(Str[x],ComAcento)<>0 Then
+begin
+Str[x] := SemAcento[Pos(Str[x],ComAcento)];
+end;
+end;
+Result := Str;
+
+end;
+
+function TFuncoes.RemoveLetras(Str: string): String;
+var aux : string;
+    i : Integer;
+begin
+    aux := '';
+    IF Str = '' then
+        Result := ''
+    ELSE
+    begin
+        for i := 1 to Length(Str) do
+        begin
+            if (Str[i] in ['0'..'9', '/']) then
+                    aux := aux +  Str[i];
+        end;
+
+        Result := aux;
+    end;
+
+
+end;
+
+function TFuncoes.IsNumeric(str: String): Boolean;
+var
+    IsNumber : Boolean;
+begin
+    try
+        StrToFloat(str);
+        IsNumber := True;
+    except
+        IsNumber := False;
+    end;
+
+    Result := IsNumber;
+end;
+
+function TFuncoes.ControlaCNPJ(CNPJ: String): string;
+var aux : string;
+isize, i : integer;
+begin
+  //00005448870000141
+  aux := cnpj;
+  isize := length(aux);
+  if(isize > 14) then begin
+      aux := copy(aux, isize - 13, 14);
+  end;
+  Result := aux;
+end;
+
+function TFuncoes.TopNumber(value: real): real;
+var aux : string;
+    Top : integer;
+    local :integer;
+    vReturn : real;
+begin
+    Top := strtoint(FormatFloat('0', value)) + 1;
+    aux := FormatFloat('0.00', value);
+    aux := copy(aux, length(aux) - 2, 3);
+    if aux <> ',00' then
+       Result := Top
+    else
+       Result := strtoint(FormatFloat('0', value));
+end;
+
+
+Function TFuncoes.Crypt(Action, Src: String): String;
+Label Fim;
+var KeyLen: Integer;
+KeyPos: Integer;
+OffSet: Integer;
+Dest, Key: String;
+SrcPos: Integer;
+SrcAsc: Integer;
+TmpSrcAsc: Integer;
+Range: Integer;
+begin
+
+if (Src = '') Then
+begin
+Result:= '';
+Goto Fim;
+end;
+
+Key:= 'YUQL23KL23DF90WI5E1JAS467NMCXXL6JAOAUWWMCL0AOMM4A4VZYW9KHJUI2347EJHJKDF3424SKLK3LAKDJSL9RTIKJ';
+Dest:= '';
+KeyLen:= Length(Key);
+KeyPos:= 0;
+SrcPos:= 0;
+SrcAsc:= 0;
+Range:= 256;
+
+if (Action = UpperCase('C')) then
+begin
+  Randomize;
+  OffSet:= Random(Range);
+  Dest:= Format('%1.2x',[OffSet]);
+
+  for SrcPos:= 1 to Length(Src) do
+  begin
+//    Application.ProcessMessages;
+    SrcAsc := (Ord(Src[SrcPos]) + OffSet) Mod 255;
+    if KeyPos < KeyLen then KeyPos := KeyPos + 1 else KeyPos := 1;
+    SrcAsc := SrcAsc Xor Ord(Key[KeyPos]);
+    Dest := Dest + Format('%1.2x',[SrcAsc]);
+    OffSet := SrcAsc;
+  end;
+end
+Else
+  if (Action = UpperCase('D')) then
+  begin
+    OffSet:= StrToInt('$'+ copy(Src,1,2));
+    SrcPos:= 3;
+    repeat
+      SrcAsc := StrToInt('$'+ copy(Src,SrcPos,2));
+      if (KeyPos < KeyLen) Then KeyPos := KeyPos + 1 else KeyPos := 1;
+      TmpSrcAsc := SrcAsc Xor Ord(Key[KeyPos]);
+      if TmpSrcAsc <= OffSet then TmpSrcAsc := 255 + TmpSrcAsc - OffSet
+      else TmpSrcAsc := TmpSrcAsc - OffSet;
+      Dest := Dest + Chr(TmpSrcAsc);
+      OffSet := SrcAsc;
+      SrcPos := SrcPos + 2;
+    until (SrcPos >= Length(Src));
+  end;
+
+  Result:= Dest;
+Fim:
+end;
+
+
+
+function TFuncoes.writeString(Value: string; iSize: Integer): string;
+var
+   Aux : string;
+   i   : Integer;
+begin
+      Aux := Trim(Value);
+      Aux := StringReplace(Aux, '-', '', [rfReplaceAll]);
+      Aux := StringReplace(Aux, '&', '-', [rfReplaceAll]);
+      Aux := Copy(Aux, 1, iSize);
+      for i := Length(Aux) to pred(iSize) do begin
+          Aux := Aux + ' ';
+      end;
+      Result := Aux;
+end;
+
+function TFuncoes.writeStringRight(Value: string; iSize: Integer): string;
+var
+   Aux : string;
+   i   : Integer;
+begin
+      Aux := Trim(Value);
+      Aux := StringReplace(Aux, '-', '', [rfReplaceAll]);
+      Aux := Copy(Aux, 1, iSize);
+      for i := Length(Aux) to pred(iSize) do begin
+          Aux := ' ' + Aux;
+      end;
+      Result := Aux;
+end;
+
+function TFuncoes.writeInt(Value, iSize: Integer): string;
+var
+   Aux : string;
+   i   : Integer;
+begin
+      Aux := IntToStr(Value);
+      for i := Length(Aux) to pred(iSize) do begin
+          Aux := '0' + Aux;
+      end;
+      Result := Aux;
+end;
+
+function TFuncoes.writeFloat(Value: Double; iSize, Decimal: Integer;
+  Virgula: Boolean): string;
+var
+        i : Integer;
+        FormatMaks : string;
+        Aux : string;
+begin
+   for i := 1 to  Decimal do begin
+       FormatMaks := FormatMaks + '0';
+   end;
+
+  FormatMaks := '##0.' + FormatMaks;
+  Aux := FormatFloat(FormatMaks, Value);
+  Aux := StringReplace(Aux, ',','.',[rfReplaceAll]);
+  if Virgula = False then  begin
+        Aux := StringReplace(Aux, '.','',[rfReplaceAll]);
+  end;
+
+  for i := Length(Aux) to pred(iSize) do begin
+          Aux := '0' + Aux;
+  end;
+
+  Result := Aux;
+end;
+
+
+procedure TFuncoes.GeraExcelDataset(Table: TADOQuery);
+
+begin
+
+
+
+end;
+
+end.

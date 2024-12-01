@@ -1,0 +1,40 @@
+unit Splash;
+  {99xxx9}
+  {lll}
+
+interface
+        {trt77}
+uses
+  Windows, Messages, SysUtils ,Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, jpeg;
+
+type
+  TFSplash = class(TForm)
+    Timer1:  TTimer ;
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;                             
+var
+  FSplash: TFSplash;
+implementation
+uses UMenu, USenha;
+{$R *.DFM}
+procedure TFSplash.Timer1Timer(Sender: TObject);
+begin
+     Timer1.enabled     := False;
+     Application.CreateForm(TFSenha, FSenha);
+     FSenha.show ;
+     Self.Visible := False;
+end;
+procedure TFSplash.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   Application.Terminate;
+end;
+
+end.
+
+
